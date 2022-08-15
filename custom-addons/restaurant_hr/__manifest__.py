@@ -15,20 +15,20 @@
     'version': '15.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'muk_web_theme'],
+    'depends': ['base', 'web', 'muk_web_theme', 'hr_recruitment', 'hr', 'calendar', 'survey', 'hr_skills'],
 
     # always loaded
     'data': [
         # 'security/restaurant_management_security.xml',
         # 'security/ir.model.access.csv',
 
-        # 'views/menu_items.xml',
+        'views/menu_items.xml',
 
     ],
     # only loaded in demonstration mode
     'demo': [],
     'installable': True,
-    'application': True,
+    'application': False,
     'auto_install': False,
     'assets': {
         'web._assets_primary_variables': [],
