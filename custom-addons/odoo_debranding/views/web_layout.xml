@@ -5,7 +5,7 @@
             <link type="image/x-icon" rel="shortcut icon" href="/web/binary/company_logo" />
         </xpath>
         <xpath expr="//title" position="replace">
-            <title t-esc="'RNQC'" />
+            <title t-esc="'S.R.L. TRABO-PLUS'" />
         </xpath>
     </template>
 
