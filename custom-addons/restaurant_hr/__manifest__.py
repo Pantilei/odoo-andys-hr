@@ -15,14 +15,18 @@
     'version': '15.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'muk_web_theme'],
+    'depends': ['base', 'web', 'muk_web_theme', 'hr', 'hr_skills'],
 
     # always loaded
     'data': [
-        # 'security/restaurant_management_security.xml',
+        'security/restaurant_hr_security.xml',
         # 'security/ir.model.access.csv',
 
+        'views/hr_employee.xml',
+
         'views/menu_items.xml',
+
+        'data/data.xml',
 
     ],
     # only loaded in demonstration mode
