@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.view_employee_form_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='job_title']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='department_id']" position="replace">
+                <field name="department_id" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_view_employee_form_inherit_group_hr_manager" model="ir.ui.view">
+        <field name="name">hr.employee.view_employee_form_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_manager')])]" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="replace">
+                <field name="department_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.hr_employee_view_form_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_skills.hr_employee_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('row')]" position="before">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="resume_pdf" />
+                        <field name="resume_pdf" />
+                    </div>
+                </div>
+                <div class="o_horizontal_separator">Detailed Resume/Skills</div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
