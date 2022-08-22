@@ -16,3 +16,25 @@ class HrEmployee(models.Model):
         groups="hr.group_hr_user",
         tracking=True
     )
+
+    coach_ids = fields.Many2many(
+        comodel_name='hr.employee',
+        string='Coaches',
+        # compute='_compute_coaches',
+        relation="employee_coaches",
+        column1="employee",
+        column2="coach",
+        store=True,
+        readonly=False,
+        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+        help='Select the "Employee" who is the coach of this employee.\n'
+             'The "Coach" will have the opportunity to edit the information of his students.')
+
+    # @api.depends('parent_id')
+    # def _compute_coaches(self):
+    #     for employee in self:
+    #         manager = employee.parent_id
+    #         if manager:
+    #             employee.coach_ids |= manager
+    #         else:
+    #             employee.coach_ids = employee.coach_ids

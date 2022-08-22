@@ -20,7 +20,7 @@
     # always loaded
     'data': [
         'security/restaurant_hr_security.xml',
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
 
         'views/hr_employee.xml',
 
