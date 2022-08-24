@@ -26,6 +26,8 @@
 
         'views/menu_items.xml',
 
+        'wizards/employee_survey_select_wizard.xml',
+
         'data/data.xml',
 
     ],

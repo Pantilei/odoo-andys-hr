@@ -11,6 +11,12 @@ class HrEmployee(models.Model):
         default=lambda self: self.env.user.department_id
     )
 
+    response_ids = fields.One2many(
+        comodel_name="survey.user_input",
+        inverse_name="employee_id",
+        string="Responces"
+    )
+
     resume_pdf = fields.Binary(
         string="Resume PDF",
         groups="hr.group_hr_user",
@@ -38,3 +44,15 @@ class HrEmployee(models.Model):
     #             employee.coach_ids |= manager
     #         else:
     #             employee.coach_ids = employee.coach_ids
+
+    def assess_employee(self):
+        return {
+            'name': _('Select Survey'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'restaurant_hr.employee_survey_select_wizard',
+            'views': [(False, "form")],
+            'context': {
+                'employee_id': self.id,
+            },
+            'target': 'new'
+        }

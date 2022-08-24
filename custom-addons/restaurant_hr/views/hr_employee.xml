@@ -17,6 +17,31 @@
             <xpath expr="//field[@name='coach_id']" position="replace">
                 <field name="coach_ids" options="{'no_create': True}" widget="many2many_avatar_employee" />
             </xpath>
+
+            <xpath expr="//header/button[1]" position="replace"></xpath>
+
+            <xpath expr="//header" position="inside">
+                <button type="object" name="assess_employee" string="Assess Employee" class="oe_highlight" />
+            </xpath>
+
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page name="apprisals" string="Apprisals">
+                    <group>
+                        <field name="response_ids" readonly="1" nolabel="1">
+                            <tree>
+                                <field name="survey_id" />
+                                <field name="partner_id" string="Appraiser" />
+                                <field name="scoring_percentage" />
+                                <field name="scoring_total" />
+                                <field name="scoring_success" />
+                                <field name="state" widget="badge" />
+                                <button string="Proceed Survey" name="proceed_survey" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'done')]}" />
+                                <button string="See Results" name="see_results" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'done')]}" />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 
