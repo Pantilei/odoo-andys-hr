@@ -6444,7 +6444,7 @@ msgstr "Открыть набор"
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_fill_form_start
 msgid "Start Survey"
-msgstr "Начать соцопрос"
+msgstr "Начать опрос"
 
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_user_input__start_datetime
@@ -6598,7 +6598,7 @@ msgstr "Сводка"
 #: model_terms:ir.ui.view,arch_db:survey.survey_user_input_line_view_search
 #: model_terms:ir.ui.view,arch_db:survey.survey_user_input_view_search
 msgid "Survey"
-msgstr "Опрос"
+msgstr "Опросник"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_response_line_view_tree
@@ -7341,7 +7341,7 @@ msgstr "Не определено"
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_fill_form_done
 msgid "Unfortunately, you have failed the test."
-msgstr ""
+msgstr "К сожалению, вы провалили тестирование."
 
 #. modules: survey, hr, hr_recruitment
 #: model:ir.model.fields,field_description:hr.field_hr_department__message_unread
@@ -9281,12 +9281,12 @@ msgstr ""
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_user_input__scoring_success
 msgid "Quizz Passed"
-msgstr "Викторина прошла"
+msgstr "Тест пройден"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_user_input_view_search
 msgid "Quizz passed"
-msgstr "Викторина прошла"
+msgstr "Тест пройден"
 
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_question__random_questions_count
