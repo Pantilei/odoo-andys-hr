@@ -14,7 +14,8 @@ class HrEmployee(models.Model):
     response_ids = fields.One2many(
         comodel_name="survey.user_input",
         inverse_name="employee_id",
-        string="Responces"
+        string="Responces",
+        groups="survey.group_survey_user"
     )
 
     resume_pdf = fields.Binary(

@@ -25,7 +25,7 @@
             </xpath>
 
             <xpath expr="//page[@name='hr_settings']" position="after">
-                <page name="apprisals" string="Apprisals">
+                <page name="apprisals" string="Apprisals" groups="survey.group_survey_user">
                     <group>
                         <field name="response_ids" readonly="1" nolabel="1">
                             <tree>

@@ -15,7 +15,7 @@
     'version': '15.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'muk_web_theme', 'hr', 'hr_skills', 'hr_organizational_chart'],
+    'depends': ['base', 'web', 'muk_web_theme', 'hr', 'hr_skills', 'hr_organizational_chart', 'survey'],
 
     # always loaded
     'data': [
