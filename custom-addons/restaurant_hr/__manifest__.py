@@ -15,7 +15,7 @@
     'version': '15.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'muk_web_theme', 'hr', 'hr_skills', 'hr_organizational_chart', 'survey'],
+    'depends': ['base', 'web', 'muk_web_theme', 'hr', 'hr_skills', 'hr_organizational_chart', 'survey', 'hr_recruitment'],
 
     # always loaded
     'data': [
@@ -23,10 +23,15 @@
         'security/ir.model.access.csv',
 
         'views/hr_employee.xml',
+        'views/hr_department.xml',
+        'views/survey_survey.xml',
+        'views/hr_applicant.xml',
+        'views/hr_job.xml',
 
         'views/menu_items.xml',
 
         'wizards/employee_survey_select_wizard.xml',
+        'wizards/applicant_survey_select_wizard.xml',
 
         'data/data.xml',
 

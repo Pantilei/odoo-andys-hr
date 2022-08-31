@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="employee_survey_select_wizard_view_form" model="ir.ui.view">
-        <field name="name">restaurant_hr.employee_survey_select_wizard</field>
-        <field name="model">restaurant_hr.employee_survey_select_wizard</field>
+    <record id="applicant_survey_select_wizard_view_form" model="ir.ui.view">
+        <field name="name">restaurant_hr.applicant_survey_select_wizard</field>
+        <field name="model">restaurant_hr.applicant_survey_select_wizard</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>

@@ -9,6 +9,6 @@
             id="menu_hr_employee_organizational_chart"
             name="Organizational Chart"
             action="action_organizational_chart"
-            parent="hr.menu_hr_employee_payroll"
+            parent="hr.menu_hr_root"
             sequence="6"/>
 </odoo>

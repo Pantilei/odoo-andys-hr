@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="survey_form" model="ir.ui.view">
+        <field name="name">survey.survey_form</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_send_survey']" position="replace"></xpath>
+
+            <xpath expr="//button[@name='action_start_session']" position="replace"></xpath>
+
+            <xpath expr="//button[@name='action_open_session_manager']" position="replace"></xpath>
+
+            <xpath expr="//button[@name='action_end_session']" position="replace"></xpath>
+
+            <xpath expr="//field[@name='session_speed_rating']/.." position="replace"></xpath>
+
+        </field>
+    </record>
+
+</odoo>

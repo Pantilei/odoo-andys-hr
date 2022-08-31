@@ -11,6 +11,11 @@ class SurveryUserInput(models.Model):
         string="Employee"
     )
 
+    applicant_id = fields.Many2one(
+        comodel_name="hr.applicant",
+        string="Applicant"
+    )
+
     def proceed_survey(self):
         url = '%s?%s' % (self.survey_id.get_start_url(), werkzeug.urls.url_encode(
             {'answer_token': self.access_token or None}))
