@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-24 19:47+0000\n"
-"PO-Revision-Date: 2022-08-24 19:47+0000\n"
+"POT-Creation-Date: 2022-09-01 20:24+0000\n"
+"PO-Revision-Date: 2022-09-01 20:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,15 +16,34 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_hr_applicant
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_user_input__applicant_id
+msgid "Applicant"
+msgstr "Соискатель"
+
+#. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_restaurant_hr_applicant_survey_select_wizard
+msgid "Applicant Survey Select Wizard"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__manager_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__manager_id
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "Appraiser"
 msgstr "Оценщик"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "Apprisals"
 msgstr "Оценки"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_recruitment_survey_hr_applicant_view_form_inherit
+msgid "Assess Applicant"
+msgstr "Оценить Кандидата"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
@@ -32,6 +51,7 @@ msgid "Assess Employee"
 msgstr "Оценить Сотрудника"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.applicant_survey_select_wizard_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_survey_select_wizard_view_form
 msgid "Cancel"
 msgstr "Отмена"
@@ -42,22 +62,26 @@ msgid "Coaches"
 msgstr "Тренеры"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.applicant_survey_select_wizard_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_survey_select_wizard_view_form
 msgid "Confirm"
 msgstr "Подтвердить"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_uid
 msgid "Created by"
 msgstr "Создано Пользователем"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_date
 msgid "Created on"
 msgstr "Создано в"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__department_id
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__department_id
 msgid "Department"
 msgstr "Подразделение"
 
@@ -67,6 +91,7 @@ msgid "Detailed Resume/Skills"
 msgstr "Детальное Резюме/Навыки"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__display_name
 msgid "Display Name"
 msgstr "Имя"
@@ -83,33 +108,44 @@ msgid "Employee Survey Select Wizard"
 msgstr "Выбор Опросника Пользователя"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__id
 msgid "ID"
 msgstr ""
 
 #. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_hr_job
+msgid "Job Position"
+msgstr "Должность"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard____last_update
 msgid "Last Modified on"
 msgstr "Последнее Обновление в"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_uid
 msgid "Last Updated by"
 msgstr "Последнее Обновление Пользователем"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_date
 msgid "Last Updated on"
 msgstr "Последнее Обновление в"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/survey_user_input.py:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 #, python-format
 msgid "Proceed Survey"
 msgstr "Продолжить Опрос"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__response_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__response_ids
 msgid "Responces"
 msgstr "Ответы"
@@ -120,11 +156,13 @@ msgid "Resume PDF"
 msgstr "Резюме PDF"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "See Results"
 msgstr "Посмотреть Результаты"
 
 #. module: restaurant_hr
+#: code:addons/restaurant_hr/models/hr_applicant.py:0
 #: code:addons/restaurant_hr/models/hr_employee.py:0
 #, python-format
 msgid "Select Survey"
@@ -140,12 +178,14 @@ msgstr ""
 " иметь доступ к редактированию данных сотрудника."
 
 #. module: restaurant_hr
+#: code:addons/restaurant_hr/wizards/applicant_survey_select_wizard.py:0
 #: code:addons/restaurant_hr/wizards/employee_survey_select_wizard.py:0
 #, python-format
 msgid "Start Survey"
 msgstr "Начать Опрос"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__survey_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__survey_id
 msgid "Survey"
 msgstr "Опросник"
@@ -160,3 +200,9 @@ msgstr "Опрос пользователей ввод"
 #, python-format
 msgid "View Answers"
 msgstr "Посмотреть  Ответы"
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/models/hr_applicant.py:0
+#, python-format
+msgid "You must define a Contact Name for this applicant."
+msgstr "Вы должны заполнить имя кандидата."
