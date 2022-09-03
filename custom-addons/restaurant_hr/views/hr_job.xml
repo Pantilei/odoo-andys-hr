@@ -23,4 +23,17 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_job_filter" model="ir.ui.view">
+        <field name="name">hr.view_job_filter.inherit</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_job_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <searchpanel>
+                    <field name="department_id" string="Categories" enable_counters="1" limit="0" />
+                </searchpanel>
+            </xpath>
+        </field>
+    </record>
 </odoo>
