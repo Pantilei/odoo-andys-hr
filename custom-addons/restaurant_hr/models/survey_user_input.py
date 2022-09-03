@@ -16,6 +16,20 @@ class SurveryUserInput(models.Model):
         string="Applicant"
     )
 
+    bonuse_percentage = fields.Float(
+        string="Bonuse Percentage",
+        compute="_compute_bonuse_percentage"
+    )
+
+    @api.depends("scoring_percentage", "survey_id")
+    def _compute_bonuse_percentage(self):
+        for record in self:
+            bonuse_percentage = 0
+            for line in record.survey_id.bonuse_rate_ids:
+                if line.scoring_from <= record.scoring_percentage/100 <= line.scoring_to:
+                    bonuse_percentage = line.interes_rate
+            record.bonuse_percentage = bonuse_percentage
+
     def proceed_survey(self):
         url = '%s?%s' % (self.survey_id.get_start_url(), werkzeug.urls.url_encode(
             {'answer_token': self.access_token or None}))

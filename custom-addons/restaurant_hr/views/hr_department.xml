@@ -16,4 +16,18 @@
             </data>
         </field>
     </record>
+
+    <record id="view_department_tree" model="ir.ui.view">
+        <field name="name">hr.department.tree.inherit</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_tree" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='display_name']" position="before">
+                    <field name="sequence" widget="handle" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
 </odoo>

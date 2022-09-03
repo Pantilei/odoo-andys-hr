@@ -20,6 +20,7 @@
                                 <field name="scoring_percentage" />
                                 <field name="scoring_total" />
                                 <field name="scoring_success" />
+                                <field name="bonuse_percentage" widget="percentage" />
                                 <field name="state" widget="badge" />
                                 <button string="Proceed Survey" name="proceed_survey" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'done')]}" />
                                 <button string="See Results" name="see_results" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'done')]}" />
@@ -31,6 +32,7 @@
                                     <field name="scoring_percentage" readonly="1" />
                                     <field name="scoring_total" readonly="1" />
                                     <field name="scoring_success" readonly="1" />
+                                    <field name="bonuse_percentage" widget="percentage" />
                                     <field name="state" readonly="1" />
                                 </group>
                             </form>

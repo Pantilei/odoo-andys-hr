@@ -16,6 +16,18 @@
 
             <xpath expr="//field[@name='session_speed_rating']/.." position="replace"></xpath>
 
+            <xpath expr="//page[@name='options']" position="inside">
+                <group string="Bonuses">
+                    <field name="bonuse_rate_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="scoring_from" widget="percentage" />
+                            <field name="scoring_to" widget="percentage" />
+                            <field name="interes_rate" widget="percentage" />
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+
         </field>
     </record>
 

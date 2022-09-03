@@ -8,3 +8,8 @@ access_restaurant_hr_applicant_survey_select_wizard,restaurant_hr.applicant_surv
 survey.access_survey_survey_user,survey.survey.survey.user,survey.model_survey_survey,survey.group_survey_user,1,0,0,0
 survey.access_survey_question_survey_user,survey.question.survey.user,survey.model_survey_question,survey.group_survey_user,1,0,0,0
 
+access_survey_bonuses_manger,survey.survey_bonuses_manager,restaurant_hr.model_survey_survey_bonuses,survey.group_survey_manager,1,1,1,1
+access_survey_bonuses_user,survey.survey_bonuses_user,restaurant_hr.model_survey_survey_bonuses,survey.group_survey_user,1,0,0,0
+
+
+
