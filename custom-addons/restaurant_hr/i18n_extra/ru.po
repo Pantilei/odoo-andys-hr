@@ -2063,3 +2063,17 @@ msgstr "Срок действия опроса истек"
 #: model_terms:ir.ui.view,arch_db:survey.survey_void_content
 msgid "survey is empty"
 msgstr "Обзор пуст"
+
+#. modules: hr_recruitment, hr
+#: model:ir.actions.act_window,name:hr.action_hr_job
+#: model:ir.actions.act_window,name:hr_recruitment.action_hr_job
+#: model:ir.actions.act_window,name:hr_recruitment.action_hr_job_config
+#: model:ir.ui.menu,name:hr.menu_view_hr_job
+#: model:ir.ui.menu,name:hr_recruitment.menu_hr_job_position_config
+msgid "Job Positions"
+msgstr "Вакансии"
+
+#. module: hr_recruitment
+#: model:ir.ui.menu,name:hr_recruitment.menu_crm_case_categ_all_app
+msgid "All Applications"
+msgstr "Все Заявки"
