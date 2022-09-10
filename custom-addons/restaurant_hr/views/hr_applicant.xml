@@ -10,6 +10,10 @@
                 <field name="emp_id" invisible="1" />
             </xpath>
 
+            <xpath expr="//field[@name='partner_name']" position="replace">
+                <field name="partner_name" required="1" />
+            </xpath>
+
             <xpath expr="//notebook" position="inside">
                 <page name="apprisals" string="Apprisals" groups="survey.group_survey_user">
                     <group>

@@ -54,4 +54,11 @@
         <field name="active" eval="False" />
     </record>
 
+    <menuitem
+        id="available_job_position_name_menu"
+        name="Available Job Position Name"
+        parent="hr_recruitment.menu_hr_recruitment_configuration"
+        action="restaurant_hr.available_hr_job_names_action"
+        sequence="3"/>
+
 </odoo>

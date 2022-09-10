@@ -96,6 +96,33 @@
         </field>
     </record>
 
+    <record id="employee_view_search" model="ir.ui.view">
+        <field name="name">hr.employee.view.search</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="employee_type" />
+                <field name="mobile_phone" string="Phone" filter_domain="['|', ('mobile_phone', 'ilike', self), ('work_phone', 'ilike', self)]" />
+                <field name="work_email" string="Email" filter_domain="[('work_email', 'ilike', self)]" />
+                <field name="department_id" />
+            </xpath>
+
+            <xpath expr="//filter[@name='inactive']" position="after">
+                <separator />
+                <filter string="Employee" name="employee_type_employee" domain="[('employee_type', '=', 'employee')]" />
+                <filter string="Student" name="employee_type_student" domain="[('employee_type', '=', 'student')]" />
+                <filter string="Trainee" name="employee_type_trainee" domain="[('employee_type', '=', 'trainee')]" />
+                <filter string="Contractor" name="employee_type_contractor" domain="[('employee_type', '=', 'contractor')]" />
+                <filter string="Freelance" name="employee_type_freelance" domain="[('employee_type', '=', 'freelance')]" />
+            </xpath>
+
+            <xpath expr="//filter[@name='group_manager']" position="after">
+                <filter name="employee_type" string="Employee Type" domain="[]" context="{'group_by': 'employee_type'}" />
+            </xpath>
+        </field>
+    </record>
+
     <record id="hr.act_employee_from_department" model="ir.actions.act_window">
         <field name="context">{
             "searchpanel_default_department_id": active_id

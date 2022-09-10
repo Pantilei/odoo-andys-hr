@@ -12,4 +12,5 @@ access_survey_bonuses_manger,survey.survey_bonuses_manager,restaurant_hr.model_s
 access_survey_bonuses_user,survey.survey_bonuses_user,restaurant_hr.model_survey_survey_bonuses,survey.group_survey_user,1,0,0,0
 
 
-
+access_restaurant_hr_available_hr_job_names_user,restaurant_hr.available_hr_job_names.user,restaurant_hr.model_restaurant_hr_available_hr_job_names,hr.group_hr_user,1,0,0,0
+access_restaurant_hr_available_hr_job_names_manager,restaurant_hr.available_hr_job_names.manager,restaurant_hr.model_restaurant_hr_available_hr_job_names,hr.group_hr_manager,1,1,1,1

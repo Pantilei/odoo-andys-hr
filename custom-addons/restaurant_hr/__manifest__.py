@@ -27,6 +27,7 @@
         'views/survey_survey.xml',
         'views/hr_applicant.xml',
         'views/hr_job.xml',
+        'views/available_hr_jobs.xml',
 
         'views/menu_items.xml',
 

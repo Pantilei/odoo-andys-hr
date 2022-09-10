@@ -59,9 +59,11 @@ class HrApplicant(models.Model):
                     'default_work_email': applicant.department_id and applicant.department_id.company_id
                     and applicant.department_id.company_id.email or False,
                     'default_work_phone': applicant.department_id.company_id.phone,
-                    'form_view_initial_mode': 'edit',
                     'default_applicant_id': applicant.ids,
-                    'default_response_ids': [(6, 0, applicant.response_ids.ids)]
+                    'default_response_ids': [(6, 0, applicant.response_ids.ids)],
+                    'employee_type': 'trainee',
+
+                    'form_view_initial_mode': 'edit',
                 }
 
         dict_act_window = self.env['ir.actions.act_window']._for_xml_id(
