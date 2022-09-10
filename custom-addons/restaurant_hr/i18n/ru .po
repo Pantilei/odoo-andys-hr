@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-03 22:34+0000\n"
-"PO-Revision-Date: 2022-09-03 22:34+0000\n"
+"POT-Creation-Date: 2022-09-10 11:16+0000\n"
+"PO-Revision-Date: 2022-09-10 11:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,21 @@ msgid "Assess Employee"
 msgstr "Оценить Сотрудника"
 
 #. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_restaurant_hr_available_hr_job_names
+msgid "Available HR Job Names"
+msgstr "Доступные названия вакансий"
+
+#. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.available_job_position_name_menu
+msgid "Available Job Position Name"
+msgstr "Доступные названия вакансий"
+
+#. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.available_hr_job_names_action
+msgid "Available Job Position Names"
+msgstr "Доступные названия вакансий"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_user_input__bonuse_percentage
 msgid "Bonuse Percentage"
 msgstr "Бонусный процент"
@@ -84,7 +99,13 @@ msgid "Confirm"
 msgstr "Подтвердить"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Contractor"
+msgstr "Подрядчик"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_bonuses__create_uid
 msgid "Created by"
@@ -92,6 +113,7 @@ msgstr "Создано Пользователем"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_bonuses__create_date
 msgid "Created on"
@@ -111,14 +133,21 @@ msgstr "Детальное Резюме/Навыки"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__display_name
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_bonuses__display_name
 msgid "Display Name"
 msgstr "Имя"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Email"
+msgstr "Емайл"
+
+#. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_employee
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_user_input__employee_id
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Employee"
 msgstr "Сотрудник"
 
@@ -128,7 +157,18 @@ msgid "Employee Survey Select Wizard"
 msgstr "Выбор Опросника Пользователя"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Employee Type"
+msgstr "Тип Сотрудника"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Freelance"
+msgstr "Фрилансер"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_bonuses__id
 msgid "ID"
@@ -140,12 +180,19 @@ msgid "Interest Rate"
 msgstr "Процентная ставка"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__hr_job_name_id
+msgid "Job Name"
+msgstr "Название Вакансии"
+
+#. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_job
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__name
 msgid "Job Position"
 msgstr "Должность"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard____last_update
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_bonuses____last_update
 msgid "Last Modified on"
@@ -153,6 +200,7 @@ msgstr "Последнее Обновление в"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_bonuses__write_uid
 msgid "Last Updated by"
@@ -160,10 +208,21 @@ msgstr "Последнее Обновление Пользователем"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_bonuses__write_date
 msgid "Last Updated on"
 msgstr "Последнее Обновление в"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__name
+msgid "Name"
+msgstr "Название"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Phone"
+msgstr "Телефон"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/survey_user_input.py:0
@@ -235,6 +294,11 @@ msgid "Start Survey"
 msgstr "Начать Опрос"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Student"
+msgstr "Студент"
+
+#. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_survey_survey
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__survey_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__survey_id
@@ -253,6 +317,11 @@ msgid "Survey User Input"
 msgstr "Опрос пользователей ввод"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Trainee"
+msgstr "Стажёр"
+
+#. module: restaurant_hr
 #: code:addons/restaurant_hr/models/survey_user_input.py:0
 #, python-format
 msgid "View Answers"
@@ -262,4 +331,9 @@ msgstr "Посмотреть  Ответы"
 #: code:addons/restaurant_hr/models/hr_applicant.py:0
 #, python-format
 msgid "You must define a Contact Name for this applicant."
-msgstr "Вы должны дать имя кандидату прежде чем создать сотрудника."
+msgstr "Вы должны заполнить имя сотрудника"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_simple_form
+msgid "e.g. Sales Manager"
+msgstr "например: Менеджер по Продажам"

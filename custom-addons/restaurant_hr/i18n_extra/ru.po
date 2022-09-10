@@ -2077,3 +2077,95 @@ msgstr "Вакансии"
 #: model:ir.ui.menu,name:hr_recruitment.menu_crm_case_categ_all_app
 msgid "All Applications"
 msgstr "Все Заявки"
+
+#. module: hr_recruitment
+#: model_terms:ir.ui.view,arch_db:hr_recruitment.hr_employee_view_search
+msgid "Newly Hired"
+msgstr "Недавно Нанятый"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_user_input_view_search
+msgid "Search Survey"
+msgstr "Искать Опрос"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_fill_form_start
+msgid "Start Survey"
+msgstr "Начать Опрос"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_response_line_view_tree
+msgid "Survey Answer Line"
+msgstr "Строка ответа на Опрос"
+
+#. module: survey
+#: model:ir.model,name:survey.model_survey_question_answer
+#: model_terms:ir.ui.view,arch_db:survey.survey_question_answer_view_tree
+msgid "Survey Label"
+msgstr "Ярлык Опроса"
+
+#. module: survey
+#: model:ir.model,name:survey.model_survey_question
+#: model_terms:ir.ui.view,arch_db:survey.survey_question_form
+#: model_terms:ir.ui.view,arch_db:survey.survey_question_tree
+msgid "Survey Question"
+msgstr "Вопрос Опроса"
+
+
+#. module: survey
+#: model:ir.model,name:survey.model_survey_user_input_line
+msgid "Survey User Input Line"
+msgstr "Строка Ответа Пользователя Опроса"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_user_input_view_form
+#: model_terms:ir.ui.view,arch_db:survey.survey_user_input_view_tree
+msgid "Survey User inputs"
+msgstr "Ответы Пользователя Опроса"
+
+#. module: survey
+#: model:ir.model.fields,help:survey.field_survey_survey__description_done
+msgid "This message will be displayed when survey is completed"
+msgstr "Это сообщения появится, когда опрос будет завершен"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_auth_required
+msgid "This survey is open only to registered people. Please"
+msgstr ""
+"Этот опрос открыт только для зарегистрированных пользователей. "
+"Пожалуйста,"
+
+#. module: survey
+#: code:addons/survey/models/survey_survey.py:0
+#, python-format
+msgid "You cannot send an invitation for a survey that has no questions."
+msgstr ""
+"Вы не можете отправить приглашение на опрос, в котором нет вопросов."
+
+#. module: survey
+#: code:addons/survey/models/survey_survey.py:0
+#, python-format
+msgid "You cannot send invitations for closed surveys."
+msgstr "Вы не можете отправлять приглашения на закрытые опросы."
+
+
+#. module: hr_recruitment
+#: model:ir.model.fields,field_description:hr_recruitment.field_hr_applicant__name
+msgid "Subject / Application Name"
+msgstr "Тема / Краткое Описание Кандидата"
+
+#. module: hr_recruitment
+#: model:ir.model.fields,field_description:hr_recruitment.field_hr_applicant__partner_name
+msgid "Applicant's Name"
+msgstr "Имя Кандидата"
+
+
+#. module: hr_recruitment_survey
+#: model_terms:ir.ui.view,arch_db:hr_recruitment_survey.view_hr_job_kanban_inherit
+msgid "Create Interview Form"
+msgstr "Создать опросник для этой вакансии"
+
+#. module: hr_recruitment_survey
+#: model_terms:ir.ui.view,arch_db:hr_recruitment_survey.view_hr_job_kanban_inherit
+msgid "Preview Interview"
+msgstr "Посмотреть опросник для этой вакансии"
