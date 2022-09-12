@@ -2,7 +2,7 @@
 <odoo noupdate="1">
 
     <!-- АП -->
-    <record id="andys_network_department" model="hr.department">
+    <!-- <record id="andys_network_department" model="hr.department">
         <field name="name">Сеть Andy’s</field>
     </record>
     <record id="ap1_department" model="hr.department">
@@ -112,11 +112,11 @@
     <record id="ap41_department" model="hr.department">
         <field name="name">АП41</field>
         <field name="parent_id" ref="restaurant_hr.andys_network_department" />
-    </record>
+    </record> -->
 
 
     <!-- ЛП -->
-    <record id="la_placinte_network_department" model="hr.department">
+    <!-- <record id="la_placinte_network_department" model="hr.department">
         <field name="name">Сеть La placinte</field>
     </record>
     <record id="lp2_department" model="hr.department">
@@ -150,10 +150,10 @@
     <record id="lp18_department" model="hr.department">
         <field name="name">ЛП18</field>
         <field name="parent_id" ref="restaurant_hr.la_placinte_network_department" />
-    </record>
+    </record> -->
 
     <!-- Other departments -->
-    <record id="andys_express_department" model="hr.department">
+    <!-- <record id="andys_express_department" model="hr.department">
         <field name="name">Andy’s express</field>
     </record>
     <record id="il_forno_department" model="hr.department">
@@ -227,11 +227,11 @@
     </record>
     <record id="office_personal_department" model="hr.department">
         <field name="name">Технический персонал офисе</field>
-    </record>
+    </record> -->
 
 
     <!-- Employee Categories -->
-    <record id="company_director_category" model="hr.employee.category">
+    <!-- <record id="company_director_category" model="hr.employee.category">
         <field name="name">Директор Компании</field>
     </record>
     <record id="restaurant_network_category" model="hr.employee.category">
@@ -242,5 +242,5 @@
     </record>
     <record id="hr_director_category" model="hr.employee.category">
         <field name="name">Директор HR</field>
-    </record>
+    </record> -->
 </odoo>
