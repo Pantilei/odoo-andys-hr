@@ -2169,3 +2169,9 @@ msgstr "Создать опросник для этой вакансии"
 #: model_terms:ir.ui.view,arch_db:hr_recruitment_survey.view_hr_job_kanban_inherit
 msgid "Preview Interview"
 msgstr "Посмотреть опросник для этой вакансии"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee__identification_id
+#: model:ir.model.fields,field_description:hr.field_res_users__identification_id
+msgid "Identification No"
+msgstr "IDNP"
