@@ -61,4 +61,12 @@
         action="restaurant_hr.available_hr_job_names_action"
         sequence="3"/>
 
+    
+    <menuitem
+        id="employee_payment_rate_menu"
+        name="Employee Payment Rate"
+        parent="hr.menu_hr_employee_payroll"
+        action="restaurant_hr.employee_payment_rate_action"
+        sequence="10"/>
+
 </odoo>

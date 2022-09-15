@@ -68,6 +68,10 @@ class HrEmployee(models.Model):
         string="Functional Duty"
     )
 
+    payment_rate = fields.Float(
+        string="Payment Rate",
+
+    )
     # @api.depends('parent_id')
     # def _compute_coaches(self):
     #     for employee in self:

@@ -137,4 +137,25 @@
         </field>
     </record>
 
+    <record id="employee_payment_rate_view_tree" model="ir.ui.view">
+        <field name="name">employee_payment_rate.view.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="0" delete="0">
+                <field name="name" readonly="1" />
+                <field name="payment_rate" />
+                <field name="department_id" readonly="1" />
+                <field name="job_id" readonly="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_payment_rate_action" model="ir.actions.act_window">
+        <field name="name">Employee Payment Rate</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
 </odoo>
