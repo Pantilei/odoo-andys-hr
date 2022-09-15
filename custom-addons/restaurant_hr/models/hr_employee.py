@@ -103,19 +103,22 @@ class HrEmployee(models.Model):
 
         path = os.path.join(os.path.dirname(os.path.abspath(__file__)))
         df_employees = pd.read_csv(os.path.join(
-            path, '../data/employee_data.csv')).replace({np.nan: None})
+            path, '../data/employee_data.csv'), dtype=str).replace({np.nan: None})
 
         for record in df_employees.to_dict("records"):
-            # print("\n", record)
+            print("\n", record)
             department_id = self._get_department(
-                record["Подразделение"], record["Ф.И.О."] if not record["Руководитель подразделения"] else False)
+                record["Подразделение"],
+                record["Ф.И.О."] if not record["Руководитель подразделения"] else False,
+                record["Название Сети"]
+            )
             job_id = self._get_job(record["Должность"], department_id)
             parent_id = self._get_parent(record["Руководитель подразделения"])
             address_id = self._get_address(record["Ф.И.О."], record["Адрес"])
             employee_id = Employee.search([
                 ("name", "=", record["Ф.И.О."]),
-                ("department_id", "=", department_id.id),
-                ("job_id", "=", job_id.id)
+                # ("department_id", "=", department_id.id),
+                # ("job_id", "=", job_id.id)
             ], limit=1)
             if not employee_id:
                 employee_id = Employee.create({
@@ -156,9 +159,24 @@ class HrEmployee(models.Model):
                     "resource_calendar_id": 1
                 })
 
-    def _get_department(self, departament_name, manager_name):
+    def _get_department(self, departament_name, manager_name, network_name=None):
         Department = self.env["hr.department"]
         Employee = self.env["hr.employee"]
+
+        network_department_id = self.env["hr.department"]
+        if network_name:
+            network_department_id = Department.search([
+                ("name", "=", network_name)
+            ])
+            if not network_department_id:
+                network_department_id = Department.create({
+                    "name": network_name
+                })
+            else:
+                network_department_id.write({
+                    "name": network_name,
+                })
+
         manager_id = Employee.search([
             ("name", "=", manager_name)
         ], limit=1) if manager_name else self.env["hr.employee"]
@@ -168,12 +186,14 @@ class HrEmployee(models.Model):
         if not departament_id:
             departament_id = Department.create({
                 "name": departament_name,
-                "manager_id": manager_id.id
+                "manager_id": manager_id.id,
+                "parent_id": network_department_id.id
             })
         else:
             departament_id.write({
                 "name": departament_name,
-                "manager_id": departament_id.manager_id.id or manager_id.id
+                "manager_id": departament_id.manager_id.id or manager_id.id,
+                "parent_id": network_department_id.id
             })
         return departament_id
 
