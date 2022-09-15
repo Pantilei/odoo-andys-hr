@@ -55,6 +55,13 @@
                     </group>
                 </page>
             </xpath>
+
+            <xpath expr="//group[@name='identification_group']" position="replace"></xpath>
+            <xpath expr="//group[@name='managers']" position="replace">
+                <group name="functional_duty" string="Functional Duty">
+                    <field name="functional_duty" nolabel="1" />
+                </group>
+            </xpath>
         </field>
     </record>
 

@@ -64,6 +64,10 @@ class HrEmployee(models.Model):
         help='Select the "Employee" who is the coach of this employee.\n'
              'The "Coach" will have the opportunity to edit the information of his students.')
 
+    functional_duty = fields.Text(
+        string="Functional Duty"
+    )
+
     # @api.depends('parent_id')
     # def _compute_coaches(self):
     #     for employee in self:
