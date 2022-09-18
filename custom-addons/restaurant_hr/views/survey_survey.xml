@@ -16,16 +16,56 @@
 
             <xpath expr="//field[@name='session_speed_rating']/.." position="replace"></xpath>
 
-            <xpath expr="//page[@name='options']" position="inside">
-                <group string="Bonuses">
-                    <field name="bonuse_rate_ids" nolabel="1">
-                        <tree editable="bottom">
-                            <field name="scoring_from" widget="percentage" />
-                            <field name="scoring_to" widget="percentage" />
-                            <field name="interes_rate" widget="percentage" />
-                        </tree>
-                    </field>
-                </group>
+            <xpath expr="//page[@name='options']" position="after">
+                <page string="Wage Rate Management">
+                    <group>
+                        <field name="survey_group" />
+                    </group>
+                    <group>
+                        <field name="wage_rate_waiter_ids" attrs="{'invisible': [('survey_group', '!=', 'waiter')]}">
+                            <tree editable="bottom">
+                                <field name="scoring_from" widget="percentage" />
+                                <field name="scoring_to" widget="percentage" />
+                                <field name="wage_rate_min" />
+                                <field name="wage_rate_max" />
+                                <field name="department_size" invisible="1" force_save="1" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="wage_rate_cook_small_department_ids" context="{'default_department_size': 'small'}" attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
+                            <tree editable="bottom">
+                                <field name="scoring_from" widget="percentage" />
+                                <field name="scoring_to" widget="percentage" />
+                                <field name="wage_rate_min" />
+                                <field name="wage_rate_max" />
+                                <field name="department_size" invisible="1" force_save="1" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="wage_rate_cook_medium_department_ids" context="{'default_department_size': 'medium'}" attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
+                            <tree editable="bottom">
+                                <field name="scoring_from" widget="percentage" />
+                                <field name="scoring_to" widget="percentage" />
+                                <field name="wage_rate_min" />
+                                <field name="wage_rate_max" />
+                                <field name="department_size" invisible="1" force_save="1" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="wage_rate_cook_large_department_ids" context="{'default_department_size': 'large'}" attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
+                            <tree editable="bottom">
+                                <field name="scoring_from" widget="percentage" />
+                                <field name="scoring_to" widget="percentage" />
+                                <field name="wage_rate_min" />
+                                <field name="wage_rate_max" />
+                                <field name="department_size" invisible="1" force_save="1" />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
             </xpath>
 
         </field>

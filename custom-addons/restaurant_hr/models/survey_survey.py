@@ -5,16 +5,51 @@ from odoo.exceptions import UserError
 class SurveySurvey(models.Model):
     _inherit = "survey.survey"
 
-    bonuse_rate_ids = fields.One2many(
-        comodel_name="survey.survey_bonuses",
+    wage_rate_waiter_ids = fields.One2many(
+        comodel_name="survey.survey_wage_rate",
         inverse_name="survey_id",
-        string="Bonuses"
+        string="Wage Rate for Waiter"
+    )
+
+    wage_rate_cook_small_department_ids = fields.One2many(
+        comodel_name="survey.survey_wage_rate",
+        inverse_name="survey_id",
+        domain=[('department_size', '=', 'small')],
+        context={'default_department_size': 'small'},
+        string="Wage Rate for Cook within Small Department"
+    )
+
+    wage_rate_cook_medium_department_ids = fields.One2many(
+        comodel_name="survey.survey_wage_rate",
+        inverse_name="survey_id",
+        domain=[('department_size', '=', 'medium')],
+        context={'default_department_size': 'medium'},
+        string="Wage Rate for Cook within Medium Department"
+    )
+
+    wage_rate_cook_large_department_ids = fields.One2many(
+        comodel_name="survey.survey_wage_rate",
+        inverse_name="survey_id",
+        domain=[('department_size', '=', 'large')],
+        context={'default_department_size': 'large'},
+        string="Wage Rate for Cook within Large Department"
+    )
+
+    survey_group = fields.Selection(
+        selection=[
+            ("general", "General"),
+            ("waiter", "Waiter"),
+            ("cook", "Cook"),
+        ],
+        default="general",
+        string="Survey Group",
+        help="Survey group defines how the wage rate is calculated for the employee!"
     )
 
 
 class SurveySurveyBonuses(models.Model):
-    _name = "survey.survey_bonuses"
-    _description = "Survey Bonuses"
+    _name = "survey.survey_wage_rate"
+    _description = "Survey Wage Rate"
 
     @api.constrains("scoring_from")
     def scoring_range_constrains(self):
@@ -38,7 +73,24 @@ class SurveySurveyBonuses(models.Model):
         required=True
     )
 
-    interes_rate = fields.Float(
-        string="Interest Rate",
+    wage_rate_min = fields.Float(
+        string="Wage Rate Min",
         required=True
+    )
+    wage_rate_max = fields.Float(
+        string="Wage Rate Max",
+        required=True
+    )
+
+    department_size = fields.Selection(
+        selection=[
+            ("small", "Small"),
+            ("medium", "Medium"),
+            ("large", "Large"),
+        ],
+        string="Department Size",
+        help="""
+            If department is the restaurant, you can specify its size, the salaries of certain employees will 
+            depend on it.
+        """
     )

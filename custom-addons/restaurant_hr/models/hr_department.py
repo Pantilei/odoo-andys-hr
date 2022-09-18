@@ -18,6 +18,7 @@ class HrDepartment(models.Model):
             ("large", "Large"),
         ],
         string="Department Size",
+        default="medium",
         help="""
             If department is the restaurant, you can specify its size, the salaries of certain employees will 
             depend on it.

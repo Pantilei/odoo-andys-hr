@@ -72,14 +72,69 @@ class HrEmployee(models.Model):
         string="Payment Rate",
 
     )
-    # @api.depends('parent_id')
-    # def _compute_coaches(self):
-    #     for employee in self:
-    #         manager = employee.parent_id
-    #         if manager:
-    #             employee.coach_ids |= manager
-    #         else:
-    #             employee.coach_ids = employee.coach_ids
+
+    wage_rate_min = fields.Float(
+        string="Wage Rate Min",
+        compute="_compute_wage_rate"
+    )
+    wage_rate_max = fields.Float(
+        string="Wage Rate Max",
+        compute="_compute_wage_rate"
+    )
+
+    @api.depends('response_ids')
+    def _compute_wage_rate(self):
+        for employee in self:
+            sorted_response_ids = employee.response_ids.sorted(
+                key=lambda r: r.create_date, reverse=True)
+            if not sorted_response_ids:
+                employee.wage_rate_max = 0
+                employee.wage_rate_min = 0
+                return
+            last_response_id = sorted_response_ids[0]
+            if last_response_id.survey_id.survey_group == "cook":
+                wage_rate_cook_ids = last_response_id.survey_id.wage_rate_cook_medium_department_ids
+                if employee.department_id.department_size == "small":
+                    wage_rate_cook_ids = last_response_id.survey_id.wage_rate_cook_small_department_ids
+                elif employee.department_id.department_size == "medium":
+                    wage_rate_cook_ids = last_response_id.survey_id.wage_rate_cook_medium_department_ids
+                elif employee.department_id.department_size == "large":
+                    wage_rate_cook_ids = last_response_id.survey_id.wage_rate_cook_large_department_ids
+                wage_rate_max = 0
+                wage_rate_min = 0
+                for line in wage_rate_cook_ids:
+                    if line.scoring_from <= last_response_id.scoring_percentage/100 <= line.scoring_to:
+                        wage_rate_max = line.wage_rate_max
+                        wage_rate_min = line.wage_rate_min
+                employee.wage_rate_max = wage_rate_max
+                employee.wage_rate_min = wage_rate_min
+
+            if last_response_id.survey_id.survey_group == "waiter":
+                oldest_to_newest_waiter_response_ids = employee.response_ids\
+                    .filtered(lambda r: r.survey_id.survey_group == "waiter")\
+                    .sorted(key=lambda r: r.create_date)
+
+                per_survey_rate = {}
+                for waiter_response_id in oldest_to_newest_waiter_response_ids:
+                    r_max = 0
+                    r_min = 0
+                    for line in waiter_response_id.survey_id.wage_rate_waiter_ids:
+                        if line.scoring_from < waiter_response_id.scoring_percentage/100 <= line.scoring_to:
+                            r_min = line.wage_rate_min
+                            r_max = line.wage_rate_max
+                    per_survey_rate.update({
+                        waiter_response_id.survey_id.id: {
+                            "max_rate": r_max,
+                            "min_rate": r_min,
+                        }
+                    })
+
+                max_rates = sum([k["max_rate"]
+                                for k in per_survey_rate.values()])
+                min_rates = sum([k["min_rate"]
+                                for k in per_survey_rate.values()])
+                employee.wage_rate_max = max_rates
+                employee.wage_rate_min = min_rates
 
     def assess_employee(self):
         return {
@@ -93,6 +148,7 @@ class HrEmployee(models.Model):
             'target': 'new'
         }
 
+    # DATA IMPORT
     def import_employee_data(self):
         Employee = self.env["hr.employee"]
         Department = self.env["hr.department"]
