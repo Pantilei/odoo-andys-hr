@@ -1,10 +1,18 @@
 import os
-from odoo import api, models, fields, _
-from odoo.exceptions import UserError
+from odoo import api, models, fields, _, SUPERUSER_ID
+from odoo.osv import expression
+from odoo.exceptions import UserError, AccessError
 
 from datetime import datetime
 import pandas as pd
 import numpy as np
+
+
+class User(models.Model):
+    _inherit = ['res.users']
+
+    department_id = fields.Many2one(
+        related='employee_id.department_id', readonly=False, related_sudo=False, store=True)
 
 
 class HrEmployee(models.Model):
@@ -59,7 +67,6 @@ class HrEmployee(models.Model):
         column1="employee",
         column2="coach",
         store=True,
-        readonly=False,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
         help='Select the "Employee" who is the coach of this employee.\n'
              'The "Coach" will have the opportunity to edit the information of his students.')
@@ -81,6 +88,48 @@ class HrEmployee(models.Model):
         string="Wage Rate Max",
         compute="_compute_wage_rate"
     )
+
+    @api.model
+    def _search(self, domain, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
+        if self.env.is_superuser():
+            return super(HrEmployee, self)._search(domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
+        if not self.env.user.has_group("hr.group_hr_user"):
+            raise AccessError(
+                _("You don't have the rights to view employees."))
+        final_domain = domain
+        if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
+            final_domain = expression.AND([
+                domain,
+                ['&', '|',
+                 ('department_id', 'child_of', self.env.user.department_id.id),
+                 ('coach_ids', 'in', [self.env.user.employee_id.id, False]),
+                 ('id', '!=', self.env.user.employee_id.id)
+                 ]
+            ])
+        if self.env.user.has_group("hr.group_hr_manager"):
+            final_domain = domain
+        return super(HrEmployee, self)._search(final_domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
+
+    @api.model
+    def search_panel_select_range(self, field_name, search_domain=None, **kwargs):
+        if self.env.is_superuser():
+            return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
+        if not self.env.user.has_group("hr.group_hr_user"):
+            raise AccessError(
+                _("You don't have the rights to view employees."))
+        final_domain = search_domain
+        if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
+            final_domain = expression.AND([
+                search_domain,
+                ['&', '|',
+                 ('department_id', 'child_of', self.env.user.department_id.id),
+                 ('coach_ids', 'in', [self.env.user.employee_id.id, False]),
+                 ('id', '!=', self.env.user.employee_id.id)
+                 ]
+            ])
+        if self.env.user.has_group("hr.group_hr_manager"):
+            final_domain = search_domain
+        return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
 
     @api.depends('response_ids')
     def _compute_wage_rate(self):

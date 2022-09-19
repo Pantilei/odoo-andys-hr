@@ -15,7 +15,7 @@
             </xpath>
 
             <xpath expr="//field[@name='coach_id']" position="replace">
-                <field name="coach_ids" options="{'no_create': True}" widget="many2many_avatar_employee" groups="hr.group_hr_manager" />
+                <field name="coach_ids" options="{'no_create': True}" widget="many2many_avatar_employee" context="{'search_all_employees': True}" />
             </xpath>
 
             <xpath expr="//field[@name='passport_id']" position="after">
@@ -155,6 +155,19 @@
         }
         </field>
     </record>
+
+    <!-- <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+        <field name="context">{
+            "chat_icon": True,
+            "search_all_employees": True
+        }
+        </field>
+        <field name="domain">['&amp;', '|',
+            ('department_id', 'child_of', user.department_id.id),
+            ('coach_ids', 'in', [user.employee_id.id, False]),
+            ('id', '!=', user.employee_id.id)
+            ]</field>
+    </record> -->
 
     <record id="employee_payment_rate_view_tree" model="ir.ui.view">
         <field name="name">employee_payment_rate.view.tree</field>
