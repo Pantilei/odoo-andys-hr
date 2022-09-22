@@ -61,7 +61,7 @@ class HrApplicant(models.Model):
                     'default_work_phone': applicant.department_id.company_id.phone,
                     'default_applicant_id': applicant.ids,
                     'default_response_ids': [(6, 0, applicant.response_ids.ids)],
-                    'employee_type': 'trainee',
+                    'default_employee_type': 'trainee',
 
                     'form_view_initial_mode': 'edit',
                 }

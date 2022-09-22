@@ -58,6 +58,24 @@
                     <field name="department_id" string="Categories" enable_counters="1" limit="0" />
                 </searchpanel>
             </xpath>
+            <!-- <xpath expr="//[@name='department']" position="after"></xpath> -->
+
+            <xpath expr="//group" position="replace">
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="status" domain="[]" context="{'group_by': 'state'}" />
+                    <filter string="Department" name="department" domain="[]" context="{'group_by': 'department_id'}" />
+                    <filter string="Job" name="name_group" domain="[]" context="{'group_by': 'name'}" />
+                    <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company" />
+                </group>
+            </xpath>
         </field>
+    </record>
+
+    <record id="hr_job_open_to_recruit_action" model="ir.actions.act_window">
+        <field name="name">Open To Recruit Jobs</field>
+        <field name="res_model">hr.job</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_job_filter" />
+        <field name="context">{"search_default_status":1, "search_default_department":1, "search_default_name_group":1}</field>
     </record>
 </odoo>

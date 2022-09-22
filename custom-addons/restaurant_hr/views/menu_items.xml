@@ -69,4 +69,12 @@
         action="restaurant_hr.employee_payment_rate_action"
         sequence="10"/>
 
+    
+    <menuitem
+        id="hr_job_open_to_recruit"
+        name="Available Open Jobs"
+        parent="hr_recruitment.menu_hr_recruitment_root"
+        action="restaurant_hr.hr_job_open_to_recruit_action"
+        sequence="3"/>
+
 </odoo>
