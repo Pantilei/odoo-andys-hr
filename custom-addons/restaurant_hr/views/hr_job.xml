@@ -63,8 +63,8 @@
             <xpath expr="//group" position="replace">
                 <group expand="0" string="Group By">
                     <filter string="Status" name="status" domain="[]" context="{'group_by': 'state'}" />
-                    <filter string="Department" name="department" domain="[]" context="{'group_by': 'department_id'}" />
                     <filter string="Job" name="name_group" domain="[]" context="{'group_by': 'name'}" />
+                    <filter string="Department" name="department" domain="[]" context="{'group_by': 'department_id'}" />
                     <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company" />
                 </group>
             </xpath>
