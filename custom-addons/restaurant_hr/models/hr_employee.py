@@ -14,6 +14,9 @@ class User(models.Model):
     department_id = fields.Many2one(
         related='employee_id.department_id', readonly=False, related_sudo=False, store=True)
 
+    branch_id = fields.Many2one(
+        related='employee_id.branch_id', readonly=False, related_sudo=False, store=True)
+
 
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
@@ -59,17 +62,23 @@ class HrEmployee(models.Model):
         tracking=True
     )
 
-    coach_ids = fields.Many2many(
-        comodel_name='hr.employee',
-        string='Coaches',
-        # compute='_compute_coaches',
-        relation="employee_coaches",
-        column1="employee",
-        column2="coach",
-        store=True,
-        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
-        help='Select the "Employee" who is the coach of this employee.\n'
-             'The "Coach" will have the opportunity to edit the information of his students.')
+    branch_id = fields.Many2one(
+        comodel_name='restaurant_hr.hr_branch',
+        string='Branch',
+        help='Select the "Branch" to whom this employee belongs.\n'
+             'The manager of branch will have the opportunity to edit the information of this employee.')
+
+    # coach_ids = fields.Many2many(
+    #     comodel_name='hr.employee',
+    #     string='Coaches',
+    #     # compute='_compute_coaches',
+    #     relation="employee_coaches",
+    #     column1="employee",
+    #     column2="coach",
+    #     store=True,
+    #     domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+    #     help='Select the "Employee" who is the coach of this employee.\n'
+    #          'The "Coach" will have the opportunity to edit the information of his students.')
 
     functional_duty = fields.Text(
         string="Functional Duty"
@@ -89,47 +98,47 @@ class HrEmployee(models.Model):
         compute="_compute_wage_rate"
     )
 
-    @api.model
-    def _search(self, domain, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
-        if self.env.is_superuser():
-            return super(HrEmployee, self)._search(domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
-        if not self.env.user.has_group("hr.group_hr_user"):
-            raise AccessError(
-                _("You don't have the rights to view employees."))
-        final_domain = domain
-        if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
-            final_domain = expression.AND([
-                domain,
-                ['&', '|',
-                 ('department_id', 'child_of', self.env.user.department_id.id),
-                 ('coach_ids', 'in', [self.env.user.employee_id.id, False]),
-                 ('id', '!=', self.env.user.employee_id.id)
-                 ]
-            ])
-        if self.env.user.has_group("hr.group_hr_manager"):
-            final_domain = domain
-        return super(HrEmployee, self)._search(final_domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
+    # @api.model
+    # def _search(self, domain, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
+    #     if self.env.is_superuser():
+    #         return super(HrEmployee, self)._search(domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
+    #     if not self.env.user.has_group("hr.group_hr_user"):
+    #         raise AccessError(
+    #             _("You don't have the rights to view employees."))
+    #     final_domain = domain
+    #     if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
+    #         final_domain = expression.AND([
+    #             domain,
+    #             ['&', '|',
+    #              ('department_id', 'child_of', self.env.user.department_id.id),
+    #              ('branch_id', 'child_of', self.env.user.branch_id.id),
+    #              ('id', '!=', self.env.user.employee_id.id)
+    #              ]
+    #         ])
+    #     if self.env.user.has_group("hr.group_hr_manager"):
+    #         final_domain = domain
+    #     return super(HrEmployee, self)._search(final_domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
 
-    @api.model
-    def search_panel_select_range(self, field_name, search_domain=None, **kwargs):
-        if self.env.is_superuser():
-            return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
-        if not self.env.user.has_group("hr.group_hr_user"):
-            raise AccessError(
-                _("You don't have the rights to view employees."))
-        final_domain = search_domain
-        if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
-            final_domain = expression.AND([
-                search_domain,
-                ['&', '|',
-                 ('department_id', 'child_of', self.env.user.department_id.id),
-                 ('coach_ids', 'in', [self.env.user.employee_id.id, False]),
-                 ('id', '!=', self.env.user.employee_id.id)
-                 ]
-            ])
-        if self.env.user.has_group("hr.group_hr_manager"):
-            final_domain = search_domain
-        return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
+    # @api.model
+    # def search_panel_select_range(self, field_name, search_domain=None, **kwargs):
+    #     if self.env.is_superuser():
+    #         return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
+    #     if not self.env.user.has_group("hr.group_hr_user"):
+    #         raise AccessError(
+    #             _("You don't have the rights to view employees."))
+    #     final_domain = search_domain
+    #     if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
+    #         final_domain = expression.AND([
+    #             search_domain,
+    #             ['&', '|',
+    #              ('department_id', 'child_of', self.env.user.department_id.id),
+    #              ('branch_id', 'chlld_of', self.env.user.branch_id.id),
+    #              ('id', '!=', self.env.user.employee_id.id)
+    #              ]
+    #         ])
+    #     if self.env.user.has_group("hr.group_hr_manager"):
+    #         final_domain = search_domain
+    #     return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
 
     @api.depends('response_ids')
     def _compute_wage_rate(self):

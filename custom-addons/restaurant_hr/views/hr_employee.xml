@@ -15,7 +15,7 @@
             </xpath>
 
             <xpath expr="//field[@name='coach_id']" position="replace">
-                <field name="coach_ids" options="{'no_create': True}" widget="many2many_avatar_employee" context="{'search_all_employees': True}" />
+                <field name="branch_id" options="{'no_create': True}" />
             </xpath>
 
             <xpath expr="//field[@name='passport_id']" position="after">

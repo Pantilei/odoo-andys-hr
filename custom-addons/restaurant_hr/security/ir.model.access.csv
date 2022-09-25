@@ -14,3 +14,7 @@ access_survey_wage_rate_user,survey.survey_wage_rate_user,restaurant_hr.model_su
 
 access_restaurant_hr_available_hr_job_names_user,restaurant_hr.available_hr_job_names.user,restaurant_hr.model_restaurant_hr_available_hr_job_names,hr.group_hr_user,1,0,0,0
 access_restaurant_hr_available_hr_job_names_manager,restaurant_hr.available_hr_job_names.manager,restaurant_hr.model_restaurant_hr_available_hr_job_names,hr.group_hr_manager,1,1,1,1
+
+
+access_restaurant_hr_hr_branch_user,restaurant_hr.hr_branch.user,restaurant_hr.model_restaurant_hr_hr_branch,hr.group_hr_user,1,0,0,0
+access_restaurant_hr_hr_branch_manager,restaurant_hr.hr_branch.manager,restaurant_hr.model_restaurant_hr_hr_branch,hr.group_hr_manager,1,1,1,1

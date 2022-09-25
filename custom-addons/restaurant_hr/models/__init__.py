@@ -6,3 +6,4 @@ from . import hr_job
 from . import survey_survey
 from . import hr_department
 from . import available_hr_jobs
+from . import hr_branch

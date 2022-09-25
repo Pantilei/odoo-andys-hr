@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_branch_view_tree" model="ir.ui.view">
+        <field name="name">hr_branch_names.view.tree</field>
+        <field name="model">restaurant_hr.hr_branch</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" />
+                <field name="manager_ids" widget="many2many_tags" options="{'no_create': True}" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_branch_action" model="ir.actions.act_window">
+        <field name="name">Branch</field>
+        <field name="res_model">restaurant_hr.hr_branch</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>
