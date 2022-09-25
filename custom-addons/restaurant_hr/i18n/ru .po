@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-22 18:52+0000\n"
-"PO-Revision-Date: 2022-09-22 18:52+0000\n"
+"POT-Creation-Date: 2022-09-25 20:49+0000\n"
+"PO-Revision-Date: 2022-09-25 20:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -93,6 +93,19 @@ msgid "Available Open Jobs"
 msgstr "Доступные Открытые Вакансии"
 
 #. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.hr_branch_action
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__branch_id
+#: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
+#: model:ir.ui.menu,name:restaurant_hr.hr_branch
+msgid "Branch"
+msgstr "Отдел"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__manager_ids
+msgid "Branch Managers"
+msgstr "Руководители Отдела"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.applicant_survey_select_wizard_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_survey_select_wizard_view_form
 msgid "Cancel"
@@ -102,11 +115,6 @@ msgstr "Отмена"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
 msgid "Categories"
 msgstr "Категории"
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__coach_ids
-msgid "Coaches"
-msgstr "Тренеры"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
@@ -133,6 +141,7 @@ msgstr "Повар"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__create_uid
 msgid "Created by"
 msgstr "Создано Пользователем"
@@ -141,6 +150,7 @@ msgstr "Создано Пользователем"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__create_date
 msgid "Created on"
 msgstr "Создано в"
@@ -169,6 +179,7 @@ msgstr "Детальное Резюме/Навыки"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__display_name
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__display_name
 msgid "Display Name"
 msgstr "Имя"
@@ -228,9 +239,15 @@ msgid "Group By"
 msgstr "Группировать"
 
 #. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_restaurant_hr_hr_branch
+msgid "HR Branch"
+msgstr "HR Отдел"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__id
 msgid "ID"
 msgstr ""
@@ -261,6 +278,7 @@ msgstr "Большое"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard____last_update
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate____last_update
 msgid "Last Modified on"
 msgstr "Последнее Обновление в"
@@ -269,6 +287,7 @@ msgstr "Последнее Обновление в"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__write_uid
 msgid "Last Updated by"
 msgstr "Последнее Обновление Пользователем"
@@ -277,6 +296,7 @@ msgstr "Последнее Обновление Пользователем"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__write_date
 msgid "Last Updated on"
 msgstr "Последнее Обновление в"
@@ -289,6 +309,7 @@ msgstr "Среднее"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__name
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__name
 msgid "Name"
 msgstr "Название"
 
@@ -377,13 +398,14 @@ msgid "Select Survey"
 msgstr "Выберите Опросник"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,help:restaurant_hr.field_hr_employee__coach_ids
+#: model:ir.model.fields,help:restaurant_hr.field_hr_employee__branch_id
+#: model:ir.model.fields,help:restaurant_hr.field_res_users__branch_id
 msgid ""
-"Select the \"Employee\" who is the coach of this employee.\n"
-"The \"Coach\" will have the opportunity to edit the information of his students."
+"Select the \"Branch\" to whom this employee belongs.\n"
+"The manager of branch will have the opportunity to edit the information of this employee."
 msgstr ""
-"Выберите сотружников которые являются тренером этого сотрудникаТренера будут"
-" иметь доступ к редактированию данных сотрудника."
+"Выберите \"Отдел\" к которому сотрудник принадлежит.\n"
+"Руководитель Отдела будет иметь возможность редактировать информацию о сотруднике."
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_department__sequence
@@ -500,13 +522,6 @@ msgstr "Ставка для Официанта"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey__survey_group__waiter
 msgid "Waiter"
 msgstr "Официант"
-
-#. module: restaurant_hr
-#: code:addons/restaurant_hr/models/hr_employee.py:0
-#: code:addons/restaurant_hr/models/hr_employee.py:0
-#, python-format
-msgid "You don't have the rights to view employees."
-msgstr "У вас нет прав видеть сотрудников"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/hr_applicant.py:0
