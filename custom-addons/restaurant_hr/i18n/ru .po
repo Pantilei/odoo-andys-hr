@@ -109,7 +109,7 @@ msgstr "Руководители Отдела"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.applicant_survey_select_wizard_view_form
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_survey_select_wizard_view_form
 msgid "Cancel"
-msgstr "Отмена"
+msgstr "Закрыть"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
