@@ -45,7 +45,9 @@
     'auto_install': False,
     'assets': {
         'web._assets_primary_variables': [],
-        'web.assets_backend': [],
+        'web.assets_backend': [
+            'restaurant_hr/static/src/js/action_menus.js',
+        ],
         'web.assets_frontend': [],
         'web.assets_tests': [],
         'web.qunit_suite_tests': [],

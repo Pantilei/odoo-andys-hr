@@ -148,7 +148,7 @@ class HrEmployee(models.Model):
             if not sorted_response_ids:
                 employee.wage_rate_max = 0
                 employee.wage_rate_min = 0
-                return
+                continue
             last_response_id = sorted_response_ids[0]
             if last_response_id.survey_id.survey_group == "cook":
                 wage_rate_cook_ids = last_response_id.survey_id.wage_rate_cook_medium_department_ids
@@ -167,7 +167,7 @@ class HrEmployee(models.Model):
                 employee.wage_rate_max = wage_rate_max
                 employee.wage_rate_min = wage_rate_min
 
-            if last_response_id.survey_id.survey_group == "waiter":
+            elif last_response_id.survey_id.survey_group == "waiter":
                 oldest_to_newest_waiter_response_ids = employee.response_ids\
                     .filtered(lambda r: r.survey_id.survey_group == "waiter")\
                     .sorted(key=lambda r: r.create_date)
@@ -193,6 +193,9 @@ class HrEmployee(models.Model):
                                 for k in per_survey_rate.values()])
                 employee.wage_rate_max = max_rates
                 employee.wage_rate_min = min_rates
+            else:
+                employee.wage_rate_max = 0
+                employee.wage_rate_min = 0
 
     def assess_employee(self):
         return {
