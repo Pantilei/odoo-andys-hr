@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-25 20:49+0000\n"
-"PO-Revision-Date: 2022-09-25 20:49+0000\n"
+"POT-Creation-Date: 2022-09-27 18:41+0000\n"
+"PO-Revision-Date: 2022-09-27 18:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,9 +28,31 @@ msgstr ""
 "будет зависеть от этого"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_kanban_view_employees
+msgid "<span class=\"badge badge-success\">Yes</span>"
+msgstr "<span class=\"badge badge-success\">Да</span>"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_kanban_view_employees
+msgid "<span class=\"badge badge-warning\">No</span>"
+msgstr "<span class=\"badge badge-warning\">Нет</span>"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_kanban_view_employees
+msgid "<span class=\"font-weight-bold\">Assessed: </span>"
+msgstr "<span class=\"font-weight-bold\">Оценён: </span>"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_hr_job_kanban
 msgid "<span class=\"font-weight-bold\">Department: </span>"
 msgstr "<span class=\"font-weight-bold\">Подразделение: </span>"
+
+#. module: restaurant_hr
+#. openerp-web
+#: code:addons/restaurant_hr/static/src/js/action_menus.js:0
+#, python-format
+msgid "Action"
+msgstr "Действие"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_applicant
@@ -73,6 +95,11 @@ msgid "Assess Employee"
 msgstr "Оценить Сотрудника"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__assessed
+msgid "Assessed"
+msgstr "Оценён"
+
+#. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_restaurant_hr_available_hr_job_names
 msgid "Available HR Job Names"
 msgstr "Доступные названия вакансий"
@@ -97,6 +124,7 @@ msgstr "Доступные Открытые Вакансии"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
 #: model:ir.ui.menu,name:restaurant_hr.hr_branch
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Branch"
 msgstr "Отдел"
 
@@ -314,6 +342,11 @@ msgid "Name"
 msgstr "Название"
 
 #. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__assessed__no
+msgid "No"
+msgstr "Нет"
+
+#. module: restaurant_hr
 #: model:ir.actions.act_window,name:restaurant_hr.hr_job_open_to_recruit_action
 msgid "Open To Recruit Jobs"
 msgstr "Открытые для найма вакансии"
@@ -348,6 +381,13 @@ msgstr "Ставка"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Phone"
 msgstr "Телефон"
+
+#. module: restaurant_hr
+#. openerp-web
+#: code:addons/restaurant_hr/static/src/js/action_menus.js:0
+#, python-format
+msgid "Print"
+msgstr "Печать"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/survey_user_input.py:0
@@ -417,6 +457,12 @@ msgstr "Последовательность"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey_wage_rate__department_size__small
 msgid "Small"
 msgstr "Маленькое"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__source_id
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
+msgid "Source"
+msgstr "Источник"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/wizards/applicant_survey_select_wizard.py:0
@@ -522,6 +568,11 @@ msgstr "Ставка для Официанта"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey__survey_group__waiter
 msgid "Waiter"
 msgstr "Официант"
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__assessed__yes
+msgid "Yes"
+msgstr "Да"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/hr_applicant.py:0
