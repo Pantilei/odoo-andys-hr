@@ -77,8 +77,11 @@
 
             <xpath expr="//group[@name='identification_group']" position="replace"></xpath>
             <xpath expr="//group[@name='managers']" position="replace">
+                <group name="source" string="Source">
+                    <field name="source_id" />
+                </group>
                 <group name="functional_duty" string="Functional Duty">
-                    <field name="functional_duty" nolabel="1" />
+                    <field name="functional_duty" />
                 </group>
             </xpath>
         </field>
@@ -122,6 +125,43 @@
         </field>
     </record>
 
+    <record id="hr_kanban_view_employees" model="ir.ui.view">
+        <field name="name">hr.employee.hr_kanban_view_employees_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="assessed" />
+            </xpath>
+            <xpath expr="//div[hasclass('o_kanban_record_headings')]" position="inside">
+                <div class="row">
+                    <div class="col-12">
+                        <span class="font-weight-bold">Assessed: </span>
+                        <t t-if="record.assessed.raw_value == 'yes'">
+                            <span class="badge badge-success">Yes</span>
+                        </t>
+                        <t t-if="record.assessed.raw_value == 'no'">
+                            <span class="badge badge-warning">No</span>
+                        </t>
+
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_employee_tree" model="ir.ui.view">
+        <field name="name">hr.employee.view_employee_tree_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='activity_ids']" position="before">
+                <field name="assessed" widget="badge" decoration-warning="assessed == 'no'" decoration-success="assessed == 'yes'" />
+                <field name="source_id" optional="True" />
+            </xpath>
+        </field>
+    </record>
+
     <record id="employee_view_search" model="ir.ui.view">
         <field name="name">hr.employee.view.search</field>
         <field name="model">hr.employee</field>
@@ -129,6 +169,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
                 <field name="employee_type" />
+                <field name="branch_id" />
                 <field name="mobile_phone" string="Phone" filter_domain="['|', ('mobile_phone', 'ilike', self), ('work_phone', 'ilike', self)]" />
                 <field name="work_email" string="Email" filter_domain="[('work_email', 'ilike', self)]" />
                 <field name="department_id" />
@@ -144,7 +185,11 @@
             </xpath>
 
             <xpath expr="//filter[@name='group_manager']" position="after">
+                <filter name="branch_id" string="Branch" domain="[]" context="{'group_by': 'branch_id'}" />
                 <filter name="employee_type" string="Employee Type" domain="[]" context="{'group_by': 'employee_type'}" />
+            </xpath>
+            <xpath expr="//searchpanel/field[@name='department_id']" position="before">
+                <field name="branch_id" icon="fa-users" enable_counters="1" />
             </xpath>
         </field>
     </record>
@@ -155,19 +200,6 @@
         }
         </field>
     </record>
-
-    <!-- <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
-        <field name="context">{
-            "chat_icon": True,
-            "search_all_employees": True
-        }
-        </field>
-        <field name="domain">['&amp;', '|',
-            ('department_id', 'child_of', user.department_id.id),
-            ('coach_ids', 'in', [user.employee_id.id, False]),
-            ('id', '!=', user.employee_id.id)
-            ]</field>
-    </record> -->
 
     <record id="employee_payment_rate_view_tree" model="ir.ui.view">
         <field name="name">employee_payment_rate.view.tree</field>

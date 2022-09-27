@@ -56,10 +56,24 @@ class HrEmployee(models.Model):
         groups="survey.group_survey_user"
     )
 
+    assessed = fields.Selection(
+        selection=[
+            ("yes", "Yes"),
+            ("no", "No"),
+        ],
+        string="Assessed",
+        compute="_compute_assessed"
+    )
+
     resume_pdf = fields.Binary(
         string="Resume PDF",
         groups="hr.group_hr_user",
         tracking=True
+    )
+
+    source_id = fields.Many2one(
+        comodel_name="utm.source",
+        string="Source"
     )
 
     branch_id = fields.Many2one(
@@ -97,6 +111,12 @@ class HrEmployee(models.Model):
         string="Wage Rate Max",
         compute="_compute_wage_rate"
     )
+
+    @api.depends("response_ids")
+    def _compute_assessed(self):
+        for record in self:
+            record.assessed = "yes" if record.response_ids.filtered(
+                lambda r: r.state == "done") else "no"
 
     # @api.model
     # def _search(self, domain, offset=0, limit=None, order=None, count=False, access_rights_uid=None):

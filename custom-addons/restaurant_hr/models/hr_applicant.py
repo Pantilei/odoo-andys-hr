@@ -62,6 +62,7 @@ class HrApplicant(models.Model):
                     'default_applicant_id': applicant.ids,
                     'default_response_ids': [(6, 0, applicant.response_ids.ids)],
                     'default_employee_type': 'trainee',
+                    'default_source_id': applicant.source_id.id,
 
                     'form_view_initial_mode': 'edit',
                 }
