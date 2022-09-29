@@ -36,6 +36,10 @@
                 <!-- <button type="object" name="import_employee_data" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
             </xpath>
 
+            <xpath expr="//field[@name='bank_account_id']" position="replace"></xpath>
+            <xpath expr="//label[@for='km_home_work']" position="replace"></xpath>
+            <xpath expr="//div[@name='div_km_home_work']" position="replace"></xpath>
+
             <xpath expr="//page[@name='hr_settings']" position="after">
                 <page name="apprisals" string="Apprisals/Payment Rate" groups="survey.group_survey_user">
                     <group string="Payment Rate">
