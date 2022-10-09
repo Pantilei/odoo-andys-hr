@@ -1,0 +1,45 @@
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+input.error, textarea.error {
+    border: 1px dashed red;
+    font-weight: 300;
+    color: red;
+}
+
+
+.parallax > .s_parallax_bg {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.oe_img_bg_review {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/reviews/static/src/img/s_banner_default_image.png");
+    background-position: 50% 0;
+}
+
+.reviews_title {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: #FFFFFF;
+}
+
+.o_reviews_form, .o_review_thank_you {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #FFFFFF;
+}

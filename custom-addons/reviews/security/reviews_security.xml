@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="reviews_category">
+            <field name="name">Reviews</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="group_reviews_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="reviews.reviews_category"/>
+<!--            <field name="implied_ids" eval="[(4, ref('some_lower_id_in_hierarchy'))]"/>-->
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+    </data>
+</odoo>

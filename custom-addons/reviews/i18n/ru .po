@@ -1,0 +1,248 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* reviews
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-09 18:03+0000\n"
+"PO-Revision-Date: 2022-10-09 18:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: reviews
+#: model:ir.actions.report,print_report_name:reviews.report_department_review_action
+msgid "'Department QR Code'"
+msgstr "'QR Код Департамента'"
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid "78XXXXXX"
+msgstr "78XXXXXX"
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_thankyou_page
+msgid ""
+"<span class=\"fa fa-check-circle\"/>\n"
+"                                        <span>Ваш отзыв был отправлен <b>успешно</b></span>"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid "<span>Email</span>"
+msgstr "<span>Емайл</span>"
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid ""
+"<span>Ваш отзыв</span>\n"
+"                                                            <span> *</span>"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid ""
+"<span>Ваше Имя</span>\n"
+"                                                            <span> *</span>"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid "<span>Имя ответственного</span>"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid "<span>Тел</span>"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.report_department_review_qr_code
+msgid ""
+"<strong class=\"d-block mx-auto text-center\">Scan to leave review</strong>"
+msgstr "<strong class=\"d-block mx-auto text-center\">Отсканируйте для отзыва</strong>"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: reviews
+#: model:ir.model,name:reviews.model_hr_department
+#: model:ir.model.fields,field_description:reviews.field_reviews__department_id
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_search_view
+msgid "Department"
+msgstr "Подразделение"
+
+#. module: reviews
+#: model:ir.actions.report,name:reviews.report_department_review_action
+msgid "Department Review"
+msgstr "Отзыв Департамента"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__description
+msgid "Description"
+msgstr "Описание"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__display_name
+msgid "Display Name"
+msgstr "Имя"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__email
+msgid "Email"
+msgstr "Емайл"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__responsible_name
+msgid "Employee Name"
+msgstr "Имя Сотрудника"
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_search_view
+msgid "Group By"
+msgstr "Группировать по"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__id
+msgid "ID"
+msgstr ""
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: reviews
+#: model:res.groups,name:reviews.group_reviews_manager
+msgid "Manager"
+msgstr "Менеджер"
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_company_data
+msgid "My Company"
+msgstr "Компания"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__name
+msgid "Name"
+msgstr "Имя"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__phone
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.view_department_form
+msgid "Print QR"
+msgstr "Распечатать QR"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_hr_department__qr_code
+msgid "QR Code"
+msgstr "QR Код"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_hr_department__qr_code_html
+msgid "QR Code HTML"
+msgstr "QR Код HTML"
+
+#. module: reviews
+#: model:ir.model.fields,help:reviews.field_hr_department__qr_code
+msgid "QR-Code"
+msgstr "QR-Код"
+
+#. module: reviews
+#: model:ir.model.fields,help:reviews.field_hr_department__qr_code_html
+msgid "QR-Code URL"
+msgstr "QR-Код URL"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews__responsible_employee_id
+msgid "Related Employee"
+msgstr "Связанный Сотрудник"
+
+#. module: reviews
+#: model:ir.actions.act_window,name:reviews.reviews_act_window
+#: model:ir.model,name:reviews.model_reviews
+#: model:ir.module.category,name:reviews.reviews_category
+#: model:ir.ui.menu,name:reviews.reviews_menu
+msgid "Reviews"
+msgstr "Отзывы"
+
+#. module: reviews
+#: model:ir.model,name:reviews.model_report_reviews_report_department_review_qr_code
+msgid "Reviews QR Code"
+msgstr "QR Код Отзывов"
+
+#. module: reviews
+#: code:addons/reviews/models/hr_department.py:0
+#, python-format
+msgid "Scan to get"
+msgstr "Отсканируйте"
+
+#. module: reviews
+#: code:addons/reviews/models/hr_department.py:0
+#, python-format
+msgid "This UID Exist"
+msgstr "Этот UID Существует"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_hr_department__uid
+msgid "Uid"
+msgstr "UID"
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid "name@email.com"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid "Имя официанта"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_thankyou_page
+msgid "Мы с вами свяжемся в случае необходимости."
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid "Отправить"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid ""
+"Сообщите нам о любых проблемах связанных с нашей компанией. <br/>\n"
+"                                    Мы сделаем всё, чтоб исправится, и быть лучше для вас.<br/>\n"
+"                                    В случае необходимости, мы свяжемся с вами!"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_thankyou_page
+msgid "Спасибо!"
+msgstr ""

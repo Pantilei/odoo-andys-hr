@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main reviews layout -->
+        <template id="reviews.layout" name="Review Layout" inherit_id="web.layout" primary="True">
+            <xpath expr="//head/meta[last()]" position="after">
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            </xpath>
+            <xpath expr="//head/link[last()]" position="after">
+                <link rel="preload" href="/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+                <t t-call-assets="web.assets_common" t-js="false"/>
+                <t t-call-assets="web.assets_frontend" t-js="false"/>
+            </xpath>
+            <xpath expr="//head/script[@id='web.layout.odooscript']" position="after">
+<!--                <script type="text/javascript">-->
+<!--                    odoo.__session_info__ = <t t-out="json.dumps(request.env['ir.http'].get_frontend_session_info())"/>;-->
+<!--                    if (!/(^|;\s)tz=/.test(document.cookie)) {-->
+<!--                        const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;-->
+<!--                        document.cookie = `tz=${userTZ}; path=/`;-->
+<!--                    }-->
+<!--                </script>-->
+                <t t-call-assets="web.assets_common_minimal" t-css="false" defer_load="True"/>
+                <t t-call-assets="web.assets_frontend_minimal" t-css="false" defer_load="True"/>
+                <t t-call="web.conditional_assets_tests"/>
+                <t t-call-assets="web.assets_common_lazy" t-css="false" lazy_load="True"/>
+                <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True"/>
+
+                <t t-call-assets="reviews.reviews_assets"  lazy_load="True"/>
+            </xpath>
+            <xpath expr="//t[@t-out='0']" position="replace">
+                <div id="wrapwrap" t-attf-class="#{pageName or ''}">
+                    <header t-if="not no_header" id="top">
+
+                    </header>
+                    <main class="parallax">
+                        <span class="s_parallax_bg oe_img_bg_review"/>
+                        <t t-out="0"/>
+                    </main>
+                    <footer t-if="not no_footer" id="bottom" t-attf-class="bg-light o_footer">
+                        <div id="footer"/>
+                    </footer>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- Main survey template -->
+        <template id="reviews_page_fill" name="Reviews main page">
+            <t t-call="reviews.layout">
+                <section class="reviews_title">
+                    <div class="container">
+                        <h1>
+                            <t t-esc="title"/>
+                        </h1>
+                    </div>
+                </section>
+                <section class="o_reviews_form">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 mt-4 mt-lg-0">
+                                <p>
+                                    Сообщите нам о любых проблемах связанных с нашей компанией. <br/>
+                                    Мы сделаем всё, чтоб исправится, и быть лучше для вас.<br/>
+                                    В случае необходимости, мы свяжемся с вами!
+                                </p>
+                                <section>
+                                    <div class="container">
+                                        <form id="review_form">
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <div class="row">
+                                                        <label class="col-form-label col-sm-auto" style="width: 200px" for="name">
+                                                            <span>Ваше Имя</span>
+                                                            <span> *</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input type="text" class="form-control" name="name" required=""/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <div class="row">
+                                                        <label class="col-form-label col-sm-auto" style="width: 200px" for="phone">
+                                                            <span>Тел</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input type="tel" class="form-control" name="phone" placeholder="78XXXXXX"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <div class="row">
+                                                        <label class="col-form-label col-sm-auto" style="width: 200px" for="email_from">
+                                                            <span>Email</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input type="email" class="form-control" name="email_from" required="" placeholder="name@email.com"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <div class="row">
+                                                        <label class="col-form-label col-sm-auto" style="width: 200px" for="name_of_responsible">
+                                                            <span>Имя ответственного</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input type="text" class="form-control" name="name_of_responsible" placeholder="Имя официанта"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <div class="row">
+                                                        <label class="col-form-label col-sm-auto" style="width: 200px" for="description">
+                                                            <span>Ваш отзыв</span>
+                                                            <span> *</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <textarea class="form-control" name="description" required=""/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <div style="width: 200px;"/>
+                                                    <a href="#" role="button" class="btn btn-primary btn-lg o_submit_button">
+                                                        Отправить
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-lg-4 mt-4 mt-lg-0">
+                                <t t-call="reviews.reviews_company_data">
+                                    <t t-set="company_address" t-value="company_address"/>
+                                    <t t-set="company_support_phone" t-value="company_support_phone"/>
+                                    <t t-set="company_support_email" t-value="company_support_email"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+
+        <template id="reviews_thankyou_page" name="Reviews thankyou page">
+            <t t-call="reviews.layout">
+                <div id="wrap" class="oe_structure oe_empty">
+                    <section class="reviews_title">
+                        <div class="container">
+                            <h1>
+                                <t t-esc="title"/>
+                            </h1>
+                        </div>
+                    </section>
+                    <section class="o_review_thank_you o_colored_level">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-7 col-xl-6 mr-lg-auto">
+                                    <span class="d-block fa fa-4x fa-thumbs-up mx-auto rounded-circle bg-primary"/><br/>
+                                    <h1 class="text-center">Спасибо!</h1>
+                                    <div class="pb16 pt16">
+                                        <hr class="mx-auto border-top w-50 border-dark text-center"/>
+                                    </div>
+                                    <h5 class="text-center">
+                                        <span class="fa fa-check-circle"/>
+                                        <span>Ваш отзыв был отправлен <b>успешно</b></span>
+                                    </h5>
+                                    <p class="text-center">Мы с вами свяжемся в случае необходимости.</p>
+                                </div>
+                                <div class="col-lg-4">
+                                    <t t-call="reviews.reviews_company_data">
+                                        <t t-set="company_address" t-value="company_address"/>
+                                        <t t-set="company_support_phone" t-value="company_support_phone"/>
+                                        <t t-set="company_support_email" t-value="company_support_email"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+        </template>
+
+        <template id="reviews_company_data" name="Reviews thankyou page">
+            <ul class="list-unstyled mb-0 pl-2">
+                <li>My Company</li>
+                <li>
+                    <i class="fa fa-map-marker fa-fw mr-2"/>
+                    <span class="o_force_ltr"><t t-esc="company_address"/></span>
+                </li>
+                <li>
+                    <i class="fa fa-phone fa-fw mr-2"/>
+                    <span class="o_force_ltr"><t t-esc="company_support_phone"/></span>
+                </li>
+                <li>
+                    <i class="fa fa-1x fa-fw fa-envelope mr-2"/>
+                    <span><t t-esc="company_support_email"/></span>
+                </li>
+            </ul>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_department_review" model="report.paperformat">
+            <field name="name">QR Code Department Review Paper Format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">54</field>
+            <field name="page_width">54</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="report_department_review_action" model="ir.actions.report">
+            <field name="name">Department Review</field>
+            <field name="model">reviews</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">reviews.report_department_review_qr_code</field>
+            <field name="report_file">reviews.report_department_review_qr_code</field>
+            <field name="print_report_name">'Department QR Code'</field>
+            <field name="paperformat_id" ref="reviews.paperformat_department_review"/>
+        </record>
+
+        <template id="report_department_review_qr_code">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <div class="row">
+                        <div class="col-12">
+                            <img class="d-block border border-dark rounded mx-auto" t-attf-src="{{qr_code}}" style="width:50mm;height:50mm;"/>
+                        </div>
+                    </div>
+                   <div class="row">
+                       <p class="col-12">
+                           <strong class="d-block mx-auto text-center">Scan to leave review</strong>
+                       </p>
+                   </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
