@@ -2,10 +2,16 @@ import os
 from odoo import api, models, fields, _, SUPERUSER_ID
 from odoo.osv import expression
 from odoo.exceptions import UserError, AccessError
+from ..tools.odoo_rpc import OdooRPC
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
+import traceback
+import logging
+
+
+_logger = logging.getLogger(__name__)
 
 
 class User(models.Model):
@@ -82,18 +88,6 @@ class HrEmployee(models.Model):
         help='Select the "Branch" to whom this employee belongs.\n'
              'The manager of branch will have the opportunity to edit the information of this employee.')
 
-    # coach_ids = fields.Many2many(
-    #     comodel_name='hr.employee',
-    #     string='Coaches',
-    #     # compute='_compute_coaches',
-    #     relation="employee_coaches",
-    #     column1="employee",
-    #     column2="coach",
-    #     store=True,
-    #     domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
-    #     help='Select the "Employee" who is the coach of this employee.\n'
-    #          'The "Coach" will have the opportunity to edit the information of his students.')
-
     functional_duty = fields.Text(
         string="Functional Duty"
     )
@@ -112,53 +106,31 @@ class HrEmployee(models.Model):
         compute="_compute_wage_rate"
     )
 
+    course_ids = fields.One2many(
+        comodel_name="hr_restaurant.employee_courses",
+        inverse_name="employee_id",
+        string="Courses"
+    )
+
+    access_to_e_learning = fields.Boolean(
+        string="Access to E-Learning"
+    )
+
+    show_close_access_to_e_learning = fields.Boolean(
+        compute="_compute_show_close_access_to_e_learning"
+    )
+
     @api.depends("response_ids")
     def _compute_assessed(self):
         for record in self:
             record.assessed = "yes" if record.response_ids.filtered(
                 lambda r: r.state == "done") else "no"
 
-    # @api.model
-    # def _search(self, domain, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
-    #     if self.env.is_superuser():
-    #         return super(HrEmployee, self)._search(domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
-    #     if not self.env.user.has_group("hr.group_hr_user"):
-    #         raise AccessError(
-    #             _("You don't have the rights to view employees."))
-    #     final_domain = domain
-    #     if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
-    #         final_domain = expression.AND([
-    #             domain,
-    #             ['&', '|',
-    #              ('department_id', 'child_of', self.env.user.department_id.id),
-    #              ('branch_id', 'child_of', self.env.user.branch_id.id),
-    #              ('id', '!=', self.env.user.employee_id.id)
-    #              ]
-    #         ])
-    #     if self.env.user.has_group("hr.group_hr_manager"):
-    #         final_domain = domain
-    #     return super(HrEmployee, self)._search(final_domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
-
-    # @api.model
-    # def search_panel_select_range(self, field_name, search_domain=None, **kwargs):
-    #     if self.env.is_superuser():
-    #         return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
-    #     if not self.env.user.has_group("hr.group_hr_user"):
-    #         raise AccessError(
-    #             _("You don't have the rights to view employees."))
-    #     final_domain = search_domain
-    #     if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
-    #         final_domain = expression.AND([
-    #             search_domain,
-    #             ['&', '|',
-    #              ('department_id', 'child_of', self.env.user.department_id.id),
-    #              ('branch_id', 'chlld_of', self.env.user.branch_id.id),
-    #              ('id', '!=', self.env.user.employee_id.id)
-    #              ]
-    #         ])
-    #     if self.env.user.has_group("hr.group_hr_manager"):
-    #         final_domain = search_domain
-    #     return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
+    @api.depends("course_ids")
+    def _compute_show_close_access_to_e_learning(self):
+        for record in self:
+            record.show_close_access_to_e_learning = len(
+                record.course_ids) != 0 and record.access_to_e_learning
 
     @api.depends('response_ids')
     def _compute_wage_rate(self):
@@ -228,6 +200,49 @@ class HrEmployee(models.Model):
             },
             'target': 'new'
         }
+
+    def assign_to_course(self):
+        if not self.work_email:
+            raise UserError(
+                _("Please, give the work email to employee before assigning the course!"))
+
+        return {
+            "name": _("Select Course"),
+            "type": "ir.actions.act_window",
+            "res_model": "restaurant_hr.employee_assign_course",
+            "views": [(False, "form")],
+            "context": {
+                "employee_id": self.id,
+            },
+            "target": "new"
+        }
+
+    def close_access_to_e_learning(self):
+        remote_user_ids = self.course_ids.mapped("e_learning_user_id")
+        if len(remote_user_ids) != 1:
+            raise UserError(
+                _(f"Multiple users in e-learning platform related with same employee. User ids: {remote_user_ids}"))
+        remote_user_id = remote_user_ids[0]
+        try:
+
+            get_param = self.env["ir.config_parameter"].sudo().get_param
+            remote_host = get_param("e_learning_server_host")
+            remote_user = get_param("e_learning_server_user")
+            remote_db = get_param("e_learning_server_db")
+            remote_password = get_param("e_learning_server_password")
+            rpc = OdooRPC(remote_host, remote_db, remote_user, remote_password)
+            rpc.rpc(
+                "res.users",
+                "write",
+                [remote_user_id],
+                {
+                    "active": False
+                },
+            )
+            self.access_to_e_learning = False
+        except Exception as ex:
+            _logger.error(traceback.format_exc())
+            raise UserError(_("Cannot connect to e-learning platform")) from ex
 
     # DATA IMPORT
     def import_employee_data(self):
@@ -389,3 +404,45 @@ class HrEmployee(models.Model):
             })
 
         return address_id
+
+    # @api.model
+    # def _search(self, domain, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
+    #     if self.env.is_superuser():
+    #         return super(HrEmployee, self)._search(domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
+    #     if not self.env.user.has_group("hr.group_hr_user"):
+    #         raise AccessError(
+    #             _("You don't have the rights to view employees."))
+    #     final_domain = domain
+    #     if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
+    #         final_domain = expression.AND([
+    #             domain,
+    #             ['&', '|',
+    #              ('department_id', 'child_of', self.env.user.department_id.id),
+    #              ('branch_id', 'child_of', self.env.user.branch_id.id),
+    #              ('id', '!=', self.env.user.employee_id.id)
+    #              ]
+    #         ])
+    #     if self.env.user.has_group("hr.group_hr_manager"):
+    #         final_domain = domain
+    #     return super(HrEmployee, self)._search(final_domain, offset=offset, limit=limit, order=order, count=count, access_rights_uid=access_rights_uid)
+
+    # @api.model
+    # def search_panel_select_range(self, field_name, search_domain=None, **kwargs):
+    #     if self.env.is_superuser():
+    #         return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)
+    #     if not self.env.user.has_group("hr.group_hr_user"):
+    #         raise AccessError(
+    #             _("You don't have the rights to view employees."))
+    #     final_domain = search_domain
+    #     if self.env.user.has_group("hr.group_hr_user") and not self._context.get('search_all_employees', None):
+    #         final_domain = expression.AND([
+    #             search_domain,
+    #             ['&', '|',
+    #              ('department_id', 'child_of', self.env.user.department_id.id),
+    #              ('branch_id', 'chlld_of', self.env.user.branch_id.id),
+    #              ('id', '!=', self.env.user.employee_id.id)
+    #              ]
+    #         ])
+    #     if self.env.user.has_group("hr.group_hr_manager"):
+    #         final_domain = search_domain
+    #     return super(HrEmployee, self).search_panel_select_range(field_name, search_domain=final_domain, **kwargs)

@@ -34,8 +34,10 @@
 
         'wizards/employee_survey_select_wizard.xml',
         'wizards/applicant_survey_select_wizard.xml',
+        'wizards/employee_assign_course.xml',
 
         'data/data.xml',
+        'data/cron.xml',
 
     ],
     # only loaded in demonstration mode

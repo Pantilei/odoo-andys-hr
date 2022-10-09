@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="e_learning_courses_fetch" model="ir.cron">
+        <field name="name">E-Learning Courses Fetch</field>
+        <field name="model_id" ref="model_hr_restaurant_courses" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model.get_remote_courses()</field>
+    </record>
+
+    <record id="e_learning_employee_course_status_fetch" model="ir.cron">
+        <field name="name">E-Learning Employee E-Learning Course Status Fetch</field>
+        <field name="model_id" ref="model_hr_restaurant_employee_courses" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model.get_employee_course_status()</field>
+    </record>
+
+</odoo>

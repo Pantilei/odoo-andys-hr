@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="employee_assign_course_wizard_view_form" model="ir.ui.view">
+        <field name="name">restaurant_hr.employee_assign_course</field>
+        <field name="model">restaurant_hr.employee_assign_course</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="employee_id" invisible="1" />
+                        <field name="course_id" options="{'no_create': True}" />
+                        <field name="email" />
+                        <field name="password" />
+                    </group>
+                    <group>
+                        <div>
+                            You have to store this password somewhere, you won't be able to access it later.
+                            <br />
+                            But you can change it in e-learning platform, or reassign the course again.
+                        </div>
+                    </group>
+                    <footer>
+                        <button string="Confirm" name="confirm" type="object" class="oe_highlight" />
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
