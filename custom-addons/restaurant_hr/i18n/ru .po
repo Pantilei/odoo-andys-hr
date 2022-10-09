@@ -48,21 +48,11 @@ msgid "<span class=\"font-weight-bold\">Department: </span>"
 msgstr "<span class=\"font-weight-bold\">Подразделение: </span>"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__access_to_e_learning
-msgid "Access to E-Learning"
-msgstr "Доступ к Системе Обучения"
-
-#. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/js/action_menus.js:0
 #, python-format
 msgid "Action"
 msgstr "Действие"
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_restaurant_courses__active
-msgid "Active"
-msgstr "Активный"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_applicant
@@ -108,11 +98,6 @@ msgstr "Оценить Сотрудника"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__assessed
 msgid "Assessed"
 msgstr "Оценён"
-
-#. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
-msgid "Assign to Course"
-msgstr "Назначить Курс"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_restaurant_hr_available_hr_job_names
@@ -201,19 +186,6 @@ msgid "Cook"
 msgstr "Повар"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_restaurant_employee_courses__course_id
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_assign_course__course_id
-msgid "Course"
-msgstr "Курс"
-
-#. module: restaurant_hr
-#: model:ir.model,name:restaurant_hr.model_hr_restaurant_courses
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__course_ids
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
-msgid "Courses"
-msgstr "Курсы"
-
-#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_restaurant_courses__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_restaurant_employee_courses__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_uid
@@ -270,38 +242,9 @@ msgid "Display Name"
 msgstr "Имя"
 
 #. module: restaurant_hr
-#: model:ir.actions.server,name:restaurant_hr.e_learning_courses_fetch_ir_actions_server
-#: model:ir.cron,cron_name:restaurant_hr.e_learning_courses_fetch
-#: model:ir.cron,name:restaurant_hr.e_learning_courses_fetch
-msgid "E-Learning Courses Fetch"
-msgstr "Загрузить Курсы Системы Обучения"
-
-#. module: restaurant_hr
-#: model:ir.actions.server,name:restaurant_hr.e_learning_employee_course_status_fetch_ir_actions_server
-#: model:ir.cron,cron_name:restaurant_hr.e_learning_employee_course_status_fetch
-#: model:ir.cron,name:restaurant_hr.e_learning_employee_course_status_fetch
-msgid "E-Learning Employee E-Learning Course Status Fetch"
-msgstr ""
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_restaurant_employee_courses__e_learning_partner_id
-msgid "E-Learning Partner ID"
-msgstr ""
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_restaurant_employee_courses__e_learning_user_id
-msgid "E-Learning User ID"
-msgstr ""
-
-#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Email"
 msgstr "Емайл"
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_assign_course__email
-msgid "Email/Login"
-msgstr "Емайл/Логин"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_employee
@@ -311,21 +254,6 @@ msgstr "Емайл/Логин"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Employee"
 msgstr "Сотрудник"
-
-#. module: restaurant_hr
-#: model:ir.model,name:restaurant_hr.model_restaurant_hr_employee_assign_course
-msgid "Employee Assign Course Wizard"
-msgstr ""
-
-#. module: restaurant_hr
-#: model:ir.model,name:restaurant_hr.model_hr_restaurant_employee_courses
-msgid "Employee Courses"
-msgstr "Курсы Сотрудника"
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_assign_course__employee_name
-msgid "Employee Name"
-msgstr "Имя Сотрудника"
 
 #. module: restaurant_hr
 #: model:ir.actions.act_window,name:restaurant_hr.employee_payment_rate_action
@@ -390,11 +318,6 @@ msgstr "HR Отдел"
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__id
 msgid "ID"
 msgstr ""
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_restaurant_employee_courses__completed
-msgid "Is Completed"
-msgstr "Завершён"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
@@ -514,12 +437,6 @@ msgid "Phone"
 msgstr "Телефон"
 
 #. module: restaurant_hr
-#: code:addons/restaurant_hr/models/hr_employee.py:0
-#, python-format
-msgid "Please, give the work email to employee before assigning the course!"
-msgstr "Пожалуйста, добавьте Рабочий Емайл к сотруднику перед тем как дать доступ к системе обучения!"
-
-#. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/js/action_menus.js:0
 #, python-format
@@ -566,12 +483,6 @@ msgstr "Оценки до"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "See Results"
 msgstr "Посмотреть Результаты"
-
-#. module: restaurant_hr
-#: code:addons/restaurant_hr/models/hr_employee.py:0
-#, python-format
-msgid "Select Course"
-msgstr "Выберите Курс"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/hr_applicant.py:0
@@ -721,17 +632,6 @@ msgstr "Официант"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__assessed__yes
 msgid "Yes"
 msgstr "Да"
-
-#. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_assign_course_wizard_view_form
-msgid ""
-"You have to store this password somewhere, you won't be able to access it later.\n"
-"                            <br/>\n"
-"                            But you can change it in e-learning platform, or reassign the course again."
-msgstr ""
-"Сохраните пароль, вы не сможете к нему, после закрытия окна, получить доступ.\n"
-"                            <br/>\n"
-"                            Но вы сможете поменять пароль в системе обучения, или заного присвоить этот курс сотруднику."
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/hr_applicant.py:0

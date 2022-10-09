@@ -12,12 +12,12 @@ _logger = logging.getLogger(__name__)
 
 
 class EmployeeCourses(models.Model):
-    _name = "hr_restaurant.employee_courses"
+    _name = "hr_learn_platform.employee_courses"
     _description = "Employee Courses"
     _rec_name = "course_id"
 
     course_id = fields.Many2one(
-        comodel_name="hr_restaurant.courses",
+        comodel_name="hr_learn_platform.courses",
         string="Course",
     )
     employee_id = fields.Many2one(

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.view_employee_form_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="show_close_access_to_e_learning" invisible="1" />
+                <button name="assign_to_course" type="object" string="Assign to Course" class="oe_highlight" />
+                <button name="close_access_to_e_learning" string="Close the access to E-Learning Platform" type="object" class="oe_highlight" attrs="{'invisible': [('show_close_access_to_e_learning', '=', False)]}" />
+            </xpath>
+
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page name="courses" string="Courses">
+                    <group string="Courses">
+                        <field name="course_ids" nolabel="1">
+                            <tree create="0" edit="0" delete="0">
+                                <field name="course_id" />
+                                <field name="completed" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="course_id" readonly="1" />
+                                    <field name="completed" readonly="1" />
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

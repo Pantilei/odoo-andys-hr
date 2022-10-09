@@ -4,7 +4,6 @@ access_hr_department_manager,hr.department.manager,hr.model_hr_department,hr.gro
 
 access_restaurant_hr_employee_survey_select_wizard,restaurant_hr.employee_survey_select_wizard,restaurant_hr.model_restaurant_hr_employee_survey_select_wizard,,1,1,1,1
 access_restaurant_hr_applicant_survey_select_wizard,restaurant_hr.applicant_survey_select_wizard,restaurant_hr.model_restaurant_hr_applicant_survey_select_wizard,,1,1,1,1
-access_restaurant_hr_employee_assign_course,restaurant_hr.employee_assign_course,restaurant_hr.model_restaurant_hr_employee_assign_course,,1,1,1,1
 
 survey.access_survey_survey_user,survey.survey.survey.user,survey.model_survey_survey,survey.group_survey_user,1,0,0,0
 survey.access_survey_question_survey_user,survey.question.survey.user,survey.model_survey_question,survey.group_survey_user,1,0,0,0
@@ -19,7 +18,3 @@ access_restaurant_hr_available_hr_job_names_manager,restaurant_hr.available_hr_j
 
 access_restaurant_hr_hr_branch_user,restaurant_hr.hr_branch.user,restaurant_hr.model_restaurant_hr_hr_branch,hr.group_hr_user,1,0,0,0
 access_restaurant_hr_hr_branch_manager,restaurant_hr.hr_branch.manager,restaurant_hr.model_restaurant_hr_hr_branch,hr.group_hr_manager,1,1,1,1
-
-
-access_hr_restaurant_courses,access_hr_restaurant_courses,restaurant_hr.model_hr_restaurant_courses,base.group_user,1,1,1,1
-access_hr_restaurant_employee_courses,access_hr_restaurant_employee_courses,restaurant_hr.model_hr_restaurant_employee_courses,base.group_user,1,1,1,1

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="e_learning_server_host" model="ir.config_parameter">
+        <field name="key">e_learning_server_host</field>
+        <field name="value">e_learning_server_host</field>
+    </record>
+    <record id="e_learning_server_user" model="ir.config_parameter">
+        <field name="key">e_learning_server_user</field>
+        <field name="value">e_learning_server_user</field>
+    </record>
+    <record id="e_learning_server_db" model="ir.config_parameter">
+        <field name="key">e_learning_server_db</field>
+        <field name="value">e_learning_server_db</field>
+    </record>
+    <record id="e_learning_server_password" model="ir.config_parameter">
+        <field name="key">e_learning_server_password</field>
+        <field name="value">e_learning_server_password</field>
+    </record>
+</odoo>

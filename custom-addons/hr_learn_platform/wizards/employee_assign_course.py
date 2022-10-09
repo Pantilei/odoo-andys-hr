@@ -13,14 +13,14 @@ _logger = logging.Logger(__name__)
 
 
 class EmployeeAssignCourse(models.TransientModel):
-    _name = "restaurant_hr.employee_assign_course"
+    _name = "hr_learn_platform.employee_assign_course"
     _description = "Employee Assign Course Wizard"
 
     def _random_password(self):
         return ''.join([choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for _i in range(10)])
 
     course_id = fields.Many2one(
-        comodel_name="hr_restaurant.courses",
+        comodel_name="hr_learn_platform.courses",
         string="Course",
         required=True
     )
@@ -61,7 +61,7 @@ class EmployeeAssignCourse(models.TransientModel):
             )
             remote_user_id = res.get("user_id")
             remote_partner_id = res.get("partner_id")
-            EmployeeCourses = self.env["hr_restaurant.employee_courses"]
+            EmployeeCourses = self.env["hr_learn_platform.employee_courses"]
             employee_course_id = EmployeeCourses.search([
                 ("course_id", "=", self.course_id.external_id),
                 ("employee_id", "=", self.employee_id.id),
@@ -69,7 +69,7 @@ class EmployeeAssignCourse(models.TransientModel):
             ])
             print("\n\n RES", res)
             if not employee_course_id:
-                self.env["hr_restaurant.employee_courses"].create({
+                self.env["hr_learn_platform.employee_courses"].create({
                     "course_id": self.course_id.external_id,
                     "employee_id": self.employee_id.id,
                     "e_learning_user_id": remote_user_id,

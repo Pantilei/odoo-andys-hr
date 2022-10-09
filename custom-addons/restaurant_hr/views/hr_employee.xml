@@ -32,11 +32,8 @@
             <xpath expr="//header/button[1]" position="replace"></xpath>
 
             <xpath expr="//header" position="inside">
-                <field name="show_close_access_to_e_learning" invisible="1" />
                 <button type="object" name="assess_employee" string="Assess Employee" class="oe_highlight" />
-                <button type="object" name="assign_to_course" string="Assign to Course" class="oe_highlight" />
                 <!-- <button type="object" name="import_employee_data" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
-                <button string="Close the access to E-Learning Platform" name="close_access_to_e_learning" type="object" class="oe_highlight" attrs="{'invisible': [('show_close_access_to_e_learning', '=', False)]}" />
             </xpath>
 
             <xpath expr="//field[@name='bank_account_id']" position="replace"></xpath>
@@ -76,23 +73,6 @@
                                     <field name="state" readonly="1" />
                                 </group>
 
-                            </form>
-                        </field>
-                    </group>
-                </page>
-
-                <page name="courses" string="Courses">
-                    <group string="Courses">
-                        <field name="course_ids" nolabel="1">
-                            <tree create="0" edit="0" delete="0">
-                                <field name="course_id" />
-                                <field name="completed" />
-                            </tree>
-                            <form>
-                                <group>
-                                    <field name="course_id" readonly="1" />
-                                    <field name="completed" readonly="1" />
-                                </group>
                             </form>
                         </field>
                     </group>

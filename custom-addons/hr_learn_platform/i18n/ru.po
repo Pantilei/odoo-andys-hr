@@ -1,0 +1,226 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_learn_platform
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-09 17:37+0000\n"
+"PO-Revision-Date: 2022-10-09 17:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_employee__access_to_e_learning
+msgid "Access to E-Learning"
+msgstr "Доступ к Системе Обучения"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__active
+msgid "Active"
+msgstr "Активный"
+
+#. module: hr_learn_platform
+#: model_terms:ir.ui.view,arch_db:hr_learn_platform.hr_view_employee_form_inherit
+msgid "Assign to Course"
+msgstr "Назначить Курс"
+
+#. module: hr_learn_platform
+#: model_terms:ir.ui.view,arch_db:hr_learn_platform.employee_assign_course_wizard_view_form
+msgid "Cancel"
+msgstr "Закрыть"
+
+#. module: hr_learn_platform
+#: code:addons/hr_learn_platform/models/courses.py:0
+#, python-format
+msgid "Cannot connect to E-Learning Platform!"
+msgstr "Не могу подключиться к Системе Обучения!"
+
+#. module: hr_learn_platform
+#: code:addons/hr_learn_platform/models/employee_courses.py:0
+#, python-format
+msgid "Cannot connect to e-learning platform"
+msgstr "Не могу подключиться к Системе Обучения"
+
+#. module: hr_learn_platform
+#: code:addons/hr_learn_platform/wizards/employee_assign_course.py:0
+#, python-format
+msgid ""
+"Cannot connect to e-learning platform! Please contact your administrator!"
+msgstr "Не могу подключиться к Системе Обучения. Обратитесь к администратору!"
+
+#. module: hr_learn_platform
+#: model_terms:ir.ui.view,arch_db:hr_learn_platform.hr_view_employee_form_inherit
+msgid "Close the access to E-Learning Platform"
+msgstr "Закрыть доступ к Системе Обучения"
+
+#. module: hr_learn_platform
+#: model_terms:ir.ui.view,arch_db:hr_learn_platform.employee_assign_course_wizard_view_form
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__course_id
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__course_id
+msgid "Course"
+msgstr "Курс"
+
+#. module: hr_learn_platform
+#: model:ir.model,name:hr_learn_platform.model_hr_learn_platform_courses
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_employee__course_ids
+#: model_terms:ir.ui.view,arch_db:hr_learn_platform.hr_view_employee_form_inherit
+msgid "Courses"
+msgstr "Курсы"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__create_uid
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__create_uid
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__create_uid
+msgid "Created by"
+msgstr "Создано пользователем"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__create_date
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__create_date
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__create_date
+msgid "Created on"
+msgstr "Создано в"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__display_name
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__display_name
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__display_name
+msgid "Display Name"
+msgstr "Имя"
+
+#. module: hr_learn_platform
+#: model:ir.actions.server,name:hr_learn_platform.e_learning_courses_fetch_ir_actions_server
+#: model:ir.cron,cron_name:hr_learn_platform.e_learning_courses_fetch
+#: model:ir.cron,name:hr_learn_platform.e_learning_courses_fetch
+msgid "E-Learning Courses Fetch"
+msgstr "Загрузить Курсы Системы Обучения"
+
+#. module: hr_learn_platform
+#: model:ir.actions.server,name:hr_learn_platform.e_learning_employee_course_status_fetch_ir_actions_server
+#: model:ir.cron,cron_name:hr_learn_platform.e_learning_employee_course_status_fetch
+#: model:ir.cron,name:hr_learn_platform.e_learning_employee_course_status_fetch
+msgid "E-Learning Employee E-Learning Course Status Fetch"
+msgstr ""
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__e_learning_partner_id
+msgid "E-Learning Partner ID"
+msgstr ""
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__e_learning_user_id
+msgid "E-Learning User ID"
+msgstr ""
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__email
+msgid "Email/Login"
+msgstr "Емайл/Логин"
+
+#. module: hr_learn_platform
+#: model:ir.model,name:hr_learn_platform.model_hr_employee
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__employee_id
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__employee_id
+msgid "Employee"
+msgstr "Сотрудник"
+
+#. module: hr_learn_platform
+#: model:ir.model,name:hr_learn_platform.model_hr_learn_platform_employee_assign_course
+msgid "Employee Assign Course Wizard"
+msgstr ""
+
+#. module: hr_learn_platform
+#: model:ir.model,name:hr_learn_platform.model_hr_learn_platform_employee_courses
+msgid "Employee Courses"
+msgstr "Курсы Сотрудника"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__employee_name
+msgid "Employee Name"
+msgstr "Имя Сотрудника"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__external_id
+msgid "External ID"
+msgstr ""
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__id
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__id
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__id
+msgid "ID"
+msgstr ""
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__completed
+msgid "Is Completed"
+msgstr "Завершён"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses____last_update
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course____last_update
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses____last_update
+msgid "Last Modified on"
+msgstr "Последнее Обновление в"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__write_uid
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__write_uid
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__write_uid
+msgid "Last Updated by"
+msgstr "Последнее Обновление Пользователем"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__write_date
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__write_date
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_courses__write_date
+msgid "Last Updated on"
+msgstr "Последнее Обновление в"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_courses__name
+msgid "Name"
+msgstr "Имя"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_learn_platform_employee_assign_course__password
+msgid "Password"
+msgstr "Пароль"
+
+#. module: hr_learn_platform
+#: code:addons/hr_learn_platform/models/hr_employee.py:0
+#, python-format
+msgid "Please, give the work email to employee before assigning the course!"
+msgstr "Пожалуйста, добавьте Рабочий Емайл к сотруднику перед тем как дать доступ к системе обучения!"
+
+#. module: hr_learn_platform
+#: code:addons/hr_learn_platform/models/hr_employee.py:0
+#, python-format
+msgid "Select Course"
+msgstr "Выберите Курс"
+
+#. module: hr_learn_platform
+#: model:ir.model.fields,field_description:hr_learn_platform.field_hr_employee__show_close_access_to_e_learning
+msgid "Show Close Access To E Learning"
+msgstr ""
+
+#. module: hr_learn_platform
+#: model_terms:ir.ui.view,arch_db:hr_learn_platform.employee_assign_course_wizard_view_form
+msgid ""
+"You have to store this password somewhere, you won't be able to access it later.\n"
+"                            <br/>\n"
+"                            But you can change it in e-learning platform, or reassign the course again."
+msgstr ""
+"Сохраните пароль, вы не сможете к нему, после закрытия окна, получить доступ.\n"
+"                            <br/>\n"
+"                            Но вы сможете поменять пароль в системе обучения, или заного присвоить этот курс сотруднику."
