@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="web_client_safari_fix.web_layout" name="JS libs for Safari" inherit_id="web.layout">
+    <xpath expr="//head/script[@id='web.layout.odooscript']" position="after">
+        <t t-call-assets="web.assets_safari_fix" t-css="false" defer_load="True"/>
+    </xpath>
+</template>
+
+</odoo>
