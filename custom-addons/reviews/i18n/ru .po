@@ -64,8 +64,8 @@ msgstr ""
 #. module: reviews
 #: model_terms:ir.ui.view,arch_db:reviews.report_department_review_qr_code
 msgid ""
-"<strong class=\"d-block mx-auto text-center\">Scan to leave review</strong>"
-msgstr "<strong class=\"d-block mx-auto text-center\">Отсканируйте для отзыва</strong>"
+"<small class=\"d-block mx-auto text-center\">Scan to leave review</small>"
+msgstr "<small class=\"d-block mx-auto text-center\">Отсканируйте для отзыва</small>"
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__create_uid
