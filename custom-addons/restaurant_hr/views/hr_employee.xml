@@ -27,6 +27,7 @@
 
             <xpath expr="//field[@name='work_email']" position="after">
                 <field name="entry_date" />
+                <field name="personal_id" string="ID" />
             </xpath>
 
             <xpath expr="//header/button[1]" position="replace"></xpath>
@@ -148,6 +149,14 @@
                             <span class="badge badge-warning">No</span>
                         </t>
 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span class="font-weight-bold">
+                            ID:
+                            <field name="personal_id" />
+                        </span>
                     </div>
                 </div>
             </xpath>

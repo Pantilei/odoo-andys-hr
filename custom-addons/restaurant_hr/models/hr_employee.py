@@ -105,6 +105,16 @@ class HrEmployee(models.Model):
         compute="_compute_wage_rate"
     )
 
+    personal_id = fields.Char(
+        string="Personal ID",
+        compute="_compute_persanal_id"
+    )
+
+    @api.depends("create_date")
+    def _compute_persanal_id(self):
+        for record in self:
+            record.personal_id = f"{record.id:06d}"
+
     @api.depends("response_ids")
     def _compute_assessed(self):
         for record in self:
