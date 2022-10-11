@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+    <data noupdate="1">
         <record id="reviews_base_url" model="ir.config_parameter">
             <field name="key">reviews.base.url</field>
             <field name="value">http://localhost:8019/reviews</field>

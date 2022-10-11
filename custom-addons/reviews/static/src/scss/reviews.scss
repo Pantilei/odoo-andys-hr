@@ -12,7 +12,11 @@ input.error, textarea.error {
 }
 
 
-.parallax > .s_parallax_bg {
+.o_main_container {
+    position: relative;
+}
+
+.oe_img_bg_review {
     position: absolute !important;
     top: 0;
     left: 0;
@@ -22,14 +26,12 @@ input.error, textarea.error {
     overflow: hidden;
     background-repeat: no-repeat;
     pointer-events: none;
-}
-
-.oe_img_bg_review {
     background-size: cover;
     background-repeat: no-repeat;
     background-image:  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/reviews/static/src/img/s_banner_default_image.png");
     background-position: 50% 0;
 }
+
 
 .reviews_title {
     padding-top: 24px;
