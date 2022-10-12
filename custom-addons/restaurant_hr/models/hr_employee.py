@@ -16,11 +16,8 @@ _logger = logging.getLogger(__name__)
 class User(models.Model):
     _inherit = ['res.users']
 
-    department_id = fields.Many2one(
-        related='employee_id.department_id', readonly=False, related_sudo=False, store=True)
-
     branch_id = fields.Many2one(
-        related='employee_id.branch_id', readonly=False, related_sudo=False, store=True)
+        related='employee_id.branch_id', readonly=False, related_sudo=False)
 
 
 class HrEmployee(models.Model):
@@ -194,6 +191,19 @@ class HrEmployee(models.Model):
             },
             'target': 'new'
         }
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        self.clear_caches()
+        return super(HrEmployee, self).create(vals_list)
+
+    def write(self, vals):
+        self.clear_caches()
+        return super(HrEmployee, self).write(vals)
+
+    def unlink(self):
+        self.clear_caches()
+        return super(HrEmployee, self).unlink()
 
     # DATA IMPORT
     def import_employee_data(self):

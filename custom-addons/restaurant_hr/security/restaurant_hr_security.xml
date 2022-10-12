@@ -8,7 +8,7 @@
         <field name="domain_force">
             [
             '&amp;', '|',
-            ('department_id', 'child_of', user.department_id.id),
+            ('department_id', 'child_of', user.employee_id.department_id.id),
             ('branch_id.manager_ids', 'in', [user.employee_id.id, False]),
             ('id', '!=', user.employee_id.id),
         ]
