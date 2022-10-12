@@ -87,6 +87,11 @@ class HrEmployee(models.Model):
         help='Select the "Branch" to whom this employee belongs.\n'
              'The manager of branch will have the opportunity to edit the information of this employee.')
 
+    qualification_id = fields.Many2one(
+        comodel_name='restaurant_hr.qualification',
+        string='Qualification'
+    )
+
     functional_duty = fields.Text(
         string="Functional Duty"
     )

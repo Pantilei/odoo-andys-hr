@@ -16,6 +16,7 @@
 
             <xpath expr="//field[@name='coach_id']" position="replace">
                 <field name="branch_id" options="{'no_create': True}" />
+                <field name="qualification_id" />
             </xpath>
 
             <xpath expr="//field[@name='passport_id']" position="after">
@@ -183,6 +184,7 @@
             <xpath expr="//field[@name='name']" position="after">
                 <field name="employee_type" />
                 <field name="branch_id" />
+                <field name="qualification_id" />
                 <field name="mobile_phone" string="Phone" filter_domain="['|', ('mobile_phone', 'ilike', self), ('work_phone', 'ilike', self)]" />
                 <field name="work_email" string="Email" filter_domain="[('work_email', 'ilike', self)]" />
                 <field name="department_id" />
@@ -199,6 +201,7 @@
 
             <xpath expr="//filter[@name='group_manager']" position="after">
                 <filter name="branch_id" string="Branch" domain="[]" context="{'group_by': 'branch_id'}" />
+                <filter name="qualification_id" string="Qualification" domain="[]" context="{'group_by': 'qualification_id'}" />
                 <filter name="employee_type" string="Employee Type" domain="[]" context="{'group_by': 'employee_type'}" />
             </xpath>
             <xpath expr="//searchpanel/field[@name='department_id']" position="before">
