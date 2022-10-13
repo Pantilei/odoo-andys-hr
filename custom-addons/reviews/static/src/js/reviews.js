@@ -87,7 +87,7 @@ odoo.define("review.form", function (require) {
           params: dataToSend,
         }).then((r) => {
           if (r.success) {
-            window.location.href = "/reviews/thank-you";
+            window.location.href = window.location.pathname + "/thank-you";
           } else {
             console.log(r.message);
           }
