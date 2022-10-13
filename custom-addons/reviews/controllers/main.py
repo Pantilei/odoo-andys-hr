@@ -29,8 +29,8 @@ class Reviews(http.Controller):
             "company_support_email": "info@yourcompany.example.com",
         })
 
-    @http.route('/reviews/thank-you', type='http', auth="public")
-    def reviews_thank_you(self, **kw):
+    @http.route('/reviews/<string:department_token>/thank-you', type='http', auth="public")
+    def reviews_thank_you(self, department_token, **kw):
         """ Reviews """
         return request.render("reviews.reviews_thankyou_page", {
             "title": "Отзывы Andys",
