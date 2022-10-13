@@ -41,6 +41,20 @@
             </xpath>
         </template>
 
+        <template id="reviews_restaurnat_not_found" name="Reviews restaurant not found page">
+            <t t-call="reviews.layout">
+                <div id="wrap" class="oe_structure oe_empty">
+                    <section class="reviews_title">
+                        <div class="container">
+                            <h1>
+                                <t t-esc="title" />
+                            </h1>
+                        </div>
+                    </section>
+                </div>
+            </t>
+        </template>
+
         <!-- Main survey template -->
         <template id="reviews_page_fill" name="Reviews main page">
             <t t-call="reviews.layout">

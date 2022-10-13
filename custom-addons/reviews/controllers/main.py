@@ -14,6 +14,12 @@ _logger = logging.getLogger(__name__)
 
 class Reviews(http.Controller):
 
+    @http.route('/reviews', type='http', auth="public")
+    def reviews_restaurnat_not_found(self, **kw):
+        return request.render("reviews.reviews_restaurnat_not_found", {
+            "title": "Ресторан не найден!"
+        })
+
     @http.route('/reviews/<string:department_token>', type='http', auth="public")
     def reviews(self, department_token, **kw):
         """ Reviews """
@@ -21,6 +27,7 @@ class Reviews(http.Controller):
             ("uid", "=", department_token)
         ], limit=1)
         if not department_id:
+
             return werkzeug.exceptions.NotFound()
         return request.render("reviews.reviews_page_fill", {
             "title": "Отзывы Andys",
