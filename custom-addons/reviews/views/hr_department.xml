@@ -6,14 +6,17 @@
         <record id="view_department_form" model="ir.ui.view">
             <field name="name">HR Department</field>
             <field name="model">hr.department</field>
-            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="inherit_id" ref="hr.view_department_form" />
             <field name="arch" type="xml">
                 <xpath expr="//sheet" position="before">
                     <header>
-                        <button type="object" name="print_qr_code"
-                                attrs="{'invisible': [('id', '=', False)]}"
-                                string="Print QR" class="oe_highlight"/>
+                        <button type="object" name="print_qr_code" attrs="{'invisible': [('id', '=', False)]}" string="Print QR" class="oe_highlight" />
                     </header>
+                </xpath>
+
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="review_collection_id" options="{'no_create': True}" />
+                    <field name="uid" groups="base.group_no_one" />
                 </xpath>
 
             </field>

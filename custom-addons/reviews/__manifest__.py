@@ -21,6 +21,7 @@
         'report/department_review_qr.xml',
 
         'views/reviews.xml',
+        'views/collection.xml',
         'views/hr_department.xml',
     ],
     'demo': [],
@@ -56,4 +57,3 @@
     },
     'license': 'LGPL-3',
 }
-

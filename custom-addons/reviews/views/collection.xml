@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="reviews_collection_form_view" model="ir.ui.view">
+            <field name="name">reviews_collection.form</field>
+            <field name="model">reviews.collection</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="bg_img" widget="image" class="oe_avatar" options="{'zoom': true, 'preview_image':'bg_img'}" />
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="name" placeholder="Name" required="1" />
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="phone" required="1" />
+                            <field name="email" required="1" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="reviews_collection_tree_view" model="ir.ui.view">
+            <field name="name">reviews_collection.tree</field>
+            <field name="model">reviews.collection</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="phone" />
+                    <field name="email" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="reviews_collection_search_view" model="ir.ui.view">
+            <field name="name">reviews_collection.search</field>
+            <field name="model">reviews.collection</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="phone" />
+                    <field name="email" />
+                </search>
+            </field>
+        </record>
+
+        <record id="reviews_collection_act_window" model="ir.actions.act_window">
+            <field name="name">Forms</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">reviews.collection</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Forms" id="reviews_collection_menu" parent="reviews_menu" action="reviews_collection_act_window" groups="reviews.group_reviews_manager" />
+    </data>
+</odoo>

@@ -31,7 +31,7 @@
                 <div id="wrapwrap" t-attf-class="#{pageName or ''}">
                     <header t-if="not no_header" id="top"></header>
                     <main class="o_main_container">
-                        <span class="oe_img_bg_review" />
+                        <span class="oe_img_bg_review" t-attf-style="background-image:  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/reviews/bg-img/{{reviews_collection_id}}')" />
                         <t t-out="0" />
                     </main>
                     <footer t-if="not no_footer" id="bottom" t-attf-class="bg-light o_footer">
@@ -51,6 +51,18 @@
                             </h1>
                         </div>
                     </section>
+                    <section class="o_review_thank_you o_colored_level">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <t t-call="reviews.reviews_company_data">
+                                        <t t-set="company_support_phone" t-value="company_support_phone" />
+                                        <t t-set="company_support_email" t-value="company_support_email" />
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </t>
         </template>
@@ -68,14 +80,10 @@
                 <section class="o_reviews_form">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-8 mt-4 mt-lg-0">
-                                <p>
-                                    Сообщите нам о любых проблемах связанных с нашей компанией.
-                                    <br />
-                                    Мы сделаем всё, чтоб исправится, и быть лучше для вас.
-                                    <br />
-                                    В случае необходимости, мы свяжемся с вами!
-                                </p>
+                            <div class="col-lg-8 mt-2 mt-lg-0">
+                                <h3>
+                                    Оставьте ваш отзыв!
+                                </h3>
                                 <section>
                                     <div class="container">
                                         <form id="review_form">
@@ -118,7 +126,7 @@
                                                             <span>Имя ответственного</span>
                                                         </label>
                                                         <div class="col-sm">
-                                                            <input type="text" class="form-control" name="name_of_responsible" placeholder="Имя официанта" />
+                                                            <input type="text" class="form-control" name="name_of_responsible" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,6 +144,7 @@
                                                 <div class="form-group col-12">
                                                     <div style="width: 200px;" />
                                                     <a href="#" role="button" class="btn btn-primary btn-lg o_submit_button">
+                                                        <i class="fa fa-send fa-1x fa-fw fa-envelope m-1" />
                                                         Отправить
                                                     </a>
                                                 </div>
@@ -146,7 +155,6 @@
                             </div>
                             <div class="col-lg-4 mt-4 mt-lg-0">
                                 <t t-call="reviews.reviews_company_data">
-                                    <t t-set="company_address" t-value="company_address" />
                                     <t t-set="company_support_phone" t-value="company_support_phone" />
                                     <t t-set="company_support_email" t-value="company_support_email" />
                                 </t>
@@ -173,22 +181,28 @@
                                 <div class="col-lg-7 col-xl-6 mr-lg-auto">
                                     <span class="d-block fa fa-4x fa-thumbs-up mx-auto rounded-circle bg-primary" />
                                     <br />
-                                    <h1 class="text-center">Спасибо!</h1>
                                     <div class="pb16 pt16">
                                         <hr class="mx-auto border-top w-50 border-dark text-center" />
                                     </div>
                                     <h5 class="text-center">
                                         <span class="fa fa-check-circle" />
                                         <span>
-                                            Ваш отзыв был отправлен
-                                            <b>успешно</b>
+                                            Спасибо за Ваш отзыв и за то, что помогаете нам стать лучше!
+                                        </span>
+                                        <br />
+                                        <span class="fa fa-check-circle" />
+                                        <span>
+                                            Thank you for your reviews!
+                                        </span>
+                                        <br />
+                                        <span class="fa fa-check-circle" />
+                                        <span>
+                                            Vă mulțumim pentru recenzie și pentru că ne ajutați să devenim mai buni!
                                         </span>
                                     </h5>
-                                    <p class="text-center">Мы с вами свяжемся в случае необходимости.</p>
                                 </div>
                                 <div class="col-lg-4">
                                     <t t-call="reviews.reviews_company_data">
-                                        <t t-set="company_address" t-value="company_address" />
                                         <t t-set="company_support_phone" t-value="company_support_phone" />
                                         <t t-set="company_support_email" t-value="company_support_email" />
                                     </t>
@@ -202,13 +216,7 @@
 
         <template id="reviews_company_data" name="Reviews thankyou page">
             <ul class="list-unstyled mb-0 pl-2">
-                <li>My Company</li>
-                <li>
-                    <i class="fa fa-map-marker fa-fw mr-2" />
-                    <span class="o_force_ltr">
-                        <t t-esc="company_address" />
-                    </span>
-                </li>
+                <li>Контакты</li>
                 <li>
                     <i class="fa fa-phone fa-fw mr-2" />
                     <span class="o_force_ltr">

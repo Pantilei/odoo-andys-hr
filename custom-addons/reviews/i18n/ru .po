@@ -102,7 +102,7 @@ msgstr "Имя"
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__email
 msgid "Email"
-msgstr "Емайл"
+msgstr ""
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__responsible_name

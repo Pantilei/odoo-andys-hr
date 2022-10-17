@@ -2,7 +2,7 @@ import base64
 from secrets import choice
 
 from odoo import fields, models, api, _
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 from odoo.tools.image import image_data_uri
 
 
@@ -22,6 +22,11 @@ class HrDepartment(models.Model):
         compute="_assign_random_token",
         copy=False,
         store=True
+    )
+
+    review_collection_id = fields.Many2one(
+        comodel_name="reviews.collection",
+        string="Review Form"
     )
 
     qr_code = fields.Char(
@@ -46,7 +51,8 @@ class HrDepartment(models.Model):
     def _compute_qr_code(self):
         for r in self:
             get_param = self.env["ir.config_parameter"].sudo().get_param
-            reviews_base_url = get_param("reviews.base.url") or f'{get_param("web.base.url")}/reviews'
+            reviews_base_url = get_param(
+                "reviews.base.url") or f'{get_param("web.base.url")}/reviews'
             barcode = self.env['ir.actions.report'].barcode(
                 "QR",
                 f"{reviews_base_url}/{r.uid}",
@@ -68,6 +74,10 @@ class HrDepartment(models.Model):
                         '''
 
     def print_qr_code(self):
+        if not self.review_collection_id:
+            raise UserError(
+                _("Please, assing 'Review Form' to print the barcode!"))
+
         report_template_xml_id = "reviews.report_department_review_qr_code"
         return {
             "type": "ir.actions.act_url",

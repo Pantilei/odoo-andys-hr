@@ -10,19 +10,19 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name" readonly="1"/>
-                                <field name="phone" readonly="1"/>
-                                <field name="email" readonly="1"/>
+                                <field name="name" readonly="1" />
+                                <field name="phone" readonly="1" />
+                                <field name="email" readonly="1" />
                             </group>
                             <group>
-                                <field name="responsible_name" readonly="1"/>
-                                <field name="responsible_employee_id" options="{'no_create': True}"/>
-                                <field name="department_id" readonly="1"/>
-                                <field name="create_date" readonly="1"/>
+                                <field name="responsible_name" readonly="1" />
+                                <field name="responsible_employee_id" options="{'no_create': True}" />
+                                <field name="department_id" readonly="1" />
+                                <field name="create_date" readonly="1" />
                             </group>
                         </group>
                         <group>
-                            <field name="description" readonly="1"/>
+                            <field name="description" readonly="1" />
                         </group>
                     </sheet>
                 </form>
@@ -34,12 +34,12 @@
             <field name="model">reviews</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
-                    <field name="phone"/>
-                    <field name="email"/>
-                    <field name="responsible_name"/>
-                    <field name="department_id" readonly="1"/>
-                    <field name="create_date"/>
+                    <field name="name" />
+                    <field name="phone" />
+                    <field name="email" />
+                    <field name="responsible_name" />
+                    <field name="department_id" readonly="1" />
+                    <field name="create_date" />
                 </tree>
             </field>
         </record>
@@ -49,17 +49,17 @@
             <field name="model">reviews</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="name"/>
-                    <field name="phone"/>
-                    <field name="email"/>
-                    <field name="responsible_name"/>
-                    <field name="responsible_employee_id"/>
-                    <field name="department_id"/>
+                    <field name="name" />
+                    <field name="phone" />
+                    <field name="email" />
+                    <field name="responsible_name" />
+                    <field name="responsible_employee_id" />
+                    <field name="department_id" />
                     <group expand="1" string="Group By">
-                        <filter string="Department" name='group_by_department_id' context="{'group_by':'department_id'}"/>
+                        <filter string="Department" name='group_by_department_id' context="{'group_by':'department_id'}" />
                     </group>
                     <searchpanel>
-                        <field name="department_id" string="Department" icon="fa-users"/>
+                        <field name="department_id" string="Department" icon="fa-users" />
                     </searchpanel>
                 </search>
             </field>
@@ -72,6 +72,6 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Reviews" id="reviews_menu" action="reviews_act_window" groups="reviews.group_reviews_manager"/>
+        <menuitem name="Reviews" id="reviews_menu" action="reviews_act_window" groups="reviews.group_reviews_manager" />
     </data>
 </odoo>
