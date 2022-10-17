@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-09 18:03+0000\n"
-"PO-Revision-Date: 2022-10-09 18:03+0000\n"
+"POT-Creation-Date: 2022-10-17 11:16+0000\n"
+"PO-Revision-Date: 2022-10-17 11:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,13 +23,38 @@ msgstr "'QR Код Департамента'"
 #. module: reviews
 #: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
 msgid "78XXXXXX"
-msgstr "78XXXXXX"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
+msgid ""
+"<i class=\"fa fa-send fa-1x fa-fw fa-envelope m-1\"/>\n"
+"                                                        Отправить"
+msgstr ""
+
+#. module: reviews
+#: model_terms:ir.ui.view,arch_db:reviews.report_department_review_qr_code
+msgid "<small class=\"d-block mx-auto text-center\">Scan to leave review</small>"
+msgstr ""
+"<small class=\"d-block mx-auto text-center\">Отсканируйте для отзыва</small>"
 
 #. module: reviews
 #: model_terms:ir.ui.view,arch_db:reviews.reviews_thankyou_page
 msgid ""
 "<span class=\"fa fa-check-circle\"/>\n"
-"                                        <span>Ваш отзыв был отправлен <b>успешно</b></span>"
+"                                        <span>\n"
+"                                            Спасибо за Ваш отзыв и за то, что помогаете нам стать лучше!\n"
+"                                        </span>\n"
+"                                        <br/>\n"
+"                                        <span class=\"fa fa-check-circle\"/>\n"
+"                                        <span>\n"
+"                                            Thank you for your reviews!\n"
+"                                        </span>\n"
+"                                        <br/>\n"
+"                                        <span class=\"fa fa-check-circle\"/>\n"
+"                                        <span>\n"
+"                                            Vă mulțumim pentru recenzie și pentru că ne ajutați să devenim mai buni!\n"
+"                                        </span>"
 msgstr ""
 
 #. module: reviews
@@ -58,24 +83,27 @@ msgstr ""
 
 #. module: reviews
 #: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
-msgid "<span>Тел</span>"
+msgid ""
+"<span>Тел</span>\n"
+"                                                            <span> *</span>"
 msgstr ""
 
 #. module: reviews
-#: model_terms:ir.ui.view,arch_db:reviews.report_department_review_qr_code
-msgid ""
-"<small class=\"d-block mx-auto text-center\">Scan to leave review</small>"
-msgstr "<small class=\"d-block mx-auto text-center\">Отсканируйте для отзыва</small>"
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__bg_img
+msgid "Background Image"
+msgstr "Картинка Бэкграунда"
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__create_uid
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Создано пользователем"
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__create_date
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Создано в"
 
 #. module: reviews
 #: model:ir.model,name:reviews.model_hr_department
@@ -96,6 +124,7 @@ msgstr "Описание"
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__display_name
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__display_name
 msgid "Display Name"
 msgstr "Имя"
 
@@ -110,29 +139,39 @@ msgid "Employee Name"
 msgstr "Имя Сотрудника"
 
 #. module: reviews
+#: model:ir.actions.act_window,name:reviews.reviews_collection_act_window
+#: model:ir.ui.menu,name:reviews.reviews_collection_menu
+msgid "Forms"
+msgstr "Формы"
+
+#. module: reviews
 #: model_terms:ir.ui.view,arch_db:reviews.reviews_search_view
 msgid "Group By"
 msgstr "Группировать по"
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__id
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__id
 msgid "ID"
 msgstr ""
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews____last_update
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Последнее Обновление в"
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__write_uid
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Последнее Обновление Пользователем"
 
 #. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__write_date
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Последнее Обновление в"
 
 #. module: reviews
 #: model:res.groups,name:reviews.group_reviews_manager
@@ -140,12 +179,9 @@ msgid "Manager"
 msgstr "Менеджер"
 
 #. module: reviews
-#: model_terms:ir.ui.view,arch_db:reviews.reviews_company_data
-msgid "My Company"
-msgstr "Компания"
-
-#. module: reviews
 #: model:ir.model.fields,field_description:reviews.field_reviews__name
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__name
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_collection_form_view
 msgid "Name"
 msgstr "Имя"
 
@@ -153,6 +189,12 @@ msgstr "Имя"
 #: model:ir.model.fields,field_description:reviews.field_reviews__phone
 msgid "Phone"
 msgstr "Телефон"
+
+#. module: reviews
+#: code:addons/reviews/models/hr_department.py:0
+#, python-format
+msgid "Please, assing 'Review Form' to print the barcode!"
+msgstr "Пожалуйста, установите 'Форма Отзыва' в департаменте, чтоб распечатать QR!"
 
 #. module: reviews
 #: model_terms:ir.ui.view,arch_db:reviews.view_department_form
@@ -185,12 +227,22 @@ msgid "Related Employee"
 msgstr "Связанный Сотрудник"
 
 #. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_hr_department__review_collection_id
+msgid "Review Form"
+msgstr "Форма Отзыва"
+
+#. module: reviews
 #: model:ir.actions.act_window,name:reviews.reviews_act_window
 #: model:ir.model,name:reviews.model_reviews
 #: model:ir.module.category,name:reviews.reviews_category
 #: model:ir.ui.menu,name:reviews.reviews_menu
 msgid "Reviews"
 msgstr "Отзывы"
+
+#. module: reviews
+#: model:ir.model,name:reviews.model_reviews_collection
+msgid "Reviews Collection"
+msgstr ""
 
 #. module: reviews
 #: model:ir.model,name:reviews.model_report_reviews_report_department_review_qr_code
@@ -202,6 +254,16 @@ msgstr "QR Код Отзывов"
 #, python-format
 msgid "Scan to get"
 msgstr "Отсканируйте"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__email
+msgid "Support Email"
+msgstr "Емайл Поддержки"
+
+#. module: reviews
+#: model:ir.model.fields,field_description:reviews.field_reviews_collection__phone
+msgid "Support Phone"
+msgstr "Тел Поддержки"
 
 #. module: reviews
 #: code:addons/reviews/models/hr_department.py:0
@@ -220,29 +282,11 @@ msgid "name@email.com"
 msgstr ""
 
 #. module: reviews
-#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
-msgid "Имя официанта"
-msgstr ""
-
-#. module: reviews
-#: model_terms:ir.ui.view,arch_db:reviews.reviews_thankyou_page
-msgid "Мы с вами свяжемся в случае необходимости."
+#: model_terms:ir.ui.view,arch_db:reviews.reviews_company_data
+msgid "Контакты"
 msgstr ""
 
 #. module: reviews
 #: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
-msgid "Отправить"
-msgstr ""
-
-#. module: reviews
-#: model_terms:ir.ui.view,arch_db:reviews.reviews_page_fill
-msgid ""
-"Сообщите нам о любых проблемах связанных с нашей компанией. <br/>\n"
-"                                    Мы сделаем всё, чтоб исправится, и быть лучше для вас.<br/>\n"
-"                                    В случае необходимости, мы свяжемся с вами!"
-msgstr ""
-
-#. module: reviews
-#: model_terms:ir.ui.view,arch_db:reviews.reviews_thankyou_page
-msgid "Спасибо!"
+msgid "Оставьте ваш отзыв!"
 msgstr ""
