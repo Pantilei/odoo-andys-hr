@@ -195,15 +195,44 @@ class HrEmployee(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         self.clear_caches()
-        return super(HrEmployee, self).create(vals_list)
+        rec_ids = super(HrEmployee, self).create(vals_list)
+        for rec_id in rec_ids:
+            if rec_id.department_id:
+                rec_id._create_department_history(
+                    rec_id.department_id, status="enter")
+        return rec_ids
 
     def write(self, vals):
         self.clear_caches()
-        return super(HrEmployee, self).write(vals)
+        initial_department_id = self.department_id
+        res = super(HrEmployee, self).write(vals)
+        final_department_id = self.department_id
+        if initial_department_id != final_department_id:
+            self._create_department_history(
+                final_department_id, status="enter")
+            self._create_department_history(
+                initial_department_id, status="exit")
+        if "active" in vals:
+            if vals.get("active"):
+                self._create_department_history(
+                    final_department_id, status="enter")
+            else:
+                self._create_department_history(
+                    final_department_id, status="exit")
+        return res
 
     def unlink(self):
         self.clear_caches()
+        self._create_department_history(self.department_id, status="exit")
         return super(HrEmployee, self).unlink()
+
+    def _create_department_history(self, department_id, status="enter"):
+        self.env["restaurant_hr.department_history"].create([{
+            "department_id": department_id.id,
+            "employee_id": self.id,
+            "status": status,
+            "history_date": self.create_date
+        }])
 
     # DATA IMPORT
     def import_employee_data(self):

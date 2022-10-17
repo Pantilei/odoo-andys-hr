@@ -84,4 +84,17 @@
         action="restaurant_hr.hr_branch_action"
         sequence="20"/>
 
+    <menuitem
+        id="reporting"
+        name="Reporting"
+        parent="hr.menu_hr_root"
+        sequence="60"/>
+
+    <menuitem
+        id="hr_department_history"
+        name="Brain Drain"
+        parent="restaurant_hr.reporting"
+        action="restaurant_hr.department_history_action"
+        sequence="5"/>
+
 </odoo>

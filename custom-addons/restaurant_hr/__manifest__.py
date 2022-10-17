@@ -29,6 +29,7 @@
         'views/hr_job.xml',
         'views/available_hr_jobs.xml',
         'views/hr_branch.xml',
+        'views/department_history.xml',
 
         'views/menu_items.xml',
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="department_history_view_tree" model="ir.ui.view">
+        <field name="name">department_history_names.view.tree</field>
+        <field name="model">restaurant_hr.department_history</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="department_id" />
+                <field name="employee_id" />
+                <field name="history_date" />
+                <field name="status" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="department_history_view_form" model="ir.ui.view">
+        <field name="name">department_history_names.view.form</field>
+        <field name="model">restaurant_hr.department_history</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="department_id" />
+                        <field name="employee_id" />
+                        <field name="history_date" />
+                        <field name="status" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="department_history_view_search" model="ir.ui.view">
+        <field name="name">department_history.view.search</field>
+        <field name="model">restaurant_hr.department_history</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="department_id" />
+                <field name="employee_id" />
+
+                <separator />
+
+                <filter string="Enter" name="status" domain="[('status', '=', 'enter')]" />
+                <filter string="Exit" name="status" domain="[('status', '=', 'exit')]" />
+
+                <group expand="0" string="Group By">
+                    <filter name="group_history_date" string="History Date" domain="[]" context="{'group_by': 'history_date:month'}" />
+                    <filter name="group_department_id" string="Department" domain="[]" context="{'group_by': 'department_id'}" />
+                    <filter name="group_status" string="Status" domain="[]" context="{'group_by': 'status'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="department_history_action" model="ir.actions.act_window">
+        <field name="name">Department's History</field>
+        <field name="res_model">restaurant_hr.department_history</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_group_history_date': 1, 'search_default_group_department_id': 1, 'search_default_group_status': 1}</field>
+    </record>
+
+</odoo>
