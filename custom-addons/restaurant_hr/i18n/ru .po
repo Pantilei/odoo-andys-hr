@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-12 20:18+0000\n"
-"PO-Revision-Date: 2022-10-12 20:18+0000\n"
+"POT-Creation-Date: 2022-10-18 11:43+0000\n"
+"PO-Revision-Date: 2022-10-18 11:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -120,6 +120,16 @@ msgid "Available Open Jobs"
 msgstr "Доступные Открытые Вакансии"
 
 #. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.hr_department_history
+msgid "Brain Drain"
+msgstr "Утечка Кадров"
+
+#. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.hr_department_history_report
+msgid "Brain Drain Graphs"
+msgstr "Графики Утечки Кадров"
+
+#. module: restaurant_hr
 #: model:ir.actions.act_window,name:restaurant_hr.hr_branch_action
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
@@ -145,6 +155,11 @@ msgid "Categories"
 msgstr "Категории"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__chart_json
+msgid "Chart JSON"
+msgstr "Графики JSON"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
 msgid "Company"
 msgstr "Компания"
@@ -166,8 +181,16 @@ msgid "Cook"
 msgstr "Повар"
 
 #. module: restaurant_hr
+#: code:addons/restaurant_hr/wizards/department_history_report.py:0
+#, python-format
+msgid "Count"
+msgstr "Колтчество"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__create_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__create_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__create_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__create_uid
@@ -178,6 +201,8 @@ msgstr "Создано Пользователем"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__create_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__create_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__create_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__create_date
@@ -186,18 +211,56 @@ msgid "Created on"
 msgstr "Создано в"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__date_end
+msgid "Date End"
+msgstr "Дата Начала"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__date_start
+msgid "Date Start"
+msgstr "Дата Конца"
+
+#. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_department
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__department_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__department_id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__department_id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__department_id
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
 msgid "Department"
 msgstr "Подразделение"
+
+#. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_restaurant_hr_department_history
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_graph
+msgid "Department History"
+msgstr "Истории Подразделений"
+
+#. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_restaurant_hr_department_history_report_wizard
+msgid "Department History Report Wizard"
+msgstr "Отчёты Истории Подразделения Wizard"
+
+#. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.department_history_report_wizard_action
+msgid "Department Reports"
+msgstr "Отчёты Подразделения"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_department__department_size
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__department_size
 msgid "Department Size"
 msgstr "Размер подразделения"
+
+#. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.department_history_action
+msgid "Department's History"
+msgstr "Истории Подразделений"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
+msgid "Departments"
+msgstr "Подразделения"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_employee_view_form_inherit
@@ -207,6 +270,8 @@ msgstr "Детальное Резюме/Навыки"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__display_name
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__display_name
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__display_name
@@ -221,10 +286,17 @@ msgstr "Емайл"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_employee
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__employee_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_user_input__employee_id
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Employee"
 msgstr "Сотрудник"
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/wizards/department_history_report.py:0
+#, python-format
+msgid "Employee Enter/Exit count!"
+msgstr "Количество Входа/Выхода Сотрудников"
 
 #. module: restaurant_hr
 #: model:ir.actions.act_window,name:restaurant_hr.employee_payment_rate_action
@@ -243,9 +315,27 @@ msgid "Employee Type"
 msgstr "Тип Сотрудника"
 
 #. module: restaurant_hr
+#: code:addons/restaurant_hr/wizards/department_history_report.py:0
+#: code:addons/restaurant_hr/wizards/department_history_report.py:0
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__restaurant_hr_department_history__status__enter
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
+#, python-format
+msgid "Enter"
+msgstr "Вход"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__entry_date
 msgid "Entry Date"
 msgstr "Дата Вступления"
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/wizards/department_history_report.py:0
+#: code:addons/restaurant_hr/wizards/department_history_report.py:0
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__restaurant_hr_department_history__status__exit
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
+#, python-format
+msgid "Exit"
+msgstr "Выход"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
@@ -264,6 +354,7 @@ msgid "General"
 msgstr "Общее"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
 msgid "Group By"
 msgstr "Группировать"
@@ -274,8 +365,16 @@ msgid "HR Branch"
 msgstr "HR Отдел"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__history_date
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
+msgid "History Date"
+msgstr "Дата"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__id
@@ -314,6 +413,8 @@ msgstr "Большое"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names____last_update
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history____last_update
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch____last_update
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification____last_update
@@ -324,6 +425,8 @@ msgstr "Последнее Обновление в"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__write_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__write_uid
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__write_uid
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__write_uid
@@ -334,6 +437,8 @@ msgstr "Последнее Обновление Пользователем"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__write_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__write_date
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_survey_select_wizard__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__write_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__write_date
@@ -346,6 +451,12 @@ msgstr "Последнее Обновление в"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey_wage_rate__department_size__medium
 msgid "Medium"
 msgstr "Среднее"
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/wizards/department_history_report.py:0
+#, python-format
+msgid "Months"
+msgstr "Месяца"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_available_hr_job_names__name
@@ -423,6 +534,11 @@ msgid "Qualification"
 msgstr "Квалификация"
 
 #. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.reporting
+msgid "Reporting"
+msgstr "Отчётность"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__response_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__response_ids
 msgid "Responces"
@@ -497,6 +613,8 @@ msgid "Start Survey"
 msgstr "Начать Опрос"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__status
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
 msgid "Status"
 msgstr "Статус"
