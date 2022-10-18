@@ -97,4 +97,11 @@
         action="restaurant_hr.department_history_action"
         sequence="5"/>
 
+    <menuitem
+        id="hr_department_history_report"
+        name="Brain Drain Graphs"
+        parent="restaurant_hr.reporting"
+        action="restaurant_hr.department_history_report_wizard_action"
+        sequence="10"/>
+
 </odoo>

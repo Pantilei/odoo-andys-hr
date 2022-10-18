@@ -31,10 +31,11 @@
         'views/hr_branch.xml',
         'views/department_history.xml',
 
-        'views/menu_items.xml',
-
         'wizards/employee_survey_select_wizard.xml',
         'wizards/applicant_survey_select_wizard.xml',
+        'wizards/department_history_report.xml',
+
+        'views/menu_items.xml',
 
         'data/data.xml',
         'data/cron.xml',
@@ -48,13 +49,17 @@
     'assets': {
         'web._assets_primary_variables': [],
         'web.assets_backend': [
+            'web/static/lib/Chart/Chart.js',
             'restaurant_hr/static/src/js/action_menus.js',
+            'restaurant_hr/static/src/js/json_to_chart_widget.js',
         ],
         'web.assets_frontend': [],
         'web.assets_tests': [],
         'web.qunit_suite_tests': [],
         'web.report_assets_common': [],
-        'web.assets_qweb': [],
+        'web.assets_qweb': [
+            'restaurant_hr/static/src/xml/json_to_chart_widget.xml',
+        ],
     },
     'license': 'LGPL-3',
 }

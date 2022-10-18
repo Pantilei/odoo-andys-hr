@@ -5,7 +5,7 @@
         <field name="name">department_history_names.view.tree</field>
         <field name="model">restaurant_hr.department_history</field>
         <field name="arch" type="xml">
-            <tree editable="bottom">
+            <tree editable="bottom" default_order="history_date desc">
                 <field name="department_id" />
                 <field name="employee_id" />
                 <field name="history_date" />
@@ -31,6 +31,17 @@
         </field>
     </record>
 
+    <record id="department_history_view_graph" model="ir.ui.view">
+        <field name="name">department_history.graph</field>
+        <field name="model">restaurant_hr.department_history</field>
+        <field name="arch" type="xml">
+            <graph string="Department History" type="bar" stacked="0" sample="1">
+                <field name="department_id" type="measure" />
+                <field name="history_date" interval="month" />
+            </graph>
+        </field>
+    </record>
+
     <record id="department_history_view_search" model="ir.ui.view">
         <field name="name">department_history.view.search</field>
         <field name="model">restaurant_hr.department_history</field>
@@ -46,9 +57,13 @@
 
                 <group expand="0" string="Group By">
                     <filter name="group_history_date" string="History Date" domain="[]" context="{'group_by': 'history_date:month'}" />
-                    <filter name="group_department_id" string="Department" domain="[]" context="{'group_by': 'department_id'}" />
+                    <!-- <filter name="group_department_id" string="Department" domain="[]" context="{'group_by': 'department_id'}" /> -->
                     <filter name="group_status" string="Status" domain="[]" context="{'group_by': 'status'}" />
                 </group>
+
+                <searchpanel>
+                    <field name="department_id" string="Departments" enable_counters="1" limit="0" />
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -58,7 +73,7 @@
         <field name="res_model">restaurant_hr.department_history</field>
         <field name="view_mode">tree</field>
         <field name="domain">[]</field>
-        <field name="context">{'search_default_group_history_date': 1, 'search_default_group_department_id': 1, 'search_default_group_status': 1}</field>
+        <field name="context">{'search_default_group_history_date': 1, 'search_default_group_status': 1}</field>
     </record>
 
 </odoo>
