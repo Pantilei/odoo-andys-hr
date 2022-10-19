@@ -62,7 +62,8 @@ class Reviews(http.Controller):
     @http.route('/reviews', type='http', auth="public")
     def reviews_restaurnat_not_found(self, **kw):
         form_id = request.env["reviews.collection"].sudo().search([], limit=1)
-        lang = kw.get("lang") if kw.get("lang", None) else 'ro'
+        lang = kw.get("lang")
+        lang = lang if (lang and lang in ["ru", "en", "ro"]) else 'ro'
         translate = _get_translations(lang)
         return request.render("reviews.reviews_restaurnat_not_found", {
             "title": translate("Restaurant not found!"),
@@ -76,7 +77,8 @@ class Reviews(http.Controller):
     def reviews(self, department_token, **kw):
         """ Reviews """
         print("\n\n kw", kw)
-        lang = kw.get("lang") if kw.get("lang", None) else 'ro'
+        lang = kw.get("lang")
+        lang = lang if (lang and lang in ["ru", "en", "ro"]) else 'ro'
         department_id = request.env["hr.department"].sudo().search([
             ("uid", "=", department_token)
         ], limit=1)
@@ -100,7 +102,8 @@ class Reviews(http.Controller):
         if not department_id or not department_id.review_collection_id:
             return werkzeug.exceptions.NotFound()
 
-        lang = kw.get("lang") if kw.get("lang", None) else 'ro'
+        lang = kw.get("lang")
+        lang = lang if (lang and lang in ["ru", "en", "ro"]) else 'ro'
         return request.render("reviews.reviews_thankyou_page", {
             "title": department_id.review_collection_id.name,
             "company_support_phone": department_id.review_collection_id.phone or "+1 (650) 555-0111",

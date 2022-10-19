@@ -36,6 +36,9 @@ odoo.define("review.form", function (require) {
       var self = this;
       return this._super.apply(this, arguments).then(function () {
         self.$form = self.$("#review_form");
+        const queryParams = self._getQueryParams();
+        const lang = queryParams.lang;
+
         self.$form.validate({
           // Specify validation rules
           rules: {
@@ -47,19 +50,11 @@ odoo.define("review.form", function (require) {
             },
             description: {
               required: true,
-              minlength: 10,
+              minlength: 5,
             },
           },
           // Specify validation error messages
-          messages: {
-            name: "Введите ваше имя!",
-            phone: "Введите ваш телефон!",
-            email_from: "Введите правильный email!",
-            description: {
-              required: "Введите ваш отзыв!",
-              minlength: "Ваш отзыв очень короткий!",
-            },
-          },
+          messages: self._validationMessagesTranslations(lang),
         });
       });
     },
@@ -68,13 +63,53 @@ odoo.define("review.form", function (require) {
     // Private
     // -------------------------------------------------------------------------
 
+    _validationMessagesTranslations: function (lang) {
+      let currentLang = ["en", "ro", "ru"].includes(lang) ? lang : "ro";
+      const messages = {
+        en: {
+          name: "Enter your name!",
+          phone: "Enter your phone!",
+          email_from: "Enter valid email!",
+          description: {
+            required: "Enter your feedback!",
+            minlength: "Your feedback is too short!",
+          },
+        },
+        ru: {
+          name: "Введите ваше имя!",
+          phone: "Введите ваш телефон!",
+          email_from: "Введите правильный email!",
+          description: {
+            required: "Введите ваш отзыв!",
+            minlength: "Ваш отзыв очень короткий!",
+          },
+        },
+        ro: {
+          name: "Introduceți numele dvs!",
+          phone: "Introduceți telefonul dvs",
+          email_from: "Introduceți un e-mail valid!",
+          description: {
+            required: "Introduceți feedback-ul dvs!",
+            minlength: "Feedback-ul dvs. este prea scurt!",
+          },
+        },
+      };
+      return messages[currentLang];
+    },
+
+    _getQueryParams: function () {
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+      return params;
+    },
+
     // Handlers
     // -------------------------------------------------------------------------
 
     _onSubmit: function (event) {
       event.preventDefault();
       if (this.$form.valid()) {
-        var route = "/reviews/submit";
         var formData = new FormData(this.$form[0]);
         let dataToSend = {};
         formData.forEach(function (value, key) {
