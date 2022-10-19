@@ -5,5 +5,9 @@
             <field name="key">reviews.base.url</field>
             <field name="value">http://localhost:8019/reviews</field>
         </record>
+        <record id="reviews_bg_image_url" model="ir.config_parameter">
+            <field name="key">reviews.bg_image.url</field>
+            <field name="value">http://localhost:8019/reviews/bg-img</field>
+        </record>
     </data>
 </odoo>

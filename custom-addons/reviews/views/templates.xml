@@ -31,7 +31,7 @@
                 <div id="wrapwrap" t-attf-class="#{pageName or ''}">
                     <header t-if="not no_header" id="top"></header>
                     <main class="o_main_container">
-                        <span class="oe_img_bg_review" t-attf-style="background-image:  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/reviews/bg-img/{{reviews_collection_id}}')" />
+                        <span class="oe_img_bg_review" t-attf-style="background-image:  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{{bg_image}}')" />
                         <t t-out="0" />
                     </main>
                     <footer t-if="not no_footer" id="bottom" t-attf-class="bg-light o_footer">

@@ -23,6 +23,7 @@ class Reviews(http.Controller):
             "company_support_phone": form_id.phone or "+1 (650) 555-0111",
             "company_support_email": form_id.email or "info@yourcompany.example.com",
             "reviews_collection_id": form_id.id,
+            "bg_image": f"{self._get_bg_image_base_url()}/{form_id.id}"
         })
 
     @http.route('/reviews/<string:department_token>', type='http', auth="public")
@@ -39,6 +40,7 @@ class Reviews(http.Controller):
             "company_support_phone": department_id.review_collection_id.phone or "+1 (650) 555-0111",
             "company_support_email": department_id.review_collection_id.email or "info@yourcompany.example.com",
             "reviews_collection_id": department_id.review_collection_id.id,
+            "bg_image": f"{self._get_bg_image_base_url()}/{department_id.review_collection_id.id}"
         })
 
     @http.route('/reviews/<string:department_token>/thank-you', type='http', auth="public")
@@ -47,13 +49,15 @@ class Reviews(http.Controller):
         department_id = request.env["hr.department"].sudo().search([
             ("uid", "=", department_token)
         ], limit=1)
-        if not department_id:
+        if not department_id or not department_id.review_collection_id:
             return werkzeug.exceptions.NotFound()
+
         return request.render("reviews.reviews_thankyou_page", {
             "title": department_id.review_collection_id.name,
             "company_support_phone": department_id.review_collection_id.phone or "+1 (650) 555-0111",
             "company_support_email": department_id.review_collection_id.email or "info@yourcompany.example.com",
             "reviews_collection_id": department_id.review_collection_id.id,
+            "bg_image": f"{self._get_bg_image_base_url()}/{department_id.review_collection_id.id}"
         })
 
     @http.route('/reviews/<string:department_token>/handle', type='json', auth="public",  website=True)
@@ -93,3 +97,6 @@ class Reviews(http.Controller):
         if not form_id:
             return werkzeug.exceptions.NotFound()
         return request.env['ir.http'].sudo()._content_image(model='reviews.collection', res_id=form_id, field='bg_img')
+
+    def _get_bg_image_base_url(self):
+        return request.env["ir.config_parameter"].sudo().get_param("reviews.bg_image.url")
