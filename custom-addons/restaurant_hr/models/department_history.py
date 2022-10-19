@@ -22,7 +22,7 @@ class DepartmentHistory(models.Model):
             ("enter", "Enter"),
             ("exit", "Exit"),
         ],
-        default="entered",
+        default="enter",
         required=True
     )
 
