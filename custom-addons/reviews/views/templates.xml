@@ -12,13 +12,6 @@
                 <t t-call-assets="web.assets_frontend" t-js="false" />
             </xpath>
             <xpath expr="//head/script[@id='web.layout.odooscript']" position="after">
-                <!--                <script type="text/javascript">-->
-                <!--                    odoo.__session_info__ = <t t-out="json.dumps(request.env['ir.http'].get_frontend_session_info())"/>;-->
-                <!--                    if (!/(^|;\s)tz=/.test(document.cookie)) {-->
-                <!--                        const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;-->
-                <!--                        document.cookie = `tz=${userTZ}; path=/`;-->
-                <!--                    }-->
-                <!--                </script>-->
                 <t t-call-assets="web.assets_common_minimal" t-css="false" defer_load="True" />
                 <t t-call-assets="web.assets_frontend_minimal" t-css="false" defer_load="True" />
                 <t t-call="web.conditional_assets_tests" />
@@ -72,9 +65,18 @@
             <t t-call="reviews.layout">
                 <section class="reviews_title">
                     <div class="container">
-                        <h1>
-                            <t t-esc="title" />
-                        </h1>
+                        <div class="row">
+                            <h1 class="col-9">
+                                <t t-esc="title" />
+                            </h1>
+                            <div class="col-3">
+                                <select class="form-select language-selector" style="border: 1px solid #fff; border-radius: 5px; background-color: transparent; color: white;">
+                                    <option style="color: black;" value="ro">MD</option>
+                                    <option style="color: black;" value="en">EN</option>
+                                    <option style="color: black;" value="ru">RU</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <section class="o_reviews_form">
@@ -82,7 +84,7 @@
                         <div class="row">
                             <div class="col-lg-8 mt-2 mt-lg-0">
                                 <h3>
-                                    Оставьте ваш отзыв!
+                                    <t t-esc="translate['Leave your feedback!']" />
                                 </h3>
                                 <section>
                                     <div class="container">
@@ -91,7 +93,9 @@
                                                 <div class="form-group col-12">
                                                     <div class="row">
                                                         <label class="col-form-label col-sm-auto" style="width: 200px" for="name">
-                                                            <span>Ваше Имя</span>
+                                                            <span>
+                                                                <t t-esc="translate['Your Name']" />
+                                                            </span>
                                                             <span> *</span>
                                                         </label>
                                                         <div class="col-sm">
@@ -102,7 +106,9 @@
                                                 <div class="form-group col-12">
                                                     <div class="row">
                                                         <label class="col-form-label col-sm-auto" style="width: 200px" for="phone">
-                                                            <span>Тел</span>
+                                                            <span>
+                                                                <t t-esc="translate['Tel']" />
+                                                            </span>
                                                             <span> *</span>
                                                         </label>
                                                         <div class="col-sm">
@@ -113,7 +119,9 @@
                                                 <div class="form-group col-12">
                                                     <div class="row">
                                                         <label class="col-form-label col-sm-auto" style="width: 200px" for="email_from">
-                                                            <span>Email</span>
+                                                            <span>
+                                                                <t t-esc="translate['Email']" />
+                                                            </span>
                                                         </label>
                                                         <div class="col-sm">
                                                             <input type="email" class="form-control" name="email_from" required="" placeholder="name@email.com" />
@@ -123,7 +131,9 @@
                                                 <div class="form-group col-12">
                                                     <div class="row">
                                                         <label class="col-form-label col-sm-auto" style="width: 200px" for="name_of_responsible">
-                                                            <span>Имя ответственного</span>
+                                                            <span>
+                                                                <t t-esc="translate['Responsible Name']" />
+                                                            </span>
                                                         </label>
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control" name="name_of_responsible" />
@@ -133,7 +143,9 @@
                                                 <div class="form-group col-12">
                                                     <div class="row">
                                                         <label class="col-form-label col-sm-auto" style="width: 200px" for="description">
-                                                            <span>Ваш отзыв</span>
+                                                            <span>
+                                                                <t t-esc="translate['Your Feedback']" />
+                                                            </span>
                                                             <span> *</span>
                                                         </label>
                                                         <div class="col-sm">
@@ -145,7 +157,7 @@
                                                     <div style="width: 200px;" />
                                                     <a href="#" role="button" class="btn btn-primary btn-lg o_submit_button">
                                                         <i class="fa fa-send fa-1x fa-fw fa-envelope m-1" />
-                                                        Отправить
+                                                        <t t-esc="translate['Send']" />
                                                     </a>
                                                 </div>
                                             </div>
@@ -187,17 +199,7 @@
                                     <h5 class="text-center">
                                         <span class="fa fa-check-circle" />
                                         <span>
-                                            Спасибо за Ваш отзыв и за то, что помогаете нам стать лучше!
-                                        </span>
-                                        <br />
-                                        <span class="fa fa-check-circle" />
-                                        <span>
-                                            Thank you for your reviews!
-                                        </span>
-                                        <br />
-                                        <span class="fa fa-check-circle" />
-                                        <span>
-                                            Vă mulțumim pentru recenzie și pentru că ne ajutați să devenim mai buni!
+                                            <t t-esc="translate['Thank you for your reviews!']" />
                                         </span>
                                     </h5>
                                 </div>
@@ -216,7 +218,9 @@
 
         <template id="reviews_company_data" name="Reviews thankyou page">
             <ul class="list-unstyled mb-0 pl-2">
-                <li>Контакты</li>
+                <li>
+                    <t t-esc="translate['Contacts']" />
+                </li>
                 <li>
                     <i class="fa fa-phone fa-fw mr-2" />
                     <span class="o_force_ltr">

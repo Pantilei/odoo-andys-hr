@@ -30,10 +30,16 @@
     'auto_install': False,
     'assets': {
         'reviews.reviews_assets': [
-            'reviews/static/src/js/jquery.validate.min.js',
+            'reviews/static/src/libs/jquery.validate.min.js',
             'reviews/static/src/js/reviews.js',
+            'reviews/static/src/js/language_selector.js',
 
             'reviews/static/src/scss/reviews.scss',
+
+            # 'reviews/static/src/libs/bootstrap-select-country-4.2.0/css/bootstrap-select-country.min.css',
+            # 'reviews/static/src/libs/bootstrap-select-country-4.2.0/js/bootstrap-select-country.min.js',
+            # 'reviews/static/src/libs/bootstrap-select-country-4.2.0/js/bootstrap-select-country.min.map',
+
         ],
         'web.assets_backend': [
             # Styles

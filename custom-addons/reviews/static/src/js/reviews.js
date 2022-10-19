@@ -81,7 +81,6 @@ odoo.define("review.form", function (require) {
           dataToSend[key] = value;
         });
 
-        console.log("dataToSend", dataToSend);
         return this._rpc({
           route: window.location.pathname + "/handle",
           params: dataToSend,
