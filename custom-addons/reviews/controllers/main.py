@@ -17,7 +17,7 @@ def _get_translations(lang):
     translations = {
         "en": {
             "Leave your feedback!": "Leave your feedback!",
-            "Restaurant not found!": "Ресторан не найден!",
+            "Restaurant not found!": "Restaurant not Found!",
             "Your Name": "Your Name",
             "Tel": "Tel",
             "Email": "Email",
@@ -66,7 +66,7 @@ class Reviews(http.Controller):
         lang = lang if (lang and lang in ["ru", "en", "ro"]) else 'ro'
         translate = _get_translations(lang)
         return request.render("reviews.reviews_restaurnat_not_found", {
-            "title": translate("Restaurant not found!"),
+            "title": translate["Restaurant not found!"],
             "company_support_phone": form_id.phone or "+1 (650) 555-0111",
             "company_support_email": form_id.email or "info@yourcompany.example.com",
             "translate": translate,

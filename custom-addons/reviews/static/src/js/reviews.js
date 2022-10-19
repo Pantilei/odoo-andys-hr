@@ -109,6 +109,8 @@ odoo.define("review.form", function (require) {
 
     _onSubmit: function (event) {
       event.preventDefault();
+      const queryParams = this._getQueryParams();
+      const lang = queryParams.lang;
       if (this.$form.valid()) {
         var formData = new FormData(this.$form[0]);
         let dataToSend = {};
@@ -121,7 +123,8 @@ odoo.define("review.form", function (require) {
           params: dataToSend,
         }).then((r) => {
           if (r.success) {
-            window.location.href = window.location.pathname + "/thank-you";
+            window.location.href =
+              window.location.pathname + `/thank-you?lang=${lang}`;
           } else {
             console.log(r.message);
           }
