@@ -1,5 +1,4 @@
 import json
-from tkinter import E
 
 from odoo import models, api, fields, _
 
