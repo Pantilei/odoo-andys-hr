@@ -5,14 +5,14 @@
     <div id="chart-container"></div>
     <script type="text/javascript">
       $(function() {
-        <!-- Get Employee Data -->
-        var datascource = employee_data.values;
+      <!-- Get Employee Data -->
+      var datasource = employee_data.values;
 
-        var oc = $('#chart-container').orgchart({
-          'data' : datascource,
-          'nodeTemplate': nodeTemplate,
-          'toggleSiblingsResp': true
-        });
+      var oc = $('#chart-container').orgchart({
+        'data' : datasource,
+        'nodeTemplate': nodeTemplate,
+        'toggleSiblingsResp': true
+      });
 
       });
     </script>

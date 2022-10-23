@@ -30,6 +30,7 @@
         'views/available_hr_jobs.xml',
         'views/hr_branch.xml',
         'views/department_history.xml',
+        'views/hr_dep_org_chart.xml',
 
         'wizards/employee_survey_select_wizard.xml',
         'wizards/applicant_survey_select_wizard.xml',
@@ -49,9 +50,18 @@
     'assets': {
         'web._assets_primary_variables': [],
         'web.assets_backend': [
+
+            'restaurant_hr/static/libs/d3_orgchart/d3.v7.min.js',
+            'restaurant_hr/static/libs/d3_orgchart/d3-org-chart.js',
+            'restaurant_hr/static/libs/d3_orgchart/d3-flextree.js',
+
+
             'web/static/lib/Chart/Chart.js',
+
             'restaurant_hr/static/src/js/action_menus.js',
             'restaurant_hr/static/src/js/json_to_chart_widget.js',
+            'restaurant_hr/static/src/js/department_org_chart.js',
+            'restaurant_hr/static/src/scss/department_org_chart.scss',
         ],
         'web.assets_frontend': [],
         'web.assets_tests': [],
@@ -59,6 +69,7 @@
         'web.report_assets_common': [],
         'web.assets_qweb': [
             'restaurant_hr/static/src/xml/json_to_chart_widget.xml',
+            'restaurant_hr/static/src/xml/department_org_chart.xml',
         ],
     },
     'license': 'LGPL-3',

@@ -39,6 +39,11 @@
                 <xpath expr="//field[@name='parent_id']" position="after">
                     <field name="department_size" />
                 </xpath>
+                <xpath expr="//widget[@name='web_ribbon']" position="before">
+                    <div class="oe_button_box" name="button_box">
+                        <button name="org_chart_department" type="object" class="oe_stat_button" icon="fa-users"></button>
+                    </div>
+                </xpath>
             </data>
         </field>
     </record>

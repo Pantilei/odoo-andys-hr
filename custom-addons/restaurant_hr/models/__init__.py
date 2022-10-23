@@ -9,3 +9,4 @@ from . import available_hr_jobs
 from . import hr_branch
 from . import hr_qualification
 from . import department_history
+from . import hr_dep_org_chart
