@@ -8,11 +8,11 @@ const { useState, onWillUpdateProps, onMounted, useRef } = owl.hooks;
 export default class DepartmentOrgChart extends AbstractFieldOwl {
   constructor(...args) {
     super(...args);
+    this.parentWidget = args[0].parentWidget;
   }
 
   setup() {
     super.setup();
-    console.log("THIS: ", this);
     this.chart = null;
 
     this.state = useState({
@@ -41,7 +41,17 @@ export default class DepartmentOrgChart extends AbstractFieldOwl {
       .compactMarginPair((d) => 80)
       .initialZoom(0.6)
       .onNodeClick((d) => {
-        console.log(d + " node clicked");
+        let id = parseInt(d);
+        if (Number.isInteger(id)) {
+          this.parentWidget.do_action({
+            name: this.env._t("Employee"),
+            type: "ir.actions.act_window",
+            res_model: "hr.employee",
+            res_id: id,
+            view_mode: "form",
+            views: [[false, "form"]],
+          });
+        }
       })
       .nodeContent(function (d, i, arr, state) {
         const colors = [
@@ -100,7 +110,6 @@ export default class DepartmentOrgChart extends AbstractFieldOwl {
       })
       .render()
       .expandAll();
-    console.log(this.chart);
   }
   _downloadOrgImg() {
     this.chart.exportImg({ full: true, scale: 5 });
