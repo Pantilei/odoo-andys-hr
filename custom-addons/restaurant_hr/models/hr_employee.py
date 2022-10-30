@@ -1,12 +1,10 @@
 import os
-from odoo import api, models, fields, _, SUPERUSER_ID
-from odoo.osv import expression
-from odoo.exceptions import UserError, AccessError
+from odoo import api, models, fields, _
+from odoo.exceptions import UserError
 
-from datetime import datetime, timedelta
+from datetime import datetime
 import pandas as pd
 import numpy as np
-import traceback
 import logging
 
 
@@ -235,6 +233,72 @@ class HrEmployee(models.Model):
         }])
 
     # DATA IMPORT
+    def import_employee_data2(self):
+        Employee = self.env["hr.employee"]
+        Department = self.env["hr.department"]
+        Job = self.env["hr.job"]
+        ceo_id = Employee.search([
+            ("name", "=", "Tranga Andrei")
+        ], limit=1)
+
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+        df_employees = pd.read_csv(os.path.join(
+            path, '../data/employee_data.csv'), dtype=str).replace({np.nan: None})
+
+        for record in df_employees.to_dict("records"):
+            print("\n", record)
+            department_id = Department.search([
+                ("name", "=", record["Подразделение"])
+            ], limit=1)
+            if not department_id:
+                raise UserError("Cannot find department!")
+            job_id = self._get_job(record["Должность"], department_id)
+            parent_id = department_id.manager_id
+            address_id = self._get_address(
+                record["Фамилия, имя"], record["Адрес"])
+            employee_id = Employee.search([
+                ("name", "=", record["Фамилия, имя"]),
+            ], limit=1)
+            passport_series, passport_id = record["Серия Номер Паспорта"].split(
+                " ")
+            if not employee_id:
+
+                employee_id = Employee.create({
+                    "name": record["Фамилия, имя"],
+                    "department_id": department_id.id,
+                    "job_id": job_id.id,
+                    "entry_date": datetime.strptime(record['Дата оформления'], '%d.%m.%Y %H:%M:%S') if record['Дата оформления'] else False,
+                    "employee_type": "employee",
+                    "parent_id": parent_id.id,
+                    "identification_id": record["Фиск код"],
+                    "country_of_birth": 138,
+                    "country_id": 138,
+                    "address_home_id": address_id.id,
+                    "passport_type": "Buletin de identitate al cetat.RM",
+                    "passport_series": passport_series,
+                    "passport_id": passport_id,
+                    "gender": record["Пол"],
+                    "resource_calendar_id": 1
+                })
+            else:
+                employee_id.write({
+                    "name": record["Фамилия, имя"],
+                    "department_id": department_id.id,
+                    "job_id": job_id.id,
+                    "entry_date": datetime.strptime(record['Дата оформления'], '%d.%m.%Y %H:%M:%S') if record['Дата оформления'] else False,
+                    "employee_type": "employee",
+                    "parent_id": parent_id.id,
+                    "identification_id": record["Фиск код"],
+                    "country_of_birth": 138,
+                    "country_id": 138,
+                    "address_home_id": address_id.id,
+                    "passport_type": "Buletin de identitate al cetat.RM",
+                    "passport_series": passport_series,
+                    "passport_id": passport_id,
+                    "gender": record["Пол"],
+                    "resource_calendar_id": 1
+                })
+
     def import_employee_data(self):
         Employee = self.env["hr.employee"]
         Department = self.env["hr.department"]
