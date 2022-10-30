@@ -32,6 +32,7 @@ export default class DepartmentOrgChart extends AbstractFieldOwl {
     const dataFlattened = this.state.data;
     this.chart = new d3.OrgChart()
       .container(".chart-container")
+      .svgHeight(970)
       .data(dataFlattened)
       .rootMargin(100)
       .nodeWidth((d) => 210)
@@ -110,6 +111,7 @@ export default class DepartmentOrgChart extends AbstractFieldOwl {
       })
       .render()
       .expandAll();
+    console.log(this.chart);
   }
   _downloadOrgImg() {
     this.chart.exportImg({ full: true, scale: 5 });

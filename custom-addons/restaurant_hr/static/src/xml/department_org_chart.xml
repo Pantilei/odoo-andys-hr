@@ -2,13 +2,13 @@
 <templates>
 
     <t t-name="DepartmentOrgChart" owl="1">
-        <div>
+        <div style="border: 1px solid black; border-radius: 10px; padding: 5px;">
             <div class="w-100">
                 <button type="button"
                     t-on-click="_downloadOrgImg"
                     class="btn btn-outline-primary float-right">Download</button>
             </div>
-            <div class="chart-container" style="height: 1200px; background-color: #fffeff"></div>
+            <div class="chart-container" style="height: 1000px; background-color: #fffeff"></div>
         </div>
     </t>
 

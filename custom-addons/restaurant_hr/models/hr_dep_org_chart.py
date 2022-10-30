@@ -61,16 +61,16 @@ class HrDepOrgChart(models.TransientModel):
                     "positionName": e.job_id.name,
                 } for e in job_employee_ids])
 
-            manager_of_manager_id = record.department_id.manager_id.parent_id
-            if manager_of_manager_id:
-                data[0]["parentId"] = f"{manager_of_manager_id.id}"
-                data.insert(0, {
-                    "id": f"{manager_of_manager_id.id}",
-                    "name": manager_of_manager_id.name,
-                    "imageUrl": self._get_image(manager_of_manager_id.id),
-                    "parentId": None,
-                    "positionName": manager_of_manager_id.job_id.name,
-                })
+            # manager_of_manager_id = record.department_id.manager_id.parent_id
+            # if manager_of_manager_id:
+            #     data[0]["parentId"] = f"{manager_of_manager_id.id}"
+            #     data.insert(0, {
+            #         "id": f"{manager_of_manager_id.id}",
+            #         "name": manager_of_manager_id.name,
+            #         "imageUrl": self._get_image(manager_of_manager_id.id),
+            #         "parentId": None,
+            #         "positionName": manager_of_manager_id.job_id.name,
+            #     })
             record.chart_json = json.dumps(data)
 
     def _get_image(self, emp_id):

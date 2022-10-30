@@ -1,4 +1,4 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, _
 
 
 class HrDepartment(models.Model):
@@ -26,14 +26,14 @@ class HrDepartment(models.Model):
     )
 
     def org_chart_department(self):
+        org_chart_id = self.env["restaurant_hr.hr_dep_org_chart"].create({
+            "department_id": self.id,
+        })
         return {
-            "name": _("Org Chart"),
+            "name": self.name,
             "type": "ir.actions.act_window",
             "res_model": "restaurant_hr.hr_dep_org_chart",
-            "context": {
-                "default_department_id": self.id
-            },
-            'view_mode': 'form',
+            'res_id': org_chart_id.id,
             "views": [[False, "form"]],
             "target": "current"
         }
