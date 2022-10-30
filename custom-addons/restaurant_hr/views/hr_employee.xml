@@ -36,7 +36,7 @@
             <xpath expr="//header" position="inside">
                 <button type="object" name="assess_employee" string="Assess Employee" class="oe_highlight" />
                 <!-- <button type="object" name="import_employee_data" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
-                <button type="object" name="import_employee_data2" string="Import Employees" class="oe_highlight" groups="base.group_no_one" />
+                <!-- <button type="object" name="import_employee_data2" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
             </xpath>
 
             <xpath expr="//field[@name='bank_account_id']" position="replace"></xpath>
@@ -139,6 +139,10 @@
         <field name="arch" type="xml">
             <xpath expr="//kanban" position="inside">
                 <field name="assessed" />
+                <field name="employee_type" />
+            </xpath>
+            <xpath expr="//div[hasclass('o_hr_kanban_record')]" position="attributes">
+                <attribute name="t-attf-style">background-color:{{record.employee_type.raw_value == 'trainee' ? 'rgba(244,171,2,0.2)' : ''}};</attribute>
             </xpath>
             <xpath expr="//div[hasclass('o_kanban_record_headings')]" position="inside">
                 <div class="row">
@@ -159,6 +163,22 @@
                             ID:
                             <field name="personal_id" />
                         </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span class="font-weight-bold">Employee Type: </span>
+                        <t t-if="record.employee_type.raw_value != 'trainee'">
+                            <span class="badge badge-success">
+                                <field name="employee_type" />
+                            </span>
+                        </t>
+                        <t t-if="record.employee_type.raw_value == 'trainee'">
+                            <span class="badge badge-warning">
+                                <field name="employee_type" />
+                            </span>
+                        </t>
+
                     </div>
                 </div>
             </xpath>
