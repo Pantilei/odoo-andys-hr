@@ -34,17 +34,13 @@ class HrEmployee(models.Model):
                 record.course_ids) != 0 and record.access_to_e_learning
 
     def assign_to_course(self):
-        if not self.work_email:
-            raise UserError(
-                _("Please, give the work email to employee before assigning the course!"))
-
         return {
             "name": _("Select Course"),
             "type": "ir.actions.act_window",
-            "res_model": "hr_learn_platform.employee_assign_course",
+            "res_model": "hr_learn_platform.employee_assign_many_courses",
             "views": [(False, "form")],
             "context": {
-                "employee_id": self.id,
+                "employee_ids": self.ids,
             },
             "target": "new"
         }

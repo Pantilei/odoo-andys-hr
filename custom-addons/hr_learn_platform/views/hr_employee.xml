@@ -32,4 +32,17 @@
         </field>
     </record>
 
+    <record id="view_employee_tree" model="ir.ui.view">
+        <field name="name">hr.employee.view_employee_tree_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <header>
+                    <button name="assign_to_course" type="object" string="Assign to Course" class="oe_highlight" />
+                </header>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
