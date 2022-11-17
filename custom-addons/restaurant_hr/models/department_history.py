@@ -8,13 +8,17 @@ class DepartmentHistory(models.Model):
     department_id = fields.Many2one(
         comodel_name="hr.department",
         string="Department",
-        required=True
+        index=True,
+        required=True,
+        ondelete="cascade",
     )
 
     employee_id = fields.Many2one(
         comodel_name="hr.employee",
         string="Employee",
-        required=True
+        index=True,
+        required=True,
+        ondelete="cascade",
     )
 
     status = fields.Selection(
@@ -23,10 +27,12 @@ class DepartmentHistory(models.Model):
             ("exit", "Exit"),
         ],
         default="enter",
+        index=True,
         required=True
     )
 
     history_date = fields.Datetime(
         string="History Date",
-        required=True
+        required=True,
+        index=True,
     )
