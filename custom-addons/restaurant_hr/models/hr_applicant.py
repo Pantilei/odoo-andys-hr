@@ -2,6 +2,14 @@ from odoo import api, models, fields, _
 from odoo.exceptions import UserError
 
 
+AVAILABLE_PRIORITIES = [
+    ('0', 'Normal'),
+    ('1', 'Good'),
+    ('2', 'Very Good'),
+    ('3', 'Excellent')
+]
+
+
 class HrApplicant(models.Model):
     _inherit = "hr.applicant"
 
@@ -10,6 +18,15 @@ class HrApplicant(models.Model):
         inverse_name="applicant_id",
         string="Responces",
         groups="survey.group_survey_user"
+    )
+
+    job_group_id = fields.Many2one(
+        comodel_name="restaurant_hr.hr_job_group",
+        string="Job"
+    )
+
+    priority = fields.Selection(
+        string="Priority",
     )
 
     def assess_applicant(self):

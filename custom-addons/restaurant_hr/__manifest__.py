@@ -27,7 +27,7 @@
         'views/survey_survey.xml',
         'views/hr_applicant.xml',
         'views/hr_job.xml',
-        'views/available_hr_jobs.xml',
+        'views/hr_job_group.xml',
         'views/hr_branch.xml',
         'views/department_history.xml',
         'views/hr_dep_org_chart.xml',

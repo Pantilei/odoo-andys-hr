@@ -55,53 +55,53 @@
     </record>
 
     <menuitem
-        id="available_job_position_name_menu"
-        name="Available Job Position Name"
+        id="job_group_menu"
+        name="Job Group"
         parent="hr_recruitment.menu_hr_recruitment_configuration"
-        action="restaurant_hr.available_hr_job_names_action"
-        sequence="3"/>
+        action="restaurant_hr.hr_job_group_action"
+        sequence="3" />
 
-    
+
     <menuitem
         id="employee_payment_rate_menu"
         name="Employee Payment Rate"
         parent="hr.menu_hr_employee_payroll"
         action="restaurant_hr.employee_payment_rate_action"
-        sequence="10"/>
+        sequence="10" />
 
-    
+
     <menuitem
         id="hr_job_open_to_recruit"
         name="Available Open Jobs"
         parent="hr_recruitment.menu_hr_recruitment_root"
         action="restaurant_hr.hr_job_open_to_recruit_action"
-        sequence="3"/>
+        sequence="3" />
 
     <menuitem
         id="hr_branch"
         name="Branch"
         parent="hr.menu_hr_root"
         action="restaurant_hr.hr_branch_action"
-        sequence="20"/>
+        sequence="20" />
 
     <menuitem
         id="reporting"
         name="Reporting"
         parent="hr.menu_hr_root"
-        sequence="60"/>
+        sequence="60" />
 
     <menuitem
         id="hr_department_history"
         name="Brain Drain"
         parent="restaurant_hr.reporting"
         action="restaurant_hr.department_history_action"
-        sequence="5"/>
+        sequence="5" />
 
     <menuitem
         id="hr_department_history_report"
         name="Brain Drain Graphs"
         parent="restaurant_hr.reporting"
         action="restaurant_hr.department_history_report_wizard_action"
-        sequence="10"/>
+        sequence="10" />
 
 </odoo>

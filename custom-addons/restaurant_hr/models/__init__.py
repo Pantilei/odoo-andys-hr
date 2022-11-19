@@ -5,7 +5,7 @@ from . import hr_applicant
 from . import hr_job
 from . import survey_survey
 from . import hr_department
-from . import available_hr_jobs
+from . import hr_job_group
 from . import hr_branch
 from . import hr_qualification
 from . import department_history

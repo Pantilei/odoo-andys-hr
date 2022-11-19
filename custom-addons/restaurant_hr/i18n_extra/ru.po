@@ -2192,3 +2192,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
 msgid "Payroll"
 msgstr "Платёжная ведомость"
+
+#. module: hr_recruitment
+#: model:ir.model.fields,field_description:hr_recruitment.field_hr_applicant__priority
+msgid "Appreciation"
+msgstr "Приоритет"
