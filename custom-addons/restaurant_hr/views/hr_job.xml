@@ -35,6 +35,36 @@
         </field>
     </record>
 
+    <record id="view_hr_job_kanban" model="ir.ui.view">
+        <field name="name">hr.job.kanban.inherit</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr_recruitment.view_hr_job_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_card_content')]/t/.." position="before">
+                <div class="row">
+                    <div class="col-12">
+                        <span class="font-weight-bold">Department: </span>
+                        <field name="department_id" />
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='new_application_count']/../../button" position="attributes">
+                <attribute name="context">{'create': 1}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_job_kanban_inherit" model="ir.ui.view">
+        <field name="name">hr.job.kanban.inherit</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr_recruitment_survey.view_hr_job_kanban_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//a[@name='action_print_survey']" position="replace"></xpath>
+            <xpath expr="//a[@name='action_new_survey']" position="replace"></xpath>
+        </field>
+    </record>
+
     <record id="hr_job_simple_form" model="ir.ui.view">
         <field name="name">hr_recruitment.simple.form.inherit</field>
         <field name="model">hr.job</field>
@@ -77,5 +107,10 @@
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_job_filter" />
         <field name="context">{"search_default_status":1, "search_default_department":1, "search_default_name_group":1}</field>
+    </record>
+
+    <record id="hr_recruitment.action_hr_job" model="ir.actions.act_window">
+        <field name="name">Availaible Jobs</field>
+        <field name="context">{'create': 0, 'delete': 0}</field>
     </record>
 </odoo>

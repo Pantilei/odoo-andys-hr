@@ -9,16 +9,14 @@ class DepartmentHistory(models.Model):
         comodel_name="hr.department",
         string="Department",
         index=True,
-        required=True,
-        ondelete="cascade",
+        ondelete="set null",
     )
 
     employee_id = fields.Many2one(
         comodel_name="hr.employee",
         string="Employee",
         index=True,
-        required=True,
-        ondelete="cascade",
+        ondelete="set null",
     )
 
     status = fields.Selection(

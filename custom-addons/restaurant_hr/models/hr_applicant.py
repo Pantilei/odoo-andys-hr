@@ -20,11 +20,6 @@ class HrApplicant(models.Model):
         groups="survey.group_survey_user"
     )
 
-    job_group_id = fields.Many2one(
-        comodel_name="restaurant_hr.hr_job_group",
-        string="Job"
-    )
-
     priority = fields.Selection(
         string="Priority",
     )
