@@ -28,7 +28,7 @@ class HrJob(models.Model):
         for record in self:
             name = record.name
             if department_id := record.department_id:
-                name = f'{name}[{department_id.name}]'
+                name = f'{name} [{department_id.name}]'
             res.append((record.id, name))
         return res
 
@@ -36,6 +36,7 @@ class HrJob(models.Model):
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
         domain = ['|', ("name", operator, name),
                   ("department_id.name", operator, name)]
+
         return self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
 
     @api.onchange("hr_job_group_id")

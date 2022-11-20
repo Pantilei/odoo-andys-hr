@@ -2197,3 +2197,21 @@ msgstr "Платёжная ведомость"
 #: model:ir.model.fields,field_description:hr_recruitment.field_hr_applicant__priority
 msgid "Appreciation"
 msgstr "Приоритет"
+
+
+#. module: hr_skills
+#: model_terms:ir.ui.view,arch_db:hr_skills.resume_line_view_form
+msgid "e.g. Odoo Inc."
+msgstr "например: Повар в Andy's"
+
+#. module: hr_skills
+#: model_terms:ir.ui.view,arch_db:hr_skills.resume_line_view_form
+msgid "Title"
+msgstr "Название"
+
+#. module: hr_skills
+#: model:ir.model.fields,field_description:hr_skills.field_hr_employee__resume_line_ids
+#: model:ir.model.fields,field_description:hr_skills.field_hr_employee_public__resume_line_ids
+#: model:ir.model.fields,field_description:hr_skills.field_res_users__resume_line_ids
+msgid "Resumé lines"
+msgstr " Записи резюме"

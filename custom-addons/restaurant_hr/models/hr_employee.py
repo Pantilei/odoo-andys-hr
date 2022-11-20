@@ -28,6 +28,11 @@ class HrEmployee(models.Model):
         default=lambda self: self.env.user.department_id
     )
 
+    job_id = fields.Many2one(
+        'hr.job', 'Job Position',
+        domain="[('department_id', 'child_of', department_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"
+    )
+
     entry_date = fields.Date(
         string="Entry Date",
         default=lambda self: datetime.today()

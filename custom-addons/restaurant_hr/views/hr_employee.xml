@@ -14,6 +14,25 @@
                 <field name="department_id" readonly="1" />
             </xpath>
 
+            <!-- Ensure that users are not able to fast create the job and user even HR Settings are hidden -->
+            <xpath expr="//field[@name='job_id']" position="replace">
+                <field name="job_id" options="{'no_create': True}" />
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="user_id" options="{'no_create': True}" />
+            </xpath>
+            <!--  -->
+
+            <xpath expr="//field[@name='parent_id']" position="before">
+                <field name="job_id" options="{'no_create': True}" />
+                <field name="employee_type" />
+            </xpath>
+
+
+            <xpath expr="//field[@name='work_location_id']" position="after">
+                <field name="user_id" options="{'no_create': True}" />
+            </xpath>
+
             <xpath expr="//field[@name='coach_id']" position="replace">
                 <field name="branch_id" options="{'no_create': True}" />
                 <field name="qualification_id" />
@@ -82,6 +101,10 @@
                 </page>
             </xpath>
 
+            <xpath expr="//page[@name='hr_settings']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
             <xpath expr="//group[@name='identification_group']" position="replace"></xpath>
             <xpath expr="//group[@name='managers']" position="replace">
                 <group name="source" string="Source">
@@ -101,7 +124,7 @@
         <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_manager')])]" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='department_id']" position="replace">
-                <field name="department_id" />
+                <field name="department_id" options="{'no_create': True}" />
             </xpath>
         </field>
     </record>
@@ -114,6 +137,7 @@
             <xpath expr="//div[hasclass('row')]" position="before">
                 <div class="row">
                     <div class="col-lg-12">
+                        <separator string="PDF Resumé" />
                         <label for="resume_pdf" />
                         <field name="resume_pdf" />
                     </div>
