@@ -29,6 +29,11 @@ class HrApplicant(models.Model):
         string="Priority",
     )
 
+    branch_id = fields.Many2one(
+        comodel_name="restaurant_hr.hr_branch",
+        string="Branch"
+    )
+
     def assess_applicant(self):
         return {
             'name': _('Select Survey'),

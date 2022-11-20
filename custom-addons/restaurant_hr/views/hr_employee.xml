@@ -235,6 +235,8 @@
                 <field name="department_id" />
             </xpath>
 
+            <xpath expr="//filter[@name='message_needaction']" position="replace"></xpath>
+
             <xpath expr="//filter[@name='inactive']" position="after">
                 <separator />
                 <filter string="Employee" name="employee_type_employee" domain="[('employee_type', '=', 'employee')]" />
@@ -248,11 +250,22 @@
                 <filter name="branch_id" string="Branch" domain="[]" context="{'group_by': 'branch_id'}" />
                 <filter name="qualification_id" string="Qualification" domain="[]" context="{'group_by': 'qualification_id'}" />
                 <filter name="employee_type" string="Employee Type" domain="[]" context="{'group_by': 'employee_type'}" />
+                <separator />
+                <filter name="departure_reason" string="Dismissal Reason" domain="[]" context="{'group_by': 'departure_reason_id'}" />
+                <separator />
             </xpath>
             <xpath expr="//searchpanel/field[@name='department_id']" position="before">
                 <field name="branch_id" icon="fa-users" enable_counters="1" />
             </xpath>
         </field>
+    </record>
+
+    <record id="filter_and_group_by_dismissal_reason" model="ir.filters">
+        <field name="name">Dismissal Reason</field>
+        <field name="model_id">hr.employee</field>
+        <field name="domain">[('active', '=', False)]</field>
+        <field name="user_id" eval="False" />
+        <field name="context">{'group_by': ['departure_reason_id']}</field>
     </record>
 
     <record id="hr.act_employee_from_department" model="ir.actions.act_window">

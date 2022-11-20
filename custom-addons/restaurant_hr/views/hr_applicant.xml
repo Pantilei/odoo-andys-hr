@@ -16,6 +16,7 @@
 
             <xpath expr="//field[@name='job_id']" position="replace">
                 <field name="job_group_id" options="{'no_create': 1}" />
+                <field name="branch_id" options="{'no_create': True}" />
                 <field name="job_id" invisible="1" />
             </xpath>
             <xpath expr="//field[@name='department_id']" position="replace">
@@ -73,7 +74,8 @@
         <field name="inherit_id" ref="hr_recruitment.crm_case_tree_view_job" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='job_id']" position="replace">
-                <field name="job_group_id" />
+                <field name="job_group_id" options="{'no_create': True}" />
+                <field name="branch_id" options="{'no_create': True}" />
             </xpath>
             <xpath expr="//field[@name='salary_proposed']" position="replace"></xpath>
             <xpath expr="//field[@name='salary_expected']" position="replace"></xpath>
@@ -109,7 +111,7 @@
                 <filter string="Job" name="job_group" domain="[]" context="{'group_by': 'job_group_id'}" />
             </xpath>
             <xpath expr="//filter[@name='unassigned']" position="replace">
-                <filter name="on_hire" string="In process of hiring" domain="[('stage_id.hired_stage', '=', False)]" />
+                <filter name="on_hire" string="In process of hiring" domain="['|', ('stage_id.hired_stage', '=', False), ('stage_id', '=', False)]" />
             </xpath>
         </field>
     </record>
