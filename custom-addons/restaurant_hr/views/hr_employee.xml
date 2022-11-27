@@ -35,7 +35,7 @@
 
             <xpath expr="//field[@name='coach_id']" position="replace">
                 <field name="branch_id" options="{'no_create': True}" />
-                <field name="qualification_id" />
+                <field name="qualification_id" options="{'no_create': True}" />
             </xpath>
 
             <xpath expr="//field[@name='passport_id']" position="after">
@@ -47,6 +47,7 @@
 
             <xpath expr="//field[@name='work_email']" position="after">
                 <field name="entry_date" />
+                <field name="trainee_start_date" />
                 <field name="personal_id" string="ID" />
             </xpath>
 
@@ -97,6 +98,12 @@
 
                             </form>
                         </field>
+                    </group>
+                </page>
+                <page name="cloth" string="Cloth">
+                    <group>
+                        <field name="tshirt_size" />
+                        <field name="pants_size" />
                     </group>
                 </page>
             </xpath>

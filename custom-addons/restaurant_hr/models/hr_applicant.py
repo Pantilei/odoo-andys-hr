@@ -29,6 +29,29 @@ class HrApplicant(models.Model):
         string="Branch"
     )
 
+    birth_date = fields.Date(string="Birth Date")
+
+    last_response_score = fields.Float(
+        string="Last Score (%)",
+        compute="_compute_last_responce_score",
+        store=True
+    )
+
+    def write(self, vals):
+        if "emp_id" in vals:
+            hired_stage_id = self.env["hr.recruitment.stage"].search(
+                [("hired_stage", "=", True)], limit=1)
+            vals["stage_id"] = hired_stage_id.id
+        return super(HrApplicant, self).write(vals)
+
+    @api.depends("response_ids.scoring_percentage")
+    def _compute_last_responce_score(self):
+        for record in self:
+            sorted_responses = record.response_ids\
+                .filtered(lambda r: r.state == "done")\
+                .sorted(key=lambda r: r.create_date)
+            record.last_response_score = sorted_responses[0].scoring_percentage if sorted_responses else False
+
     def assess_applicant(self):
         return {
             'name': _('Select Survey'),

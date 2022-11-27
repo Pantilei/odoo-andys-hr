@@ -38,6 +38,10 @@ class HrEmployee(models.Model):
         default=lambda self: datetime.today()
     )
 
+    trainee_start_date = fields.Date(
+        string="Trainee Start Date"
+    )
+
     passport_type = fields.Char(
         string="Passport Type"
     )
@@ -114,6 +118,32 @@ class HrEmployee(models.Model):
         string="Personal ID",
         compute="_compute_persanal_id"
     )
+
+    # Clothing
+    tshirt_size = fields.Selection(selection=[
+        ("S", "S"),
+        ("M", "M"),
+        ("L", "L"),
+        ("XL", "XL"),
+        ("XXL", "XXL"),
+        ("XXXL", "XXXL"),
+    ], string="T-Shirt Size")
+
+    pants_size = fields.Selection(selection=[
+        ("32", "32"),
+        ("34", "34"),
+        ("36", "36"),
+        ("38", "38"),
+        ("40", "40"),
+        ("42", "42"),
+        ("44", "44"),
+        ("46", "46"),
+        ("48", "48"),
+        ("50", "50"),
+        ("52", "52"),
+        ("54", "54"),
+        ("56", "56"),
+    ], string="Pant's Size")
 
     @api.depends("create_date")
     def _compute_persanal_id(self):

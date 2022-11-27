@@ -78,11 +78,17 @@
         sequence="3" />
 
     <menuitem
-        id="hr_branch"
+        id="hr_branch_menu"
         name="Branch"
-        parent="hr.menu_hr_root"
+        parent="hr.menu_human_resources_configuration"
         action="restaurant_hr.hr_branch_action"
-        sequence="20" />
+        sequence="1" />
+    <menuitem
+        id="hr_qualification_menu"
+        name="Qualification"
+        parent="hr.menu_human_resources_configuration"
+        action="restaurant_hr.qualification_action"
+        sequence="1" />
 
     <menuitem
         id="reporting"
