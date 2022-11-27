@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="employee_card_layout" name="Web layout">
+            &lt;!DOCTYPE html&gt;
+            <html t-att="html_data or {}">
+                <head>
+                    <meta charset="utf-8" />
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+                    <title t-esc="employee_name" />
+                    <link type="image/x-icon" rel="shortcut icon" t-att-href="x_icon" />
+                    <link rel="preload" href="/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin="" />
+                    <t t-call-assets="web.assets_common" t-js="false" />
+                    <t t-call-assets="web.assets_frontend" t-js="false" />
+
+                    <t t-call-assets="web.assets_common_minimal" t-css="false" defer_load="True" />
+                    <t t-call-assets="web.assets_frontend_minimal" t-css="false" defer_load="True" />
+                    <t t-call="web.conditional_assets_tests" />
+                    <t t-call-assets="web.assets_common_lazy" t-css="false" lazy_load="True" />
+                    <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True" />
+
+                    <t t-call-assets="reviews.reviews_assets" lazy_load="True" />
+
+                    <t t-out="head or ''" />
+                </head>
+                <body t-att-class="body_classname">
+                    <div id="wrapwrap" t-attf-class="#{pageName or ''}">
+                        <header t-if="not no_header" id="top"></header>
+                        <main class="o_main_container">
+                            <t t-out="0" />
+                        </main>
+                        <footer t-if="not no_footer" id="bottom" t-attf-class="bg-light o_footer">
+                            <div id="footer" />
+                        </footer>
+                    </div>
+                </body>
+            </html>
+        </template>
+        <!-- Main employee card layout -->
+
+        <!-- Main survey template -->
+        <template id="employee_card" name="Employee Card">
+            <t t-call="restaurant_hr.employee_card_layout">
+                <section>
+                    <div class="container">
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <h2>
+                                    <strong>Личное дело сотрудника</strong>
+                                </h2>
+                            </div>
+                            <div class="col-6">
+                                <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"></img>
+                            </div>
+                            <!-- <h3>
+                                <t t-esc="title" />
+                            </h3> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row mt-4">
+                                    <div class="col-3">
+                                        <strong>ФИО:</strong>
+                                    </div>
+                                    <div class="col-9">
+                                        <t t-esc="employee_name" />
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-3">
+                                        <strong>
+                                            Дата рождения:
+                                        </strong>
+                                    </div>
+                                    <div class="col-9">
+                                        <t t-esc="birth_date" />
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-3">
+                                        <strong>
+                                            Должность:
+                                        </strong>
+                                    </div>
+                                    <div class="col-9">
+                                        <t t-esc="job_name" />
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-3">
+                                        <strong>Работает с:</strong>
+                                    </div>
+                                    <div class="col-9">
+                                        <t t-esc="entry_date" />
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-3">
+                                        <strong>Мобильный:</strong>
+                                    </div>
+                                    <div class="col-9">
+                                        <t t-esc="mobile_phone" />
+                                        /
+                                        <t t-esc="work_phone" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <img t-attf-src="/web/image/hr.employee.public/{{employee_id}}/image_1024" width="200" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+
+    </data>
+</odoo>

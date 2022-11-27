@@ -38,6 +38,8 @@
         'wizards/applicant_survey_select_wizard.xml',
         'wizards/department_history_report.xml',
 
+        'templates/employee_card_template.xml',
+
         'views/menu_items.xml',
 
         'data/data.xml',

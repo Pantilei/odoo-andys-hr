@@ -225,6 +225,14 @@ class HrEmployee(models.Model):
             'target': 'new'
         }
 
+    def view_employee_card(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'name': "Emplyee Card",
+            'target': 'new',
+            'url': f"/hr/employee-card/{self.id}",
+        }
+
     @api.model_create_multi
     def create(self, vals_list):
         self.clear_caches()
