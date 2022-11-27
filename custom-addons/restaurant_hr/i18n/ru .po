@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 17:39+0000\n"
-"PO-Revision-Date: 2022-11-27 17:39+0000\n"
+"POT-Creation-Date: 2022-11-27 20:21+0000\n"
+"PO-Revision-Date: 2022-11-27 20:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -116,6 +116,42 @@ msgstr "<span class=\"font-weight-bold\">Подразделение: </span>"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_kanban_view_employees
 msgid "<span class=\"font-weight-bold\">Employee Type: </span>"
 msgstr "<span class=\"font-weight-bold\">Тип Сотрудника: </span>"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
+msgid ""
+"<strong>\n"
+"                                            Дата рождения:\n"
+"                                        </strong>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
+msgid ""
+"<strong>\n"
+"                                            Должность:\n"
+"                                        </strong>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
+msgid "<strong>Личное дело сотрудника</strong>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
+msgid "<strong>Мобильный:</strong>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
+msgid "<strong>Работает с:</strong>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
+msgid "<strong>ФИО:</strong>"
+msgstr ""
 
 #. module: restaurant_hr
 #. openerp-web
@@ -239,7 +275,7 @@ msgstr ""
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "Cloth"
-msgstr "Одежда"
+msgstr ""
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
@@ -579,6 +615,11 @@ msgid "Last Updated on"
 msgstr "Последнее Обновление в"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
+msgid "Logo"
+msgstr "Логотип"
+
+#. module: restaurant_hr
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_department__department_size__medium
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey_wage_rate__department_size__medium
 msgid "Medium"
@@ -832,6 +873,11 @@ msgstr "Пользователи"
 #, python-format
 msgid "View Answers"
 msgstr "Посмотреть  Ответы"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
+msgid "View Card"
+msgstr "Просмотреть Карточку Сотрудника"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.survey_form
