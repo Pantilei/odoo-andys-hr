@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-20 15:29+0000\n"
-"PO-Revision-Date: 2022-11-20 15:29+0000\n"
+"POT-Creation-Date: 2022-11-27 17:39+0000\n"
+"PO-Revision-Date: 2022-11-27 17:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,71 @@ msgid ""
 msgstr ""
 "Если подразделение является рестораном, то зарплаты некоторых сотрудников "
 "будет зависеть от этого"
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__32
+msgid "32"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__34
+msgid "34"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__36
+msgid "36"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__38
+msgid "38"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__40
+msgid "40"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__42
+msgid "42"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__44
+msgid "44"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__46
+msgid "46"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__48
+msgid "48"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__50
+msgid "50"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__52
+msgid "52"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__54
+msgid "54"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__pants_size__56
+msgid "56"
+msgstr ""
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_kanban_view_employees
@@ -58,6 +123,11 @@ msgstr "<span class=\"font-weight-bold\">Тип Сотрудника: </span>"
 #, python-format
 msgid "Action"
 msgstr "Действие"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
+msgid "Address"
+msgstr "Адрес"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_applicant
@@ -115,6 +185,11 @@ msgid "Available Open Jobs"
 msgstr "Доступные Открытые Вакансии"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__birth_date
+msgid "Birth Date"
+msgstr "Дата Рождения"
+
+#. module: restaurant_hr
 #: model:ir.ui.menu,name:restaurant_hr.hr_department_history
 msgid "Brain Drain"
 msgstr "Утечка Кадров"
@@ -126,10 +201,11 @@ msgstr "Графики Утечки Кадров"
 
 #. module: restaurant_hr
 #: model:ir.actions.act_window,name:restaurant_hr.hr_branch_action
+#: model:ir.actions.act_window,name:restaurant_hr.qualification_action
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
-#: model:ir.ui.menu,name:restaurant_hr.hr_branch
+#: model:ir.ui.menu,name:restaurant_hr.hr_branch_menu
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Branch"
 msgstr "Отдел"
@@ -159,6 +235,11 @@ msgstr "Графики JSON"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_dep_org_chart__chart_json
 msgid "Chart Json"
 msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
+msgid "Cloth"
+msgstr "Одежда"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
@@ -426,8 +507,6 @@ msgid "In process of hiring"
 msgstr "В процессе найма"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__job_group_id
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_search_bis_inherit
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
 msgid "Job"
 msgstr "Вакансия"
@@ -467,6 +546,11 @@ msgstr "Большое"
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate____last_update
 msgid "Last Modified on"
 msgstr "Последнее Обновление в"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__last_response_score
+msgid "Last Score (%)"
+msgstr "Оценка (%)"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__write_uid
@@ -534,6 +618,11 @@ msgid "PDF Resumé"
 msgstr "PDF Резюме"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__pants_size
+msgid "Pant's Size"
+msgstr "Размер Штанов"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__passport_issue_by
 msgid "Passport Issue By"
 msgstr "Паспорт Выдан"
@@ -592,6 +681,7 @@ msgstr "Продолжить Опрос"
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_restaurant_hr_qualification
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__qualification_id
+#: model:ir.ui.menu,name:restaurant_hr.hr_qualification_menu
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Qualification"
 msgstr "Квалификация"
@@ -718,9 +808,19 @@ msgstr ""
 "сформулирована!"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__tshirt_size
+msgid "T-Shirt Size"
+msgstr "Размер Футболки"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Trainee"
 msgstr "Стажёр"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__trainee_start_date
+msgid "Trainee Start Date"
+msgstr "Дата начала стажировки"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_res_users
@@ -774,6 +874,21 @@ msgstr "Ставка для Официанта"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey__survey_group__waiter
 msgid "Waiter"
 msgstr "Официант"
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__tshirt_size__xl
+msgid "XL"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__tshirt_size__xxl
+msgid "XXL"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__tshirt_size__xxxl
+msgid "XXXL"
+msgstr ""
 
 #. module: restaurant_hr
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__assessed__yes
