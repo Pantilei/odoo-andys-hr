@@ -22,8 +22,16 @@ access_restaurant_hr_hr_job_group_manager,restaurant_hr.hr_job_group.manager,res
 access_restaurant_hr_hr_branch_user,restaurant_hr.hr_branch.user,restaurant_hr.model_restaurant_hr_hr_branch,hr.group_hr_user,1,0,0,0
 access_restaurant_hr_hr_branch_manager,restaurant_hr.hr_branch.manager,restaurant_hr.model_restaurant_hr_hr_branch,hr.group_hr_manager,1,1,1,1
 
-access_restaurant_hr_qualification_user,restaurant_hr.qualification.user,restaurant_hr.model_restaurant_hr_qualification,hr.group_hr_user,1,1,1,1
+access_restaurant_hr_qualification_user,restaurant_hr.qualification.user,restaurant_hr.model_restaurant_hr_qualification,hr.group_hr_user,1,0,0,0
 access_restaurant_hr_qualification_manager,restaurant_hr.qualification.manager,restaurant_hr.model_restaurant_hr_qualification,hr.group_hr_manager,1,1,1,1
 
 access_restaurant_hr_department_history_user,restaurant_hr.department_history.user,restaurant_hr.model_restaurant_hr_department_history,hr.group_hr_user,1,1,1,1
 access_restaurant_hr_department_history_manager,restaurant_hr.department_history.manager,restaurant_hr.model_restaurant_hr_department_history,hr.group_hr_manager,1,1,1,1
+
+
+hr.access_hr_department_user,hr.department.user,model_hr_department,hr.group_hr_user,1,0,0,0
+access_hr_department_manager,hr.department.manager,model_hr_department,hr.group_hr_manager,1,1,1,1
+
+hr.access_hr_job_user,hr.job user,model_hr_job,hr.group_hr_user,1,1,0,0
+access_hr_job_manager,hr.job manager,model_hr_job,hr.group_hr_manager,1,1,1,1
+

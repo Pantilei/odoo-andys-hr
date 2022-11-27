@@ -14,3 +14,16 @@ class HrBranch(models.Model):
         comodel_name="hr.employee",
         string="Branch Managers",
     )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        self.clear_caches()
+        return super().create(vals_list)
+
+    def write(self, vals):
+        self.clear_caches()
+        return super().write(vals)
+
+    def unlink(self):
+        self.clear_caches()
+        return super().unlink()

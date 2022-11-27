@@ -23,7 +23,8 @@
             </xpath>
             <!--  -->
 
-            <xpath expr="//field[@name='parent_id']" position="before">
+            <xpath expr="//field[@name='parent_id']" position="replace">
+                <field name="parent_id" options="{'no_create': True}" />
                 <field name="job_id" options="{'no_create': True}" />
                 <field name="employee_type" />
             </xpath>

@@ -2,13 +2,15 @@
 <odoo>
     <!-- Record rules -->
     <!-- Model: hr_employee -->
+    <!-- ('department_id', 'child_of', user.employee_id.department_id.id), -->
+
     <record id="hr_user_employee_rule" model="ir.rule">
         <field name="name">HR User see only employees of his department</field>
         <field name="model_id" ref="hr.model_hr_employee" />
         <field name="domain_force">
             [
             '&amp;', '|',
-            ('department_id', 'child_of', user.employee_id.department_id.id),
+            ('parent_id', 'child_of', user.employee_id.id),
             ('branch_id.manager_ids', 'in', [user.employee_id.id, False]),
             ('id', '!=', user.employee_id.id),
         ]
