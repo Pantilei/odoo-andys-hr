@@ -23,7 +23,7 @@
             </xpath>
             <xpath expr="//field[@name='email_from']" position="before">
                 <field name="partner_id" string="Address" context="{'show_address': 1, 'default_type': 'private', 'form_view_ref': 'base.res_partner_view_form_private'}" options="{'always_reload': True, 'highlight_first_line': True}" />
-                <field name="birth_date" />
+                <field name="birthday" />
             </xpath>
             <xpath expr="//field[@name='email_cc']" position="replace"></xpath>
 

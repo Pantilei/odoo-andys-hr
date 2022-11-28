@@ -20,6 +20,8 @@ class EmployeeCard(http.Controller):
         if not employee_id:
             return werkzeug.exceptions.NotFound()
 
+        resume_section_ids = employee_id.resume_line_ids.mapped(
+            "line_type_id")
         return request.render("restaurant_hr.employee_card", {
             "employee_id": employee_id.id,
             "employee_name": employee_id.name,
@@ -27,6 +29,17 @@ class EmployeeCard(http.Controller):
             "work_phone": employee_id.work_phone or '',
             "entry_date": employee_id.entry_date or '',
             "job_name": employee_id.job_id.name or '',
-            "birth_date": "20-12-1993",
+            "birthday": employee_id.birthday or '',
+            "resume_section_ids": [{
+                "section_id": resume_section_id.id,
+                "section_name": resume_section_id.name,
+                "section_data": [{
+                    "resume_line_id": resume_line_id.id,
+                    "name": resume_line_id.name,
+                    "description": resume_line_id.description,
+                    "date_start": resume_line_id.date_start,
+                    "date_end": resume_line_id.date_end,
+                } for resume_line_id in employee_id.resume_line_ids.filtered(lambda r: r.line_type_id.id == resume_section_id.id)]
+            } for resume_section_id in resume_section_ids],
             "title": "THIS IS THE PAGE",
         })

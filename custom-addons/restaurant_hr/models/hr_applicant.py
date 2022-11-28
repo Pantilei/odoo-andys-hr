@@ -29,7 +29,7 @@ class HrApplicant(models.Model):
         string="Branch"
     )
 
-    birth_date = fields.Date(string="Birth Date")
+    birthday = fields.Date(string="Birthday")
 
     last_response_score = fields.Float(
         string="Last Score (%)",

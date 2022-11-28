@@ -27,12 +27,12 @@
                 </head>
                 <body t-att-class="body_classname">
                     <div id="wrapwrap" t-attf-class="#{pageName or ''}">
-                        <header t-if="not no_header" id="top"></header>
+                        <header id="top"></header>
                         <main class="o_main_container">
                             <t t-out="0" />
                         </main>
-                        <footer t-if="not no_footer" id="bottom" t-attf-class="bg-light o_footer">
-                            <div id="footer" />
+                        <footer id="bottom" class="o_footer">
+                            <div id="footer" style="height: 300px;" />
                         </footer>
                     </div>
                 </body>
@@ -43,74 +43,210 @@
         <!-- Main survey template -->
         <template id="employee_card" name="Employee Card">
             <t t-call="restaurant_hr.employee_card_layout">
-                <section>
-                    <div class="container">
-                        <div class="row mt-5">
-                            <div class="col-6">
-                                <h2>
-                                    <strong>Личное дело сотрудника</strong>
-                                </h2>
+                <section class="container mt-5">
+                    <div class="row">
+                        <div class="col-6">
+                            <h2>
+                                <strong>Личное дело сотрудника</strong>
+                            </h2>
+                        </div>
+                        <div class="col-6 text-right">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"></img>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <strong>ФИО:</strong>
+                                </div>
+                                <div class="col-9">
+                                    <t t-esc="employee_name" />
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"></img>
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <strong>Дата рождения:</strong>
+                                </div>
+                                <div class="col-9">
+                                    <t t-esc="birthday" />
+                                </div>
                             </div>
-                            <!-- <h3>
-                                <t t-esc="title" />
-                            </h3> -->
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <strong>Должность:</strong>
+                                </div>
+                                <div class="col-9">
+                                    <t t-esc="job_name" />
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <strong>Работает с:</strong>
+                                </div>
+                                <div class="col-9">
+                                    <t t-esc="entry_date" />
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <strong>Мобильный:</strong>
+                                </div>
+                                <div class="col-9">
+                                    <t t-esc="mobile_phone" />
+                                    /
+                                    <t t-esc="work_phone" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 text-right">
+                            <img t-attf-src="/web/image/hr.employee.public/{{employee_id}}/image_1024" width="200" />
+                        </div>
+                    </div>
+                </section>
+
+                <t t-foreach="resume_section_ids" t-as="resume_section_id">
+                    <section class="container mt-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <strong class="h3">
+                                    <t t-esc="resume_section_id['section_name']" />
+                                </strong>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
-                                <div class="row mt-4">
-                                    <div class="col-3">
-                                        <strong>ФИО:</strong>
-                                    </div>
-                                    <div class="col-9">
-                                        <t t-esc="employee_name" />
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-3">
-                                        <strong>
-                                            Дата рождения:
-                                        </strong>
-                                    </div>
-                                    <div class="col-9">
-                                        <t t-esc="birth_date" />
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-3">
-                                        <strong>
-                                            Должность:
-                                        </strong>
-                                    </div>
-                                    <div class="col-9">
-                                        <t t-esc="job_name" />
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-3">
-                                        <strong>Работает с:</strong>
-                                    </div>
-                                    <div class="col-9">
-                                        <t t-esc="entry_date" />
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-3">
-                                        <strong>Мобильный:</strong>
-                                    </div>
-                                    <div class="col-9">
-                                        <t t-esc="mobile_phone" />
-                                        /
-                                        <t t-esc="work_phone" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <img t-attf-src="/web/image/hr.employee.public/{{employee_id}}/image_1024" width="200" />
-                            </div>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan="2">Наименование заведения:</th>
+                                        <th scope="col">Дата начала:</th>
+                                        <th scope="col">Дата окончания:</th>
+                                        <th scope="col">Должность:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="resume_section_id['section_data']" t-as="resume_line_id">
+                                        <tr>
+                                            <th scope="row">
+                                                <t t-esc="resume_line_id_index+1" />
+                                            </th>
+                                            <td>
+                                                <t t-esc="resume_line_id['name']" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="resume_line_id['date_start']" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="resume_line_id['date_end']" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="resume_line_id['description']" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
                         </div>
+                    </section>
+                </t>
+
+
+                <!-- Замечания -->
+                <section class="container mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <strong class="h3">Замечания</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" colspan="1">1</th>
+                                    <td colspan="11">
+                                        26-03-2009 - Штраф (Штраф за плохие плацынды и фасоль, поданные клиенту, - минус 200 леев от зарплаты)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="1">2</th>
+                                    <td colspan="11">
+                                        26-03-2009 - Штраф (Штраф за плохие плацынды и фасоль, поданные клиенту, - минус 200 леев от зарплаты)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="1">3</th>
+                                    <td colspan="11">
+                                        26-03-2009 - Штраф (Штраф за плохие плацынды и фасоль, поданные клиенту, - минус 200 леев от зарплаты)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Достижения -->
+                <section class="container mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <strong class="h3">Достижения</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" colspan="1">1</th>
+                                    <td colspan="11">
+                                        26-02-2009 - Благодарность (Благодарность от Генерального Директора за сбор предложений клиентов по меню La Placinte)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="1">2</th>
+                                    <td colspan="11">
+                                        26-02-2009 - Благодарность (Благодарность от Генерального Директора за сбор предложений клиентов по меню La Placinte)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="1">3</th>
+                                    <td colspan="11">
+                                        26-02-2009 - Благодарность (Благодарность от Генерального Директора за сбор предложений клиентов по меню La Placinte)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Аттестация -->
+                <section class="container mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <strong class="h3">Аттестация</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" colspan="1">1</th>
+                                    <td colspan="11">
+                                        26-02-2009 – Квартальная аттестация (оценка – 7) (сохранение ставки)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="1">2</th>
+                                    <td colspan="11">
+                                        26-02-2009 – Квартальная аттестация (оценка – 7) (сохранение ставки)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="1">3</th>
+                                    <td colspan="11">
+                                        26-02-2009 – Квартальная аттестация (оценка – 7) (сохранение ставки)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
             </t>
