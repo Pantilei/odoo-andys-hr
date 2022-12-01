@@ -74,7 +74,7 @@
                             </div>
                             <div class="row mt-4">
                                 <div class="col-3">
-                                    <strong>Должность:</strong>
+                                    <strong>Описание:</strong>
                                 </div>
                                 <div class="col-9">
                                     <t t-esc="job_name" />
@@ -118,10 +118,10 @@
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th scope="col" colspan="2">Наименование заведения:</th>
+                                        <th scope="col" colspan="2">Название:</th>
                                         <th scope="col">Дата начала:</th>
                                         <th scope="col">Дата окончания:</th>
-                                        <th scope="col">Должность:</th>
+                                        <th scope="col">Описание:</th>
                                     </tr>
                                 </thead>
                                 <tbody>
