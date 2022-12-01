@@ -161,24 +161,18 @@
                     <div class="row">
                         <table class="table table-sm">
                             <tbody>
-                                <tr>
-                                    <th scope="row" colspan="1">1</th>
-                                    <td colspan="11">
-                                        26-03-2009 - Штраф (Штраф за плохие плацынды и фасоль, поданные клиенту, - минус 200 леев от зарплаты)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="1">2</th>
-                                    <td colspan="11">
-                                        26-03-2009 - Штраф (Штраф за плохие плацынды и фасоль, поданные клиенту, - минус 200 леев от зарплаты)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="1">3</th>
-                                    <td colspan="11">
-                                        26-03-2009 - Штраф (Штраф за плохие плацынды и фасоль, поданные клиенту, - минус 200 леев от зарплаты)
-                                    </td>
-                                </tr>
+                                <t t-foreach="remarks" t-as="remark">
+                                    <tr>
+                                        <th scope="row" colspan="1">
+                                            <t t-esc="remark_index+1" />
+                                        </th>
+                                        <td colspan="11">
+                                            <t t-esc="remark['remark_date']" />
+                                            -
+                                            <t t-esc="remark['remark_description']" />
+                                        </td>
+                                    </tr>
+                                </t>
                             </tbody>
                         </table>
                     </div>
@@ -194,24 +188,18 @@
                     <div class="row">
                         <table class="table table-sm">
                             <tbody>
-                                <tr>
-                                    <th scope="row" colspan="1">1</th>
-                                    <td colspan="11">
-                                        26-02-2009 - Благодарность (Благодарность от Генерального Директора за сбор предложений клиентов по меню La Placinte)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="1">2</th>
-                                    <td colspan="11">
-                                        26-02-2009 - Благодарность (Благодарность от Генерального Директора за сбор предложений клиентов по меню La Placinte)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="1">3</th>
-                                    <td colspan="11">
-                                        26-02-2009 - Благодарность (Благодарность от Генерального Директора за сбор предложений клиентов по меню La Placinte)
-                                    </td>
-                                </tr>
+                                <t t-foreach="achievements" t-as="achievement">
+                                    <tr>
+                                        <th scope="row" colspan="1">
+                                            <t t-esc="achievement_index+1" />
+                                        </th>
+                                        <td colspan="11">
+                                            <t t-esc="achievement['achievement_date']" />
+                                            -
+                                            <t t-esc="achievement['achievement_description']" />
+                                        </td>
+                                    </tr>
+                                </t>
                             </tbody>
                         </table>
                     </div>
@@ -227,24 +215,22 @@
                     <div class="row">
                         <table class="table table-sm">
                             <tbody>
-                                <tr>
-                                    <th scope="row" colspan="1">1</th>
-                                    <td colspan="11">
-                                        26-02-2009 – Квартальная аттестация (оценка – 7) (сохранение ставки)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="1">2</th>
-                                    <td colspan="11">
-                                        26-02-2009 – Квартальная аттестация (оценка – 7) (сохранение ставки)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="1">3</th>
-                                    <td colspan="11">
-                                        26-02-2009 – Квартальная аттестация (оценка – 7) (сохранение ставки)
-                                    </td>
-                                </tr>
+                                <t t-foreach="responses" t-as="response">
+                                    <tr>
+                                        <th scope="row" colspan="1">
+                                            <t t-esc="response_index+1" />
+                                        </th>
+                                        <td colspan="11">
+                                            <t t-esc="response['create_date']" />
+                                            -
+                                            <t t-esc="response['name']" />
+                                            (Оценка -
+                                            <t t-esc="response['scoring_percentage']" />
+                                            %
+                                            )
+                                        </td>
+                                    </tr>
+                                </t>
                             </tbody>
                         </table>
                     </div>

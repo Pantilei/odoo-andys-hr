@@ -108,6 +108,22 @@
                         <field name="pants_size" />
                     </group>
                 </page>
+                <page name="remark" string="Remarks">
+                    <field name="employee_remark_ids">
+                        <tree editable="bottom">
+                            <field name="assigment_date" />
+                            <field name="description" />
+                        </tree>
+                    </field>
+                </page>
+                <page name="achievement" string="Achievements">
+                    <field name="employee_achievement_ids">
+                        <tree editable="bottom">
+                            <field name="assigment_date" />
+                            <field name="description" />
+                        </tree>
+                    </field>
+                </page>
             </xpath>
 
             <xpath expr="//page[@name='hr_settings']" position="attributes">

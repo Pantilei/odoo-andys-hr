@@ -119,6 +119,18 @@ class HrEmployee(models.Model):
         compute="_compute_persanal_id"
     )
 
+    employee_remark_ids = fields.One2many(
+        comodel_name="restaurant_hr.employee_remarks",
+        inverse_name="employee_id",
+        string="Employee Remarks"
+    )
+
+    employee_achievement_ids = fields.One2many(
+        comodel_name="restaurant_hr.employee_achievements",
+        inverse_name="employee_id",
+        string="Employee Achievements"
+    )
+
     # Clothing
     tshirt_size = fields.Selection(selection=[
         ("S", "S"),

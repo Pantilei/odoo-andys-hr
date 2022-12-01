@@ -10,3 +10,5 @@ from . import hr_branch
 from . import hr_qualification
 from . import department_history
 from . import hr_dep_org_chart
+from . import hr_employee_achievements
+from . import hr_employee_remarks
