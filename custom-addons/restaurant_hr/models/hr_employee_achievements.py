@@ -7,7 +7,7 @@ class EmployeeAchievements(models.Model):
     _order = "assigment_date desc"
 
     description = fields.Text(
-        string="Name",
+        string="Description",
         required=True
     )
 
