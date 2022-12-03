@@ -57,6 +57,7 @@
             <xpath expr="//header" position="inside">
                 <button type="object" name="assess_employee" string="Assess Employee" class="oe_highlight" />
                 <button type="object" name="view_employee_card" string="View Card" class="oe_highlight" />
+                <button type="object" name="update_job_titles" string="Update Job Titles" groups="base.group_no_one" />
                 <!-- <button type="object" name="import_employee_data" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
                 <!-- <button type="object" name="import_employee_data2" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
             </xpath>
