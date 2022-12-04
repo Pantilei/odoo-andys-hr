@@ -47,27 +47,26 @@ class HrEmployee(models.Model):
 
     def close_access_to_e_learning(self):
         remote_user_ids = self.course_ids.mapped("e_learning_user_id")
-        if len(remote_user_ids) != 1:
-            raise UserError(
-                _(f"Multiple users in e-learning platform related with same employee. User ids: {remote_user_ids}"))
-        remote_user_id = remote_user_ids[0]
-        try:
+        for remote_user_id in remote_user_ids:
+            try:
 
-            get_param = self.env["ir.config_parameter"].sudo().get_param
-            remote_host = get_param("e_learning_server_host")
-            remote_user = get_param("e_learning_server_user")
-            remote_db = get_param("e_learning_server_db")
-            remote_password = get_param("e_learning_server_password")
-            rpc = OdooRPC(remote_host, remote_db, remote_user, remote_password)
-            rpc.rpc(
-                "res.users",
-                "write",
-                [remote_user_id],
-                {
-                    "active": False
-                },
-            )
-            self.access_to_e_learning = False
-        except Exception as ex:
-            _logger.error(traceback.format_exc())
-            raise UserError(_("Cannot connect to e-learning platform")) from ex
+                get_param = self.env["ir.config_parameter"].sudo().get_param
+                remote_host = get_param("e_learning_server_host")
+                remote_user = get_param("e_learning_server_user")
+                remote_db = get_param("e_learning_server_db")
+                remote_password = get_param("e_learning_server_password")
+                rpc = OdooRPC(remote_host, remote_db,
+                              remote_user, remote_password)
+                rpc.rpc(
+                    "res.users",
+                    "write",
+                    [remote_user_id],
+                    {
+                        "active": False
+                    },
+                )
+                self.access_to_e_learning = False
+            except Exception as ex:
+                _logger.error(traceback.format_exc())
+                raise UserError(
+                    _("Cannot connect to e-learning platform")) from ex

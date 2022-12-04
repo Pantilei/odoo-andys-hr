@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-01 20:50+0000\n"
-"PO-Revision-Date: 2022-12-01 20:50+0000\n"
+"POT-Creation-Date: 2022-12-04 08:32+0000\n"
+"PO-Revision-Date: 2022-12-04 08:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -240,6 +240,11 @@ msgid "Available Open Jobs"
 msgstr "Доступные Открытые Вакансии"
 
 #. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_hr_employee_base
+msgid "Basic Employee"
+msgstr "Сотрудник"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__birthday
 msgid "Birthday"
 msgstr "День Рождения"
@@ -256,7 +261,6 @@ msgstr "Графики Утечки Кадров"
 
 #. module: restaurant_hr
 #: model:ir.actions.act_window,name:restaurant_hr.hr_branch_action
-#: model:ir.actions.act_window,name:restaurant_hr.qualification_action
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
@@ -411,6 +415,12 @@ msgstr "Истории Подразделений"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
 msgid "Departments"
 msgstr "Подразделения"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_achievements__description
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_remarks__description
+msgid "Description"
+msgstr "Описание"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_employee_view_form_inherit
@@ -693,13 +703,11 @@ msgid "Months"
 msgstr "Месяца"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_achievements__description
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_remarks__description
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_job_group__name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__name
-msgid "Description"
-msgstr "Описание"
+msgid "Name"
+msgstr "Название"
 
 #. module: restaurant_hr
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__assessed__no
@@ -781,6 +789,11 @@ msgstr "Приоритет"
 #, python-format
 msgid "Proceed Survey"
 msgstr "Продолжить Опрос"
+
+#. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.qualification_action
+msgid "Qaulification"
+msgstr "Квалификация"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_restaurant_hr_qualification
@@ -930,6 +943,11 @@ msgstr "Стажёр"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__trainee_start_date
 msgid "Trainee Start Date"
 msgstr "Дата начала стажировки"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
+msgid "Update Job Titles"
+msgstr ""
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_res_users
