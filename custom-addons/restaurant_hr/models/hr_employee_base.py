@@ -10,5 +10,5 @@ class HrEmployeeBase(models.AbstractModel):
             employee.job_title = employee.job_id.name
 
     def update_job_titles(self):
-        for record in self:
+        for record in self.search([]):
             record._compute_job_title()
