@@ -9,7 +9,6 @@ AVAILABLE_PRIORITIES = [
     ('3', 'Excellent')
 ]
 
-
 class HrApplicant(models.Model):
     _inherit = "hr.applicant"
 
@@ -18,6 +17,13 @@ class HrApplicant(models.Model):
         inverse_name="applicant_id",
         string="Responces",
         groups="survey.group_survey_user"
+    )
+
+    source_id = fields.Many2one(
+        comodel_name='utm.source', 
+        string='Source',
+        ondelete="restrict",
+        help="This is the source of the link, e.g. Search Engine, another domain, or name of email list"
     )
 
     priority = fields.Selection(
@@ -36,6 +42,12 @@ class HrApplicant(models.Model):
         compute="_compute_last_responce_score",
         store=True
     )
+
+    application_type = fields.Selection([
+        ("linear", "Linear Personal"),
+        ("administrative", "Administrative Personal"),
+        ("factory", "Factory"),
+    ], default="linear", string="Application Type", required=True)
 
     def write(self, vals):
         if "emp_id" in vals:

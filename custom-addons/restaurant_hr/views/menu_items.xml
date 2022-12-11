@@ -60,6 +60,13 @@
         parent="hr_recruitment.menu_hr_recruitment_configuration"
         action="restaurant_hr.hr_job_group_action"
         sequence="3" />
+    
+    <menuitem
+        id="utm_source_menu"
+        name="Sources"
+        parent="hr_recruitment.menu_hr_recruitment_configuration"
+        action="utm.utm_source_action"
+        sequence="4" />
 
 
     <menuitem
@@ -109,5 +116,25 @@
         parent="restaurant_hr.reporting"
         action="restaurant_hr.department_history_report_wizard_action"
         sequence="10" />
+
+
+    <menuitem
+        id="applicant_linear_personal_act_job_menu"
+        name="Linear personal applications"
+        parent="hr_recruitment.menu_crm_case_categ0_act_job"
+        action="restaurant_hr.applicant_linear_personal_act_job"
+        sequence="3" />
+    <menuitem
+        id="applicant_administrative_personal_act_job_menu"
+        name="Administrative personal applications"
+        parent="hr_recruitment.menu_crm_case_categ0_act_job"
+        action="restaurant_hr.applicant_administrative_personal_act_job"
+        sequence="4" />
+    <menuitem
+        id="applicant_factory_personal_act_job_menu"
+        name="Factory personal applications"
+        parent="hr_recruitment.menu_crm_case_categ0_act_job"
+        action="restaurant_hr.applicant_factory_personal_act_job"
+        sequence="5" />
 
 </odoo>

@@ -20,6 +20,7 @@
                 <field name="department_id" options="{'no_create': True}" />
                 <field name="job_id" domain="[('department_id', '=', department_id)]" options="{'no_create': True}" />
                 <field name="branch_id" options="{'no_create': True}" />
+                <field name="application_type" />
             </xpath>
             <xpath expr="//field[@name='email_from']" position="before">
                 <field name="partner_id" string="Address" context="{'show_address': 1, 'default_type': 'private', 'form_view_ref': 'base.res_partner_view_form_private'}" options="{'always_reload': True, 'highlight_first_line': True}" />
@@ -110,5 +111,55 @@
 
     <record id="hr_recruitment.action_hr_job" model="ir.actions.act_window">
         <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+    <record id="applicant_linear_personal_act_job" model="ir.actions.act_window">
+        <field name="name">Linear Personal Applications</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})
+        ]"/>
+        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+        <field name="domain">[('application_type', '=', 'linear')]</field>
+        <field name="context">{
+            'default_application_type': 'linear',
+            'search_default_on_hire': 1
+        }</field>
+    </record>
+
+    <record id="applicant_administrative_personal_act_job" model="ir.actions.act_window">
+        <field name="name">Administrative Personal Applications</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]"/>
+        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+        <field name="domain">[('application_type', '=', 'administrative')]</field>
+        <field name="context">{
+            'default_application_type': 'administrative',
+            'search_default_on_hire': 1
+        }</field>
+    </record>
+
+    <record id="applicant_factory_personal_act_job" model="ir.actions.act_window">
+        <field name="name">Factory Personal Applications</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]"/>
+        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+        <field name="domain">[('application_type', '=', 'factory')]</field>
+        <field name="context">{
+            'default_application_type': 'factory',
+            'search_default_on_hire': 1
+        }</field>
     </record>
 </odoo>

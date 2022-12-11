@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-04 08:32+0000\n"
-"PO-Revision-Date: 2022-12-04 08:32+0000\n"
+"POT-Creation-Date: 2022-12-11 13:37+0000\n"
+"PO-Revision-Date: 2022-12-11 13:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -177,12 +177,27 @@ msgstr "Достижения"
 #: code:addons/restaurant_hr/static/src/js/action_menus.js:0
 #, python-format
 msgid "Action"
-msgstr "Действие"
+msgstr ""
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 msgid "Address"
 msgstr "Адрес"
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_applicant__application_type__administrative
+msgid "Administrative Personal"
+msgstr "Административный Персонал"
+
+#. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.applicant_administrative_personal_act_job
+msgid "Administrative Personal Applications"
+msgstr "Административный Персонал Заявки"
+
+#. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.applicant_administrative_personal_act_job_menu
+msgid "Administrative personal applications"
+msgstr "Административный Персонал Заявки"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_applicant
@@ -194,6 +209,11 @@ msgstr "Соискатель"
 #: model:ir.model,name:restaurant_hr.model_restaurant_hr_applicant_survey_select_wizard
 msgid "Applicant Survey Select Wizard"
 msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__application_type
+msgid "Application Type"
+msgstr "Тип Заявки"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__manager_id
@@ -228,11 +248,6 @@ msgstr "Оценить Сотрудника"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__assessed
 msgid "Assessed"
 msgstr "Оценён"
-
-#. module: restaurant_hr
-#: model:ir.actions.act_window,name:restaurant_hr.hr_job_group_action
-msgid "Available Job Position Names"
-msgstr "Доступные названия вакансий"
 
 #. module: restaurant_hr
 #: model:ir.ui.menu,name:restaurant_hr.hr_job_open_to_recruit
@@ -529,6 +544,21 @@ msgid "Exit"
 msgstr "Выход"
 
 #. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_applicant__application_type__factory
+msgid "Factory"
+msgstr "Фабрика"
+
+#. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.applicant_factory_personal_act_job
+msgid "Factory Personal Applications"
+msgstr "Фабрика Заявки"
+
+#. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.applicant_factory_personal_act_job_menu
+msgid "Factory personal applications"
+msgstr "Фабрика Заявки"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Freelance"
 msgstr "Фрилансер"
@@ -618,6 +648,11 @@ msgid "Job Group"
 msgstr "Группа Вакансии"
 
 #. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.hr_job_group_action
+msgid "Job Groups"
+msgstr "Группы Вакансий"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__hr_job_group_id
 msgid "Job Name"
 msgstr "Название Вакансии"
@@ -684,6 +719,21 @@ msgstr "Последнее Обновление Пользователем"
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__write_date
 msgid "Last Updated on"
 msgstr "Последнее Обновление в"
+
+#. module: restaurant_hr
+#: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_applicant__application_type__linear
+msgid "Linear Personal"
+msgstr "Линейный Персонал"
+
+#. module: restaurant_hr
+#: model:ir.actions.act_window,name:restaurant_hr.applicant_linear_personal_act_job
+msgid "Linear Personal Applications"
+msgstr "Линейный Персонал Заявки"
+
+#. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.applicant_linear_personal_act_job_menu
+msgid "Linear personal applications"
+msgstr "Линейный Персонал Заявки"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
@@ -875,10 +925,16 @@ msgid "Small"
 msgstr "Маленькое"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__source_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__source_id
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "Source"
 msgstr "Источник"
+
+#. module: restaurant_hr
+#: model:ir.ui.menu,name:restaurant_hr.utm_source_menu
+msgid "Sources"
+msgstr "Источники"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/wizards/applicant_survey_select_wizard.py:0
@@ -933,6 +989,15 @@ msgstr ""
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__tshirt_size
 msgid "T-Shirt Size"
 msgstr "Размер Футболки"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,help:restaurant_hr.field_hr_applicant__source_id
+msgid ""
+"This is the source of the link, e.g. Search Engine, another domain, or name "
+"of email list"
+msgstr ""
+"Это источник ссылки, например, поисковая система, другой домен или название "
+"списка писем"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
