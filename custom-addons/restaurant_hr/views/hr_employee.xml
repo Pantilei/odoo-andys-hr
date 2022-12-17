@@ -60,6 +60,7 @@
                 <button type="object" name="update_job_titles" string="Update Job Titles" groups="base.group_no_one" />
                 <!-- <button type="object" name="import_employee_data" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
                 <!-- <button type="object" name="import_employee_data2" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
+                <button type="object" name="import_employee_black_list" string="Import Employee Black List" class="oe_highlight" groups="base.group_no_one" />
             </xpath>
 
             <xpath expr="//field[@name='bank_account_id']" position="replace"></xpath>

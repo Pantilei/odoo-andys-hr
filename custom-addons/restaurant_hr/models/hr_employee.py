@@ -6,6 +6,7 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import logging
+import cyrtranslit
 
 
 _logger = logging.getLogger(__name__)
@@ -276,7 +277,7 @@ class HrEmployee(models.Model):
 
     def unlink(self):
         self.clear_caches()
-        self._create_department_history(self.department_id, status="exit")
+        # self._create_department_history(self.department_id, status="exit")
         return super(HrEmployee, self).unlink()
 
     def _create_department_history(self, department_id, status="enter"):
@@ -514,6 +515,51 @@ class HrEmployee(models.Model):
 
         return address_id
 
+    def import_employee_black_list(self):
+        Employee = self.env["hr.employee"]
+
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+        df_employees = pd.read_csv(os.path.join(
+            path, '../data/EmployeeBlackList.csv'), dtype=str).replace({np.nan: None})
+
+        departure_reason_id = self.env["hr.departure.reason"].search([
+            ("name", "ilike", "Черный список")
+        ])
+        for record in df_employees.to_dict("records"):
+            print("\n", record)
+            if not record["surname"] or not record["name"]:
+                continue
+            # print(f'{record["surname"]} {record["name"]}', " => ", cyrtranslit.to_latin(
+            #     f'{record["surname"]} {record["name"]}', "ru"))
+            employee_name = cyrtranslit.to_latin(f'{record["surname"]} {record["name"]}', "ru")
+            employee_id = Employee.with_context(active_test=False).search([("name", "=", employee_name)], limit=1)
+            print(employee_id, bool(employee_id))
+            if not employee_id:
+                employee_id = Employee.create({
+                    "name": employee_name,
+                    "entry_date": datetime.strptime(record['add_date'], '%m/%d/%Y %H:%M') if record['add_date'] else False,
+                    "birthday": datetime.strptime(record['birth_date'], '%m/%d/%Y %H:%M') if record['birth_date'] else False,
+                    "employee_type": "trainee",
+                    "mobile_phone": record["mob"],
+                    "work_phone": record["tel"],
+                    "active": False,
+                    "departure_date": datetime.strptime(record['add_date'], '%m/%d/%Y %H:%M') if record['add_date'] else False,
+                    "departure_reason_id": departure_reason_id.id,
+                    "resource_calendar_id": 1
+                })
+            else:
+                employee_id.write({
+                    "name": employee_name,
+                    "entry_date": datetime.strptime(record['add_date'], '%m/%d/%Y %H:%M') if record['add_date'] else False,
+                    "birthday": datetime.strptime(record['birth_date'], '%m/%d/%Y %H:%M') if record['birth_date'] else False,
+                    "employee_type": "trainee",
+                    "mobile_phone": record["mob"],
+                    "work_phone": record["tel"],
+                    "active": False,
+                    "departure_date": datetime.strptime(record['add_date'], '%m/%d/%Y %H:%M') if record['add_date'] else False,
+                    "departure_reason_id": departure_reason_id.id,
+                    "resource_calendar_id": 1
+                })
     # @api.model
     # def _search(self, domain, offset=0, limit=None, order=None, count=False, access_rights_uid=None):
     #     if self.env.is_superuser():
