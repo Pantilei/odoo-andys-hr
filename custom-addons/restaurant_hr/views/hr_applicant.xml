@@ -16,11 +16,17 @@
 
             <xpath expr="//field[@name='department_id']" position="replace"></xpath>
 
+            <xpath expr="//label[@for='name']" position="replace"></xpath>
+            <xpath expr="//div[hasclass('oe_title')]/h1" position="replace"></xpath>
+
+            <xpath expr="//field[@name='kanban_state']" position="replace"></xpath>
+
             <xpath expr="//field[@name='job_id']" position="replace">
                 <field name="department_id" options="{'no_create': True}" />
                 <field name="job_id" domain="[('department_id', '=', department_id)]" options="{'no_create': True}" />
                 <field name="branch_id" options="{'no_create': True}" />
                 <field name="application_type" />
+                <field name="name" placeholder="e.g. Sales Manager 2 year experience" />
             </xpath>
             <xpath expr="//field[@name='email_from']" position="before">
                 <field name="partner_id" string="Address" context="{'show_address': 1, 'default_type': 'private', 'form_view_ref': 'base.res_partner_view_form_private'}" options="{'always_reload': True, 'highlight_first_line': True}" />
@@ -122,8 +128,8 @@
             (5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})
-        ]"/>
-        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+        ]" />
+        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis" />
         <field name="domain">[('application_type', '=', 'linear')]</field>
         <field name="context">{
             'default_application_type': 'linear',
@@ -138,8 +144,8 @@
         <field name="view_ids" eval="[
             (5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]"/>
-        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+            (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]" />
+        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis" />
         <field name="domain">[('application_type', '=', 'administrative')]</field>
         <field name="context">{
             'default_application_type': 'administrative',
@@ -154,8 +160,8 @@
         <field name="view_ids" eval="[
             (5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]"/>
-        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+            (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]" />
+        <field name="search_view_id" ref="hr_recruitment.hr_applicant_view_search_bis" />
         <field name="domain">[('application_type', '=', 'factory')]</field>
         <field name="context">{
             'default_application_type': 'factory',
