@@ -24,12 +24,7 @@ class EmployeeCourses(models.Model):
         comodel_name="hr.employee",
         string="Employee",
     )
-    e_learning_user_id = fields.Integer(
-        string="E-Learning User ID"
-    )
-    e_learning_partner_id = fields.Integer(
-        string="E-Learning Partner ID"
-    )
+
     completed = fields.Boolean(
         string='Is Completed',
         default=False
@@ -61,7 +56,7 @@ class EmployeeCourses(models.Model):
                 partner_course_id = self.search([
                     ("course_id.external_id", "=",
                      partner_course.get("channel_id")[0]),
-                    ("e_learning_partner_id", "=",
+                    ("employee_id.e_learning_partner_id", "=",
                      partner_course.get("partner_id")[0]),
                 ])
                 if partner_course_id:

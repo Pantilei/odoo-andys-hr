@@ -8,22 +8,21 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="course_id" options="{'no_create': True}" />
+                        <field name="course_ids" options="{'no_create': True}" widget="many2many_tags" />
                     </group>
                     <group>
                         <field name="employee_assigment_ids" nolabel="1">
                             <tree create="0" delete="0" editable="bottom">
+                                <field name="e_learning_user_id" invisible="1" />
                                 <field name="employee_id" invisible="1" />
                                 <field name="employee_name" readonly="1" />
                                 <field name="personal_id" />
-                                <field name="password" required="1" />
+                                <field name="password" attrs="{'required': [('e_learning_user_id', '=', 0)], 'readonly': [('e_learning_user_id', '!=', 0)]}" />
+                                <field name="in_e_learning_system" />
                             </tree>
                             <form>
                                 <group>
-                                    <field name="employee_id" invisible="1" />
                                     <field name="employee_name" readonly="1" />
-                                    <field name="personal_id" />
-                                    <field name="password" required="1" />
                                 </group>
                             </form>
                         </field>

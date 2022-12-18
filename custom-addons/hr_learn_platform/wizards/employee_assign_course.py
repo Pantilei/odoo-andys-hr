@@ -1,4 +1,3 @@
-import werkzeug
 import string
 import traceback
 import logging
@@ -28,9 +27,10 @@ class EmployeeAssignManyCourses(models.TransientModel):
         default=_default_employee_assigment
     )
 
-    course_id = fields.Many2one(
+    course_ids = fields.Many2many(
         comodel_name="hr_learn_platform.courses",
-        string="Course",
+        relation="hr_learn_pltfm_crs_hr_learn_p_employee_assign_courses_rel",
+        string="Courses",
         required=True
     )
 
@@ -44,36 +44,34 @@ class EmployeeAssignManyCourses(models.TransientModel):
             remote_password = get_param("e_learning_server_password")
             rpc = OdooRPC(remote_host, remote_db, remote_user, remote_password)
             for line in self.employee_assigment_ids:
-                res = rpc.rpc(
-                    "slide.channel",
-                    "create_assign_user_to_course",
-                    line.employee_name, line.personal_id, line.password, self.course_id.external_id
-                )
-                remote_user_id = res.get("user_id")
-                remote_partner_id = res.get("partner_id")
-                EmployeeCourses = self.env["hr_learn_platform.employee_courses"]
-                employee_course_id = EmployeeCourses.search([
-                    ("course_id", "=", self.course_id.external_id),
-                    ("employee_id", "=", line.employee_id.id),
-                    ("e_learning_user_id", "=", remote_user_id),
-                ])
-                if not employee_course_id:
-                    self.env["hr_learn_platform.employee_courses"].create({
-                        "course_id": self.course_id.external_id,
-                        "employee_id": line.employee_id.id,
+                for course_id in self.course_ids:
+                    res = rpc.rpc(
+                        "slide.channel",
+                        "create_assign_user_to_course",
+                        line.employee_name, line.personal_id, line.password, course_id.external_id
+                    )
+                    remote_user_id = res.get("user_id")
+                    remote_partner_id = res.get("partner_id")
+                    EmployeeCourses = self.env["hr_learn_platform.employee_courses"]
+                    employee_course_id = EmployeeCourses.search([
+                        ("course_id", "=", course_id.id),
+                        ("employee_id", "=", line.employee_id.id),
+                    ])
+                    if not employee_course_id:
+                        self.env["hr_learn_platform.employee_courses"].create({
+                            "course_id": course_id.id,
+                            "employee_id": line.employee_id.id,
+                        })
+                    else:
+                        employee_course_id.write({
+                            "course_id": course_id.id,
+                            "employee_id": line.employee_id.id,
+                        })
+                    line.employee_id.write({
+                        "access_to_e_learning": True,
                         "e_learning_user_id": remote_user_id,
                         "e_learning_partner_id": remote_partner_id
                     })
-                else:
-                    employee_course_id.write({
-                        "course_id": self.course_id.external_id,
-                        "employee_id": line.employee_id.id,
-                        "e_learning_user_id": remote_user_id,
-                        "e_learning_partner_id": remote_partner_id
-                    })
-                line.employee_id.write({
-                    "access_to_e_learning": True
-                })
 
         except Exception as ex:
             _logger.error(traceback.format_exc())
@@ -88,10 +86,26 @@ class EmployeeAssignCourse(models.TransientModel):
     def _random_password(self):
         return ''.join([choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for _i in range(5)])
 
+    @api.depends("e_learning_user_id")
+    def _compute_random_password(self):
+        for record in self:
+            if record.e_learning_user_id == 0:
+                record.password = self._random_password()
+            else:
+                record.password = False
+
     @api.depends("employee_id")
-    def _compute_persanal_id(self):
+    def _compute_personal_id(self):
         for record in self:
             record.personal_id = f"{record.employee_id.id:06d}"
+
+    def _set_password(self):
+        pass
+
+    @api.depends("e_learning_user_id")
+    def _compute_in_e_learning_system(self):
+        for record in self:
+            record.in_e_learning_system = bool(record.e_learning_user_id)
 
     employee_assign_many_course_id = fields.Many2one(
         comodel_name="hr_learn_platform.employee_assign_many_courses"
@@ -99,7 +113,9 @@ class EmployeeAssignCourse(models.TransientModel):
 
     password = fields.Char(
         string="Password",
-        default=_random_password
+        compute="_compute_random_password",
+        inverse="_set_password",
+        store=True
     )
 
     employee_name = fields.Char(
@@ -109,10 +125,19 @@ class EmployeeAssignCourse(models.TransientModel):
 
     personal_id = fields.Char(
         string="ID/Login",
-        compute="_compute_persanal_id",
+        compute="_compute_personal_id",
     )
 
     employee_id = fields.Many2one(
         comodel_name="hr.employee",
         string="Employee"
+    )
+
+    e_learning_user_id = fields.Integer(
+        related="employee_id.e_learning_user_id"
+    )
+
+    in_e_learning_system = fields.Boolean(
+        string="In E-Leaning System",
+        compute="_compute_in_e_learning_system"
     )

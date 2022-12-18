@@ -27,6 +27,13 @@ class HrEmployee(models.Model):
         compute="_compute_show_close_access_to_e_learning"
     )
 
+    e_learning_user_id = fields.Integer(
+        string="E-Learning User ID"
+    )
+    e_learning_partner_id = fields.Integer(
+        string="E-Learning Partner ID"
+    )
+
     @api.depends("course_ids")
     def _compute_show_close_access_to_e_learning(self):
         for record in self:
@@ -46,7 +53,7 @@ class HrEmployee(models.Model):
         }
 
     def close_access_to_e_learning(self):
-        remote_user_ids = self.course_ids.mapped("e_learning_user_id")
+        remote_user_ids = self.mapped("e_learning_user_id")
         for remote_user_id in remote_user_ids:
             try:
 
