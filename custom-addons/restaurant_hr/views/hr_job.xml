@@ -88,7 +88,7 @@
                     <field name="department_id" string="Categories" enable_counters="1" limit="0" />
                 </searchpanel>
             </xpath>
-            <!-- <xpath expr="//[@name='department']" position="after"></xpath> -->
+            <!-- <xpath expr="//field[@name='department']" position="after"></xpath> -->
 
             <xpath expr="//group" position="replace">
                 <group expand="0" string="Group By">
@@ -101,12 +101,32 @@
         </field>
     </record>
 
+    <record id="hr_job_tree" model="ir.ui.view">
+        <field name="name">hr.job.view.tree</field>
+        <field name="model">hr.job</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Name" optional="hide"/>
+                <field name="department_id" string="Department" optional="hide"/>
+                <field name="expected_employees" string="Consistent State"/>
+                <field name="no_of_employee" string="Current State"/>
+                <field name="no_of_recruitment" string="Jobs"/>
+                <field name="no_of_hired_employee" string="Trainee Count"/>
+            </tree>
+        </field>
+    </record>
+
     <record id="hr_job_open_to_recruit_action" model="ir.actions.act_window">
         <field name="name">Open To Recruit Jobs</field>
         <field name="res_model">hr.job</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('restaurant_hr.hr_job_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('hr.view_hr_job_form')})]"/>
         <field name="search_view_id" ref="view_job_filter" />
-        <field name="context">{"search_default_status":1, "search_default_department":1, "search_default_name_group":1}</field>
+        <field name="domain">[('state', '=', 'recruit')]</field>
+        <field name="context">{"search_default_department":1, "search_default_name_group":1}</field>
     </record>
 
     <record id="hr_recruitment.action_hr_job" model="ir.actions.act_window">
