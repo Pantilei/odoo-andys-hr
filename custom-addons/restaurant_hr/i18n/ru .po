@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-11 13:37+0000\n"
-"PO-Revision-Date: 2022-12-11 13:37+0000\n"
+"POT-Creation-Date: 2022-12-20 20:22+0000\n"
+"PO-Revision-Date: 2022-12-20 20:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -327,6 +327,11 @@ msgid "Confirm"
 msgstr "Подтвердить"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
+msgid "Consistent State"
+msgstr "Согласованный Штат"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Contractor"
 msgstr "Подрядчик"
@@ -373,6 +378,11 @@ msgid "Created on"
 msgstr "Создано в"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
+msgid "Current State"
+msgstr "Текущий Штат"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_achievements__assigment_date
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_remarks__assigment_date
 msgid "Date"
@@ -395,6 +405,7 @@ msgstr "Дата Конца"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__department_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__department_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_dep_org_chart__department_id
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
 msgid "Department"
 msgstr "Подразделение"
@@ -633,6 +644,11 @@ msgid "ID:"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
+msgid "Import Employee Black List"
+msgstr ""
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_search_bis_inherit
 msgid "In process of hiring"
 msgstr "В процессе найма"
@@ -663,6 +679,11 @@ msgstr "Название Вакансии"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__name
 msgid "Job Position"
 msgstr "Должность"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
+msgid "Jobs"
+msgstr "Вакансии"
 
 #. module: restaurant_hr
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_department__department_size__large
@@ -756,6 +777,7 @@ msgstr "Месяца"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_branch__name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_hr_job_group__name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__name
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 msgid "Name"
 msgstr "Название"
 
@@ -1005,14 +1027,14 @@ msgid "Trainee"
 msgstr "Стажёр"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
+msgid "Trainee Count"
+msgstr "Количество Стажеров"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__trainee_start_date
 msgid "Trainee Start Date"
 msgstr "Дата начала стажировки"
-
-#. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
-msgid "Update Job Titles"
-msgstr ""
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_res_users
@@ -1102,6 +1124,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_simple_form
 msgid "e.g. Sales Manager"
 msgstr "например: Менеджер по Продажам"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
+msgid "e.g. Sales Manager 2 year experience"
+msgstr "например: Опыт работы менеджером по продажам 2 года"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
