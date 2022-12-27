@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="employee_card_view_form" model="ir.ui.view">
+        <field name="name">employee_card.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <form edit="0" create="0" delete="0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3" style="background-color: rgb(147,149,152);">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <field name="image_1920" widget="image" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-1"></div>
+                                            <div class="col-11">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-12" style="color: white;">ДАТА
+                                                            РОЖДЕНИЯ</div>
+                                                        <div class="col-12"
+                                                            style="height: 5px; background-color: rgb(250,201,7)"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h1>
+                                            <field name="name" />
+                                        </h1>
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="img img-fluid" alt="employee photo"
+                                            style="max-height:120px; max-width: 100%; width:auto"
+                                            src="/web/binary/company_logo" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </field>
+    </record>
+
     <record id="hr_view_employee_form_inherit" model="ir.ui.view">
         <field name="name">hr.employee.view_employee_form_inherit</field>
         <field name="model">hr.employee</field>
@@ -14,7 +69,8 @@
                 <field name="department_id" readonly="1" />
             </xpath>
 
-            <!-- Ensure that users are not able to fast create the job and user even HR Settings are hidden -->
+            <!-- Ensure that users are not able to fast create the job and user even HR Settings are
+            hidden -->
             <xpath expr="//field[@name='job_id']" position="replace">
                 <field name="job_id" options="{'no_create': True}" />
             </xpath>
@@ -55,12 +111,19 @@
             <xpath expr="//header/button[1]" position="replace"></xpath>
 
             <xpath expr="//header" position="inside">
-                <button type="object" name="assess_employee" string="Assess Employee" class="oe_highlight" />
-                <button type="object" name="view_employee_card" string="View Card" class="oe_highlight" />
-                <!-- <button type="object" name="update_job_titles" string="Update Job Titles" groups="base.group_no_one" /> -->
-                <!-- <button type="object" name="import_employee_data" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
-                <!-- <button type="object" name="import_employee_data2" string="Import Employees" class="oe_highlight" groups="base.group_no_one" /> -->
-                <button type="object" name="import_employee_black_list" string="Import Employee Black List" class="oe_highlight" groups="base.group_no_one" />
+                <button type="object" name="assess_employee" string="Assess Employee"
+                    class="oe_highlight" />
+                <button type="object" name="view_employee_card" string="View Card"
+                    class="oe_highlight" />
+                <!-- <button type="object" name="update_job_titles" string="Update Job Titles"
+                groups="base.group_no_one" /> -->
+                <!-- <button type="object" name="import_employee_data" string="Import Employees"
+                class="oe_highlight" groups="base.group_no_one" /> -->
+                <!-- <button type="object" name="import_employee_data2" string="Import Employees"
+                class="oe_highlight" groups="base.group_no_one" /> -->
+                <button type="object" name="import_employee_black_list"
+                    string="Import Employee Black List" class="oe_highlight"
+                    groups="base.group_no_one" />
             </xpath>
 
             <xpath expr="//field[@name='bank_account_id']" position="replace"></xpath>
@@ -68,7 +131,8 @@
             <xpath expr="//div[@name='div_km_home_work']" position="replace"></xpath>
 
             <xpath expr="//page[@name='hr_settings']" position="after">
-                <page name="apprisals" string="Apprisals/Payment Rate" groups="survey.group_survey_user">
+                <page name="apprisals" string="Apprisals/Payment Rate"
+                    groups="survey.group_survey_user">
                     <group string="Payment Rate">
                         <group>
                             <field name="payment_rate" />
@@ -87,8 +151,12 @@
                                 <field name="scoring_total" />
                                 <field name="scoring_success" />
                                 <field name="state" widget="badge" />
-                                <button string="Proceed Survey" name="proceed_survey" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'done')]}" />
-                                <button string="See Results" name="see_results" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'done')]}" />
+                                <button string="Proceed Survey" name="proceed_survey" type="object"
+                                    class="oe_highlight"
+                                    attrs="{'invisible': [('state', '=', 'done')]}" />
+                                <button string="See Results" name="see_results" type="object"
+                                    class="oe_highlight"
+                                    attrs="{'invisible': [('state', '!=', 'done')]}" />
                             </tree>
                             <form>
                                 <group>
@@ -193,7 +261,8 @@
                 <field name="employee_type" />
             </xpath>
             <xpath expr="//div[hasclass('o_hr_kanban_record')]" position="attributes">
-                <attribute name="t-attf-style">background-color:{{record.employee_type.raw_value == 'trainee' ? 'rgba(244,171,2,0.2)' : ''}};</attribute>
+                <attribute name="t-attf-style">background-color:{{record.employee_type.raw_value ==
+                    'trainee' ? 'rgba(244,171,2,0.2)' : ''}};</attribute>
             </xpath>
             <xpath expr="//div[hasclass('o_kanban_record_headings')]" position="inside">
                 <div class="row">
@@ -210,9 +279,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <span class="font-weight-bold">
-                            ID:
-                            <field name="personal_id" />
+                        <span class="font-weight-bold"> ID: <field name="personal_id" />
                         </span>
                     </div>
                 </div>
@@ -242,7 +309,8 @@
         <field name="inherit_id" ref="hr.view_employee_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='activity_ids']" position="before">
-                <field name="assessed" widget="badge" decoration-warning="assessed == 'no'" decoration-success="assessed == 'yes'" />
+                <field name="assessed" widget="badge" decoration-warning="assessed == 'no'"
+                    decoration-success="assessed == 'yes'" />
                 <field name="source_id" optional="True" />
             </xpath>
         </field>
@@ -257,8 +325,10 @@
                 <field name="employee_type" />
                 <field name="branch_id" />
                 <field name="qualification_id" />
-                <field name="mobile_phone" string="Phone" filter_domain="['|', ('mobile_phone', 'ilike', self), ('work_phone', 'ilike', self)]" />
-                <field name="work_email" string="Email" filter_domain="[('work_email', 'ilike', self)]" />
+                <field name="mobile_phone" string="Phone"
+                    filter_domain="['|', ('mobile_phone', 'ilike', self), ('work_phone', 'ilike', self)]" />
+                <field name="work_email" string="Email"
+                    filter_domain="[('work_email', 'ilike', self)]" />
                 <field name="department_id" />
             </xpath>
 
@@ -266,19 +336,28 @@
 
             <xpath expr="//filter[@name='inactive']" position="after">
                 <separator />
-                <filter string="Employee" name="employee_type_employee" domain="[('employee_type', '=', 'employee')]" />
-                <filter string="Student" name="employee_type_student" domain="[('employee_type', '=', 'student')]" />
-                <filter string="Trainee" name="employee_type_trainee" domain="[('employee_type', '=', 'trainee')]" />
-                <filter string="Contractor" name="employee_type_contractor" domain="[('employee_type', '=', 'contractor')]" />
-                <filter string="Freelance" name="employee_type_freelance" domain="[('employee_type', '=', 'freelance')]" />
+                <filter string="Employee" name="employee_type_employee"
+                    domain="[('employee_type', '=', 'employee')]" />
+                <filter string="Student" name="employee_type_student"
+                    domain="[('employee_type', '=', 'student')]" />
+                <filter string="Trainee" name="employee_type_trainee"
+                    domain="[('employee_type', '=', 'trainee')]" />
+                <filter string="Contractor" name="employee_type_contractor"
+                    domain="[('employee_type', '=', 'contractor')]" />
+                <filter string="Freelance" name="employee_type_freelance"
+                    domain="[('employee_type', '=', 'freelance')]" />
             </xpath>
 
             <xpath expr="//filter[@name='group_manager']" position="after">
-                <filter name="branch_id" string="Branch" domain="[]" context="{'group_by': 'branch_id'}" />
-                <filter name="qualification_id" string="Qualification" domain="[]" context="{'group_by': 'qualification_id'}" />
-                <filter name="employee_type" string="Employee Type" domain="[]" context="{'group_by': 'employee_type'}" />
+                <filter name="branch_id" string="Branch" domain="[]"
+                    context="{'group_by': 'branch_id'}" />
+                <filter name="qualification_id" string="Qualification" domain="[]"
+                    context="{'group_by': 'qualification_id'}" />
+                <filter name="employee_type" string="Employee Type" domain="[]"
+                    context="{'group_by': 'employee_type'}" />
                 <separator />
-                <filter name="departure_reason" string="Dismissal Reason" domain="[]" context="{'group_by': 'departure_reason_id'}" />
+                <filter name="departure_reason" string="Dismissal Reason" domain="[]"
+                    context="{'group_by': 'departure_reason_id'}" />
                 <separator />
             </xpath>
             <xpath expr="//searchpanel/field[@name='department_id']" position="before">
@@ -298,7 +377,7 @@
     <record id="hr.act_employee_from_department" model="ir.actions.act_window">
         <field name="context">{
             "searchpanel_default_department_id": active_id
-        }
+            }
         </field>
     </record>
 
@@ -306,7 +385,9 @@
         <field name="name">employee_payment_rate.view.tree</field>
         <field name="model">hr.employee</field>
         <field name="arch" type="xml">
-            <tree editable="bottom" create="0" delete="0" decoration-success="payment_rate &gt;= wage_rate_min or payment_rate &lt;= wage_rate_max" decoration-danger="payment_rate &gt; wage_rate_max or payment_rate &lt; wage_rate_min">
+            <tree editable="bottom" create="0" delete="0"
+                decoration-success="payment_rate &gt;= wage_rate_min or payment_rate &lt;= wage_rate_max"
+                decoration-danger="payment_rate &gt; wage_rate_max or payment_rate &lt; wage_rate_min">
                 <field name="name" readonly="1" />
                 <field name="payment_rate" />
                 <field name="wage_rate_min" />
@@ -328,11 +409,26 @@
     </record>
 
     <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
-        <field name="view_ids" eval="[(5, 0, 0),
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban',
+    'view_id': ref('hr.hr_kanban_view_employees')}),
+                (0, 0, {'view_mode': 'tree',
+    'view_id': ref('hr.view_employee_tree')}),
+                (0, 0, {'view_mode': 'activity',
+    'view_id': ref('hr.hr_employee_view_activity')}),
+                (0, 0, {'view_mode': 'form',
+    'view_id': ref('hr.view_employee_form')})]" />
+    </record>
+
+    <!-- <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+        <field name="view_ids"
+            eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'kanban', 'view_id': ref('hr.hr_kanban_view_employees')}),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('hr.view_employee_tree')}),
                 (0, 0, {'view_mode': 'activity', 'view_id': ref('hr.hr_employee_view_activity')}),
-                (0, 0, {'view_mode': 'form', 'view_id': ref('hr.view_employee_form')})]" />
-    </record>
+                (0, 0, {'view_mode': 'form', 'view_id': ref('restaurant_hr.employee_card_view_form')})]" />
+    </record> -->
 
 </odoo>
