@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+
+    <t t-name="EmployeeCard" owl="1">
+        <div>
+            <!-- <t t-esc="value" /> -->
+            <!-- BLOCK -->
+            <t t-foreach="state.employeeCardData.resume_section_ids" t-as="resume_section_id"
+                t-key="resume_section_id.section_id">
+                <div style="font-size: 29px; font-weight: 700; width: 100%; margin-top: 45px;">
+                    <t t-esc="resume_section_id.section_name" />
+                </div>
+                <div style="background-color: rgb(225, 226, 227); height: 4px"></div>
+
+                <div style="display: flex">
+                    <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                        НАЗВАНИЕ
+                    </div>
+                    <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                        ДАТА НАЧАЛА
+                    </div>
+                    <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                        ДАТА ОКОНЧАНИЯ
+                    </div>
+                    <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                        ОПИСАНИЕ
+                    </div>
+                </div>
+
+                <t t-foreach="resume_section_id.section_data" t-as="resume_line_id"
+                    t-key="resume_line_id.resume_line_id">
+                    <div style="display: flex">
+                        <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                            <t t-esc="resume_line_id.name" />
+                        </div>
+                        <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                            <t t-esc="resume_line_id.date_start" />
+                        </div>
+                        <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                            <t t-esc="resume_line_id.date_end" />
+                        </div>
+                        <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                            <t t-esc="resume_line_id.description" />
+                        </div>
+                    </div>
+                </t>
+            </t>
+
+            <!-- BLOCK -->
+            <div style="font-size: 29px; font-weight: 700; width: 100%; margin-top: 45px;">
+                АТЕСТАЦИЯ
+            </div>
+            <div style="background-color: rgb(225, 226, 227); height: 4px"></div>
+
+            <t t-foreach="state.employeeCardData.responses" t-as="response"
+                t-key="response.response_id">
+                <div style="display: flex">
+                    <div style="width: 5%; font-size: 20px; margin-right: 5px">
+                        <t t-esc="response_index + 1" />. </div>
+                    <div style="width: 25%; font-size: 20px; margin-right: 5px">
+                        <t t-esc="response.create_date" />
+                    </div>
+                    <div style="width: 70%; font-size: 20px; margin-right: 5px">
+                        <t t-esc="response.name" />(Оценка-<t t-esc="response.scoring_percentage" />
+                        %) </div>
+                </div>
+            </t>
+
+            <!-- BLOCK -->
+            <div style="font-size: 29px; font-weight: 700; width: 100%; margin-top: 45px;">
+                ДОСТИЖЕНИЯ
+            </div>
+            <div style="background-color: rgb(225, 226, 227); height: 4px"></div>
+            <div style="display: flex; flex-direction: column;">
+                <t t-foreach="state.employeeCardData.achievements" t-as="achievement"
+                    t-key="achievement.achievement_id">
+                    <div style="display: flex; flex-direction: row;">
+                        <div style="width: 5%; font-size: 20px; margin-right: 5px">
+                            <t t-esc="achievement_index + 1" />. </div>
+                        <div style="width: 95%; font-size: 20px">
+                            <t t-esc="achievement.achievement_description" />
+                        </div>
+                    </div>
+                </t>
+            </div>
+
+
+            <!-- BLOCK -->
+            <div style="font-size: 29px; font-weight: 700; width: 100%; margin-top: 45px;">
+                ЗАМЕЧАНИЯ
+            </div>
+            <div style="background-color: rgb(225, 226, 227); height: 4px"></div>
+
+            <div style="display: flex; flex-direction: column">
+                <t t-foreach="state.employeeCardData.remarks" t-as="remark" t-key="remark.remark_id">
+                    <div style="display: flex; flex-direction: row;">
+                        <div style="width: 5%; font-size: 20px; margin-right: 5px">
+                            <t t-esc="remark_index + 1" />. </div>
+                        <div style="width: 95%; font-size: 20px">
+                            <t t-esc="remark.remark_description" />
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+</templates>

@@ -69,6 +69,8 @@
             'restaurant_hr/static/src/js/json_to_chart_widget.js',
             'restaurant_hr/static/src/js/department_org_chart.js',
             'restaurant_hr/static/src/scss/department_org_chart.scss',
+
+            'restaurant_hr/static/src/js/employee_card_widget.js',
         ],
         'web.assets_frontend': [],
         'web.assets_tests': [],
@@ -77,6 +79,7 @@
         'web.assets_qweb': [
             'restaurant_hr/static/src/xml/json_to_chart_widget.xml',
             'restaurant_hr/static/src/xml/department_org_chart.xml',
+            'restaurant_hr/static/src/xml/employee_card_widget.xml',
         ],
     },
     'license': 'LGPL-3',

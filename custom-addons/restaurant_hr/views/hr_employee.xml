@@ -6,49 +6,135 @@
         <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <form edit="0" create="0" delete="0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-3" style="background-color: rgb(147,149,152);">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <field name="image_1920" widget="image" />
-                                    </div>
+                <field name="company_id" invisible="1" />
+                <field name="department_id" invisible="1" />
+                <div style="background-color: rgb(204, 207, 207); padding-bottom: 100px">
+                    <div
+                        class="d-flex mx-auto"
+                        style="width: 80%;background-color: white;padding-top: 57px;padding-left: 76px;padding-right: 76px;"
+                    >
+                        <div
+                            class="d-block w-25"
+                            style="background-color: rgb(147, 149, 152);"
+                        >
+                            <field
+                                name="image_1920"
+                                style="display: block; margin-left: auto; margin-right: auto; border: 8px solid white; width: 97%; margin-top: 1.5%"
+                                widget="image" />
+                            <div style="margin-left: 36px; margin-top: 46px">
+                                <div class="d-flex flex-column">
+                                    <span style="width: 100%; color: white; font-size: 27px">
+                                        ДАТА РОЖДЕНИЯ:
+                                    </span>
+                                    <span
+                                        style="width: 100%;height: 5px;background-color: rgb(235, 189, 8);"
+                                    ></span>
+                                    <span style="width: 100%; padding-top: 10px">
+                                        <img
+                                            style="width: 41px; margin-right: 5px"
+                                            alt="birthday"
+                                            src="restaurant_hr/static/src/img/birthday-icon.jpg"
+                                        />
+                                        <span
+                                            style="color: white; font-size: 20px; vertical-align: middle">
+                                            <field name="birthday" />
+                                        </span>
+                                    </span>
                                 </div>
-                                <div class="row">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-1"></div>
-                                            <div class="col-11">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-12" style="color: white;">ДАТА
-                                                            РОЖДЕНИЯ</div>
-                                                        <div class="col-12"
-                                                            style="height: 5px; background-color: rgb(250,201,7)"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                <div class="d-flex flex-column" style="margin-top: 40px">
+                                    <span style="width: 100%; color: white; font-size: 27px">
+                                        E-MAIL:
+                                    </span>
+                                    <span
+                                        style="width: 100%;height: 5px;background-color: rgb(235, 189, 8);"></span>
+                                    <span style="width: 100%; padding-top: 10px">
+                                        <img
+                                            style="width: 41px; margin-right: 5px"
+                                            alt="birthday"
+                                            src="restaurant_hr/static/src/img/email-icon.jpg"
+                                        />
+                                        <span
+                                            style="color: white; font-size: 20px; vertical-align: middle">
+                                            <field name="work_email"></field>
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="d-flex flex-column" style="margin-top: 40px">
+                                    <span style="width: 100%; color: white; font-size: 27px">
+                                        МОБИЛЬНЫЙ:
+                                    </span>
+                                    <span
+                                        style="width: 100%; height: 5px; background-color: rgb(235, 189, 8);"></span>
+                                    <span style="width: 100%; padding-top: 10px">
+                                        <img
+                                            style="width: 41px; margin-right: 5px"
+                                            alt="birthday"
+                                            src="restaurant_hr/static/src/img/phone-icon.jpg"
+                                        />
+                                        <span
+                                            style="color: white; font-size: 20px; vertical-align: middle"
+                                        >
+                                            <field name="mobile_phone"></field>
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="d-flex flex-column"
+                                    style="margin-top: 40px; margin-bottom: 150px">
+                                    <span style="width: 100%; color: white; font-size: 27px">
+                                        РАБОТАЕТ С:
+                                    </span>
+                                    <span
+                                        style="width: 100%; height: 5px; background-color: rgb(235, 189, 8);"></span>
+                                    <span style="width: 100%; padding-top: 10px">
+                                        <img
+                                            style="width: 41px; margin-right: 5px"
+                                            alt="birthday"
+                                            src="restaurant_hr/static/src/img/calendar-icon.jpg"
+                                        />
+                                        <span
+                                            style="color: white; font-size: 20px; vertical-align: middle"
+                                        >
+                                            <field name="entry_date" />
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-9">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <h1>
-                                            <field name="name" />
-                                        </h1>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="img img-fluid" alt="employee photo"
-                                            style="max-height:120px; max-width: 100%; width:auto"
-                                            src="/web/binary/company_logo" />
-                                    </div>
+                        <div style="width: 75%; padding: 10px; margin-top: 57px; margin-left: 57px">
+                            <div class="d-flex">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span
+                                        style="font-size: 48px; font-weight: bold; width: 100%">
+                                        <field name="name" />
+                                    </span>
+                                    <span
+                                        style="font-size: 24px; font-weight: 500; width: 100%">
+                                        <field name="job_id" options="{'no_open': True}" />
+                                    </span>
                                 </div>
+                                <img
+                                    class="img img-fluid"
+                                    alt="andys-logo"
+                                    style="width: 184px;height: 129px;margin-right: 20px;margin-left: auto;margin-bottom: 10px;"
+                                    src="restaurant_hr/static/src/img/andys-logo.jpg"
+                                />
+                                <img
+                                    class="img img-fluid"
+                                    alt="laplacinte-logo"
+                                    style="width: 221px; height: 112px"
+                                    src="restaurant_hr/static/src/img/la-placinte-logo.jpg"
+                                />
                             </div>
+                            <div
+                                style="width: 100%;height: 8px;margin-top: 10px; background-color: rgb(235, 189, 8);"></div>
+
+                            <field name="employee_card_json"
+                                style="width: 100%; margin-bottom: 100px;"
+                                widget="employee_card_widget" />
+
                         </div>
                     </div>
                 </div>
@@ -121,9 +207,11 @@
                 class="oe_highlight" groups="base.group_no_one" /> -->
                 <!-- <button type="object" name="import_employee_data2" string="Import Employees"
                 class="oe_highlight" groups="base.group_no_one" /> -->
-                <button type="object" name="import_employee_black_list"
-                    string="Import Employee Black List" class="oe_highlight"
-                    groups="base.group_no_one" />
+                <!-- <button type="object" name="import_employee_black_list"
+                    string="Import
+                Employee Black List" class="oe_highlight"
+                    groups="base.group_no_one"
+                /> -->
             </xpath>
 
             <xpath expr="//field[@name='bank_account_id']" position="replace"></xpath>
@@ -300,6 +388,13 @@
                     </div>
                 </div>
             </xpath>
+
+            <xpath expr="//div[hasclass('oe_kanban_bottom_right')]" position="inside">
+                <button class="btn btn-link" style="padding: 0px; margin-left: 5px;"
+                    name="open_employee_edit_view" type="object">
+                    <i class="fa fa-edit" style="font-size: 16px;" />
+                </button>
+            </xpath>
         </field>
     </record>
 
@@ -312,6 +407,9 @@
                 <field name="assessed" widget="badge" decoration-warning="assessed == 'no'"
                     decoration-success="assessed == 'yes'" />
                 <field name="source_id" optional="True" />
+            </xpath>
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <button name="open_employee_edit_view" type="object" icon="fa-edit" title="Edit" />
             </xpath>
         </field>
     </record>
@@ -408,6 +506,20 @@
         <field name="context">{}</field>
     </record>
 
+    <!-- <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+        <field
+    name="view_ids"
+            eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban',
+    'view_id': ref('hr.hr_kanban_view_employees')}),
+                (0, 0, {'view_mode': 'tree',
+    'view_id': ref('hr.view_employee_tree')}),
+                (0, 0, {'view_mode': 'activity',
+    'view_id': ref('hr.hr_employee_view_activity')}),
+                (0, 0, {'view_mode': 'form',
+    'view_id': ref('hr.view_employee_form')})]" />
+    </record> -->
+
     <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
         <field
             name="view_ids"
@@ -419,16 +531,7 @@
                 (0, 0, {'view_mode': 'activity',
     'view_id': ref('hr.hr_employee_view_activity')}),
                 (0, 0, {'view_mode': 'form',
-    'view_id': ref('hr.view_employee_form')})]" />
+    'view_id': ref('restaurant_hr.employee_card_view_form')})]" />
     </record>
-
-    <!-- <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
-        <field name="view_ids"
-            eval="[(5, 0, 0),
-                (0, 0, {'view_mode': 'kanban', 'view_id': ref('hr.hr_kanban_view_employees')}),
-                (0, 0, {'view_mode': 'tree', 'view_id': ref('hr.view_employee_tree')}),
-                (0, 0, {'view_mode': 'activity', 'view_id': ref('hr.hr_employee_view_activity')}),
-                (0, 0, {'view_mode': 'form', 'view_id': ref('restaurant_hr.employee_card_view_form')})]" />
-    </record> -->
 
 </odoo>

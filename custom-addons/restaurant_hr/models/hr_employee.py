@@ -1,13 +1,13 @@
-import os
-from odoo import api, models, fields, _
-from odoo.exceptions import UserError
-
-from datetime import datetime
-import pandas as pd
-import numpy as np
+import json
 import logging
-import cyrtranslit
+import os
+from datetime import datetime
 
+import numpy as np
+import pandas as pd
+
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -158,6 +158,46 @@ class HrEmployee(models.Model):
         ("56", "56"),
     ], string="Pant's Size")
 
+    employee_card_json = fields.Text(
+        string="Employee Card Json",
+        compute="_compute_employee_card_json"
+    )
+
+    @api.depends("create_date")
+    def _compute_employee_card_json(self):
+        for record in self:
+            resume_section_ids = record.resume_line_ids.mapped("line_type_id")
+            employee_card_data = {
+                "resume_section_ids": [{
+                    "section_id": resume_section_id.id,
+                    "section_name": resume_section_id.name,
+                    "section_data": [{
+                            "resume_line_id": resume_line_id.id,
+                            "name": resume_line_id.name,
+                            "description": resume_line_id.description,
+                            "date_start":  resume_line_id.date_start.strftime("%Y-%m-%d") if resume_line_id.date_start else '',
+                            "date_end":  resume_line_id.date_end.strftime("%Y-%m-%d") if resume_line_id.date_end else '',
+                        } for resume_line_id in record.resume_line_ids.filtered(lambda r: r.line_type_id.id == resume_section_id.id)]
+                    } for resume_section_id in resume_section_ids],
+                "remarks": [{
+                    "remark_id": remark.id,
+                    "remark_description": remark.description,
+                    "remark_date": remark.assigment_date.strftime("%Y-%m-%d") if remark.assigment_date else '',
+                } for remark in record.employee_remark_ids],
+                "achievements": [{
+                    "achievement_id": achievement.id,
+                    "achievement_description": achievement.description,
+                    "achievement_date": achievement.assigment_date.strftime("%Y-%m-%d") if achievement.assigment_date else '',
+                } for achievement in record.employee_achievement_ids],
+                "responses": [{
+                    "response_id": response.id,
+                    "name": response.survey_id.title,
+                    "scoring_percentage": response.scoring_percentage,
+                    "create_date": response.create_date.strftime("%Y-%m-%d") if response.create_date else '',
+                } for response in record.response_ids],
+            }
+            record.employee_card_json = json.dumps(employee_card_data)
+
     @api.depends("create_date")
     def _compute_persanal_id(self):
         for record in self:
@@ -279,6 +319,15 @@ class HrEmployee(models.Model):
         self.clear_caches()
         # self._create_department_history(self.department_id, status="exit")
         return super(HrEmployee, self).unlink()
+
+    def open_employee_edit_view(self):
+        return {
+            "name": "Employee Edit Form",
+            "type": "ir.actions.act_window",
+            "res_model": "hr.employee",
+            "views": [(self.env.ref("hr.view_employee_form").id, "form")],
+            "res_id": self.id
+        }
 
     def _create_department_history(self, department_id, status="enter"):
         self.env["restaurant_hr.department_history"].create([{
@@ -531,7 +580,8 @@ class HrEmployee(models.Model):
                 continue
             # print(f'{record["surname"]} {record["name"]}', " => ", cyrtranslit.to_latin(
             #     f'{record["surname"]} {record["name"]}', "ru"))
-            employee_name = cyrtranslit.to_latin(f'{record["surname"]} {record["name"]}', "ru")
+            employee_name = f'{record["surname"]} {record["name"]}'
+            # employee_name = cyrtranslit.to_latin(f'{record["surname"]} {record["name"]}', "ru")
             employee_id = Employee.with_context(active_test=False).search([("name", "=", employee_name)], limit=1)
             print(employee_id, bool(employee_id))
             if not employee_id:
@@ -539,7 +589,7 @@ class HrEmployee(models.Model):
                     "name": employee_name,
                     "entry_date": datetime.strptime(record['add_date'], '%m/%d/%Y %H:%M') if record['add_date'] else False,
                     "birthday": datetime.strptime(record['birth_date'], '%m/%d/%Y %H:%M') if record['birth_date'] else False,
-                    "employee_type": "trainee",
+                    "employee_type": "trainee" if record["test_type"] == "stajer" else "employee",
                     "mobile_phone": record["mob"],
                     "work_phone": record["tel"],
                     "active": False,
@@ -552,7 +602,7 @@ class HrEmployee(models.Model):
                     "name": employee_name,
                     "entry_date": datetime.strptime(record['add_date'], '%m/%d/%Y %H:%M') if record['add_date'] else False,
                     "birthday": datetime.strptime(record['birth_date'], '%m/%d/%Y %H:%M') if record['birth_date'] else False,
-                    "employee_type": "trainee",
+                    "employee_type": "trainee" if record["test_type"] == "stajer" else "employee",
                     "mobile_phone": record["mob"],
                     "work_phone": record["tel"],
                     "active": False,
