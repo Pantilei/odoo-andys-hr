@@ -8,15 +8,14 @@
             <form edit="0" create="0" delete="0">
                 <field name="company_id" invisible="1" />
                 <field name="department_id" invisible="1" />
-                <div style="background-color: rgb(204, 207, 207); padding-bottom: 100px">
+                <div
+                    style="width: 1700px;background-color: rgb(204, 207, 207); padding-bottom: 100px">
                     <div
                         class="d-flex mx-auto"
-                        style="width: 80%;background-color: white;padding-top: 57px;padding-left: 76px;padding-right: 76px;"
+                        style="width: 1500px;background-color: white;padding-top: 57px;padding-left: 76px;padding-right: 76px;"
                     >
                         <div
-                            class="d-block w-25"
-                            style="background-color: rgb(147, 149, 152);"
-                        >
+                            style="display: block; width: 25%; background-color: rgb(147, 149, 152);">
                             <field
                                 name="image_1920"
                                 style="display: block; margin-left: auto; margin-right: auto; border: 8px solid white; width: 97%; margin-top: 1.5%"
