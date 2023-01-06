@@ -6,132 +6,150 @@
         <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <form edit="0" create="0" delete="0">
+                <style>
+                    .emp_card-photo-container img{
+                    width: 100%;
+                    }
+                </style>
                 <field name="company_id" invisible="1" />
                 <field name="department_id" invisible="1" />
                 <div
-                    style="width: 1700px;background-color: rgb(204, 207, 207); padding-bottom: 100px">
+                    style="width: 100%;background-color: rgb(204, 207, 207); padding-bottom: 2%;">
                     <div
-                        class="d-flex mx-auto"
-                        style="width: 1500px;background-color: white;padding-top: 57px;padding-left: 76px;padding-right: 76px;"
+                        style="
+                            display: flex;
+                            margin: 0 auto;
+                            width: 98%;
+                            background-color: white;
+                            padding: 1% 1% 0 1%;
+                        "
                     >
                         <div
-                            style="display: block; width: 25%; background-color: rgb(147, 149, 152);">
+                            style="
+                                display: block; 
+                                width: 25%; 
+                                background-color: rgb(147, 149, 152);
+                            ">
                             <field
+                                class="emp_card-photo-container"
                                 name="image_1920"
-                                style="display: block; margin-left: auto; margin-right: auto; border: 8px solid white; width: 97%; margin-top: 1.5%"
+                                style="
+                                    display: block; 
+                                    width: 97%; 
+                                    margin: 1.5% auto 0 auto;
+                                    border: 0.4vw solid white; 
+                                "
                                 widget="image" />
-                            <div style="margin-left: 36px; margin-top: 46px">
+                            <div style="margin: 15% 0 0 10%;">
                                 <div class="d-flex flex-column">
-                                    <span style="width: 100%; color: white; font-size: 27px">
+                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
                                         ДАТА РОЖДЕНИЯ:
                                     </span>
                                     <span
-                                        style="width: 100%;height: 5px;background-color: rgb(235, 189, 8);"
+                                        style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
                                     ></span>
-                                    <span style="width: 100%; padding-top: 10px">
+                                    <span style="width: 100%; padding-top: 3%">
                                         <img
-                                            style="width: 41px; margin-right: 5px"
+                                            style="width: 13%; margin-right: 3%"
                                             alt="birthday"
                                             src="restaurant_hr/static/src/img/birthday-icon.jpg"
                                         />
-                                        <span
-                                            style="color: white; font-size: 20px; vertical-align: middle">
-                                            <field name="birthday" />
-                                        </span>
+                                        <field name="birthday"
+                                            style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                margin-bottom: 0px;
+                                                color: white; font-size: 1.1vw; vertical-align: middle" />
                                     </span>
                                 </div>
 
-                                <div class="d-flex flex-column" style="margin-top: 40px">
-                                    <span style="width: 100%; color: white; font-size: 27px">
+                                <div class="d-flex flex-column" style="margin-top: 10%;">
+                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
                                         E-MAIL:
                                     </span>
                                     <span
-                                        style="width: 100%;height: 5px;background-color: rgb(235, 189, 8);"></span>
-                                    <span style="width: 100%; padding-top: 10px">
+                                        style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"></span>
+                                    <span style="width: 100%; padding-top: 3%">
                                         <img
-                                            style="width: 41px; margin-right: 5px"
+                                            style="width: 13%; margin-right: 3%"
                                             alt="birthday"
                                             src="restaurant_hr/static/src/img/email-icon.jpg"
                                         />
-                                        <span
-                                            style="color: white; font-size: 20px; vertical-align: middle">
-                                            <field name="work_email"></field>
-                                        </span>
+                                        <field name="work_email"
+                                            style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                margin-bottom: 0px;
+                                                color: white; font-size: 1.1vw; vertical-align: middle" />
                                     </span>
                                 </div>
 
-                                <div class="d-flex flex-column" style="margin-top: 40px">
-                                    <span style="width: 100%; color: white; font-size: 27px">
+                                <div class="d-flex flex-column" style="margin-top: 10%;">
+                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
                                         МОБИЛЬНЫЙ:
                                     </span>
                                     <span
-                                        style="width: 100%; height: 5px; background-color: rgb(235, 189, 8);"></span>
-                                    <span style="width: 100%; padding-top: 10px">
+                                        style="width: 100%; height: 0.4vw; background-color: rgb(235, 189, 8);"></span>
+                                    <span style="width: 100%; padding-top: 3%">
                                         <img
-                                            style="width: 41px; margin-right: 5px"
+                                            style="width: 13%; margin-right: 3%"
                                             alt="birthday"
                                             src="restaurant_hr/static/src/img/phone-icon.jpg"
                                         />
-                                        <span
-                                            style="color: white; font-size: 20px; vertical-align: middle"
-                                        >
-                                            <field name="mobile_phone"></field>
-                                        </span>
+                                        <field name="mobile_phone"
+                                            style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                margin-bottom: 0px; color: white; font-size: 1.1vw; 
+                                                vertical-align: middle" />
                                     </span>
                                 </div>
 
                                 <div class="d-flex flex-column"
-                                    style="margin-top: 40px; margin-bottom: 150px">
-                                    <span style="width: 100%; color: white; font-size: 27px">
+                                    style="margin-top: 10%; margin-bottom: 30%;">
+                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
                                         РАБОТАЕТ С:
                                     </span>
                                     <span
-                                        style="width: 100%; height: 5px; background-color: rgb(235, 189, 8);"></span>
-                                    <span style="width: 100%; padding-top: 10px">
+                                        style="width: 100%; height: 0.4vw; background-color: rgb(235, 189, 8);"></span>
+                                    <span style="width: 100%; padding-top: 3%">
                                         <img
-                                            style="width: 41px; margin-right: 5px"
+                                            style="width: 13%; margin-right: 3%"
                                             alt="birthday"
                                             src="restaurant_hr/static/src/img/calendar-icon.jpg"
                                         />
-                                        <span
-                                            style="color: white; font-size: 20px; vertical-align: middle"
-                                        >
-                                            <field name="entry_date" />
-                                        </span>
+                                        <field name="entry_date"
+                                            style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                margin-bottom: 0px; color: white; font-size: 1.1vw; 
+                                                vertical-align: middle" />
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div style="width: 75%; padding: 10px; margin-top: 57px; margin-left: 57px">
+                        <div style="width: 75%; margin-top: 3%; margin-left: 3%;">
                             <div class="d-flex">
                                 <div style="display: flex; flex-direction: column;">
                                     <span
-                                        style="font-size: 48px; font-weight: bold; width: 100%">
+                                        style="font-size: 2vw; font-weight: bold; width: 100%">
                                         <field name="name" />
                                     </span>
                                     <span
-                                        style="font-size: 24px; font-weight: 500; width: 100%">
+                                        style="font-size: 1.5vw; font-weight: 500; width: 100%">
                                         <field name="job_id" options="{'no_open': True}" />
                                     </span>
                                 </div>
                                 <img
                                     class="img img-fluid"
                                     alt="andys-logo"
-                                    style="width: 184px;height: 129px;margin-right: 20px;margin-left: auto;margin-bottom: 10px;"
+                                    style="width: 20%;height: 28%;margin-right: 2%;margin-left: auto;"
                                     src="restaurant_hr/static/src/img/andys-logo.jpg"
                                 />
                                 <img
                                     class="img img-fluid"
                                     alt="laplacinte-logo"
-                                    style="width: 221px; height: 112px"
+                                    style="width: 20%; height: 40%;"
                                     src="restaurant_hr/static/src/img/la-placinte-logo.jpg"
                                 />
                             </div>
                             <div
-                                style="width: 100%;height: 8px;margin-top: 10px; background-color: rgb(235, 189, 8);"></div>
+                                style="width: 100%;height: 0.5vw;margin-top: 0.5vw; background-color: rgb(235, 189, 8);"></div>
 
                             <field name="employee_card_json"
-                                style="width: 100%; margin-bottom: 100px;"
+                                style="width: 100%; margin-bottom: 5%;"
                                 widget="employee_card_widget" />
 
                         </div>
