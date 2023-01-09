@@ -523,9 +523,10 @@
         <field name="context">{}</field>
     </record>
 
-    <!-- <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
-        <field
-    name="view_ids"
+    <record id="employee_full_management_action" model="ir.actions.act_window">
+        <field name="name">Employees Management</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_ids"
             eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'kanban',
     'view_id': ref('hr.hr_kanban_view_employees')}),
@@ -535,9 +536,12 @@
     'view_id': ref('hr.hr_employee_view_activity')}),
                 (0, 0, {'view_mode': 'form',
     'view_id': ref('hr.view_employee_form')})]" />
-    </record> -->
+        <field name="domain">[]</field>
+        <field name="context">{'chat_icon': True}</field>
+    </record>
 
     <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+        <field name="context">{'chat_icon': True, 'create': False, 'delete': False}</field>
         <field
             name="view_ids"
             eval="[(5, 0, 0),

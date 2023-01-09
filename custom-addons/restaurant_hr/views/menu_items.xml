@@ -70,6 +70,13 @@
 
 
     <menuitem
+        id="employee_full_management_menu"
+        name="Employees Management"
+        parent="hr.menu_hr_employee_payroll"
+        action="restaurant_hr.employee_full_management_action"
+        sequence="5" />
+
+    <menuitem
         id="employee_payment_rate_menu"
         name="Employee Payment Rate"
         parent="hr.menu_hr_employee_payroll"
