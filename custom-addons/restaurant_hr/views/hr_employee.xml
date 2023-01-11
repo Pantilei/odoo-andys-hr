@@ -135,13 +135,13 @@
                                 <img
                                     class="img img-fluid"
                                     alt="andys-logo"
-                                    style="width: 20%;height: 28%;margin-right: 2%;margin-left: auto;"
+                                    style="width: 12%;height: 16.8%;margin-right: 2%;margin-left: auto;"
                                     src="restaurant_hr/static/src/img/andys-logo.jpg"
                                 />
                                 <img
                                     class="img img-fluid"
                                     alt="laplacinte-logo"
-                                    style="width: 20%; height: 40%;"
+                                    style="width: 12%; height: 24%;"
                                     src="restaurant_hr/static/src/img/la-placinte-logo.jpg"
                                 />
                             </div>
@@ -521,6 +521,17 @@
         <field name="view_id" ref="employee_payment_rate_view_tree" />
         <field name="domain">[]</field>
         <field name="context">{}</field>
+    </record>
+
+    <record id="employee_full_management_form_action" model="ir.actions.act_window">
+        <field name="name">Employees Management</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('hr.view_employee_form')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('hr.view_employee_tree')})]" />
+        <field name="domain">[]</field>
+        <field name="context">{'chat_icon': True}</field>
     </record>
 
     <record id="employee_full_management_action" model="ir.actions.act_window">

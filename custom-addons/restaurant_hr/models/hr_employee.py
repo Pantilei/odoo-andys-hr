@@ -195,6 +195,18 @@ class HrEmployee(models.Model):
                     "scoring_percentage": response.scoring_percentage,
                     "create_date": response.create_date.strftime("%Y-%m-%d") if response.create_date else '',
                 } for response in record.response_ids],
+                "courses": [{
+                    "course_id": course.id,
+                    "name": course.course_id.name,
+                    "score_points": course.score_points,
+                    "create_date": course.create_date.strftime("%Y-%m-%d") if course.create_date else '',
+                } for course in record.course_ids],
+                "skills": [{
+                    "skill_id": skill.id,
+                    "name": skill.skill_id.name,
+                    "level": skill.skill_level_id.name,
+                    "create_date": skill.create_date.strftime("%Y-%m-%d") if skill.create_date else '',
+                } for skill in record.employee_skill_ids],
             }
             record.employee_card_json = json.dumps(employee_card_data)
 

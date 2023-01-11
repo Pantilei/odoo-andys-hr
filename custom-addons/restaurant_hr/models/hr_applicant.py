@@ -1,6 +1,5 @@
-from odoo import api, models, fields, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
-
 
 AVAILABLE_PRIORITIES = [
     ('0', 'Normal'),
@@ -120,6 +119,6 @@ class HrApplicant(models.Model):
                 }
 
         dict_act_window = self.env['ir.actions.act_window']._for_xml_id(
-            'hr.open_view_employee_list')
+            'restaurant_hr.employee_full_management_form_action')
         dict_act_window['context'] = employee_data
         return dict_act_window

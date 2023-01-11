@@ -1,12 +1,11 @@
 import logging
 import traceback
-
 from datetime import datetime, timedelta
 
-from ..tools.odoo_rpc import OdooRPC
-from odoo import api, models, fields, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+from ..tools.odoo_rpc import OdooRPC
 
 _logger = logging.getLogger(__name__)
 
@@ -28,6 +27,10 @@ class EmployeeCourses(models.Model):
     completed = fields.Boolean(
         string='Is Completed',
         default=False
+    )
+
+    score_points = fields.Float(
+        string="Score", default=0.0
     )
 
     # Cron Job

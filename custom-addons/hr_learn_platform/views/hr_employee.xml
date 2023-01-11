@@ -7,8 +7,12 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <field name="show_close_access_to_e_learning" invisible="1" />
-                <button name="assign_to_course" type="object" string="Assign to Course" class="oe_highlight" />
-                <button name="close_access_to_e_learning" string="Close the access to E-Learning Platform" type="object" class="oe_highlight" attrs="{'invisible': [('show_close_access_to_e_learning', '=', False)]}" />
+                <button name="assign_to_course" type="object" string="Assign to Course"
+                    class="oe_highlight" />
+                <button name="close_access_to_e_learning"
+                    string="Close the access to E-Learning Platform" type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible': [('show_close_access_to_e_learning', '=', False)]}" />
             </xpath>
 
             <xpath expr="//page[@name='hr_settings']" position="after">
@@ -17,11 +21,13 @@
                         <field name="course_ids" nolabel="1">
                             <tree create="0" edit="0" delete="0">
                                 <field name="course_id" />
+                                <field name="score_points" />
                                 <field name="completed" />
                             </tree>
                             <form>
                                 <group>
                                     <field name="course_id" readonly="1" />
+                                    <field name="score_points" readonly="1" />
                                     <field name="completed" readonly="1" />
                                 </group>
                             </form>
@@ -39,7 +45,8 @@
         <field name="arch" type="xml">
             <xpath expr="//tree" position="inside">
                 <header>
-                    <button name="assign_to_course" type="object" string="Assign to Course" class="oe_highlight" />
+                    <button name="assign_to_course" type="object" string="Assign to Course"
+                        class="oe_highlight" />
                 </header>
             </xpath>
         </field>
