@@ -128,8 +128,12 @@
                                         <field name="name" />
                                     </span>
                                     <span
-                                        style="font-size: 1.5vw; font-weight: 500; width: 100%">
+                                        style="font-size: 1.1vw; font-weight: 500; width: 100%">
                                         <field name="job_id" options="{'no_open': True}" />
+                                    </span>
+                                    <span
+                                        style="font-size: 1.1vw; font-weight: 500; width: 100%">
+                                        <field name="department_id" options="{'no_open': True}" />
                                     </span>
                                 </div>
                                 <img
@@ -141,7 +145,7 @@
                                 <img
                                     class="img img-fluid"
                                     alt="laplacinte-logo"
-                                    style="width: 12%; height: 24%;"
+                                    style="width: 12%; height: 24%; padding-top: 2%;"
                                     src="restaurant_hr/static/src/img/la-placinte-logo.jpg"
                                 />
                             </div>
@@ -216,8 +220,8 @@
             <xpath expr="//header" position="inside">
                 <button type="object" name="assess_employee" string="Assess Employee"
                     class="oe_highlight" />
-                <button type="object" name="view_employee_card" string="View Card"
-                    class="oe_highlight" />
+                <!-- <button type="object" name="view_employee_card" string="View Card"
+                class="oe_highlight" /> -->
                 <!-- <button type="object" name="update_job_titles" string="Update Job Titles"
                 groups="base.group_no_one" /> -->
                 <!-- <button type="object" name="import_employee_data" string="Import Employees"
@@ -552,7 +556,9 @@
     </record>
 
     <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
-        <field name="context">{'chat_icon': True, 'create': False, 'delete': False}</field>
+        <field name="context">
+            {'chat_icon': True, 'create': False, 'delete': False, 'show_job_name_only': True}
+        </field>
         <field
             name="view_ids"
             eval="[(5, 0, 0),

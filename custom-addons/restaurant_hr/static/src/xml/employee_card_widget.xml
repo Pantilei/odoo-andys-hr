@@ -51,7 +51,7 @@
             <div
                 t-if="state.employeeCardData.responses.length || state.employeeCardData.courses.length">
                 <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
-                    АТЕСТАЦИЯ
+                    АТТЕСТАЦИЯ
                 </div>
                 <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
 

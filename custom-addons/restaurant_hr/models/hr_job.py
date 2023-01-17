@@ -1,4 +1,4 @@
-from odoo import api, models, fields, _
+from odoo import _, api, fields, models
 from odoo.osv import expression
 
 
@@ -27,7 +27,9 @@ class HrJob(models.Model):
         res = []
         for record in self:
             name = record.name
-            if department_id := record.department_id:
+            if self.env.context.get("show_job_name_only"):
+                name = name
+            elif department_id := record.department_id:
                 name = f'{name} [{department_id.name}]'
             res.append((record.id, name))
         return res
