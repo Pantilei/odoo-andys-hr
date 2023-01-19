@@ -91,7 +91,8 @@
                     ФУНКЦИОНАЛЬНЫЕ ОБЯЗАННОСТИ
                 </div>
                 <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
-                <div style="width: 70%; font-size: 1.1vw; margin-right: 1%">
+                <div
+                    style="width: 100%; font-size: 1.1vw; margin-right: 1%; white-space: pre-wrap;">
                     <t t-esc="state.employeeCardData.functional_duty" />
                 </div>
             </div>
