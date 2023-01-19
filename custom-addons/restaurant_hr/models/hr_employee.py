@@ -175,38 +175,39 @@ class HrEmployee(models.Model):
                             "resume_line_id": resume_line_id.id,
                             "name": resume_line_id.name,
                             "description": resume_line_id.description,
-                            "date_start":  resume_line_id.date_start.strftime("%Y-%m-%d") if resume_line_id.date_start else '',
-                            "date_end":  resume_line_id.date_end.strftime("%Y-%m-%d") if resume_line_id.date_end else '',
+                            "date_start":  resume_line_id.date_start.strftime("%d-%m-%Y") if resume_line_id.date_start else '',
+                            "date_end":  resume_line_id.date_end.strftime("%d-%m-%Y") if resume_line_id.date_end else '',
                         } for resume_line_id in record.resume_line_ids.filtered(lambda r: r.line_type_id.id == resume_section_id.id)]
                     } for resume_section_id in resume_section_ids],
                 "remarks": [{
                     "remark_id": remark.id,
                     "remark_description": remark.description,
-                    "remark_date": remark.assigment_date.strftime("%Y-%m-%d") if remark.assigment_date else '',
+                    "remark_date": remark.assigment_date.strftime("%d-%m-%Y") if remark.assigment_date else '',
                 } for remark in record.employee_remark_ids],
                 "achievements": [{
                     "achievement_id": achievement.id,
                     "achievement_description": achievement.description,
-                    "achievement_date": achievement.assigment_date.strftime("%Y-%m-%d") if achievement.assigment_date else '',
+                    "achievement_date": achievement.assigment_date.strftime("%d-%m-%Y") if achievement.assigment_date else '',
                 } for achievement in record.employee_achievement_ids],
                 "responses": [{
                     "response_id": response.id,
                     "name": response.survey_id.title,
                     "scoring_percentage": response.scoring_percentage,
-                    "create_date": response.create_date.strftime("%Y-%m-%d") if response.create_date else '',
+                    "create_date": response.create_date.strftime("%d-%m-%Y") if response.create_date else '',
                 } for response in record.response_ids],
                 "courses": [{
                     "course_id": course.id,
                     "name": course.course_id.name,
                     "score_points": course.score_points,
-                    "create_date": course.create_date.strftime("%Y-%m-%d") if course.create_date else '',
+                    "create_date": course.create_date.strftime("%d-%m-%Y") if course.create_date else '',
                 } for course in record.course_ids],
                 "skills": [{
                     "skill_id": skill.id,
                     "name": skill.skill_id.name,
                     "level": skill.skill_level_id.name,
-                    "create_date": skill.create_date.strftime("%Y-%m-%d") if skill.create_date else '',
+                    "create_date": skill.create_date.strftime("%d-%m-%Y") if skill.create_date else '',
                 } for skill in record.employee_skill_ids],
+                "functional_duty": record.functional_duty,
             }
             record.employee_card_json = json.dumps(employee_card_data)
 
