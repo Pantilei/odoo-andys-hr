@@ -28,6 +28,7 @@
         'views/hr_employee.xml',
         'views/hr_department.xml',
         'views/survey_survey.xml',
+        'views/survey_user_input.xml',
         'views/hr_applicant.xml',
         'views/hr_job.xml',
         'views/hr_job_group.xml',
@@ -40,6 +41,7 @@
         'wizards/employee_survey_select_wizard.xml',
         'wizards/applicant_survey_select_wizard.xml',
         'wizards/department_history_report.xml',
+        'wizards/employee_assign_survey.xml',
 
         'reports/hr_employee_badge.xml',
 

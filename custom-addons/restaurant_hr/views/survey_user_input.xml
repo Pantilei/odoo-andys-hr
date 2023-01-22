@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="survey_user_input_form" model="ir.ui.view">
+        <field name="name">survey.user_input_form</field>
+        <field name="model">survey.user_input</field>
+        <field name="arch" type="xml">
+            <tree edit="0" create="0" delete="0">
+                <field name="employee_id" />
+                <field name="partner_id" string="Appraiser" />
+                <field name="survey_id" />
+                <field name="short_access_url" widget="url" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

@@ -220,6 +220,9 @@
             <xpath expr="//header" position="inside">
                 <button type="object" name="assess_employee" string="Assess Employee"
                     class="oe_highlight" />
+
+                <button name="asign_survey" type="object" string="Assign Survey"
+                    class="oe_highlight" />
                 <!-- <button type="object" name="view_employee_card" string="View Card"
                 class="oe_highlight" /> -->
                 <!-- <button type="object" name="update_job_titles" string="Update Job Titles"
@@ -254,15 +257,22 @@
                     <group string="Apprisals">
                         <field name="response_ids" nolabel="1">
                             <tree create="0" edit="0">
+                                <field name="is_certificate" invisible="1" />
                                 <field name="survey_id" />
                                 <field name="partner_id" string="Appraiser" />
                                 <field name="scoring_percentage" />
                                 <field name="scoring_total" />
                                 <field name="scoring_success" />
+                                <button name="certification" type="button" disabled="disabled"
+                                    icon="fa-trophy" title="Certification"
+                                    aria-label="Certification"
+                                    attrs="{'invisible': [('is_certificate', '=', False)]}" />
+
                                 <field name="state" widget="badge" />
+
                                 <button string="Proceed Survey" name="proceed_survey" type="object"
                                     class="oe_highlight"
-                                    attrs="{'invisible': [('state', '=', 'done')]}" />
+                                    attrs="{'invisible': ['|', ('state', '=', 'done'), ('is_certificate', '=', True)]}" />
                                 <button string="See Results" name="see_results" type="object"
                                     class="oe_highlight"
                                     attrs="{'invisible': [('state', '!=', 'done')]}" />
@@ -424,6 +434,12 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_tree" />
         <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <header>
+                    <button name="asign_survey" type="object" string="Assign Survey"
+                        class="oe_highlight" />
+                </header>
+            </xpath>
             <xpath expr="//field[@name='activity_ids']" position="before">
                 <field name="assessed" widget="badge" decoration-warning="assessed == 'no'"
                     decoration-success="assessed == 'yes'" />

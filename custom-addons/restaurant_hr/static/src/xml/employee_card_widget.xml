@@ -69,20 +69,6 @@
                                 t-esc="response.scoring_percentage" />%) </div>
                     </div>
                 </t>
-                <t t-foreach="state.employeeCardData.courses" t-as="course"
-                    t-key="course.course_id">
-                    <div style="display: flex">
-                        <div style="width: 5%; font-size: 1.1vw; margin-right: 1%">
-                            <t t-esc="state.employeeCardData.responses.length + course_index + 1" />
-                            . </div>
-                        <div style="width: 25%; font-size: 1.1vw; margin-right: 1%">
-                            <t t-esc="course.create_date" />
-                        </div>
-                        <div style="width: 70%; font-size: 1.1vw; margin-right: 1%">
-                            <t t-esc="course.name" />(Оценка-<t
-                                t-esc="course.score_points" />%) </div>
-                    </div>
-                </t>
             </div>
 
             <div

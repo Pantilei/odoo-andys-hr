@@ -195,12 +195,6 @@ class HrEmployee(models.Model):
                     "scoring_percentage": response.scoring_percentage,
                     "create_date": response.create_date.strftime("%d-%m-%Y") if response.create_date else '',
                 } for response in record.response_ids],
-                "courses": [{
-                    "course_id": course.id,
-                    "name": course.course_id.name,
-                    "score_points": course.score_points,
-                    "create_date": course.create_date.strftime("%d-%m-%Y") if course.create_date else '',
-                } for course in record.course_ids],
                 "skills": [{
                     "skill_id": skill.id,
                     "name": skill.skill_id.name,
@@ -287,6 +281,18 @@ class HrEmployee(models.Model):
             'views': [(False, "form")],
             'context': {
                 'employee_id': self.id,
+            },
+            'target': 'new'
+        }
+
+    def asign_survey(self):
+        return {
+            'name': _('Assign Survey'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'restaurant_hr.employee_assign_survey_wizard',
+            'views': [(False, "form")],
+            'context': {
+                'employee_ids': self.ids,
             },
             'target': 'new'
         }

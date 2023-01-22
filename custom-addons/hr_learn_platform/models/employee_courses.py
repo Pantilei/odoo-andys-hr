@@ -29,10 +29,6 @@ class EmployeeCourses(models.Model):
         default=False
     )
 
-    score_points = fields.Float(
-        string="Score", default=0.0
-    )
-
     # Cron Job
     @api.model
     def get_employee_course_status(self):
@@ -54,7 +50,6 @@ class EmployeeCourses(models.Model):
                 domain=[("write_date", ">", datetime.now() -
                          timedelta(days=1)), ("completed", "=", True)],
             )
-            print("\n\n partner_courses", partner_courses)
             for partner_course in partner_courses:
                 partner_course_id = self.search([
                     ("course_id.external_id", "=",

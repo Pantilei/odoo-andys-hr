@@ -1,12 +1,12 @@
+import logging
 import string
 import traceback
-import logging
 from secrets import choice
 
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
-from ..tools.odoo_rpc import OdooRPC
 
+from ..tools.odoo_rpc import OdooRPC
 
 _logger = logging.Logger(__name__)
 
@@ -48,7 +48,8 @@ class EmployeeAssignManyCourses(models.TransientModel):
                     res = rpc.rpc(
                         "slide.channel",
                         "create_assign_user_to_course",
-                        line.employee_name, line.personal_id, line.password, course_id.external_id
+                        line.employee_name, line.personal_id, line.password, 
+                        course_id.external_id, line.employee_id.image_1920
                     )
                     remote_user_id = res.get("user_id")
                     remote_partner_id = res.get("partner_id")

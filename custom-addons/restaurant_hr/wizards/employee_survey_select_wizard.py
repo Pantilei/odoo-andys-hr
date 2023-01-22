@@ -1,6 +1,6 @@
 import werkzeug
 
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 
 
 class EmployeeSurveySelectWizard(models.TransientModel):
@@ -10,7 +10,8 @@ class EmployeeSurveySelectWizard(models.TransientModel):
     survey_id = fields.Many2one(
         comodel_name="survey.survey",
         string="Survey",
-        required=True
+        required=True,
+        domain=[("certification", "!=", True)]
     )
 
     manager_id = fields.Many2one(
@@ -23,14 +24,6 @@ class EmployeeSurveySelectWizard(models.TransientModel):
         employee_id = self.env["hr.employee"].search([
             ("id", "=", self.env.context.get("employee_id"))
         ], limit=1)
-
-        # response_id = self.env["survey.user_input"].search([
-        #     ("employee_id", "=", employee_id.id),
-        #     ("survey_id", "=", self.survey_id.id),
-        #     ("partner_id", "=", self.manager_id.id)
-        # ], limit=1)
-
-        # if not response_id:
         response_id = self.survey_id._create_answer(
             survey_id=self.survey_id.id,
             partner_id=self.manager_id.id,

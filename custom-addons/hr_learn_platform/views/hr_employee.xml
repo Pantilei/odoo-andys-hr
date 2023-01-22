@@ -21,13 +21,11 @@
                         <field name="course_ids" nolabel="1">
                             <tree create="0" edit="0" delete="0">
                                 <field name="course_id" />
-                                <field name="score_points" />
                                 <field name="completed" />
                             </tree>
                             <form>
                                 <group>
                                     <field name="course_id" readonly="1" />
-                                    <field name="score_points" readonly="1" />
                                     <field name="completed" readonly="1" />
                                 </group>
                             </form>

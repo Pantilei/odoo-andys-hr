@@ -31,6 +31,7 @@ access_restaurant_hr_qualification_manager,restaurant_hr.qualification.manager,r
 access_restaurant_hr_department_history_user,restaurant_hr.department_history.user,restaurant_hr.model_restaurant_hr_department_history,hr.group_hr_user,1,1,1,1
 access_restaurant_hr_department_history_manager,restaurant_hr.department_history.manager,restaurant_hr.model_restaurant_hr_department_history,hr.group_hr_manager,1,1,1,1
 
+access_restaurant_hr_employee_assign_survey_wizard,restaurant_hr.employee_assign_survey_wizard,restaurant_hr.model_restaurant_hr_employee_assign_survey_wizard,,1,1,1,1
 
 hr.access_hr_department_user,hr.department.user,model_hr_department,hr.group_hr_user,1,0,0,0
 access_hr_department_manager,hr.department.manager,model_hr_department,hr.group_hr_manager,1,1,1,1
