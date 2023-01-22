@@ -50,7 +50,7 @@
 
             <!-- BLOCK -->
             <div
-                t-if="state.employeeCardData.responses.length || state.employeeCardData.courses.length">
+                t-if="state.employeeCardData.responses.length">
                 <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
                     АТТЕСТАЦИЯ
                 </div>
