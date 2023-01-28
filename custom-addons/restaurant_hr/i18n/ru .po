@@ -1388,6 +1388,7 @@ msgstr ""
 #. module: survey
 #. openerp-web
 #: code:addons/survey/static/src/js/survey_result.js:0
+#, python-format
 msgid "Overall Performance"
 msgstr "Общая эффективность"
 

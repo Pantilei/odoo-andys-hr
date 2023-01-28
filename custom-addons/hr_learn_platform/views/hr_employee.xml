@@ -13,6 +13,8 @@
                     string="Close the access to E-Learning Platform" type="object"
                     class="oe_highlight"
                     attrs="{'invisible': [('show_close_access_to_e_learning', '=', False)]}" />
+                <button name="migrate_existing_user_photos" type="object" string="Migrate Photo"
+                     groups="base.group_no_one"/>
             </xpath>
 
             <xpath expr="//page[@name='hr_settings']" position="after">

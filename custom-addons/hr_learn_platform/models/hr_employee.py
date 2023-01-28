@@ -56,7 +56,6 @@ class HrEmployee(models.Model):
         remote_user_ids = self.mapped("e_learning_user_id")
         for remote_user_id in remote_user_ids:
             try:
-
                 get_param = self.env["ir.config_parameter"].sudo().get_param
                 remote_host = get_param("e_learning_server_host")
                 remote_user = get_param("e_learning_server_user")
@@ -77,3 +76,27 @@ class HrEmployee(models.Model):
                 _logger.error(traceback.format_exc())
                 raise UserError(
                     _("Cannot connect to e-learning platform")) from ex
+            
+    def migrate_existing_user_photos(self):
+        for employee_id in self.search([("e_learning_user_id", "!=", False)]):
+            try:
+                get_param = self.env["ir.config_parameter"].sudo().get_param
+                remote_host = get_param("e_learning_server_host")
+                remote_user = get_param("e_learning_server_user")
+                remote_db = get_param("e_learning_server_db")
+                remote_password = get_param("e_learning_server_password")
+                rpc = OdooRPC(remote_host, remote_db,
+                              remote_user, remote_password)
+                rpc.rpc(
+                    "res.users",
+                    "write",
+                    [employee_id.e_learning_user_id],
+                    {
+                        "image_1920": employee_id.image_1920
+                    },
+                )
+            except Exception as ex:
+                _logger.error(traceback.format_exc())
+                raise UserError(
+                    _("Cannot connect to e-learning platform")) from ex
+
