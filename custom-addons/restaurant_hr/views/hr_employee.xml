@@ -527,9 +527,11 @@
                 <field name="payment_rate" />
                 <field name="wage_rate_min" />
                 <field name="wage_rate_max" />
-                <field name="department_id" readonly="1" />
-                <field name="job_id" readonly="1" />
-                <field name="parent_id" readonly="1" />
+                <field name="last_response_id" optional="show"/>
+                <field name="last_response_scoring" optional="show"/>
+                <field name="department_id" readonly="1" optional="hide"/>
+                <field name="job_id" readonly="1" optional="show"/>
+                <field name="parent_id" readonly="1" optional="hide"/>
             </tree>
         </field>
     </record>

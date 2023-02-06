@@ -66,6 +66,16 @@ class HrEmployee(models.Model):
         groups="survey.group_survey_user"
     )
 
+    last_response_id = fields.Many2one(
+        comodel_name="survey.survey",
+        string="Last Survey of Employee",
+        compute="_compute_last_response_data"
+    )
+    last_response_scoring = fields.Float(
+        string="Last Survey Score",
+        compute="_compute_last_response_data"
+    )
+
     assessed = fields.Selection(
         selection=[
             ("yes", "Yes"),
@@ -162,6 +172,18 @@ class HrEmployee(models.Model):
         string="Employee Card Json",
         compute="_compute_employee_card_json"
     )
+
+
+    @api.depends("response_ids")
+    def _compute_last_response_data(self,):
+        for record in self:
+            if record.response_ids:
+                sorted_response_ids = record.response_ids.sorted(key=lambda r: r.create_date)
+                record.last_response_id = sorted_response_ids[0].survey_id.id
+                record.last_response_scoring = sorted_response_ids[0].scoring_percentage
+            else:
+                record.last_response_id = False
+                record.last_response_scoring = False
 
     @api.depends("create_date")
     def _compute_employee_card_json(self):
