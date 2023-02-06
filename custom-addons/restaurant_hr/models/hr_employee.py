@@ -177,8 +177,10 @@ class HrEmployee(models.Model):
     @api.depends("response_ids")
     def _compute_last_response_data(self,):
         for record in self:
-            if record.response_ids:
-                sorted_response_ids = record.response_ids.sorted(key=lambda r: r.create_date)
+            sorted_response_ids = record.response_ids\
+                    .filtered(lambda r: r.state == "done")\
+                    .sorted(key=lambda r: r.create_date, reverse=True)
+            if sorted_response_ids:
                 record.last_response_id = sorted_response_ids[0].survey_id.id
                 record.last_response_scoring = sorted_response_ids[0].scoring_percentage
             else:
