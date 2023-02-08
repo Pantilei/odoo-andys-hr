@@ -23,6 +23,11 @@ class SurveryUserInput(models.Model):
         string="Applicant"
     )
 
+    applicant_name = fields.Char(
+        string="Applicant",
+        related="applicant_id.partner_name"
+    )
+
     short_access_token = fields.Text(
         string="Short Access Token",
         compute="_compute_short_token",
