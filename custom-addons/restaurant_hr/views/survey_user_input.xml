@@ -21,7 +21,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="replace">
                 <field name="employee_id" optional="show"/>
-                <field name="applicant_name" optional="hide"/>
+                <field name="applicant_name" optional="show"/>
                 <field name="partner_id" string="Appraiser" optional="hide"/>
             </xpath>
         </field>
