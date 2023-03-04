@@ -11,11 +11,18 @@ AVAILABLE_PRIORITIES = [
 class HrApplicant(models.Model):
     _inherit = "hr.applicant"
 
+    name = fields.Char("Subject / Application Name", required=True, help="Email subject for applications sent via email")
+    description = fields.Html(string="FeedBack по интервью")
     response_ids = fields.One2many(
         comodel_name="survey.user_input",
         inverse_name="applicant_id",
         string="Responces",
         groups="survey.group_survey_user"
+    )
+
+    description_required = fields.Boolean(
+        string="Description Required", 
+        compute="_compute_description_required"
     )
 
     source_id = fields.Many2one(
@@ -54,6 +61,38 @@ class HrApplicant(models.Model):
                 [("hired_stage", "=", True)], limit=1)
             vals["stage_id"] = hired_stage_id.id
         return super(HrApplicant, self).write(vals)
+    
+    @api.depends("response_ids")
+    def _compute_description_required(self):
+        for record in self:
+            record.description_required = len(record.response_ids.filtered(lambda r: r.state=="done")) > 0
+    
+    @api.onchange('partner_mobile')
+    def _onchange_partner_mobile(self):
+        applicant_id = self.env["hr.applicant"].with_context({"active_test": False}).search([
+            ("partner_mobile", "=", self.partner_mobile)
+        ])
+        print("\n\n\n ", self.partner_mobile, applicant_id)
+        if self.partner_mobile and applicant_id:
+            return {
+                'warning': {
+                    'title': _("Phone exists: %s", self.partner_mobile),
+                    'message': "Applicant with this phone already exist!"
+                }
+            }
+    
+    @api.onchange('partner_name')
+    def _onchange_partner_name(self):
+        applicant_id = self.env["hr.applicant"].with_context({"active_test": False}).search([
+            ("partner_name", "=ilike", self.partner_name)
+        ])
+        if self.partner_name and applicant_id:
+            return {
+                'warning': {
+                    'title': _("Applicant exists: %s", self.partner_name),
+                    'message': "Applicant with this name already exist!"
+                }
+            }
 
     @api.depends("response_ids.scoring_percentage")
     def _compute_last_responce_score(self):

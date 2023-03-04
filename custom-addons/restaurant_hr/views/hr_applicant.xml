@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="hr_applicant_view_form" model="ir.ui.view">
         <field name="name">hr.applicant.hr_applicant_view_form</field>
         <field name="model">hr.applicant</field>
@@ -8,6 +9,18 @@
             <xpath expr="//field[@name='salary_expected']/../.." position="replace"></xpath>
             <xpath expr="//header" position="inside">
                 <field name="emp_id" invisible="1" />
+            </xpath>
+
+            <xpath expr="//field[@name='partner_mobile']" position="replace">
+                <field name="partner_mobile" widget="phone" required="1" />
+            </xpath>
+
+            <xpath expr="//field[@name='partner_phone']" position="replace">
+                <field name="partner_phone" widget="phone" invisible="1" />
+            </xpath>
+
+            <xpath expr="//field[@name='type_id']" position="replace">
+                <field name="type_id" required="1" />
             </xpath>
 
             <xpath expr="//field[@name='partner_name']" position="replace">
@@ -22,15 +35,33 @@
             <xpath expr="//field[@name='kanban_state']" position="replace"></xpath>
 
             <xpath expr="//field[@name='job_id']" position="replace">
-                <field name="department_id" options="{'no_create': True}" />
-                <field name="job_id" domain="[('department_id', '=', department_id)]" options="{'no_create': True}" />
-                <field name="branch_id" options="{'no_create': True}" />
-                <field name="application_type" />
-                <field name="name" placeholder="e.g. Sales Manager 2 year experience" />
+                <field name="name" placeholder="пр. Менеджер по продажам, 2 года опыта работы." />
+                <field name="department_id" options="{'no_create': True}" required="1" />
+                <field name="job_id" domain="[('department_id', '=', department_id)]"
+                    options="{'no_create': True}" required="1" />
+                <field name="branch_id" options="{'no_create': True}" required="1" />
+                <field name="application_type" required="1" />
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="replace">
+                <field name="company_id" groups="base.group_multi_company"
+                    options="{'no_open': True}" required="1" />
+            </xpath>
+            <xpath expr="//notebook/page" position="replace">
+                <page string="FeedBack по интервью">
+                    <field name="description_required" invisible="1"/>
+                    <field name="description"
+                        attrs="{'required': [('description_required', '=', True)]}"
+                        placeholder="FeedBack по интервью ..." />
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='source_id']" position="replace">
+                <field name="source_id" required="1" />
             </xpath>
             <xpath expr="//field[@name='email_from']" position="before">
-                <field name="partner_id" string="Address" context="{'show_address': 1, 'default_type': 'private', 'form_view_ref': 'base.res_partner_view_form_private'}" options="{'always_reload': True, 'highlight_first_line': True}" />
-                <field name="birthday" />
+                <field name="partner_id" string="Address"
+                    context="{'show_address': 1, 'default_type': 'private', 'form_view_ref': 'base.res_partner_view_form_private'}"
+                    options="{'always_reload': True, 'highlight_first_line': True}" invisible="1" />
+                <field name="birthday" invisible="1" />
             </xpath>
             <xpath expr="//field[@name='email_cc']" position="replace"></xpath>
 
@@ -52,8 +83,12 @@
                                 <field name="scoring_total" />
                                 <field name="scoring_success" />
                                 <field name="state" widget="badge" />
-                                <button string="Proceed Survey" name="proceed_survey" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'done')]}" />
-                                <button string="See Results" name="see_results" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'done')]}" />
+                                <button string="Proceed Survey" name="proceed_survey" type="object"
+                                    class="oe_highlight"
+                                    attrs="{'invisible': [('state', '=', 'done')]}" />
+                                <button string="See Results" name="see_results" type="object"
+                                    class="oe_highlight"
+                                    attrs="{'invisible': [('state', '!=', 'done')]}" />
                             </tree>
                             <form>
                                 <group>
@@ -78,9 +113,24 @@
         <field name="model">hr.applicant</field>
         <field name="inherit_id" ref="hr_recruitment_survey.hr_applicant_view_form_inherit" />
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='action_send_survey']" position="replace">
-                <button string="Assess Applicant" name="assess_applicant" type="object" class="oe_highlight" />
+            <xpath expr="//button[@name='archive_applicant']" position="replace"></xpath>
+            <xpath expr="//button[@name='action_send_survey']" position="replace"></xpath>
+
+            <xpath expr="//button[@name='create_employee_from_applicant']" position="replace">
+                <button string="Assess Applicant" name="assess_applicant" type="object"
+                    class="oe_highlight" />
+                <button
+                    string="Refuse"
+                    name="archive_applicant" type="object"
+                    attrs="{'invisible': [('active', '=', False)]}"
+                    data-hotkey="x" />
+                <button string="Create Employee"
+                    name="create_employee_from_applicant"
+                    type="object" data-hotkey="v"
+                    class="o_create_employee"
+                    attrs="{'invisible': ['|',('emp_id', '!=', False),('active', '=', False)]}" />
             </xpath>
+            
         </field>
     </record>
 
@@ -106,7 +156,8 @@
         <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_search_bis" />
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='unassigned']" position="replace">
-                <filter name="on_hire" string="In process of hiring" domain="['|', ('stage_id.hired_stage', '=', False), ('stage_id', '=', False)]" />
+                <filter name="on_hire" string="In process of hiring"
+                    domain="['|', ('stage_id.hired_stage', '=', False), ('stage_id', '=', False)]" />
             </xpath>
         </field>
     </record>
@@ -124,7 +175,8 @@
         <field name="name">Linear Personal Applications</field>
         <field name="res_model">hr.applicant</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[
+        <field name="view_ids"
+            eval="[
             (5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})
@@ -134,14 +186,15 @@
         <field name="context">{
             'default_application_type': 'linear',
             'search_default_on_hire': 1
-        }</field>
+            }</field>
     </record>
 
     <record id="applicant_administrative_personal_act_job" model="ir.actions.act_window">
         <field name="name">Administrative Personal Applications</field>
         <field name="res_model">hr.applicant</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[
+        <field name="view_ids"
+            eval="[
             (5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]" />
@@ -150,14 +203,15 @@
         <field name="context">{
             'default_application_type': 'administrative',
             'search_default_on_hire': 1
-        }</field>
+            }</field>
     </record>
 
     <record id="applicant_factory_personal_act_job" model="ir.actions.act_window">
         <field name="name">Factory Personal Applications</field>
         <field name="res_model">hr.applicant</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[
+        <field name="view_ids"
+            eval="[
             (5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.crm_case_tree_view_job')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('hr_recruitment.hr_applicant_view_form')})]" />
@@ -166,6 +220,6 @@
         <field name="context">{
             'default_application_type': 'factory',
             'search_default_on_hire': 1
-        }</field>
+            }</field>
     </record>
 </odoo>

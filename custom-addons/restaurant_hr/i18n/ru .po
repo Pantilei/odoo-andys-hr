@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-08 20:08+0000\n"
-"PO-Revision-Date: 2023-02-08 20:08+0000\n"
+"POT-Creation-Date: 2023-03-04 18:39+0000\n"
+"PO-Revision-Date: 2023-03-04 18:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -262,6 +262,12 @@ msgid "Applicant Survey Select Wizard"
 msgstr ""
 
 #. module: restaurant_hr
+#: code:addons/restaurant_hr/models/hr_applicant.py:0
+#, python-format
+msgid "Applicant exists: %s"
+msgstr "Кандидат  существует: %s"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__application_type
 msgid "Application Type"
 msgstr "Тип Заявки"
@@ -414,7 +420,12 @@ msgstr "Повар"
 #: code:addons/restaurant_hr/wizards/department_history_report.py:0
 #, python-format
 msgid "Count"
-msgstr ""
+msgstr "Количество"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_recruitment_survey_hr_applicant_view_form_inherit
+msgid "Create Employee"
+msgstr "Создать сотрудника"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__create_uid
@@ -544,6 +555,11 @@ msgid "Description"
 msgstr "Описание"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__description_required
+msgid "Description Required"
+msgstr "FeedBack по интервью Не заполнено"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_employee_view_form_inherit
 msgid "Detailed Resume/Skills"
 msgstr "Детальное Резюме/Навыки"
@@ -586,6 +602,11 @@ msgstr "Редактировать"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Email"
 msgstr "Емайл"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,help:restaurant_hr.field_hr_applicant__name
+msgid "Email subject for applications sent via email"
+msgstr "Тема электронной почты для заявок, отправленных по электронной почте"
 
 #. module: restaurant_hr
 #. openerp-web
@@ -691,6 +712,17 @@ msgstr "Фабрика Заявки"
 #: model:ir.ui.menu,name:restaurant_hr.applicant_factory_personal_act_job_menu
 msgid "Factory personal applications"
 msgstr "Фабрика Заявки"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__description
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
+msgid "FeedBack по интервью"
+msgstr "FeedBack по интервью"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
+msgid "FeedBack по интервью ..."
+msgstr "FeedBack по интервью ..."
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
@@ -980,6 +1012,12 @@ msgid "Phone"
 msgstr "Телефон"
 
 #. module: restaurant_hr
+#: code:addons/restaurant_hr/models/hr_applicant.py:0
+#, python-format
+msgid "Phone exists: %s"
+msgstr "Телефон существует: %s"
+
+#. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/js/action_menus.js:0
 #, python-format
@@ -1011,6 +1049,11 @@ msgstr "Квалификация"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Qualification"
 msgstr "Квалификация"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_recruitment_survey_hr_applicant_view_form_inherit
+msgid "Refuse"
+msgstr "Отказать"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
@@ -1123,6 +1166,11 @@ msgstr "Статус"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Student"
 msgstr "Студент"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__name
+msgid "Subject / Application Name"
+msgstr "Тема / Краткое Описание Кандидата"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_survey_survey
@@ -1285,11 +1333,6 @@ msgid "e.g. Sales Manager"
 msgstr "например: Менеджер по Продажам"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
-msgid "e.g. Sales Manager 2 year experience"
-msgstr ""
-
-#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid "laplacinte-logo"
 msgstr ""
@@ -1398,18 +1441,7 @@ msgstr ""
 msgid "Фактическое"
 msgstr ""
 
-#. module: survey
-#. openerp-web
-#: code:addons/survey/static/src/js/survey_result.js:0
-#, python-format
-msgid "Overall Performance"
-msgstr "Общая эффективность"
-
-#. module: survey
-#: model_terms:ir.ui.view,arch_db:survey.survey_fill_form_done
-msgid ""
-"<i class=\"fa fa-fw fa-trophy\" role=\"img\" aria-label=\"Download certification\" title=\"Download certification\"/>\n"
-"                                        Download certification"
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
+msgid "пр. Менеджер по продажам, 2 года опыта работы."
 msgstr ""
-"<i class=\"fa fa-fw fa-trophy\" role=\"img\" aria-label=\"Download certification\" title=\"Download certification\"/>\n"
-"                                        Загрузить Сертификат"
