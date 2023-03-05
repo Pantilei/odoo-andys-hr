@@ -12,7 +12,9 @@ class HrApplicant(models.Model):
     _inherit = "hr.applicant"
 
     name = fields.Char("Subject / Application Name", required=True, help="Email subject for applications sent via email")
-    description = fields.Html(string="FeedBack по интервью")
+    
+    feedback = fields.Text(string="FeedBack по интервью")
+
     response_ids = fields.One2many(
         comodel_name="survey.user_input",
         inverse_name="applicant_id",
@@ -20,9 +22,9 @@ class HrApplicant(models.Model):
         groups="survey.group_survey_user"
     )
 
-    description_required = fields.Boolean(
-        string="Description Required", 
-        compute="_compute_description_required"
+    feedback_required = fields.Boolean(
+        string="Feedback Required", 
+        compute="_compute_feedback_required"
     )
 
     source_id = fields.Many2one(
@@ -63,9 +65,9 @@ class HrApplicant(models.Model):
         return super(HrApplicant, self).write(vals)
     
     @api.depends("response_ids")
-    def _compute_description_required(self):
+    def _compute_feedback_required(self):
         for record in self:
-            record.description_required = len(record.response_ids.filtered(lambda r: r.state=="done")) > 0
+            record.feedback_required = len(record.response_ids.filtered(lambda r: r.state=="done")) > 0
     
     @api.onchange('partner_mobile')
     def _onchange_partner_mobile(self):

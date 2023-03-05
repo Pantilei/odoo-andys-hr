@@ -45,15 +45,13 @@
             <xpath expr="//field[@name='company_id']" position="replace">
                 <field name="company_id" groups="base.group_multi_company"
                     options="{'no_open': True}" required="1" />
+
+                <field name="feedback_required" invisible="1" />
+                <field name="feedback"
+                    attrs="{'required': [('feedback_required', '=', True)]}"
+                    string="FeedBack по интервью" />
             </xpath>
-            <xpath expr="//notebook/page" position="replace">
-                <page string="FeedBack по интервью">
-                    <field name="description_required" invisible="1"/>
-                    <field name="description"
-                        attrs="{'required': [('description_required', '=', True)]}"
-                        placeholder="FeedBack по интервью ..." />
-                </page>
-            </xpath>
+
             <xpath expr="//field[@name='source_id']" position="replace">
                 <field name="source_id" required="1" />
             </xpath>
@@ -130,7 +128,7 @@
                     class="o_create_employee"
                     attrs="{'invisible': ['|',('emp_id', '!=', False),('active', '=', False)]}" />
             </xpath>
-            
+
         </field>
     </record>
 
