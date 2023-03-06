@@ -1,4 +1,4 @@
-from odoo import models, api, fields, _
+from odoo import _, api, fields, models
 
 
 class HrQualification(models.Model):
@@ -8,4 +8,9 @@ class HrQualification(models.Model):
     name = fields.Char(
         string="Name",
         required=True
+    )
+
+    branch_id = fields.Many2one(
+        comodel_name="restaurant_hr.hr_branch",
+        string="Branch"
     )

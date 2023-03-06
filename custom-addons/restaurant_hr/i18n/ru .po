@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-04 18:39+0000\n"
-"PO-Revision-Date: 2023-03-04 18:39+0000\n"
+"POT-Creation-Date: 2023-03-06 18:59+0000\n"
+"PO-Revision-Date: 2023-03-06 18:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -347,6 +347,7 @@ msgstr "Графики Утечки Кадров"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__branch_id
 #: model:ir.ui.menu,name:restaurant_hr.hr_branch_menu
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Branch"
@@ -555,11 +556,6 @@ msgid "Description"
 msgstr "Описание"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__description_required
-msgid "Description Required"
-msgstr "FeedBack по интервью Не заполнено"
-
-#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_employee_view_form_inherit
 msgid "Detailed Resume/Skills"
 msgstr "Детальное Резюме/Навыки"
@@ -714,15 +710,15 @@ msgid "Factory personal applications"
 msgstr "Фабрика Заявки"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__description
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__feedback
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 msgid "FeedBack по интервью"
 msgstr "FeedBack по интервью"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
-msgid "FeedBack по интервью ..."
-msgstr "FeedBack по интервью ..."
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__feedback_required
+msgid "Feedback Required"
+msgstr "FeedBack по интервью не заполнен"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search

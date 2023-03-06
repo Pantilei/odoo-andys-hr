@@ -104,6 +104,7 @@ class HrEmployee(models.Model):
 
     qualification_id = fields.Many2one(
         comodel_name='restaurant_hr.qualification',
+        domain="[('branch_id', '=', branch_id)]",
         string='Qualification'
     )
 
