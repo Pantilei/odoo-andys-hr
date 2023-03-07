@@ -36,9 +36,9 @@
 
             <xpath expr="//field[@name='job_id']" position="replace">
                 <field name="name" placeholder="пр. Менеджер по продажам, 2 года опыта работы." />
-                <field name="department_id" options="{'no_create': True}" required="1" />
+                <field name="department_id" options="{'no_create': True}" />
                 <field name="job_id" domain="[('department_id', '=', department_id)]"
-                    options="{'no_create': True}" required="1" />
+                    options="{'no_create': True}" string="Job/Vacancy"/>
                 <field name="branch_id" options="{'no_create': True}" required="1" />
                 <field name="application_type" required="1" />
             </xpath>

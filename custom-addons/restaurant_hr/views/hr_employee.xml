@@ -179,7 +179,7 @@
             <!-- Ensure that users are not able to fast create the job and user even HR Settings are
             hidden -->
             <xpath expr="//field[@name='job_id']" position="replace">
-                <field name="job_id" options="{'no_create': True}" />
+                <field name="job_id" options="{'no_create': True}"/>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="after">
                 <field name="user_id" options="{'no_create': True}" />
@@ -188,7 +188,7 @@
 
             <xpath expr="//field[@name='parent_id']" position="replace">
                 <field name="parent_id" options="{'no_create': True}" />
-                <field name="job_id" options="{'no_create': True}" />
+                <field name="job_id" options="{'no_create': True}" required="1" string="Job/Vacancy"/>
                 <field name="employee_type" />
             </xpath>
 
@@ -338,7 +338,7 @@
         <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_manager')])]" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='department_id']" position="replace">
-                <field name="department_id" options="{'no_create': True}" />
+                <field name="department_id" options="{'no_create': True}" required="1"/>
             </xpath>
         </field>
     </record>
