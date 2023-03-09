@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 22:18+0000\n"
-"PO-Revision-Date: 2023-03-07 22:18+0000\n"
+"POT-Creation-Date: 2023-03-09 19:55+0000\n"
+"PO-Revision-Date: 2023-03-09 19:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -308,6 +308,14 @@ msgstr "Оценить Сотрудника"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__assessed
 msgid "Assessed"
 msgstr "Оценён"
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/models/survey_user_input.py:0
+#, python-format
+msgid ""
+"Assessment \"%s\" with %s(%s%%) scoring has been deleted from employee"
+msgstr ""
+"Аттестация \"%s\" с оценкой %s(%s%%) был удалён у сотрудника."
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/hr_employee.py:0
@@ -951,6 +959,12 @@ msgstr "Месяца"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 msgid "Name"
 msgstr "Название"
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/models/survey_user_input.py:0
+#, python-format
+msgid "New assessment \"%s\" has been assigned on employee"
+msgstr "Новая аттестация \"%s\" назначена на сотрудника."
 
 #. module: restaurant_hr
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__assessed__no

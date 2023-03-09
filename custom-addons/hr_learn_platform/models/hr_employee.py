@@ -1,11 +1,11 @@
-import os
-from odoo import api, models, fields, _
-from odoo.exceptions import UserError
-from ..tools.odoo_rpc import OdooRPC
-
-import traceback
 import logging
+import os
+import traceback
 
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
+
+from ..tools.odoo_rpc import OdooRPC
 
 _logger = logging.getLogger(__name__)
 

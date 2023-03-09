@@ -29,6 +29,23 @@ class EmployeeCourses(models.Model):
         default=False
     )
 
+    @api.model
+    def create(self, vals):
+        new_course_line = super().create(vals)
+        if new_course_line.employee_id:
+            content = _('New course "%s" has been assigned to employee', new_course_line.course_id.name)
+            body = f'<p>{content}</p>'
+            new_course_line.employee_id.message_post(body=body)
+        return new_course_line
+    
+    @api.model
+    def unlink(self):
+        if self.employee_id:
+            content = _('New course "%s" has been assigned to employee', self.course_id.name)
+            body = f'<p>{content}</p>'
+            self.employee_id.message_post(body=body)
+        return super().unlink()
+
     # Cron Job
     @api.model
     def get_employee_course_status(self):

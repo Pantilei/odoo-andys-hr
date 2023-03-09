@@ -44,6 +44,28 @@ class SurveryUserInput(models.Model):
         related="survey_id.certification"
     )
 
+    @api.model
+    def create(self, vals):
+        user_input_line = super().create(vals)
+        if user_input_line.employee_id:
+            content = _('New assessment "%s" has been assigned on employee', user_input_line.survey_id.title)
+            body = f'<p>{content}</p>'
+            user_input_line.employee_id.message_post(body=body)
+        return user_input_line
+    
+    @api.model
+    def unlink(self):
+        if self.employee_id:
+            content = _(
+                'Assessment "%s" with %s(%s%%) scoring has been deleted from employee', 
+                self.survey_id.title,
+                self.scoring_total,
+                self.scoring_percentage
+            )
+            body = f'<p>{content}</p>'
+            self.employee_id.message_post(body=body)
+        return super().unlink()
+
     @api.depends("access_token")
     def _compute_short_token(self):
         for record in self:

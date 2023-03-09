@@ -38,7 +38,7 @@
                 <field name="name" placeholder="пр. Менеджер по продажам, 2 года опыта работы." />
                 <field name="department_id" options="{'no_create': True}" />
                 <field name="job_id" domain="[('department_id', '=', department_id)]"
-                    options="{'no_create': True}" string="Job/Vacancy"/>
+                    options="{'no_create': True}" string="Job/Vacancy" />
                 <field name="branch_id" options="{'no_create': True}" required="1" />
                 <field name="application_type" required="1" />
             </xpath>
@@ -59,7 +59,7 @@
                 <field name="partner_id" string="Address"
                     context="{'show_address': 1, 'default_type': 'private', 'form_view_ref': 'base.res_partner_view_form_private'}"
                     options="{'always_reload': True, 'highlight_first_line': True}" invisible="1" />
-                <field name="birthday" invisible="1" />
+                <field name="birthday" />
             </xpath>
             <xpath expr="//field[@name='email_cc']" position="replace"></xpath>
 
