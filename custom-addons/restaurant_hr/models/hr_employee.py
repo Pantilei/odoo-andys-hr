@@ -322,6 +322,26 @@ class HrEmployee(models.Model):
             'target': 'new'
         }
 
+    def create_user_from_empoyee(self):
+        user_id = self.env["res.users"].create({
+            "name": self.name,
+            "company_id": self.company_id.id,
+            "login": self.work_email or self.personal_id,
+            "lang": self.lang
+        })
+        self.user_id = user_id.id
+        return {
+            'name': _('Create User'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.users',
+            'res_id': user_id.id,
+            'views': [(self.env.ref("base.view_users_form").id, "form")],
+            'context': {
+                'form_view_initial_mode': "edit"
+            },
+            'target': 'current'
+        }
+
     def view_employee_card(self):
         return {
             'type': 'ir.actions.act_url',
