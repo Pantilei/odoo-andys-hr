@@ -331,6 +331,14 @@
                 <group name="source" string="Source">
                     <field name="source_id" />
                 </group>
+                <group name="training_date" string="Training Period">
+                    <group>
+                        <field name="training_start_date" />
+                    </group>
+                    <group>
+                        <field name="training_end_date" />
+                    </group>
+                </group>
                 <group name="functional_duty" string="Functional Duty">
                     <field name="functional_duty" />
                 </group>

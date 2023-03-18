@@ -109,6 +109,13 @@
         name="Reporting"
         parent="hr.menu_hr_root"
         sequence="60" />
+    
+    <menuitem
+        id="staff_of_workers_report_menu"
+        name="Staff of Workers Report"
+        parent="restaurant_hr.reporting"
+        action="restaurant_hr.staff_of_workers_report_action"
+        sequence="4" />
 
     <menuitem
         id="hr_department_history"

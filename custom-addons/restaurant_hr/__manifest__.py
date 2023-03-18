@@ -34,6 +34,7 @@
         'views/hr_job_group.xml',
         'views/hr_branch.xml',
         'views/hr_qualification.xml',
+        'views/staff_of_workers_report.xml',
 
         'views/department_history.xml',
         'views/hr_dep_org_chart.xml',

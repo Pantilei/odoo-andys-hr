@@ -18,6 +18,11 @@ class HrJob(models.Model):
         default=lambda self: self.env.user.department_id
     )
 
+    branch_id = fields.Many2one(
+        comodel_name="restaurant_hr.hr_branch",
+        string="Branch"
+    )
+
     hr_job_group_id = fields.Many2one(
         comodel_name="restaurant_hr.hr_job_group",
         string="Job Name"

@@ -1,7 +1,7 @@
 import json
 import logging
 import os
-from datetime import datetime
+from datetime import date, datetime
 
 import numpy as np
 import pandas as pd
@@ -174,9 +174,17 @@ class HrEmployee(models.Model):
         compute="_compute_employee_card_json"
     )
 
+    training_start_date = fields.Date(
+        string="Training Start Date",
+        index=True,
+    )
+    training_end_date = fields.Date(
+        string="Training End Date",
+        index=True
+    )
 
     @api.depends("response_ids")
-    def _compute_last_response_data(self,):
+    def _compute_last_response_data(self):
         for record in self:
             sorted_response_ids = record.response_ids\
                     .filtered(lambda r: r.state == "done")\
@@ -356,27 +364,35 @@ class HrEmployee(models.Model):
         rec_ids = super(HrEmployee, self).create(vals_list)
         for rec_id in rec_ids:
             if rec_id.department_id:
-                rec_id._create_department_history(
-                    rec_id.department_id, status="enter")
-        return rec_ids
+                rec_id._create_department_history(rec_id.department_id, status="enter")
+            if rec_id.employee_type == "trainee":
+                rec_id.training_start_date = date.today()
+                rec_id.training_end_date = False
 
+        return rec_ids
+    
     def write(self, vals):
         self.clear_caches()
+
+        if "employee_type" in vals:
+            if vals["employee_type"] == "trainee":
+                vals["training_start_date"] = date.today()
+                vals["training_end_date"] = False
+            elif vals["employee_type"] == "employee":
+                vals["training_end_date"] = date.today()
+        
         initial_department_id = self.department_id
         res = super(HrEmployee, self).write(vals)
         final_department_id = self.department_id
         if initial_department_id != final_department_id:
-            self._create_department_history(
-                final_department_id, status="enter")
-            self._create_department_history(
-                initial_department_id, status="exit")
+            self._create_department_history(final_department_id, status="enter")
+            self._create_department_history(initial_department_id, status="exit")
         if "active" in vals:
             if vals.get("active"):
-                self._create_department_history(
-                    final_department_id, status="enter")
+                self._create_department_history(final_department_id, status="enter")
             else:
-                self._create_department_history(
-                    final_department_id, status="exit")
+                self._create_department_history(final_department_id, status="exit")
+
         return res
 
     def unlink(self):

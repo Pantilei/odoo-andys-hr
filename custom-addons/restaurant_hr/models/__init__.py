@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
-from . import hr_employee_base
-from . import hr_employee
-from . import survey_user_input
-from . import hr_applicant
-from . import hr_job
-from . import survey_survey
-from . import hr_department
-from . import hr_job_group
-from . import hr_branch
-from . import hr_qualification
-from . import department_history
-from . import hr_dep_org_chart
-from . import hr_employee_achievements
-from . import hr_employee_remarks
+from . import (
+    department_history,
+    hr_applicant,
+    hr_branch,
+    hr_dep_org_chart,
+    hr_department,
+    hr_employee,
+    hr_employee_achievements,
+    hr_employee_base,
+    hr_employee_remarks,
+    hr_job,
+    hr_job_group,
+    hr_qualification,
+    staff_of_workers_report,
+    survey_survey,
+    survey_user_input,
+)
