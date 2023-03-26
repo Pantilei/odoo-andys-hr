@@ -7,7 +7,22 @@
         <field name="inherit_id" ref="hr.view_hr_job_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='department_id']" position="after">
-                <field name="branch_id" options="{'no_create': True}"/>
+                <field name="branch_id" options="{'no_create': True}" />
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]" position="replace">
+                <div class="oe_title">
+                    <!-- <label for="name" /> -->
+                    <h1>
+                        <field name="name" readonly="1" force_save="1" />
+                    </h1>
+                    <label for="hr_job_group_id" class="oe_edit_only" />
+                    <h3>
+                        <field name="hr_job_group_id" class="oe_edit_only"
+                            placeholder="e.g. Sales Manager"
+                            required="1"
+                            options="{'no_create': True}" />
+                    </h3>
+                </div>
             </xpath>
         </field>
     </record>
@@ -28,7 +43,8 @@
         <field name="name">hr.job.view_hr_job_form.manager</field>
         <field name="model">hr.job</field>
         <field name="inherit_id" ref="hr.view_hr_job_form" />
-        <field name="groups_id" eval="[(6, 0, [ref('hr_recruitment.group_hr_recruitment_manager')])]" />
+        <field name="groups_id"
+            eval="[(6, 0, [ref('hr_recruitment.group_hr_recruitment_manager')])]" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='department_id']" position="replace">
                 <field name="department_id" required="1" />
@@ -84,8 +100,10 @@
         <field name="priority">200</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="replace">
-                <field name="hr_job_group_id" class="o_job_name oe_inline" required="1" options="{'no_create': 1}" />
-                <field name="name" class="o_job_name oe_inline" placeholder="e.g. Sales Manager" invisible="1" force_save="1" />
+                <field name="hr_job_group_id" class="o_job_name oe_inline" required="1"
+                    options="{'no_create': 1}" />
+                <field name="name" class="o_job_name oe_inline" placeholder="e.g. Sales Manager"
+                    invisible="1" force_save="1" />
             </xpath>
         </field>
     </record>
@@ -104,10 +122,14 @@
 
             <xpath expr="//group" position="replace">
                 <group expand="0" string="Group By">
-                    <filter string="Status" name="status" domain="[]" context="{'group_by': 'state'}" />
-                    <filter string="Job" name="name_group" domain="[]" context="{'group_by': 'name'}" />
-                    <filter string="Department" name="department" domain="[]" context="{'group_by': 'department_id'}" />
-                    <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company" />
+                    <filter string="Status" name="status" domain="[]"
+                        context="{'group_by': 'state'}" />
+                    <filter string="Job" name="name_group" domain="[]"
+                        context="{'group_by': 'name'}" />
+                    <filter string="Department" name="department" domain="[]"
+                        context="{'group_by': 'department_id'}" />
+                    <filter string="Company" name="company" domain="[]"
+                        context="{'group_by': 'company_id'}" groups="base.group_multi_company" />
                 </group>
             </xpath>
         </field>
@@ -118,12 +140,12 @@
         <field name="model">hr.job</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name" string="Name" optional="hide"/>
-                <field name="department_id" string="Department" optional="hide"/>
-                <field name="expected_employees" string="Expected Employees"/>
-                <field name="no_of_employee" string="Employees"/>
-                <field name="no_of_recruitment" string="Jobs"/>
-                <field name="no_of_hired_employee" string="Hired Count"/>
+                <field name="name" string="Name" optional="hide" />
+                <field name="department_id" string="Department" optional="hide" />
+                <field name="expected_employees" string="Expected Employees" />
+                <field name="no_of_employee" string="Employees" />
+                <field name="no_of_recruitment" string="Jobs" />
+                <field name="no_of_hired_employee" string="Hired Count" />
             </tree>
         </field>
     </record>
@@ -132,10 +154,11 @@
         <field name="name">Open To Recruit Jobs</field>
         <field name="res_model">hr.job</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[
+        <field name="view_ids"
+            eval="[
             (5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('restaurant_hr.hr_job_tree')}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('hr.view_hr_job_form')})]"/>
+            (0, 0, {'view_mode': 'form', 'view_id': ref('hr.view_hr_job_form')})]" />
         <field name="search_view_id" ref="view_job_filter" />
         <field name="domain">[('state', '=', 'recruit')]</field>
         <field name="context">{"search_default_department":1, "search_default_name_group":1}</field>

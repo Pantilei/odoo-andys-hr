@@ -38,6 +38,7 @@
             <data>
                 <xpath expr="//field[@name='parent_id']" position="after">
                     <field name="department_size" />
+                    <field name="staff_size" />
                 </xpath>
                 <xpath expr="//widget[@name='web_ribbon']" position="before">
                     <div class="oe_button_box" name="button_box">

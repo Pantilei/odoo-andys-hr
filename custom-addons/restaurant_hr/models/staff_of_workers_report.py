@@ -66,7 +66,7 @@ class StaffOfWorkersReport(models.TransientModel):
             all_department_ids = HrDepartment.search([("id", "child_of", record.department_id.id)])
             record.staff_line_ids = [(0, 0, {
                 "department_id": child_department_id.id,
-                "staff_count": 0,
+                "staff_count": child_department_id.staff_size,
                 "staff_actual_count": len(HrEmployee.search([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "employee"),

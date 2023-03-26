@@ -12,7 +12,7 @@
     </record>
 
     <record id="hr_job_group_action" model="ir.actions.act_window">
-        <field name="name">Job Groups</field>
+        <field name="name">Available Job Name</field>
         <field name="res_model">restaurant_hr.hr_job_group</field>
         <field name="view_mode">tree</field>
         <field name="domain">[]</field>

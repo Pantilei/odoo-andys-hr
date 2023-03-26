@@ -25,7 +25,7 @@ class HrJob(models.Model):
 
     hr_job_group_id = fields.Many2one(
         comodel_name="restaurant_hr.hr_job_group",
-        string="Job Name"
+        string="Available Job Names"
     )
 
     def name_get(self):

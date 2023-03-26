@@ -1,4 +1,4 @@
-from odoo import models, fields, _
+from odoo import _, fields, models
 
 
 class HrDepartment(models.Model):
@@ -23,6 +23,11 @@ class HrDepartment(models.Model):
             If department is the restaurant, you can specify its size, the salaries of certain employees will 
             depend on it.
         """
+    )
+
+    staff_size = fields.Integer(
+        string="Staff Size",
+        default=0
     )
 
     def org_chart_department(self):

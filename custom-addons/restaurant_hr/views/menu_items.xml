@@ -56,11 +56,11 @@
 
     <menuitem
         id="job_group_menu"
-        name="Job Group"
+        name="Available Job Name"
         parent="hr_recruitment.menu_hr_recruitment_configuration"
         action="restaurant_hr.hr_job_group_action"
         sequence="3" />
-    
+
     <menuitem
         id="utm_source_menu"
         name="Sources"
@@ -109,7 +109,7 @@
         name="Reporting"
         parent="hr.menu_hr_root"
         sequence="60" />
-    
+
     <menuitem
         id="staff_of_workers_report_menu"
         name="Staff of Workers Report"
