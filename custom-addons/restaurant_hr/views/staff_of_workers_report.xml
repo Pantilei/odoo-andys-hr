@@ -9,24 +9,31 @@
                 <sheet>
                     <div class="oe_title">
                         <h2>
-                            <field name="name" readonly="1"/>
+                            <field name="name" readonly="1" />
                         </h2>
                     </div>
                     <group>
-                        <field name="period" />
-                        <field name="department_id" options="{'no_create': True}"/>
-                        <field name="branch_id" options="{'no_create': True}"/>
+                        <group>
+                            <field name="start_date" />
+                        </group>
+                        <group>
+                            <field name="end_date" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="department_id" options="{'no_create': True}" />
+                        <field name="branch_id" options="{'no_create': True}" />
                     </group>
                     <group>
                         <field name="staff_line_ids" nolabel="1">
                             <tree create="0" edit="0" delete="0">
                                 <field name="department_id" />
-                                <field name="staff_count" />
-                                <field name="staff_actual_count" />
-                                <field name="open_position_count" />
-                                <field name="trainee_count" />
-                                <field name="dismissed_count" />
-                                <field name="hired_count" />
+                                <field name="staff_count" sum="Total staff" />
+                                <field name="staff_actual_count" sum="Total actual staff" />
+                                <field name="open_position_count" sum="Total open position" />
+                                <field name="trainee_count" sum="Total trainee" />
+                                <field name="dismissed_count" sum="Total dismissed" />
+                                <field name="hired_count" sum="Total hired" />
                             </tree>
                         </field>
                     </group>

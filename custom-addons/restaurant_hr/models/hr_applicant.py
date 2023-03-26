@@ -150,7 +150,7 @@ class HrApplicant(models.Model):
                     and applicant.company_id.partner_id.id or False,
                     'default_work_email': applicant.department_id and applicant.department_id.company_id
                     and applicant.department_id.company_id.email or False,
-                    'default_work_phone': applicant.department_id.company_id.phone,
+                    'default_mobile_phone': applicant.partner_mobile,
                     'default_applicant_id': applicant.ids,
                     'default_response_ids': [(6, 0, applicant.response_ids.ids)],
                     'default_employee_type': 'trainee',

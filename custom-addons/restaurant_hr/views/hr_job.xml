@@ -120,10 +120,10 @@
             <tree>
                 <field name="name" string="Name" optional="hide"/>
                 <field name="department_id" string="Department" optional="hide"/>
-                <field name="expected_employees" string="Consistent State"/>
-                <field name="no_of_employee" string="Current State"/>
+                <field name="expected_employees" string="Expected Employees"/>
+                <field name="no_of_employee" string="Employees"/>
                 <field name="no_of_recruitment" string="Jobs"/>
-                <field name="no_of_hired_employee" string="Trainee Count"/>
+                <field name="no_of_hired_employee" string="Hired Count"/>
             </tree>
         </field>
     </record>

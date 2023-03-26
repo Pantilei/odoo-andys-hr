@@ -368,6 +368,10 @@ class HrEmployee(models.Model):
             if rec_id.employee_type == "trainee":
                 rec_id.training_start_date = date.today()
                 rec_id.training_end_date = False
+            
+            if rec_id.applicant_id:
+                hired_stage_id = self.env["hr.recruitment.stage"].search([("hired_stage", "=", True)])
+                rec_id.applicant_id.stage_id = hired_stage_id
 
         return rec_ids
     

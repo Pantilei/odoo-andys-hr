@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-18 12:49+0000\n"
-"PO-Revision-Date: 2023-03-18 12:49+0000\n"
+"POT-Creation-Date: 2023-03-26 17:36+0000\n"
+"PO-Revision-Date: 2023-03-26 17:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -411,11 +411,6 @@ msgid "Confirm"
 msgstr "Подтвердить"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
-msgid "Consistent State"
-msgstr ""
-
-#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Contractor"
 msgstr "Подрядчик"
@@ -478,16 +473,6 @@ msgstr "Создано Пользователем"
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__create_date
 msgid "Created on"
 msgstr "Создано в"
-
-#. module: restaurant_hr
-#: model:ir.model.fields.selection,name:restaurant_hr.selection__restaurant_hr_staff_of_workers_report__period__current_month
-msgid "Current Month"
-msgstr "Текущий месяц"
-
-#. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
-msgid "Current State"
-msgstr "Нынешний Статус"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__dms_directory_ids
@@ -696,6 +681,7 @@ msgstr ""
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_assign_survey_wizard__employee_ids
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 msgid "Employees"
 msgstr "Сотрудники"
 
@@ -705,6 +691,11 @@ msgstr "Сотрудники"
 #: model:ir.ui.menu,name:restaurant_hr.employee_full_management_menu
 msgid "Employees Management"
 msgstr "Управление Сотрудниками"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__end_date
+msgid "End Date"
+msgstr "Конец Периода"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/wizards/department_history_report.py:0
@@ -728,6 +719,11 @@ msgstr "Дата Вступления"
 #, python-format
 msgid "Exit"
 msgstr "Выход"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
+msgid "Expected Employees"
+msgstr "Ожидаемые Сотрудники"
 
 #. module: restaurant_hr
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_applicant__application_type__factory
@@ -804,6 +800,7 @@ msgstr "HR Группа Вакансий"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__hired_count
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 msgid "Hired Count"
 msgstr "Наняты"
 
@@ -890,11 +887,6 @@ msgstr "Вакансии"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey_wage_rate__department_size__large
 msgid "Large"
 msgstr "Большое"
-
-#. module: restaurant_hr
-#: model:ir.model.fields.selection,name:restaurant_hr.selection__restaurant_hr_staff_of_workers_report__period__last_3_months
-msgid "Last 3 Months"
-msgstr "Последние 3 месяца"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard____last_update
@@ -1069,11 +1061,6 @@ msgid "Payment Rate"
 msgstr "Ставка"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__period
-msgid "Period"
-msgstr "Период"
-
-#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__personal_id
 msgid "Personal ID"
 msgstr "Персональный ID"
@@ -1088,11 +1075,6 @@ msgstr "Телефон"
 #, python-format
 msgid "Phone exists: %s"
 msgstr "Телефон существует: %s"
-
-#. module: restaurant_hr
-#: model:ir.model.fields.selection,name:restaurant_hr.selection__restaurant_hr_staff_of_workers_report__period__previous_month
-msgid "Previous Month"
-msgstr "Предыдущий месяц"
 
 #. module: restaurant_hr
 #. openerp-web
@@ -1248,6 +1230,11 @@ msgid "Staff of Workers Report"
 msgstr "Отчет по Штату"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__start_date
+msgid "Start Date"
+msgstr "Начало Периода"
+
+#. module: restaurant_hr
 #: code:addons/restaurant_hr/wizards/applicant_survey_select_wizard.py:0
 #: code:addons/restaurant_hr/wizards/employee_survey_select_wizard.py:0
 #, python-format
@@ -1323,13 +1310,42 @@ msgstr ""
 "списка писем"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
+msgid "Total actual staff"
+msgstr "Факт. Штат"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
+msgid "Total dismissed"
+msgstr "Уволено"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
+msgid "Total hired"
+msgstr "Нанято"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
+msgid "Total open position"
+msgstr "Открытые Вакансии"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
+msgid "Total staff"
+msgstr "Штат"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
+msgid "Total trainee"
+msgstr "Стажеры"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Trainee"
 msgstr "Стажёр"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__trainee_count
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 msgid "Trainee Count"
 msgstr "Стажеры"
 
