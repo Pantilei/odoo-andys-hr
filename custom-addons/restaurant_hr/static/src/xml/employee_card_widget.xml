@@ -71,7 +71,7 @@
                 </t>
             </div>
 
-            <div
+            <!-- <div
                 t-if="state.employeeCardData.functional_duty">
                 <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
                     ФУНКЦИОНАЛЬНЫЕ ОБЯЗАННОСТИ
@@ -81,7 +81,7 @@
                     style="width: 100%; font-size: 1.1vw; margin-right: 1%; white-space: pre-wrap;">
                     <t t-esc="state.employeeCardData.functional_duty" />
                 </div>
-            </div>
+            </div> -->
 
             <!-- BLOCK -->
             <div t-if="state.employeeCardData.achievements.length">

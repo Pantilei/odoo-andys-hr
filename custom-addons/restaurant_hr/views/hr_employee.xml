@@ -132,6 +132,12 @@
                                         <field name="job_id" options="{'no_open': True}" />
                                     </span>
                                     <span
+                                        attrs="{'invisible': [('qualification_id', '=', False)]}"
+                                        style="font-size: 1.1vw; font-weight: 500; width: 100%">
+                                        <field name="branch_id" invisible="1" />
+                                        <field name="qualification_id" options="{'no_open': True}" />
+                                    </span>
+                                    <span
                                         style="font-size: 1.1vw; font-weight: 500; width: 100%">
                                         <field name="department_id" options="{'no_open': True}" />
                                     </span>
@@ -390,6 +396,11 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.hr_kanban_view_employees" />
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='avatar_128']" position="replace">
+                <field name="avatar_128" widget="image"
+                    class="o_kanban_image_fill_left"
+                    options="{'background': true, 'preventClicks': false}" />
+            </xpath>
             <xpath expr="//kanban" position="inside">
                 <field name="assessed" />
                 <field name="employee_type" />
