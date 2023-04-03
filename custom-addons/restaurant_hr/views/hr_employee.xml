@@ -26,7 +26,8 @@
                     >
                         <div
                             style="
-                                display: block; 
+                                display: flex;
+                                flex-direction: column;
                                 width: 25%; 
                                 background-color: rgb(147, 149, 152);
                             ">
@@ -118,6 +119,13 @@
                                                 vertical-align: middle" />
                                     </span>
                                 </div>
+                            </div>
+                            <div class="d-flex mt-auto mb-3" groups="hr.group_hr_user">
+                                <button class="btn btn-primary btn-warning mx-auto" type="object"
+                                    name="open_extended_form"
+                                    style="width: 95%;">
+                                    Расширенная Карточка
+                                </button>
                             </div>
                         </div>
                         <div style="width: 75%; margin-top: 3%; margin-left: 3%;">

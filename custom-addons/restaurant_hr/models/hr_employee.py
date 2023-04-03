@@ -317,6 +317,17 @@ class HrEmployee(models.Model):
             },
             'target': 'new'
         }
+    
+    def open_extended_form(self):
+        return {
+            'name': _('Employee'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'hr.employee',
+            'views': [(self.env.ref("hr.view_employee_form").id, "form")],
+            'res_id': self.id,
+            'context': {},
+            'target': 'current'
+        }
 
     def asign_survey(self):
         return {
