@@ -7,10 +7,16 @@ import numpy as np
 import pandas as pd
 
 from odoo import _, api, fields, models
+from odoo.addons.hr_skills.models.hr_resume import Employee
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
+
+@api.model_create_multi
+def employee_create(self, vals_list):
+    return super(Employee, self).create(vals_list)
+Employee.create = employee_create
 
 class User(models.Model):
     _inherit = ['res.users']
@@ -368,6 +374,24 @@ class HrEmployee(models.Model):
             'target': 'new',
             'url': f"/hr/employee-card/{self.id}",
         }
+    
+    def _create_resume_line(self, job_prefix):
+        if not job_prefix:
+            resume_line = self.env['hr.resume.line'].search([
+                ("employee_id", "=", self.id),
+                ("name", "=ilike", "Stagier%"),
+                ("date_end", "=", False),
+            ], limit=1, order="create_date desc")
+            if resume_line:
+                resume_line.date_end = self.training_end_date
+
+        line_type = self.env.ref('hr_skills.resume_type_experience', raise_if_not_found=False)
+        self.env['hr.resume.line'].create({
+            'employee_id': self.id,
+            'name': f'{job_prefix} {self.job_id.name} [{self.department_id.name}]',
+            'date_start': date.today(),
+            'line_type_id': line_type and line_type.id,
+        })
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -379,6 +403,9 @@ class HrEmployee(models.Model):
             if rec_id.employee_type == "trainee":
                 rec_id.training_start_date = date.today()
                 rec_id.training_end_date = False
+                rec_id._create_resume_line("Stagier ")
+            if rec_id.employee_type == "employee":
+                rec_id._create_resume_line("")
             
             if rec_id.applicant_id:
                 hired_stage_id = self.env["hr.recruitment.stage"].search([("hired_stage", "=", True)])
@@ -388,13 +415,17 @@ class HrEmployee(models.Model):
     
     def write(self, vals):
         self.clear_caches()
-
+        create_stagier_resume_line = False
+        create_employee_resume_line = False
         if "employee_type" in vals:
             if vals["employee_type"] == "trainee":
                 vals["training_start_date"] = date.today()
                 vals["training_end_date"] = False
+                create_stagier_resume_line = True
+                
             elif vals["employee_type"] == "employee":
                 vals["training_end_date"] = date.today()
+                create_employee_resume_line = True
         
         initial_department_id = self.department_id
         res = super(HrEmployee, self).write(vals)
@@ -407,6 +438,11 @@ class HrEmployee(models.Model):
                 self._create_department_history(final_department_id, status="enter")
             else:
                 self._create_department_history(final_department_id, status="exit")
+
+        if create_stagier_resume_line:
+            self._create_resume_line("Stagier ")
+        if create_employee_resume_line:
+            self._create_resume_line("")
 
         return res
 

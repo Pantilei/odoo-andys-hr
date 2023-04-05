@@ -10,6 +10,7 @@ AVAILABLE_PRIORITIES = [
 
 class HrApplicant(models.Model):
     _inherit = "hr.applicant"
+    _rec_name = "partner_name"
 
     name = fields.Char("Subject / Application Name", required=True, help="Email subject for applications sent via email")
     
