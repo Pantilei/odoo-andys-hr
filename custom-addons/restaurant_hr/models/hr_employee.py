@@ -189,6 +189,17 @@ class HrEmployee(models.Model):
         index=True
     )
 
+    has_dublicate = fields.Boolean(compute="_compute_has_dublicate", store=True)
+
+    @api.depends("name")
+    def _compute_has_dublicate(self):
+        for record in self:
+            dublicate_count = self.with_context(active_test=True).search_count([
+                ("name", "=", record.name), 
+                ("company_id", "=", record.company_id.id)
+            ])
+            record.has_dublicate = dublicate_count > 1
+
     @api.depends("response_ids")
     def _compute_last_response_data(self):
         for record in self:
@@ -413,6 +424,11 @@ class HrEmployee(models.Model):
 
         return rec_ids
     
+    def _update_resume_line(self):
+        if self.resume_line_ids:
+            last_resume_id = self.resume_line_ids.sorted(key=lambda r: r.date_start, reverse=True)[0]
+            last_resume_id.date_end = date.today()
+
     def write(self, vals):
         self.clear_caches()
         create_stagier_resume_line = False
@@ -437,6 +453,7 @@ class HrEmployee(models.Model):
             if vals.get("active"):
                 self._create_department_history(final_department_id, status="enter")
             else:
+                self._update_resume_line()
                 self._create_department_history(final_department_id, status="exit")
 
         if create_stagier_resume_line:

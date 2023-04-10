@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-26 19:32+0000\n"
-"PO-Revision-Date: 2023-03-26 19:32+0000\n"
+"POT-Creation-Date: 2023-04-10 20:51+0000\n"
+"PO-Revision-Date: 2023-04-10 20:51+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -621,6 +621,11 @@ msgid "Download"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
+msgid "Duplicates"
+msgstr "Дубликаты"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_employee_tree
 msgid "Edit"
 msgstr "Редактировать"
@@ -637,6 +642,7 @@ msgstr "Тема электронной почты для заявок, отпр
 
 #. module: restaurant_hr
 #. openerp-web
+#: code:addons/restaurant_hr/models/hr_employee.py:0
 #: code:addons/restaurant_hr/static/src/js/department_org_chart.js:0
 #: model:ir.model,name:restaurant_hr.model_hr_employee
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__employee_id
@@ -808,6 +814,11 @@ msgstr ""
 #: model:ir.model,name:restaurant_hr.model_restaurant_hr_hr_job_group
 msgid "HR Job Group"
 msgstr "HR Группа Вакансий"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__has_dublicate
+msgid "Has Dublicate"
+msgstr "Имеет Дубликаты"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__hired_count
@@ -1566,10 +1577,8 @@ msgid "Проверки"
 msgstr ""
 
 #. module: restaurant_hr
-#. openerp-web
-#: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
-#, python-format
-msgid "ФУНКЦИОНАЛЬНЫЕ ОБЯЗАННОСТИ"
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid "Расширенная Карточка"
 msgstr ""
 
 #. module: restaurant_hr
