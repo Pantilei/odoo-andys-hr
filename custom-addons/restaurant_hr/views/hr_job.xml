@@ -80,6 +80,10 @@
             <xpath expr="//field[@name='new_application_count']/../../button" position="attributes">
                 <attribute name="context">{'create': 1}</attribute>
             </xpath>
+
+            <xpath expr="//field[@name='all_application_count']" position="replace">
+                <field name="current_application_count" /> Current Applicants </xpath>
+
         </field>
     </record>
 
@@ -167,5 +171,10 @@
     <record id="hr_recruitment.action_hr_job" model="ir.actions.act_window">
         <field name="name">Availaible Jobs</field>
         <field name="context">{'create': 0, 'delete': 0}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="hr_recruitment.action_hr_job_applications">
+        <field name="context">{'search_default_job_id': [active_id], 'default_job_id': active_id}</field>
+        <field name="domain">[('emp_id', '=', False)]</field>
     </record>
 </odoo>

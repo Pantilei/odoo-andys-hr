@@ -53,6 +53,60 @@ class StaffOfWorkersReport(models.TransientModel):
         compute="_compute_staff_lines"
     )
 
+    total_staff_count = fields.Integer(compute="_compute_total_counts", string="Total Staff")
+    total_staff_actual_count = fields.Integer(compute="_compute_total_counts", string="Total Actual Staff")
+    total_position_count = fields.Integer(compute="_compute_total_counts", string="Total Positions")
+    total_trainee_count = fields.Integer(compute="_compute_total_counts", string="Total Trainees")
+    total_dismissed_count = fields.Integer(compute="_compute_total_counts", string="Total Dismissed")
+    total_hired_count = fields.Integer(compute="_compute_total_counts", string="Total Hired")
+
+    @api.depends("start_date", "end_date", "department_id", "branch_id", )
+    def _compute_total_counts(self):
+        HrEmployee = self.env["hr.employee"]
+        HrJob = self.env["hr.job"]
+
+        for record in self:
+            record.total_staff_count = record.department_id.staff_size 
+            record.total_staff_actual_count = HrEmployee.search_count([
+                ("department_id", "child_of", record.department_id.id),
+                ("employee_type", "=", "employee"),
+                ("branch_id", "=", record.branch_id.id),
+            ])
+
+            record.total_position_count = HrJob.search([
+                ("department_id", "=", record.department_id.id),
+                ("branch_id", "=", record.branch_id.id),
+                ("state", "=", "recruit")
+            ], limit=1).no_of_recruitment
+
+            record.total_trainee_count = HrEmployee.search_count([
+                ("department_id", "child_of", record.department_id.id),
+                ("employee_type", "=", "trainee"),
+                ("branch_id", "=", record.branch_id.id),
+                ("training_start_date", ">=", record.start_date),
+                "|",
+                ("training_end_date", "<=", record.end_date),
+                ("training_end_date", "=", False),
+            ])
+
+            record.total_dismissed_count = HrEmployee.with_context(active_test=True).search_count([
+                ("department_id", "child_of", record.department_id.id),
+                ("employee_type", "=", "employee"),
+                ("branch_id", "=", record.branch_id.id),
+                ("active", "=", False),
+                ("departure_date", ">=", record.start_date),
+                ("departure_date", "<=", record.end_date),
+            ])
+
+            record.total_hired_count = HrEmployee.search_count([
+                ("department_id", "child_of", record.department_id.id),
+                ("employee_type", "=", "employee"),
+                ("branch_id", "=", record.branch_id.id),
+                ("active", "=", True),
+                ("entry_date", ">=", record.start_date),
+                ("entry_date", "<=", record.end_date)
+            ])
+
     @api.depends("start_date", "end_date", "department_id", "branch_id", )
     def _compute_staff_lines(self):
         HrDepartment = self.env["hr.department"]
@@ -63,21 +117,23 @@ class StaffOfWorkersReport(models.TransientModel):
                 record.staff_line_ids = []
                 continue
             
-            all_department_ids = HrDepartment.search([("id", "child_of", record.department_id.id)])
+            all_department_ids = HrDepartment.search([
+                ("id", "child_of", record.department_id.id)
+            ])
             record.staff_line_ids = [(0, 0, {
                 "department_id": child_department_id.id,
                 "staff_count": child_department_id.staff_size,
-                "staff_actual_count": len(HrEmployee.search([
+                "staff_actual_count": HrEmployee.search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "employee"),
                     ("branch_id", "=", record.branch_id.id),
-                ])),
-                "open_position_count": sum(HrJob.search([
+                ]),
+                "open_position_count": HrJob.search([
                     ("department_id", "child_of", child_department_id.id),
                     ("branch_id", "=", record.branch_id.id),
                     ("state", "=", "recruit")
-                ]).mapped("no_of_recruitment")),
-                "trainee_count": len(HrEmployee.search([
+                ], limit=1).no_of_recruitment,
+                "trainee_count": HrEmployee.search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "trainee"),
                     ("branch_id", "=", record.branch_id.id),
@@ -85,23 +141,23 @@ class StaffOfWorkersReport(models.TransientModel):
                     "|",
                     ("training_end_date", "<=", record.end_date),
                     ("training_end_date", "=", False),
-                ])),
-                "dismissed_count": len(HrEmployee.with_context(active_test=True).search([
+                ]),
+                "dismissed_count": HrEmployee.with_context(active_test=True).search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "employee"),
                     ("branch_id", "=", record.branch_id.id),
                     ("active", "=", False),
                     ("departure_date", ">=", record.start_date),
                     ("departure_date", "<=", record.end_date),
-                ])),
-                "hired_count": len(HrEmployee.search([
+                ]),
+                "hired_count": HrEmployee.search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "employee"),
                     ("branch_id", "=", record.branch_id.id),
                     ("active", "=", True),
                     ("entry_date", ">=", record.start_date),
                     ("entry_date", "<=", record.end_date)
-                ])),
+                ]),
             }) for child_department_id in all_department_ids]
 
 

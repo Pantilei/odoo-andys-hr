@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-10 20:51+0000\n"
-"PO-Revision-Date: 2023-04-10 20:51+0000\n"
+"POT-Creation-Date: 2023-04-11 20:48+0000\n"
+"PO-Revision-Date: 2023-04-11 20:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -484,6 +484,12 @@ msgstr "Создано Пользователем"
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__create_date
 msgid "Created on"
 msgstr "Создано в"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__current_application_count
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.view_hr_job_kanban
+msgid "Current Applicants"
+msgstr "Кандидаты"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__dms_directory_ids
@@ -1017,6 +1023,15 @@ msgid "No"
 msgstr "Нет"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,help:restaurant_hr.field_hr_job__current_application_count
+msgid ""
+"Number of applications that are currently in the flow. Those who are not "
+"dismissed or not created employee from."
+msgstr ""
+"Количество кандидатов, находящихся в данный момент в потоке. Тех, кто не"
+"уволен или из него не создан работник."
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__open_position_count
 msgid "Open Position Count"
 msgstr "Открытые Вакансии"
@@ -1322,33 +1337,33 @@ msgstr ""
 "списка писем"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
-msgid "Total actual staff"
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_staff_actual_count
+msgid "Total Actual Staff"
 msgstr "Факт. Штат"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
-msgid "Total dismissed"
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_dismissed_count
+msgid "Total Dismissed"
 msgstr "Уволено"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
-msgid "Total hired"
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_hired_count
+msgid "Total Hired"
 msgstr "Нанято"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
-msgid "Total open position"
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_position_count
+msgid "Total Positions"
 msgstr "Открытые Вакансии"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
-msgid "Total staff"
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_staff_count
+msgid "Total Staff"
 msgstr "Штат"
 
 #. module: restaurant_hr
-#: model_terms:ir.ui.view,arch_db:restaurant_hr.staff_of_workers_report_form
-msgid "Total trainee"
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_trainee_count
+msgid "Total Trainees"
 msgstr "Стажеры"
 
 #. module: restaurant_hr

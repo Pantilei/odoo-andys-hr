@@ -28,6 +28,10 @@ class HrJob(models.Model):
         string="Available Job Names"
     )
 
+    current_application_count = fields.Integer(
+        compute='_compute_no_emp_application_count', string="Current Applicants",
+        help="Number of applications that are currently in the flow. Those who are not dismissed or not created employee from.")
+
     def name_get(self):
         res = []
         for record in self:
@@ -49,3 +53,11 @@ class HrJob(models.Model):
     @api.onchange("hr_job_group_id")
     def set_name(self):
         self.name = self.hr_job_group_id.name
+
+    @api.depends('application_count', 'new_application_count')
+    def _compute_no_emp_application_count(self):
+        for job in self:
+            job.current_application_count = self.env['hr.applicant'].search_count([
+                ("emp_id", "=", False),
+                ("job_id", "=", job.id),
+            ])
