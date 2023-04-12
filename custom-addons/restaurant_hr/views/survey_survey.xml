@@ -22,7 +22,8 @@
                         <field name="survey_group" />
                     </group>
                     <group>
-                        <field name="wage_rate_waiter_ids" attrs="{'invisible': [('survey_group', '!=', 'waiter')]}">
+                        <field name="wage_rate_waiter_ids"
+                            attrs="{'invisible': [('survey_group', '!=', 'waiter')]}">
                             <tree editable="bottom">
                                 <field name="scoring_from" widget="percentage" />
                                 <field name="scoring_to" widget="percentage" />
@@ -33,7 +34,9 @@
                         </field>
                     </group>
                     <group>
-                        <field name="wage_rate_cook_small_department_ids" context="{'default_department_size': 'small'}" attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
+                        <field name="wage_rate_cook_small_department_ids"
+                            context="{'default_department_size': 'small'}"
+                            attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
                             <tree editable="bottom">
                                 <field name="scoring_from" widget="percentage" />
                                 <field name="scoring_to" widget="percentage" />
@@ -44,7 +47,9 @@
                         </field>
                     </group>
                     <group>
-                        <field name="wage_rate_cook_medium_department_ids" context="{'default_department_size': 'medium'}" attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
+                        <field name="wage_rate_cook_medium_department_ids"
+                            context="{'default_department_size': 'medium'}"
+                            attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
                             <tree editable="bottom">
                                 <field name="scoring_from" widget="percentage" />
                                 <field name="scoring_to" widget="percentage" />
@@ -55,7 +60,9 @@
                         </field>
                     </group>
                     <group>
-                        <field name="wage_rate_cook_large_department_ids" context="{'default_department_size': 'large'}" attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
+                        <field name="wage_rate_cook_large_department_ids"
+                            context="{'default_department_size': 'large'}"
+                            attrs="{'invisible': [('survey_group', '!=', 'cook')]}">
                             <tree editable="bottom">
                                 <field name="scoring_from" widget="percentage" />
                                 <field name="scoring_to" widget="percentage" />
@@ -64,6 +71,13 @@
                                 <field name="department_size" invisible="1" force_save="1" />
                             </tree>
                         </field>
+                    </group>
+                </page>
+
+                <page string="Access Rights" name="access_rights">
+                    <group>
+                        <field name="users_with_access_ids"
+                            options="{'no_create': True, 'no_open': True}" widget="many2many_tags" />
                     </group>
                 </page>
             </xpath>

@@ -13,7 +13,7 @@
             ('parent_id', 'child_of', user.employee_id.id),
             ('branch_id.manager_ids', 'in', [user.employee_id.id, False]),
             ('id', '!=', user.employee_id.id),
-        ]
+            ]
         </field>
         <field name="groups" eval="[(4, ref('hr.group_hr_user'))]" />
     </record>
@@ -30,7 +30,7 @@
         <field name="model_id" ref="hr.model_hr_job" />
         <field name="domain_force">[
             ('department_id', 'child_of', user.department_id.id)
-        ]</field>
+            ]</field>
         <field name="groups" eval="[(4, ref('hr_recruitment.group_hr_recruitment_user'))]" />
     </record>
     <record id="hr_manager_job_rule" model="ir.rule">
@@ -39,6 +39,36 @@
         <field name="domain_force">[(1, '=', 1)]</field>
         <field name="groups" eval="[(4, ref('hr_recruitment.group_hr_recruitment_manager'))]" />
     </record>
+
+    <!-- Survey access rules -->
+    <record id="hr_survey_employee_access_rule" model="ir.rule">
+        <field name="name">Users see only allowed surveys</field>
+        <field name="model_id" ref="survey.model_survey_survey" />
+        <field name="domain_force">
+            [
+            '|',
+            ('user_id', '=', user.id),
+            ('users_with_access_ids', 'in', [user.id])
+            ]
+        </field>
+        <field name="groups" eval="[(4, ref('survey.group_survey_user'))]" />
+    </record>
+
+    <record id="survey.survey_survey_rule_survey_user_cwu" model="ir.rule">
+        <field name="active" eval="False" />
+    </record>
+
+    <record id="survey.survey_survey_rule_survey_user_read" model="ir.rule">
+        <field name="active" eval="False" />
+    </record>
+    <!--  -->
+
+    <!-- <record id="survey.access_survey_survey_user" model="ir.model.access">
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+    </record> -->
 
     <!-- Model: hr_department -->
     <!-- <record id="hr_user_department_rule" model="ir.rule">
@@ -62,7 +92,8 @@
     <!-- Model: survey.user_input -->
     <function name="write" model="ir.model.data">
         <function name="search" model="ir.model.data">
-            <value eval="[('module', '=', 'survey'), ('name', '=', 'survey_user_input_rule_survey_user_cw')]" />
+            <value
+                eval="[('module', '=', 'survey'), ('name', '=', 'survey_user_input_rule_survey_user_cw')]" />
         </function>
         <value eval="{'noupdate': False}" />
     </function>
@@ -72,7 +103,8 @@
 
     <function name="write" model="ir.model.data">
         <function name="search" model="ir.model.data">
-            <value eval="[('module', '=', 'survey'), ('name', '=', 'survey_user_input_line_rule_survey_user_cw')]" />
+            <value
+                eval="[('module', '=', 'survey'), ('name', '=', 'survey_user_input_line_rule_survey_user_cw')]" />
         </function>
         <value eval="{'noupdate': False}" />
     </function>

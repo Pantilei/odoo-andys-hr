@@ -1,4 +1,4 @@
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -44,6 +44,12 @@ class SurveySurvey(models.Model):
         default="general",
         string="Survey Group",
         help="Survey group defines how the wage rate is calculated for the employee!"
+    )
+
+    users_with_access_ids = fields.Many2many(
+        comodel_name="res.users",
+        string="Allowed Users",
+        help="Users who are able to edit/read the survey."
     )
 
 

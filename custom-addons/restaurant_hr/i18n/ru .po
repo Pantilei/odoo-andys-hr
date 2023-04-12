@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-11 20:48+0000\n"
-"PO-Revision-Date: 2023-04-11 20:48+0000\n"
+"POT-Creation-Date: 2023-04-12 20:36+0000\n"
+"PO-Revision-Date: 2023-04-12 20:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -218,6 +218,11 @@ msgid "<strong>ФИО:</strong>"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.survey_form
+msgid "Access Rights"
+msgstr "Права Доступа"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "Achievements"
 msgstr "Достижения"
@@ -248,6 +253,11 @@ msgstr "Административный Персонал Заявки"
 #: model:ir.ui.menu,name:restaurant_hr.applicant_administrative_personal_act_job_menu
 msgid "Administrative personal applications"
 msgstr "Административный Персонал Заявки"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey__users_with_access_ids
+msgid "Allowed Users"
+msgstr "Пользователи с доступом"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_applicant
@@ -1028,8 +1038,8 @@ msgid ""
 "Number of applications that are currently in the flow. Those who are not "
 "dismissed or not created employee from."
 msgstr ""
-"Количество кандидатов, находящихся в данный момент в потоке. Тех, кто не"
-"уволен или из него не создан работник."
+"Количество кандидатов, находящихся в данный момент в потоке. Тех, кто "
+"неуволен или из него не создан работник."
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__open_position_count
@@ -1400,6 +1410,11 @@ msgstr "Начало"
 #: model:ir.model,name:restaurant_hr.model_res_users
 msgid "Users"
 msgstr "Пользователи"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,help:restaurant_hr.field_survey_survey__users_with_access_ids
+msgid "Users who are able to edit/read the survey."
+msgstr "Пользователи, имеющие доступ на чтение."
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/survey_user_input.py:0
