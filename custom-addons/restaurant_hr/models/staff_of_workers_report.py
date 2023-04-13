@@ -66,18 +66,23 @@ class StaffOfWorkersReport(models.TransientModel):
         HrJob = self.env["hr.job"]
 
         for record in self:
-            record.total_staff_count = record.department_id.staff_size 
+            record.total_staff_count = sum(HrJob.search([
+                ("department_id", "child_of", record.department_id.id),
+                ("branch_id", "=", record.branch_id.id),
+                ("state", "=", "recruit")
+            ]).mapped("no_of_recruitment")) 
+            
             record.total_staff_actual_count = HrEmployee.search_count([
                 ("department_id", "child_of", record.department_id.id),
                 ("employee_type", "=", "employee"),
                 ("branch_id", "=", record.branch_id.id),
             ])
 
-            record.total_position_count = HrJob.search([
-                ("department_id", "=", record.department_id.id),
+            record.total_position_count = sum(HrJob.search([
+                ("department_id", "child_of", record.department_id.id),
                 ("branch_id", "=", record.branch_id.id),
                 ("state", "=", "recruit")
-            ], limit=1).no_of_recruitment
+            ]).mapped("no_of_recruitment"))
 
             record.total_trainee_count = HrEmployee.search_count([
                 ("department_id", "child_of", record.department_id.id),
@@ -122,17 +127,21 @@ class StaffOfWorkersReport(models.TransientModel):
             ])
             record.staff_line_ids = [(0, 0, {
                 "department_id": child_department_id.id,
-                "staff_count": child_department_id.staff_size,
+                "staff_count": sum(HrJob.search([
+                    ("department_id", "child_of", child_department_id.id),
+                    ("branch_id", "=", record.branch_id.id),
+                    ("state", "=", "recruit")
+                ]).mapped("no_of_recruitment")),
                 "staff_actual_count": HrEmployee.search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "employee"),
                     ("branch_id", "=", record.branch_id.id),
                 ]),
-                "open_position_count": HrJob.search([
+                "open_position_count": sum(HrJob.search([
                     ("department_id", "child_of", child_department_id.id),
                     ("branch_id", "=", record.branch_id.id),
                     ("state", "=", "recruit")
-                ], limit=1).no_of_recruitment,
+                ]).mapped("no_of_recruitment")),
                 "trainee_count": HrEmployee.search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "trainee"),

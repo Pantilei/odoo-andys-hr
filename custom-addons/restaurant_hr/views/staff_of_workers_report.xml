@@ -25,7 +25,7 @@
                         <field name="branch_id" options="{'no_create': True}" />
                     </group>
                     <group>
-                        <field name="staff_line_ids" nolabel="1" readonly="1" editable="top">
+                        <field name="staff_line_ids" nolabel="1" readonly="1">
                             <tree create="0" edit="0" delete="0">
                                 <field name="department_id" />
                                 <field name="staff_count" />
