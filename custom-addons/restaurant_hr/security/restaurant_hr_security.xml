@@ -41,7 +41,7 @@
     </record>
 
     <!-- Survey access rules -->
-    <record id="hr_survey_employee_access_rule" model="ir.rule">
+    <!-- <record id="hr_survey_employee_access_rule" model="ir.rule">
         <field name="name">Users see only allowed surveys</field>
         <field name="model_id" ref="survey.model_survey_survey" />
         <field name="domain_force">
@@ -60,7 +60,7 @@
 
     <record id="survey.survey_survey_rule_survey_user_read" model="ir.rule">
         <field name="active" eval="False" />
-    </record>
+    </record> -->
     <!--  -->
 
     <!-- <record id="survey.access_survey_survey_user" model="ir.model.access">
