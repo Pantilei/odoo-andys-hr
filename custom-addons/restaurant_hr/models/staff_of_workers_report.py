@@ -64,13 +64,12 @@ class StaffOfWorkersReport(models.TransientModel):
     def _compute_total_counts(self):
         HrEmployee = self.env["hr.employee"]
         HrJob = self.env["hr.job"]
+        HrDepartment = self.env["hr.department"]
 
         for record in self:
-            record.total_staff_count = sum(HrJob.search([
-                ("department_id", "child_of", record.department_id.id),
-                ("branch_id", "=", record.branch_id.id),
-                ("state", "=", "recruit")
-            ]).mapped("no_of_recruitment")) 
+            record.total_staff_count = sum(HrDepartment.search([
+                ("id", "child_of", record.department_id.id)
+            ]).mapped("staff_size")) 
             
             record.total_staff_actual_count = HrEmployee.search_count([
                 ("department_id", "child_of", record.department_id.id),
@@ -127,11 +126,9 @@ class StaffOfWorkersReport(models.TransientModel):
             ])
             record.staff_line_ids = [(0, 0, {
                 "department_id": child_department_id.id,
-                "staff_count": sum(HrJob.search([
-                    ("department_id", "child_of", child_department_id.id),
-                    ("branch_id", "=", record.branch_id.id),
-                    ("state", "=", "recruit")
-                ]).mapped("no_of_recruitment")),
+                "staff_count": sum(HrDepartment.search([
+                    ("id", "child_of", child_department_id.id)
+                ]).mapped("staff_size")),
                 "staff_actual_count": HrEmployee.search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "employee"),
