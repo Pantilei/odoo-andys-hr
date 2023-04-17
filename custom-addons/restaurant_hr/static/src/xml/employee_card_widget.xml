@@ -4,6 +4,22 @@
     <t t-name="EmployeeCard" owl="1">
         <div>
             <!-- BLOCK -->
+            <div class="mt-4" style="display: flex">
+                <div style="width: 3%; font-size: 1.2vw; margin-right: 1%;">
+
+                </div>
+                <div style="width: 32%; font-size: 1.2vw; margin-right: 1%;">
+                    НАИМЕНОВАНИЕ
+                </div>
+                <div style="width: 31%; font-size: 1.2vw; margin-right: 1%;">
+                    <!-- ДАТА НАЧАЛА -->
+                </div>
+                <div style="width: 33%; font-size: 1.2vw; margin-right: 1%;">
+                    ДАТА СОБЫТИЯ
+                </div>
+            </div>
+            <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
+
             <t t-foreach="state.employeeCardData.resume_section_ids" t-as="resume_section_id"
                 t-key="resume_section_id.section_id">
                 <div t-if="resume_section_id.section_data.length">
@@ -12,37 +28,20 @@
                     </div>
                     <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
 
-                    <div style="display: flex">
-                        <div style="width: 33%; font-size: 1.2vw; margin-right: 1%;">
-                            НАЗВАНИЕ
-                        </div>
-                        <div style="width: 33%; font-size: 1.2vw; margin-right: 1%;">
-                            ДАТА НАЧАЛА
-                        </div>
-                        <div style="width: 33%; font-size: 1.2vw; margin-right: 1%;">
-                            ДАТА ОКОНЧАНИЯ
-                        </div>
-                        <!-- <div style="width: 25%; font-size: 1.2vw; margin-right: 1%;">
-                            ОПИСАНИЕ
-                        </div> -->
-                    </div>
-
                     <t t-foreach="resume_section_id.section_data" t-as="resume_line_id"
                         t-key="resume_line_id.resume_line_id">
                         <div style="display: flex">
-                            <div style="width: 33%; font-size: 1.1vw; margin-right: 1%;">
+                            <div style="width: 3%; font-size: 1.1vw; margin-right: 1%;">
+                                <t t-esc="resume_line_id_index + 1" />. </div>
+                            <div style="width: 32%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id.name" />
                             </div>
-                            <div style="width: 33%; font-size: 1.1vw; margin-right: 1%;">
+                            <div style="width: 31%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id.date_start" />
                             </div>
                             <div style="width: 33%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id.date_end" />
                             </div>
-                            <!-- <div style="width: 25%; font-size: 1.1vw; margin-right: 1%;">
-                                <t
-                            t-esc="resume_line_id.description" />
-                            </div> -->
                         </div>
                     </t>
                 </div>
@@ -59,14 +58,14 @@
                 <t t-foreach="state.employeeCardData.responses" t-as="response"
                     t-key="response.response_id">
                     <div style="display: flex">
-                        <div style="width: 5%; font-size: 1.1vw; margin-right: 1%">
+                        <div style="width: 3%; font-size: 1.1vw; margin-right: 1%">
                             <t t-esc="response_index + 1" />. </div>
-                        <div style="width: 25%; font-size: 1.1vw; margin-right: 1%">
-                            <t t-esc="response.create_date" />
-                        </div>
-                        <div style="width: 70%; font-size: 1.1vw; margin-right: 1%">
+                        <div style="width: 63%; font-size: 1.1vw; margin-right: 1%">
                             <t t-esc="response.name" />(Оценка-<t
                                 t-esc="response.scoring_percentage" />%) </div>
+                        <div style="width: 33%; font-size: 1.1vw; margin-right: 1%">
+                            <t t-esc="response.create_date" />
+                        </div>
                     </div>
                 </t>
             </div>
@@ -93,10 +92,13 @@
                     <t t-foreach="state.employeeCardData.achievements" t-as="achievement"
                         t-key="achievement.achievement_id">
                         <div style="display: flex; flex-direction: row;">
-                            <div style="width: 5%; font-size: 1.1vw; margin-right: 1%">
+                            <div style="width: 3%; font-size: 1.1vw; margin-right: 1%">
                                 <t t-esc="achievement_index + 1" />. </div>
-                            <div style="width: 95%; font-size: 1.1vw">
+                            <div style="width: 63%; font-size: 1.1vw">
                                 <t t-esc="achievement.achievement_description" />
+                            </div>
+                            <div style="width: 33%; font-size: 1.1vw; margin-right: 1%">
+                                <t t-esc="achievement.achievement_date" />
                             </div>
                         </div>
                     </t>
@@ -114,10 +116,13 @@
                     <t t-foreach="state.employeeCardData.remarks" t-as="remark"
                         t-key="remark.remark_id">
                         <div style="display: flex; flex-direction: row;">
-                            <div style="width: 5%; font-size: 1.1vw; margin-right: 1%">
+                            <div style="width: 3%; font-size: 1.1vw; margin-right: 1%">
                                 <t t-esc="remark_index + 1" />. </div>
-                            <div style="width: 95%; font-size: 1.1vw">
+                            <div style="width: 63%; font-size: 1.1vw">
                                 <t t-esc="remark.remark_description" />
+                            </div>
+                            <div style="width: 33%; font-size: 1.1vw; margin-right: 1%">
+                                <t t-esc="remark.remark_date" />
                             </div>
                         </div>
                     </t>
@@ -135,7 +140,7 @@
                 <t t-foreach="state.employeeCardData.skills" t-as="skill"
                     t-key="skill.skill_id">
                     <div style="display: flex">
-                        <div style="width: 5%; font-size: 1.1vw; margin-right: 1%">
+                        <div style="width: 3%; font-size: 1.1vw; margin-right: 1%">
                             <t t-esc="skill_index + 1" />. </div>
                         <div style="width: 70%; font-size: 1.1vw; margin-right: 1%">
                             <t t-esc="skill.name" />(Уровень-<t t-esc="skill.level" />) </div>
