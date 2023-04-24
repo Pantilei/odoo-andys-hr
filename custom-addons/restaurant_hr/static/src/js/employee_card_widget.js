@@ -3,7 +3,8 @@
 import AbstractFieldOwl from "web.AbstractFieldOwl";
 import fieldRegistryOwl from "web.field_registry_owl";
 
-const { useState, onWillUpdateProps, onMounted, useRef } = owl.hooks;
+const { useState, onWillUpdateProps, onMounted, useRef, onWillUnmount } =
+  owl.hooks;
 
 export default class EmployeeCard extends AbstractFieldOwl {
   constructor(...args) {
@@ -20,7 +21,23 @@ export default class EmployeeCard extends AbstractFieldOwl {
       this.state.employeeCardData = JSON.parse(this.value);
     });
 
-    onMounted(() => {});
+    onMounted(() => {
+      document
+        .querySelector("meta[name='viewport']")
+        .setAttribute(
+          "content",
+          "width=device-width, initial-scale=1, user-scalable=yes"
+        );
+    });
+
+    onWillUnmount(() => {
+      document
+        .querySelector("meta[name='viewport']")
+        .setAttribute(
+          "content",
+          "width=device-width, initial-scale=1, user-scalable=no"
+        );
+    });
   }
 }
 

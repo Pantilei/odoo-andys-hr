@@ -11,10 +11,10 @@
                 <div style="width: 32%; font-size: 1.2vw; margin-right: 1%;">
                     НАИМЕНОВАНИЕ
                 </div>
-                <div style="width: 31%; font-size: 1.2vw; margin-right: 1%;">
+                <div style="width: 31%; font-size: 1.2vw; margin-right: 1%;  text-align: right;">
                     <!-- ДАТА НАЧАЛА -->
                 </div>
-                <div style="width: 33%; font-size: 1.2vw; margin-right: 1%;">
+                <div style="width: 33%; font-size: 1.2vw; margin-right: 1%; text-align: right;">
                     ДАТА СОБЫТИЯ
                 </div>
             </div>
@@ -36,10 +36,12 @@
                             <div style="width: 32%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id.name" />
                             </div>
-                            <div style="width: 31%; font-size: 1.1vw; margin-right: 1%;">
+                            <div
+                                style="width: 31%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="resume_line_id.date_start" />
                             </div>
-                            <div style="width: 33%; font-size: 1.1vw; margin-right: 1%;">
+                            <div
+                                style="width: 33%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="resume_line_id.date_end" />
                             </div>
                         </div>
@@ -63,7 +65,8 @@
                         <div style="width: 63%; font-size: 1.1vw; margin-right: 1%">
                             <t t-esc="response.name" />(Оценка-<t
                                 t-esc="response.scoring_percentage" />%) </div>
-                        <div style="width: 33%; font-size: 1.1vw; margin-right: 1%">
+                        <div
+                            style="width: 33%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                             <t t-esc="response.create_date" />
                         </div>
                     </div>
@@ -97,7 +100,8 @@
                             <div style="width: 63%; font-size: 1.1vw">
                                 <t t-esc="achievement.achievement_description" />
                             </div>
-                            <div style="width: 33%; font-size: 1.1vw; margin-right: 1%">
+                            <div
+                                style="width: 33%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="achievement.achievement_date" />
                             </div>
                         </div>
@@ -121,7 +125,8 @@
                             <div style="width: 63%; font-size: 1.1vw">
                                 <t t-esc="remark.remark_description" />
                             </div>
-                            <div style="width: 33%; font-size: 1.1vw; margin-right: 1%">
+                            <div
+                                style="width: 33%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="remark.remark_date" />
                             </div>
                         </div>
