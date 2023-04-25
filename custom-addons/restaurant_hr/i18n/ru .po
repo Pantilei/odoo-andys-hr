@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-12 20:36+0000\n"
-"PO-Revision-Date: 2023-04-12 20:36+0000\n"
+"POT-Creation-Date: 2023-04-25 18:00+0000\n"
+"PO-Revision-Date: 2023-04-25 18:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -235,6 +235,11 @@ msgid "Action"
 msgstr ""
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__staff_actual_count
+msgid "Actual Staff"
+msgstr "Факт. Штат"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 msgid "Address"
 msgstr "Адрес"
@@ -257,7 +262,7 @@ msgstr "Административный Персонал Заявки"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey__users_with_access_ids
 msgid "Allowed Users"
-msgstr "Пользователи с доступом"
+msgstr ""
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_applicant
@@ -375,9 +380,11 @@ msgstr "Графики Утечки Кадров"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__branch_id
 #: model:ir.ui.menu,name:restaurant_hr.hr_branch_menu
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Branch"
 msgstr "Отдел"
@@ -608,8 +615,13 @@ msgstr "Причина Увольнения"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__dismissed_count
-msgid "Dismissed Count"
+msgid "Dismissed"
 msgstr "Уволенные"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__dismissed_trainee_count
+msgid "Dismissed Trainee"
+msgstr "Уволенные Стажеры"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__display_name
@@ -838,6 +850,10 @@ msgstr "Имеет Дубликаты"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__hired_count
+msgid "Hired"
+msgstr "Наняты"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 msgid "Hired Count"
 msgstr "Наняты"
@@ -901,6 +917,7 @@ msgid "Job/Vacancy"
 msgstr "Должность/Вакансия"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__open_position_count
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_job_tree
 msgid "Jobs"
 msgstr "Вакансии"
@@ -1040,11 +1057,6 @@ msgid ""
 msgstr ""
 "Количество кандидатов, находящихся в данный момент в потоке. Тех, кто "
 "неуволен или из него не создан работник."
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__open_position_count
-msgid "Open Position Count"
-msgstr "Открытые Вакансии"
 
 #. module: restaurant_hr
 #: model:ir.actions.act_window,name:restaurant_hr.hr_job_open_to_recruit_action
@@ -1199,6 +1211,7 @@ msgstr "Выберите Опросник"
 #. module: restaurant_hr
 #: model:ir.model.fields,help:restaurant_hr.field_hr_employee__branch_id
 #: model:ir.model.fields,help:restaurant_hr.field_res_users__branch_id
+#: model:ir.model.fields,help:restaurant_hr.field_restaurant_hr_department_history__branch_id
 msgid ""
 "Select the \"Branch\" to whom this employee belongs.\n"
 "The manager of branch will have the opportunity to edit the information of this employee."
@@ -1240,18 +1253,9 @@ msgid "Sources"
 msgstr "Источники"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__staff_count
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__staff_line_ids
 msgid "Staff"
-msgstr "Штат"
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__staff_actual_count
-msgid "Staff Actual Count"
-msgstr "Факт. Штат"
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__staff_count
-msgid "Staff Count"
 msgstr "Штат"
 
 #. module: restaurant_hr
@@ -1372,19 +1376,20 @@ msgid "Total Staff"
 msgstr "Штат"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_dismissed_trainee_count
+msgid "Total Trainee Dismissed"
+msgstr "Уволено Стажеров"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_trainee_count
 msgid "Total Trainees"
 msgstr "Стажеры"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__trainee_count
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Trainee"
 msgstr "Стажёр"
-
-#. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__trainee_count
-msgid "Trainee Count"
-msgstr "Стажеры"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__trainee_start_date
@@ -1527,14 +1532,7 @@ msgstr ""
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
 #, python-format
-msgid "ДАТА НАЧАЛА"
-msgstr ""
-
-#. module: restaurant_hr
-#. openerp-web
-#: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
-#, python-format
-msgid "ДАТА ОКОНЧАНИЯ"
+msgid "ДАТА СОБЫТИЯ"
 msgstr ""
 
 #. module: restaurant_hr
@@ -1579,7 +1577,7 @@ msgstr ""
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
 #, python-format
-msgid "НАЗВАНИЕ"
+msgid "НАИМЕНОВАНИЕ"
 msgstr ""
 
 #. module: restaurant_hr

@@ -1,4 +1,4 @@
-from odoo import models, api, fields, _
+from odoo import _, api, fields, models
 
 
 class DepartmentHistory(models.Model):
@@ -17,6 +17,15 @@ class DepartmentHistory(models.Model):
         string="Employee",
         index=True,
         ondelete="set null",
+    )
+
+    branch_id = fields.Many2one(
+        comodel_name="restaurant_hr.hr_branch",
+        string="Branch",
+        index=True,
+        ondelete="set null",
+        related="employee_id.branch_id",
+        store=True
     )
 
     status = fields.Selection(

@@ -58,6 +58,7 @@ class StaffOfWorkersReport(models.TransientModel):
     total_position_count = fields.Integer(compute="_compute_total_counts", string="Total Positions")
     total_trainee_count = fields.Integer(compute="_compute_total_counts", string="Total Trainees")
     total_dismissed_count = fields.Integer(compute="_compute_total_counts", string="Total Dismissed")
+    total_dismissed_trainee_count = fields.Integer(compute="_compute_total_counts", string="Total Trainee Dismissed")
     total_hired_count = fields.Integer(compute="_compute_total_counts", string="Total Hired")
 
     @api.depends("start_date", "end_date", "department_id", "branch_id", )
@@ -96,6 +97,15 @@ class StaffOfWorkersReport(models.TransientModel):
             record.total_dismissed_count = HrEmployee.with_context(active_test=True).search_count([
                 ("department_id", "child_of", record.department_id.id),
                 ("employee_type", "=", "employee"),
+                ("branch_id", "=", record.branch_id.id),
+                ("active", "=", False),
+                ("departure_date", ">=", record.start_date),
+                ("departure_date", "<=", record.end_date),
+            ])
+
+            record.total_dismissed_trainee_count = HrEmployee.with_context(active_test=True).search_count([
+                ("department_id", "child_of", record.department_id.id),
+                ("employee_type", "=", "trainee"),
                 ("branch_id", "=", record.branch_id.id),
                 ("active", "=", False),
                 ("departure_date", ">=", record.start_date),
@@ -156,6 +166,14 @@ class StaffOfWorkersReport(models.TransientModel):
                     ("departure_date", ">=", record.start_date),
                     ("departure_date", "<=", record.end_date),
                 ]),
+                "dismissed_trainee_count": HrEmployee.with_context(active_test=True).search_count([
+                    ("department_id", "child_of", child_department_id.id),
+                    ("employee_type", "=", "trainee"),
+                    ("branch_id", "=", record.branch_id.id),
+                    ("active", "=", False),
+                    ("departure_date", ">=", record.start_date),
+                    ("departure_date", "<=", record.end_date),
+                ]),
                 "hired_count": HrEmployee.search_count([
                     ("department_id", "child_of", child_department_id.id),
                     ("employee_type", "=", "employee"),
@@ -175,9 +193,10 @@ class StaffOfWorkersReportLine(models.TransientModel):
         comodel_name="hr.department",
         string="Department"
     )
-    staff_count = fields.Integer()
-    staff_actual_count = fields.Integer()
-    open_position_count = fields.Integer()
-    trainee_count = fields.Integer()
-    dismissed_count = fields.Integer()
-    hired_count = fields.Integer()
+    staff_count = fields.Integer(string="Staff")
+    staff_actual_count = fields.Integer(string="Actual Staff")
+    open_position_count = fields.Integer(string="Jobs")
+    trainee_count = fields.Integer(string="Trainee")
+    dismissed_count = fields.Integer(string="Dismissed")
+    dismissed_trainee_count = fields.Integer(string="Dismissed Trainee")
+    hired_count = fields.Integer(string="Hired")

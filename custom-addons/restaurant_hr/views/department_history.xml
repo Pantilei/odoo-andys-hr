@@ -56,12 +56,16 @@
                 <filter string="Exit" name="status" domain="[('status', '=', 'exit')]" />
 
                 <group expand="0" string="Group By">
-                    <filter name="group_history_date" string="History Date" domain="[]" context="{'group_by': 'history_date:month'}" />
-                    <!-- <filter name="group_department_id" string="Department" domain="[]" context="{'group_by': 'department_id'}" /> -->
-                    <filter name="group_status" string="Status" domain="[]" context="{'group_by': 'status'}" />
+                    <filter name="group_history_date" string="History Date" domain="[]"
+                        context="{'group_by': 'history_date:month'}" />
+                    <!-- <filter name="group_department_id" string="Department" domain="[]"
+                    context="{'group_by': 'department_id'}" /> -->
+                    <filter name="group_status" string="Status" domain="[]"
+                        context="{'group_by': 'status'}" />
                 </group>
 
                 <searchpanel>
+                    <field name="branch_id" string="Branch" enable_counters="1" limit="0" />
                     <field name="department_id" string="Departments" enable_counters="1" limit="0" />
                 </searchpanel>
             </search>
@@ -73,7 +77,8 @@
         <field name="res_model">restaurant_hr.department_history</field>
         <field name="view_mode">tree</field>
         <field name="domain">[]</field>
-        <field name="context">{'search_default_group_history_date': 1, 'search_default_group_status': 1}</field>
+        <field name="context">{'search_default_group_history_date': 1,
+            'search_default_group_status': 1}</field>
     </record>
 
 </odoo>

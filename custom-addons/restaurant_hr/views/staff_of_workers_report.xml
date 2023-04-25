@@ -33,6 +33,7 @@
                                 <field name="open_position_count" />
                                 <field name="trainee_count" />
                                 <field name="dismissed_count" />
+                                <field name="dismissed_trainee_count" />
                                 <field name="hired_count" />
                             </tree>
                         </field>
@@ -43,6 +44,7 @@
                         <field name="total_position_count" />
                         <field name="total_trainee_count" />
                         <field name="total_dismissed_count" />
+                        <field name="total_dismissed_trainee_count" />
                         <field name="total_hired_count" />
                     </group>
                 </sheet>

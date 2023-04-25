@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="hr.view_hr_job_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='department_id']" position="after">
-                <field name="branch_id" options="{'no_create': True}" />
+                <field name="branch_id" options="{'no_create': True}" required="1" />
             </xpath>
             <xpath expr="//div[hasclass('oe_title')]" position="replace">
                 <div class="oe_title">
