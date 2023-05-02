@@ -189,6 +189,11 @@ class HrEmployee(models.Model):
         index=True
     )
 
+    mentor_id = fields.Many2one(
+        comodel_name="hr.employee",
+        string="Mentor"
+    )
+
     has_dublicate = fields.Boolean(compute="_compute_has_dublicate", store=True)
 
     @api.depends("name")

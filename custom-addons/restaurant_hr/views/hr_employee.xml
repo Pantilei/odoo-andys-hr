@@ -358,6 +358,7 @@
                 <group name="training_date" string="Training Period">
                     <group>
                         <field name="training_start_date" />
+                        <field name="mentor_id" options="{'no_create': True}" />
                     </group>
                     <group>
                         <field name="training_end_date" />
@@ -509,6 +510,7 @@
                 <field name="work_email" string="Email"
                     filter_domain="[('work_email', 'ilike', self)]" />
                 <field name="department_id" />
+                <field name="mentor_id" />
             </xpath>
 
             <xpath expr="//filter[@name='message_needaction']" position="replace"></xpath>
