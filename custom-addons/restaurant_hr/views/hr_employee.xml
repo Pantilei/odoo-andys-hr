@@ -58,16 +58,114 @@
                                     <span
                                         style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
                                     ></span>
-                                    <span style="width: 100%; padding-top: 3%">
+                                    <span class="d-flex justify-content-between"
+                                        style="width: 100%; padding-top: 3%">
                                         <img
-                                            style="width: 13%; margin-right: 3%"
+                                            style="width: 3vw; height: 3vw; margin-right: 3%"
                                             alt="birthday"
                                             src="restaurant_hr/static/src/img/birthday-icon.jpg"
                                         />
-                                        <field name="birthday"
+                                        <span class="d-flex flex-column"
+                                            style="
+                                                width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                    margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw; vertical-align: middle">
+
+                                            <field name="birthday" style="margin-bottom: 0px;" />
+                                            <span>
+                                                <field name="place_of_birth" /> (<field
+                                                    name="country_of_birth"
+                                                    options="{'no_open': True}" />) </span>
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="d-flex flex-column" style="margin-top: 10%;">
+                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
+                                        Адрес:
+                                    </span>
+                                    <span
+                                        style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
+                                    ></span>
+                                    <span class="d-flex justify-content-between"
+                                        style="width: 100%; padding-top: 3%">
+                                        <i class="fa fa-home"
+                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw;"
+                                        />
+                                        <field name="display_address"
                                             style="width: 84%; overflow: hidden; text-overflow: ellipsis;
-                                                margin-bottom: 0px;
-                                                color: white; font-size: 1.1vw; vertical-align: middle" />
+                                                    margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw; vertical-align: middle; margin-bottom: 0px;"
+                                            options="{'no_open': True}" />
+                                    </span>
+                                </div>
+
+                                <div class="d-flex flex-column" style="margin-top: 10%;">
+                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
+                                        Семейное положение:
+                                    </span>
+                                    <span
+                                        style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
+                                    ></span>
+                                    <span class="d-flex justify-content-between"
+                                        style="width: 100%; padding-top: 3%">
+                                        <i class="fa fa-users"
+                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw;"
+                                        />
+                                        <span class="d-flex flex-column"
+                                            style="
+                                                width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                    margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw; vertical-align: middle">
+
+                                            <field name="marital" style="margin-bottom: 0px;" />
+                                            <span attrs="{'invisible': [('children', '=', False)]}">
+                                                <span attrs="{'invisible': [('children', '=', 1)]}">
+                                                    (<field name="children" /> детей) </span>
+                                                <span attrs="{'invisible': [('children', '>', 1)]}">
+                                                    (<field name="children" /> ребёнок) </span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="d-flex flex-column" style="margin-top: 10%;">
+                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
+                                        Образование:
+                                    </span>
+                                    <span
+                                        style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
+                                    ></span>
+                                    <span class="d-flex justify-content-between"
+                                        style="width: 100%; padding-top: 3%">
+                                        <i class="fa fa-certificate"
+                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw;"
+                                        />
+                                        <span class="d-flex flex-column"
+                                            style="
+                                                width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                    margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw; vertical-align: middle">
+
+                                            <span
+                                                attrs="{'invisible': [('certificate', '=', False)]}">
+                                                Степень: <field name="certificate"
+                                                    style="margin-bottom: 0px;" />
+                                            </span>
+
+                                            <span
+                                                attrs="{'invisible': [('study_field', '=', False)]}">
+                                                Поле образования: <field name="study_field"
+                                                    style="margin-bottom: 0px;" />
+                                            </span>
+
+                                            <span
+                                                attrs="{'invisible': [('study_school', '=', False)]}">
+                                                Школа: <field name="study_school"
+                                                    style="margin-bottom: 0px;" />
+                                            </span>
+
+                                        </span>
                                     </span>
                                 </div>
 
@@ -244,6 +342,10 @@
                 <field name="entry_date" />
                 <field name="trainee_start_date" />
                 <field name="personal_id" string="ID" />
+            </xpath>
+
+            <xpath expr="//field[@name='lang']" position="after">
+                <field name="hobbies" />
             </xpath>
 
             <xpath expr="//header/button[1]" position="replace"></xpath>

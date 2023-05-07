@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-02 19:58+0000\n"
-"PO-Revision-Date: 2023-05-02 19:58+0000\n"
+"POT-Creation-Date: 2023-05-07 10:01+0000\n"
+"PO-Revision-Date: 2023-05-07 10:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -149,6 +149,15 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid ""
 "<span style=\"width: 100%; color: white; font-size: 1.5vw;\">\n"
+"                                        Адрес:\n"
+"                                    </span>\n"
+"                                    <span style=\"width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid ""
+"<span style=\"width: 100%; color: white; font-size: 1.5vw;\">\n"
 "                                        ДАТА РОЖДЕНИЯ:\n"
 "                                    </span>\n"
 "                                    <span style=\"width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);\"/>"
@@ -167,9 +176,27 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid ""
 "<span style=\"width: 100%; color: white; font-size: 1.5vw;\">\n"
+"                                        Образование:\n"
+"                                    </span>\n"
+"                                    <span style=\"width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid ""
+"<span style=\"width: 100%; color: white; font-size: 1.5vw;\">\n"
 "                                        РАБОТАЕТ С:\n"
 "                                    </span>\n"
 "                                    <span style=\"width: 100%; height: 0.4vw; background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid ""
+"<span style=\"width: 100%; color: white; font-size: 1.5vw;\">\n"
+"                                        Семейное положение:\n"
+"                                    </span>\n"
+"                                    <span style=\"width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);\"/>"
 msgstr ""
 
 #. module: restaurant_hr
@@ -624,6 +651,11 @@ msgid "Dismissed Trainee"
 msgstr "Уволенные Стажеры"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__display_address
+msgid "Display Address"
+msgstr "Адрес"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__display_name
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history_report_wizard__display_name
@@ -863,6 +895,11 @@ msgstr "Наняты"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
 msgid "History Date"
 msgstr "Дата"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__hobbies
+msgid "Hobbies"
+msgstr "Увлечения"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__id
@@ -1603,6 +1640,11 @@ msgid "Планновые"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid "Поле образования:"
+msgstr ""
+
+#. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/json_to_audit_tables.xml:0
 #, python-format
@@ -1615,6 +1657,18 @@ msgid "Расширенная Карточка"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid "Степень:"
+msgstr ""
+
+#. module: restaurant_hr
+#. openerp-web
+#: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#, python-format
+msgid "Увлечения"
+msgstr ""
+
+#. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/json_to_audit_tables.xml:0
 #, python-format
@@ -1622,6 +1676,21 @@ msgid "Фактическое"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid "Школа:"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid "детей)"
+msgstr ""
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 msgid "пр. Менеджер по продажам, 2 года опыта работы."
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
+msgid "ребёнок)"
 msgstr ""

@@ -34,8 +34,8 @@
                             <div style="width: 3%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id_index + 1" />. </div>
                             <div style="width: 32%; font-size: 1.1vw; margin-right: 1%;">
-                                <t t-esc="resume_line_id.name" />
-                            </div>
+                                <t t-esc="resume_line_id.name" /> (<t
+                                    t-esc="resume_line_id.description" />) </div>
                             <div
                                 style="width: 31%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="resume_line_id.date_start" />
@@ -151,6 +151,18 @@
                             <t t-esc="skill.name" />(Уровень-<t t-esc="skill.level" />) </div>
                     </div>
                 </t>
+            </div>
+
+            <!-- BLOCK -->
+            <div
+                t-if="state.employeeCardData.hobbies">
+                <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
+                    Увлечения
+                </div>
+                <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
+                <div style="width: 100%; font-size: 1.1vw; margin-right: 1%">
+                    <t t-esc="state.employeeCardData.hobbies" />
+                </div>
             </div>
         </div>
     </t>

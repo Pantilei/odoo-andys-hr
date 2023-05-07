@@ -194,7 +194,18 @@ class HrEmployee(models.Model):
         string="Mentor"
     )
 
+    hobbies = fields.Text()
+
+    display_address = fields.Text(compute="_compute_display_address")
+
     has_dublicate = fields.Boolean(compute="_compute_has_dublicate", store=True)
+
+    
+    @api.depends("address_home_id")
+    def _compute_display_address(self):
+        for record in self:
+            record.display_address = record.address_home_id.with_context(show_address=1).name_get()[0][1]
+            print(record.display_address)
 
     @api.depends("name")
     def _compute_has_dublicate(self):
@@ -256,6 +267,7 @@ class HrEmployee(models.Model):
                     "level": skill.skill_level_id.name,
                     "create_date": skill.create_date.strftime("%d-%m-%Y") if skill.create_date else '',
                 } for skill in record.employee_skill_ids],
+                "hobbies": record.hobbies,
                 "functional_duty": record.functional_duty,
             }
             record.employee_card_json = json.dumps(employee_card_data)
