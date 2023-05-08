@@ -52,8 +52,8 @@
                                 widget="image" />
                             <div style="margin: 15% 0 0 10%;">
                                 <div class="d-flex flex-column">
-                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
-                                        ДАТА РОЖДЕНИЯ:
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
+                                        Дата Рождения:
                                     </span>
                                     <span
                                         style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
@@ -81,7 +81,7 @@
                                 </div>
 
                                 <div class="d-flex flex-column" style="margin-top: 10%;">
-                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
                                         Адрес:
                                     </span>
                                     <span
@@ -101,7 +101,7 @@
                                 </div>
 
                                 <div class="d-flex flex-column" style="margin-top: 10%;">
-                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
                                         Семейное положение:
                                     </span>
                                     <span
@@ -130,7 +130,7 @@
                                 </div>
 
                                 <div class="d-flex flex-column" style="margin-top: 10%;">
-                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
                                         Образование:
                                     </span>
                                     <span
@@ -149,13 +149,13 @@
 
                                             <span
                                                 attrs="{'invisible': [('certificate', '=', False)]}">
-                                                Степень: <field name="certificate"
+                                                <field name="certificate"
                                                     style="margin-bottom: 0px;" />
                                             </span>
 
                                             <span
                                                 attrs="{'invisible': [('study_field', '=', False)]}">
-                                                Поле образования: <field name="study_field"
+                                                <field name="study_field"
                                                     style="margin-bottom: 0px;" />
                                             </span>
 
@@ -170,8 +170,28 @@
                                 </div>
 
                                 <div class="d-flex flex-column" style="margin-top: 10%;">
-                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
-                                        E-MAIL:
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
+                                        Увлечения:
+                                    </span>
+                                    <span
+                                        style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
+                                    ></span>
+                                    <span class="d-flex justify-content-between"
+                                        style="width: 100%; padding-top: 3%">
+                                        <i class="fa fa-puzzle-piece"
+                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw;"
+                                        />
+                                        <field name="hobbies"
+                                            style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                    margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw; vertical-align: middle; margin-bottom: 0px;"
+                                            options="{'no_open': True}" />
+                                    </span>
+                                </div>
+
+                                <div class="d-flex flex-column" style="margin-top: 10%;">
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
+                                        E-mail:
                                     </span>
                                     <span
                                         style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"></span>
@@ -189,8 +209,8 @@
                                 </div>
 
                                 <div class="d-flex flex-column" style="margin-top: 10%;">
-                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
-                                        МОБИЛЬНЫЙ:
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
+                                        Мобильный:
                                     </span>
                                     <span
                                         style="width: 100%; height: 0.4vw; background-color: rgb(235, 189, 8);"></span>
@@ -209,8 +229,8 @@
 
                                 <div class="d-flex flex-column"
                                     style="margin-top: 10%; margin-bottom: 30%;">
-                                    <span style="width: 100%; color: white; font-size: 1.5vw;">
-                                        РАБОТАЕТ С:
+                                    <span style="width: 100%; color: white; font-size: 1.4vw;">
+                                        Работает с:
                                     </span>
                                     <span
                                         style="width: 100%; height: 0.4vw; background-color: rgb(235, 189, 8);"></span>
@@ -230,7 +250,7 @@
                             <div class="d-flex mt-auto mb-3" groups="hr.group_hr_user">
                                 <button class="btn btn-primary btn-warning mx-auto" type="object"
                                     name="open_extended_form"
-                                    style="width: 95%; font-size: 1.5vw;">
+                                    style="width: 95%; font-size: 1.4vw;">
                                     Расширенная Карточка
                                 </button>
                             </div>

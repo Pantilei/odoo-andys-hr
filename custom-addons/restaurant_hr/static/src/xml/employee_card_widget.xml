@@ -53,7 +53,7 @@
             <div
                 t-if="state.employeeCardData.responses.length">
                 <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
-                    АТТЕСТАЦИЯ
+                    Аттестация
                 </div>
                 <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
 
@@ -88,7 +88,7 @@
             <!-- BLOCK -->
             <div t-if="state.employeeCardData.achievements.length">
                 <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
-                    ДОСТИЖЕНИЯ
+                    Достижения
                 </div>
                 <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
                 <div style="display: flex; flex-direction: column;">
@@ -112,7 +112,7 @@
             <!-- BLOCK -->
             <div t-if="state.employeeCardData.remarks.length">
                 <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
-                    ЗАМЕЧАНИЯ
+                    Замечания
                 </div>
                 <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
 
@@ -138,7 +138,7 @@
             <div
                 t-if="state.employeeCardData.skills.length">
                 <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
-                    НАВЫКИ
+                    Навыки
                 </div>
                 <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
 
@@ -151,18 +151,6 @@
                             <t t-esc="skill.name" />(Уровень-<t t-esc="skill.level" />) </div>
                     </div>
                 </t>
-            </div>
-
-            <!-- BLOCK -->
-            <div
-                t-if="state.employeeCardData.hobbies">
-                <div style="font-size: 1.2vw; font-weight: 700; width: 100%; margin-top: 2%;">
-                    Увлечения
-                </div>
-                <div style="background-color: rgb(225, 226, 227); height: 0.3vw"></div>
-                <div style="width: 100%; font-size: 1.1vw; margin-right: 1%">
-                    <t t-esc="state.employeeCardData.hobbies" />
-                </div>
             </div>
         </div>
     </t>
