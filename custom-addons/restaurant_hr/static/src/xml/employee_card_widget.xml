@@ -8,13 +8,13 @@
                 <div style="width: 3%; font-size: 1.2vw; margin-right: 1%;">
 
                 </div>
-                <div style="width: 32%; font-size: 1.2vw; margin-right: 1%;">
+                <div style="width: 62%; font-size: 1.2vw; margin-right: 1%;">
                     НАИМЕНОВАНИЕ
                 </div>
-                <div style="width: 31%; font-size: 1.2vw; margin-right: 1%;  text-align: right;">
+                <div style="width: 16%; font-size: 1.2vw; margin-right: 1%;  text-align: right;">
                     <!-- ДАТА НАЧАЛА -->
                 </div>
-                <div style="width: 33%; font-size: 1.2vw; margin-right: 1%; text-align: right;">
+                <div style="width: 18%; font-size: 1.2vw; margin-right: 1%; text-align: right;">
                     ДАТА СОБЫТИЯ
                 </div>
             </div>
@@ -33,15 +33,15 @@
                         <div style="display: flex">
                             <div style="width: 3%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id_index + 1" />. </div>
-                            <div style="width: 32%; font-size: 1.1vw; margin-right: 1%;">
+                            <div style="width: 62%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id.name" /> (<t
                                     t-esc="resume_line_id.description" />) </div>
                             <div
-                                style="width: 31%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
+                                style="width: 16%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="resume_line_id.date_start" />
                             </div>
                             <div
-                                style="width: 33%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
+                                style="width: 18%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="resume_line_id.date_end" />
                             </div>
                         </div>
