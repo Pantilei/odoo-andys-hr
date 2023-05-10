@@ -72,11 +72,14 @@
                                                     margin-bottom: 0px;
                                                     color: white; font-size: 1.1vw; vertical-align: middle">
 
-                                            <field name="birthday" style="margin-bottom: 0px;" />
-                                            <span>
-                                                <field name="place_of_birth" /> (<field
-                                                    name="country_of_birth"
-                                                    options="{'no_open': True}" />) </span>
+                                            <field name="birthday" style="margin-bottom: 0px;"
+                                                attrs="{'invisible': [('birthday', '=', False)]}" />
+                                            <field name="place_of_birth"
+                                                attrs="{'invisible': [('place_of_birth', '=', False)]}" />
+                                            <field
+                                                name="country_of_birth"
+                                                attrs="{'invisible': [('country_of_birth', '=', False)]}"
+                                                options="{'no_open': True}" />
                                         </span>
                                     </span>
                                 </div>
@@ -123,10 +126,12 @@
 
                                             <field name="marital" style="margin-bottom: 0px;" />
                                             <span attrs="{'invisible': [('children', '=', False)]}">
-                                                <span attrs="{'invisible': [('children', '=', 1)]}">
+                                                <span
+                                                    attrs="{'invisible': [('children', 'in', [0, 1])]}">
                                                     (<field name="children" /> детей) </span>
-                                                <span attrs="{'invisible': [('children', '>', 1)]}">
-                                                    (<field name="children" /> ребёнок) </span>
+                                                <span
+                                                    attrs="{'invisible': [('children', '>', 1)]}"> (<field
+                                                        name="children" /> ребёнок) </span>
                                             </span>
                                         </span>
                                     </span>
@@ -140,36 +145,33 @@
                                     <span
                                         style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
                                     ></span>
-                                    <span class="d-flex justify-content-between"
-                                        style="width: 100%; padding-top: 3%">
+                                    <span
+                                        style="width: 100%; padding-top: 3%; margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw;">
                                         <i class="fa fa-certificate"
-                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw;"
-                                        />
-                                        <span class="d-flex flex-column"
-                                            style="
-                                                width: 84%; overflow: hidden; text-overflow: ellipsis;
-                                                    margin-bottom: 0px;
-                                                    color: white; font-size: 1.1vw; vertical-align: middle">
-
-                                            <span
-                                                attrs="{'invisible': [('certificate', '=', False)]}">
-                                                <field name="certificate"
-                                                    style="margin-bottom: 0px;" />
-                                            </span>
-
-                                            <span
-                                                attrs="{'invisible': [('study_field', '=', False)]}">
-                                                <field name="study_field"
-                                                    style="margin-bottom: 0px;" />
-                                            </span>
+                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw; float: left;"
+                                        ></i>
+                                        <div style="float: none; vertical-align: top;">
+                                            <field name="certificate"
+                                                attrs="{'invisible': [('certificate', 'in', [False, 'other'])]}"
+                                                style="margin-bottom: 0px;  display: inline;" />
+                                            <br
+                                                attrs="{'invisible': [('certificate', 'in', [False, 'other'])]}" />
+                                            <field
+                                                name="study_field"
+                                                attrs="{'invisible': [('study_field', '=', False)]}"
+                                                style="margin-bottom: 0px; display: inline;" />
+                                            <br />
 
                                             <span
                                                 attrs="{'invisible': [('study_school', '=', False)]}">
-                                                Школа: <field name="study_school"
-                                                    style="margin-bottom: 0px;" />
-                                            </span>
+                                                Школа: </span>
 
-                                        </span>
+                                            <field
+                                                name="study_school"
+                                                attrs="{'invisible': [('study_school', '=', False)]}"
+                                                style="margin-bottom: 0px;  display: inline;" />
+                                        </div>
                                     </span>
                                 </div>
 

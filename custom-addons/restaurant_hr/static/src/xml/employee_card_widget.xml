@@ -34,8 +34,9 @@
                             <div style="width: 3%; font-size: 1.1vw; margin-right: 1%;">
                                 <t t-esc="resume_line_id_index + 1" />. </div>
                             <div style="width: 62%; font-size: 1.1vw; margin-right: 1%;">
-                                <t t-esc="resume_line_id.name" /> (<t
-                                    t-esc="resume_line_id.description" />) </div>
+                                <t t-esc="resume_line_id.name" />
+                                <t t-esc="resume_line_id.description" />
+                            </div>
                             <div
                                 style="width: 16%; font-size: 1.1vw; margin-right: 1%; text-align: right;">
                                 <t t-esc="resume_line_id.date_start" />

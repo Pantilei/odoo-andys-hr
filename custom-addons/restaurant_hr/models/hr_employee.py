@@ -240,7 +240,7 @@ class HrEmployee(models.Model):
                     "section_data": [{
                             "resume_line_id": resume_line_id.id,
                             "name": resume_line_id.name,
-                            "description": resume_line_id.description,
+                            "description": f"({resume_line_id.description})" if resume_line_id.description else "",
                             "date_start":  resume_line_id.date_start.strftime("%d-%m-%Y") if resume_line_id.date_start else '',
                             "date_end":  resume_line_id.date_end.strftime("%d-%m-%Y") if resume_line_id.date_end else '',
                         } for resume_line_id in record.resume_line_ids.filtered(lambda r: r.line_type_id.id == resume_section_id.id)]
