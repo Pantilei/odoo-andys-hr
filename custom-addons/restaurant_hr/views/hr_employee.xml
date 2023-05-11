@@ -113,16 +113,13 @@
                                     <span
                                         style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
                                     ></span>
-                                    <span class="d-flex justify-content-between"
-                                        style="width: 100%; padding-top: 3%">
+                                    <span
+                                        style="width: 100%; padding-top: 3%; margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw;">
                                         <i class="fa fa-users"
-                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw;"
+                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw; float: left;"
                                         />
-                                        <span class="d-flex flex-column"
-                                            style="
-                                                width: 84%; overflow: hidden; text-overflow: ellipsis;
-                                                    margin-bottom: 0px;
-                                                    color: white; font-size: 1.1vw; vertical-align: middle">
+                                        <div style="float: none; vertical-align: top;">
 
                                             <field name="marital" style="margin-bottom: 0px;" />
                                             <span attrs="{'invisible': [('children', '=', False)]}">
@@ -133,7 +130,7 @@
                                                     attrs="{'invisible': [('children', '>', 1)]}"> (<field
                                                         name="children" /> ребёнок) </span>
                                             </span>
-                                        </span>
+                                        </div>
                                     </span>
                                 </div>
 
@@ -183,16 +180,17 @@
                                     <span
                                         style="width: 100%;height: 0.4vw;background-color: rgb(235, 189, 8);"
                                     ></span>
-                                    <span class="d-flex justify-content-between"
-                                        style="width: 100%; padding-top: 3%">
+                                    <span
+                                        style="width: 100%; padding-top: 3%; margin-bottom: 0px;
+                                                    color: white; font-size: 1.1vw;">
                                         <i class="fa fa-puzzle-piece"
-                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw;"
+                                            style="width: 3vw; height: 3vw; margin-right: 3%; color: white; font-size: 3vw; float: left;"
                                         />
-                                        <field name="hobbies"
-                                            style="width: 84%; overflow: hidden; text-overflow: ellipsis;
-                                                    margin-bottom: 0px;
-                                                    color: white; font-size: 1.1vw; vertical-align: middle; margin-bottom: 0px;"
-                                            options="{'no_open': True}" />
+                                        <div style="float: none; vertical-align: top;">
+                                            <field name="hobbies"
+                                                style="margin-bottom: 0px; display: inline;"
+                                                options="{'no_open': True}" />
+                                        </div>
                                     </span>
                                 </div>
 
