@@ -618,7 +618,13 @@
             <xpath expr="//field[@name='activity_ids']" position="before">
                 <field name="assessed" widget="badge" decoration-warning="assessed == 'no'"
                     decoration-success="assessed == 'yes'" />
-                <field name="source_id" optional="True" />
+                <field name="source_id" optional="hide" />
+                <field name="tshirt_size" optional="hide" />
+                <field name="pants_size" optional="hide" />
+
+                <field name="mentor_id" optional="hide" />
+                <field name="training_start_date" optional="hide" />
+                <field name="training_end_date" optional="hide" />
             </xpath>
             <xpath expr="//field[@name='parent_id']" position="after">
                 <button name="open_employee_edit_view" type="object" icon="fa-edit" title="Edit" />
@@ -641,6 +647,15 @@
                     filter_domain="[('work_email', 'ilike', self)]" />
                 <field name="department_id" />
                 <field name="mentor_id" />
+                <field name="training_start_date" string="Training start from"
+                    filter_domain="[('training_start_date', '&gt;=', self)]" />
+                <field name="training_start_date" string="Training start to"
+                    filter_domain="[('training_start_date', '&lt;=', self)]" />
+                <field name="training_end_date" string="Training end from"
+                    filter_domain="[('training_end_date', '&gt;=', self)]" />
+                <field name="training_end_date" string="Training end to"
+                    filter_domain="[('training_end_date', '&lt;=', self)]" />
+
             </xpath>
 
             <xpath expr="//filter[@name='message_needaction']" position="replace"></xpath>
