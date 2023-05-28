@@ -45,6 +45,7 @@
         'wizards/employee_assign_survey.xml',
 
         'reports/hr_employee_badge.xml',
+        'reports/employee_card_report.xml',
 
         'templates/employee_card_template.xml',
 

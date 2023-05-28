@@ -204,8 +204,10 @@ class HrEmployee(models.Model):
     @api.depends("address_home_id")
     def _compute_display_address(self):
         for record in self:
-            record.display_address = record.address_home_id.with_context(show_address=1).name_get()[0][1]
-            print(record.display_address)
+            if record.address_home_id:
+                record.display_address = record.address_home_id.with_context(show_address=1).name_get()[0][1]
+            else:
+                record.display_address = False
 
     @api.depends("name")
     def _compute_has_dublicate(self):

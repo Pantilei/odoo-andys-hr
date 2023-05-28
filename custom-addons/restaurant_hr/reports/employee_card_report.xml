@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_employee_card" model="report.paperformat">
+        <field name="name">A4 Label Sheet</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="disable_shrinking">True</field>
+        <field name="dpi">100</field>
+    </record>
+
+    <record id="action_employee_card_report" model="ir.actions.report">
+        <field name="name">Employee Card</field>
+        <field name="model">hr.employee</field>
+        <!-- <field name="report_type">qweb-html</field> -->
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">restaurant_hr.employee_card_report</field>
+        <field name="report_file">restaurant_hr.employee_card_report</field>
+        <field name="paperformat_id" ref="restaurant_hr.paperformat_employee_card" />
+        <field name="print_report_name">'Employee card - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_hr_employee" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="employee_card_report">
+        <t t-set="full_width" t-value="True" />
+        <t t-call="web.html_container">
+            <meta charset="utf-8" />
+
+            <t t-foreach="docs" t-as="o">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-set="employee_card_dict" t-value="employee_card_dicts[o_index]" />
+                <div class="article" style="width: 100%;">
+                    <div class="page"
+                        style="
+                            width: 100%;
+                            background-color: rgb(204, 207, 207);
+                        "
+                    >
+                        <div
+                            style="
+                            display: -webkit-box;
+                            display: flex;
+                            margin: 0 auto;
+                            width: 97%;
+                            background-color: white;
+                            padding: 1mm 1mm 1mm 1mm;
+                        "
+                        >
+                            <div
+                                style="
+                                display: -webkit-flex;
+                                display: flex;
+                                flex-direction: column;
+                                width: 25%; 
+                                min-height: 297mm;
+                                background-color: rgb(147, 149, 152);
+                            ">
+                                <span class="emp_card-photo-container"
+                                    style="
+                                        display: block; 
+                                        width: 48.5mm; 
+                                        margin: 4mm auto 0 auto;
+                                        border: 1mm solid white; 
+                                    ">
+                                    <img
+                                        t-attf-src="/web/image?model=hr.employee&amp;id={{o.id}}&amp;field=image_1920"
+                                        style="width: 100%;"
+                                        alt="employee_photo" />
+                                </span>
+                                <div style="margin: 7.5mm 0 0 5mm;">
+                                    <div
+                                        style="
+                                        margin-top: 10%; 
+                                        display: block;"
+                                    >
+                                        <span
+                                            style="display: block; 
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 3.4mm; 
+                                                font-weight: bold;
+                                            ">
+                                            Дата Рождения:
+                                        </span>
+                                        <span
+                                            style="display: block; 
+                                                width: 100%; 
+                                                height: 2mm; 
+                                                background-color: rgb(235, 189, 8);"
+                                        ></span>
+                                        <span
+                                            style="display: block; width: 100%; padding-top: 3%">
+                                            <img
+                                                style="display: inline; width: 10mm; height: 10mm; margin-right: 3%"
+                                                alt="birthday"
+                                                src="/restaurant_hr/static/src/img/birthday-icon.jpg"
+                                            />
+                                            <span
+                                                style="
+                                                color: white; 
+                                                font-size: 3mm;"
+                                            >
+                                                <span t-if="o.birthday != False">
+                                                    <t t-esc="o.birthday" />
+                                                </span>
+                                                <span t-if="o.place_of_birth != False">
+                                                    <t t-esc="o.place_of_birth" />
+                                                </span>
+                                                <span t-if="o.country_of_birth != False">
+                                                    <t t-esc="o.country_of_birth.name" />
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div
+                                        style="
+                                            margin-top: 10%; 
+                                            display: block;"
+                                    >
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 3.4mm; 
+                                                font-weight: bold;">
+                                            Адрес:
+                                        </span>
+                                        <span
+                                            style="display: block;
+                                                width: 100%;
+                                                height: 2mm;
+                                                background-color: rgb(235, 189, 8);"
+                                        ></span>
+                                        <span
+                                            style="display: block; 
+                                                    width: 100%; 
+                                                    padding-top: 3%"
+                                        >
+                                            <i class="fa fa-home"
+                                                style="width: 10mm; height: 10mm; 
+                                                margin-right: 3%; color: white; 
+                                                font-size: 10mm;"
+                                            />
+                                            <span
+                                                style="display: inline; 
+                                                    width: 84%; overflow: hidden; 
+                                                    text-overflow: ellipsis;
+                                                    margin-bottom: 0px;
+                                                    color: white; font-size: 3mm; 
+                                                    vertical-align: middle; 
+                                                    margin-bottom: 0mm;"
+                                                t-if="o.display_address != False"
+                                            >
+                                                <t t-esc="o.display_address" />
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div style="margin-top: 10%; display: block;">
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 3.4mm; 
+                                                font-weight: bold;">
+                                            Семейное положение:
+                                        </span>
+                                        <span
+                                            style="display: block; 
+                                                width: 100%;
+                                                height: 2mm;
+                                                background-color: rgb(235, 189, 8);"
+                                        ></span>
+                                        <span
+                                            style="display: block; 
+                                                width: 100%; 
+                                                padding-top: 3%; 
+                                                margin-bottom: 0px;
+                                                color: white; 
+                                                font-size: 3mm;">
+                                            <i class="fa fa-users"
+                                                style="width: 10mm; 
+                                                    height: 10mm; 
+                                                    margin-right: 3%; 
+                                                    color: white; 
+                                                    font-size: 10mm; 
+                                                    float: left;"
+                                            />
+                                            <div style="float: none; vertical-align: top;">
+                                                <span style="margin-bottom: 0mm;">
+                                                    <span t-field="o.marital" />
+                                                </span>
+                                                <span t-if="o.children != False">
+                                                    <span t-if="o.children not in [0, 1]"> (<span>
+                                                            <t t-esc="o.children" />
+                                                        </span>
+                                                        детей) </span>
+                                                    <span t-if="o.children &lt; 1"> (<span>
+                                                            <t t-esc="o.children" />
+                                                        </span>
+                                                        ребёнок) </span>
+                                                </span>
+                                            </div>
+                                        </span>
+                                    </div>
+
+                                    <div style="margin-top: 20%; display: block;">
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 3.4mm; 
+                                                font-weight: bold;">
+                                            Образование:
+                                        </span>
+                                        <span
+                                            style="display: block; 
+                                                width: 100%;
+                                                height: 2mm;
+                                                background-color: rgb(235, 189, 8);"
+                                        ></span>
+                                        <span
+                                            style="display: block; 
+                                                width: 100%; 
+                                                padding-top: 3%; 
+                                                margin-bottom: 0px;
+                                                color: white; 
+                                                font-size: 3mm;">
+                                            <i class="fa fa-certificate"
+                                                style="width: 10mm; 
+                                                    height: 10mm; 
+                                                    margin-right: 3%; 
+                                                    color: white; 
+                                                    font-size: 10mm; 
+                                                    float: left;"
+                                            ></i>
+                                            <div style="float: none; vertical-align: top;">
+                                                <span
+                                                    t-if="o.certificate not in [False, 'other']"
+                                                    style="margin-bottom: 0mm;  display: inline;">
+                                                    <span t-field="o.certificate" />
+                                                </span>
+                                                <br t-if="o.certificate not in [False, 'other']" />
+                                                <span t-if="o.study_field != False"
+                                                    style="margin-bottom: 0mm; display: inline;">
+                                                    <t t-esc="o.study_field" />
+                                                </span>
+                                                <br />
+                                                <span t-if="o.study_school != False">
+                                                    Школа:
+                                                </span>
+                                                <span t-if="o.study_school != False"
+                                                    style="margin-bottom: 0mm;  display: inline;">
+                                                    <t t-esc="o.study_school" />
+                                                </span>
+                                            </div>
+                                        </span>
+                                    </div>
+
+                                    <div
+                                        style="margin-top: 10%; 
+                                            display: block;"
+                                    >
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 3.4mm; 
+                                                font-weight: bold;">
+                                            Увлечения:
+                                        </span>
+                                        <span
+                                            style="display: block; 
+                                                width: 100%;
+                                                height: 2mm;
+                                                background-color: rgb(235, 189, 8);"
+                                        ></span>
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                padding-top: 3%; 
+                                                margin-bottom: 0px;
+                                                color: white; 
+                                                font-size: 3mm;">
+                                            <i class="fa fa-puzzle-piece"
+                                                style="width: 10mm; height: 10mm; 
+                                                margin-right: 3%; 
+                                                color: white; 
+                                                font-size: 10mm; 
+                                                float: left;"
+                                            />
+                                            <div style="float: none; vertical-align: top;">
+                                                <span
+                                                    style="margin-bottom: 0px; display: inline;">
+                                                    <t t-esc="o.hobbies" />
+                                                </span>
+                                            </div>
+                                        </span>
+                                    </div>
+
+                                    <div
+                                        style="margin-top: 10%; 
+                                            display: block;"
+                                    >
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 4mm; 
+                                                font-weight: bold;">
+                                            E-mail:
+                                        </span>
+                                        <span
+                                            style="display: block;
+                                                width: 100%;
+                                                height: 2mm;
+                                                background-color: rgb(235, 189, 8);">
+                                        </span>
+                                        <span
+                                            style="display: block;
+                                                width: 100%; padding-top: 3%">
+                                            <img
+                                                style="width: 10mm; height: 10mm; margin-right: 3%"
+                                                alt="birthday"
+                                                src="/restaurant_hr/static/src/img/email-icon.jpg"
+                                            />
+                                            <span
+                                                style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                    margin-bottom: 0px;
+                                                    color: white; font-size: 3mm; vertical-align: middle">
+                                                <t t-esc="o.work_email" />
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div
+                                        style="margin-top: 10%; 
+                                            display: block;"
+                                    >
+                                        <span
+                                            style="display: block; 
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 3.4mm; 
+                                                font-weight: bold;">
+                                            Мобильный:
+                                        </span>
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                height: 2mm; 
+                                                background-color: rgb(235, 189, 8);">
+                                        </span>
+                                        <span style="display: block; width: 100%; padding-top: 3%">
+                                            <img
+                                                style="width: 10mm; height: 10mm; margin-right: 3%"
+                                                alt="birthday"
+                                                src="/restaurant_hr/static/src/img/phone-icon.jpg"
+                                            />
+                                            <span
+                                                style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                margin-bottom: 0px; color: white; font-size: 3mm; 
+                                                vertical-align: middle">
+                                                <t t-esc="o.mobile_phone" />
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div
+                                        style="margin-top: 10%; 
+                                            margin-bottom: 30%; 
+                                            display: block;"
+                                    >
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                color: white; 
+                                                font-size: 3.4mm; 
+                                                display: block;
+                                                font-weight: bold;">
+                                            Работает с:
+                                        </span>
+                                        <span
+                                            style="display: block;
+                                                width: 100%; 
+                                                height: 2mm; 
+                                                background-color: rgb(235, 189, 8);"></span>
+                                        <span
+                                            style="display: block;
+                                            width: 100%; 
+                                            padding-top: 3%">
+                                            <img
+                                                style="width: 10mm; height: 10mm; margin-right: 3%"
+                                                alt="birthday"
+                                                src="/restaurant_hr/static/src/img/calendar-icon.jpg"
+                                            />
+                                            <span
+                                                style="width: 84%; overflow: hidden; text-overflow: ellipsis;
+                                                margin-bottom: 0px; color: white; font-size: 3mm; 
+                                                vertical-align: middle">
+                                                <t t-esc="o.entry_date" />
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div style="width: 75%; margin-top: 2mm; margin-left: 2mm;">
+                                <div>
+                                    <div
+                                        style="display: inline-block; width: 70%;">
+                                        <span
+                                            style="display: block; font-size: 6mm; font-weight: bold; width: 100%">
+                                            <t t-esc="o.name" />
+                                        </span>
+                                        <span
+                                            style="display: block; font-size: 3.5mm; font-weight: 500; width: 100%">
+                                            <t t-esc="o.job_id.name" />
+                                        </span>
+                                        <span t-if="o.qualification_id != False"
+                                            style="display: block; font-size: 3.5mm; font-weight: 500; width: 100%">
+                                            <t t-esc="o.qualification_id.name" />
+                                        </span>
+                                        <span
+                                            style="display: block; font-size: 3.5mm; font-weight: 500; width: 100%">
+                                            <t t-esc="o.department_id.display_name" />
+                                        </span>
+                                    </div>
+                                    <div style="display: inline-block; width: 28%;">
+                                        <img
+                                            class="img img-fluid"
+                                            alt="andys-logo"
+                                            style=" 
+                                            width: 14mm;
+                                            height: 19.6mm;
+                                            vertical-align: baseline;
+                                            margin-right: 2%;
+                                            margin-left: auto;"
+                                            src="/restaurant_hr/static/src/img/andys-logo.jpg"
+                                        />
+                                        <img
+                                            class="img img-fluid"
+                                            alt="laplacinte-logo"
+                                            style="
+                                            width: 21mm; 
+                                            height: 20mm; 
+                                            vertical-align: baseline;
+                                            padding-top: 2%;"
+                                            src="/restaurant_hr/static/src/img/la-placinte-logo.jpg"
+                                        />
+                                    </div>
+                                </div>
+                                <div
+                                    style="width: 98%; height: 2mm; margin-top: 2mm; background-color: rgb(235, 189, 8);"></div>
+
+                                <div style="display: block; width: 100%; margin-bottom: 5%;">
+                                    <!-- BLOCK -->
+                                    <div class="mt-4" style="display: block;">
+                                        <div style="width: 3%; font-size: 6mm; margin-right: 1%;"></div>
+                                        <div
+                                            style="display: inline-block; width: 62%; font-size: 4mm; margin-right: 1%;">
+                                            НАИМЕНОВАНИЕ
+                                        </div>
+                                        <div
+                                            style="display: inline-block; width: 10%; font-size: 4mm; margin-right: 1%;  text-align: right;">
+                                            <!-- ДАТА НАЧАЛА -->
+                                        </div>
+                                        <div
+                                            style="display: inline-block; width: 24%; font-size: 4mm; margin-right: 1%; text-align: right;">
+                                            ДАТА СОБЫТИЯ
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="width: 98%; background-color: rgb(225, 226, 227); height: 1mm"></div>
+
+                                    <t t-foreach="employee_card_dict['resume_section_ids']"
+                                        t-as="resume_section_id"
+                                        t-key="resume_section_id['section_id']">
+                                        <div t-if="len(resume_section_id['section_data'])">
+                                            <div
+                                                style="font-size: 5mm; font-weight: 700; width: 100%; margin-top: 2%;">
+                                                <t t-esc="resume_section_id['section_name']" />
+                                            </div>
+                                            <div
+                                                style="width: 98%; background-color: rgb(225, 226, 227); height: 0.5mm"></div>
+
+                                            <t t-foreach="resume_section_id['section_data']"
+                                                t-as="resume_line_id"
+                                                t-key="resume_line_id['resume_line_id']">
+                                                <div style="display: block;">
+                                                    <div
+                                                        style="display: inline-block; width: 3%; font-size: 3mm; margin-right: 1%;">
+                                                        <t t-esc="resume_line_id_index + 1" />. </div>
+                                                    <div
+                                                        style="display: inline-block; width: 62%; font-size: 3mm; margin-right: 1%;">
+                                                        <t t-esc="resume_line_id['name']" />
+                                                        <t t-esc="resume_line_id['description']" />
+                                                    </div>
+                                                    <div
+                                                        style="display: inline-block; width: 11%; font-size: 3mm; margin-right: 1%; text-align: right;">
+                                                        <t t-esc="resume_line_id['date_start']" />
+                                                    </div>
+                                                    <div
+                                                        style="display: inline-block; width: 16%; font-size: 3mm; margin-right: 1%; text-align: right;">
+                                                        <t t-esc="resume_line_id['date_end']" />
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </t>
+
+                                    <!-- BLOCK -->
+                                    <div
+                                        t-if="len(employee_card_dict['responses'])">
+                                        <div
+                                            style="font-size: 5mm; font-weight: 700; width: 100%; margin-top: 2%;">
+                                            Аттестация
+                                        </div>
+                                        <div
+                                            style="width: 98%; background-color: rgb(225, 226, 227); height: 0.5mm"></div>
+
+                                        <t t-foreach="employee_card_dict['responses']"
+                                            t-as="response"
+                                            t-key="response['response_id']">
+                                            <div style="display: block;">
+                                                <div
+                                                    style="display: inline-block; width: 3%; font-size: 3mm; margin-right: 1%">
+                                                    <t t-esc="response_index + 1" />. </div>
+                                                <div
+                                                    style="display: inline-block; width: 60%; font-size: 3mm; margin-right: 1%">
+                                                    <t t-esc="response['name']" />(Оценка-<t
+                                                        t-esc="response['scoring_percentage']" /> %) </div>
+                                                <div
+                                                    style="display: inline-block; width: 30%; font-size: 3mm; margin-right: 1%; text-align: right;">
+                                                    <t t-esc="response['create_date']" />
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+
+                                    <!-- BLOCK -->
+                                    <div t-if="len(employee_card_dict['achievements'])">
+                                        <div
+                                            style="font-size: 6mm; font-weight: 700; width: 100%; margin-top: 2%;">
+                                            Достижения
+                                        </div>
+                                        <div
+                                            style="width: 98%; background-color: rgb(225, 226, 227); height: 0.5mm"></div>
+                                        <div
+                                            style="display: block;">
+                                            <t t-foreach="employee_card_dict['achievements']"
+                                                t-as="achievement"
+                                                t-key="achievement['achievement_id']">
+                                                <div
+                                                    style="display: block">
+                                                    <div
+                                                        style="display: inline-block; width: 3%; font-size: 3mm; margin-right: 1%">
+                                                        <t t-esc="achievement_index + 1" />. </div>
+                                                    <div
+                                                        style="display: inline-block; width: 60%; font-size: 3mm">
+                                                        <t
+                                                            t-esc="achievement['achievement_description']" />
+                                                    </div>
+                                                    <div
+                                                        style="display: inline-block; width: 31%; font-size: 3mm; margin-right: 1%; text-align: right;">
+                                                        <t
+                                                            t-esc="achievement['achievement_date']" />
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+
+                                    <!-- BLOCK -->
+                                    <div t-if="len(employee_card_dict['remarks'])">
+                                        <div
+                                            style="font-size: 6mm; font-weight: 700; width: 100%; margin-top: 2%;">
+                                            Замечания
+                                        </div>
+                                        <div
+                                            style="width: 98%; background-color: rgb(225, 226, 227); height: 0.5mm"></div>
+
+                                        <div
+                                            style="display: block;">
+                                            <t t-foreach="employee_card_dict['remarks']"
+                                                t-as="remark"
+                                                t-key="remark['remark_id']">
+                                                <div style="display: block;">
+                                                    <div
+                                                        style="display: inline-block; width: 3%; font-size: 3mm; margin-right: 1%">
+                                                        <t t-esc="remark_index + 1" />. </div>
+                                                    <div
+                                                        style="display: inline-block; width: 60%; font-size: 3mm">
+                                                        <t t-esc="remark['remark_description']" />
+                                                    </div>
+                                                    <div
+                                                        style="display: inline-block; width: 31%; font-size: 3mm; margin-right: 1%; text-align: right;">
+                                                        <t t-esc="remark['remark_date']" />
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+
+                                    <!-- BLOCK -->
+                                    <div
+                                        t-if="len(employee_card_dict['skills'])">
+                                        <div
+                                            style="font-size: 6mm; font-weight: 700; width: 100%; margin-top: 2%;">
+                                            Навыки
+                                        </div>
+                                        <div
+                                            style="width: 98%; background-color: rgb(225, 226, 227); height: 0.5mm"></div>
+
+                                        <t t-foreach="employee_card_dict['skills']" t-as="skill"
+                                            t-key="skill['skill_id']">
+                                            <div style="display: block;">
+                                                <div
+                                                    style="display: inline-block; width: 3%; font-size: 3mm; margin-right: 1%">
+                                                    <t t-esc="skill_index + 1" />. </div>
+                                                <div
+                                                    style="display: inline-block; width: 70%; font-size: 3mm; margin-right: 1%">
+                                                    <t t-esc="skill['name']" />(Уровень-<t
+                                                        t-esc="skill['level']" />) </div>
+                                            </div>
+                                        </t>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>
