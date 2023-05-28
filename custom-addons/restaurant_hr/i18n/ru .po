@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-23 18:19+0000\n"
-"PO-Revision-Date: 2023-05-23 18:19+0000\n"
+"POT-Creation-Date: 2023-05-28 21:29+0000\n"
+"PO-Revision-Date: 2023-05-28 21:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,6 +28,11 @@ msgstr ""
 "будет зависеть от этого"
 
 #. module: restaurant_hr
+#: model:ir.actions.report,print_report_name:restaurant_hr.action_employee_card_report
+msgid "'Employee card - %s' % (object.name)"
+msgstr "'Карточка сотрудника - %s' % (object.name)"
+
+#. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card
 msgid "(Оценка -"
 msgstr ""
@@ -35,6 +40,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "(Оценка-"
 msgstr ""
@@ -42,6 +48,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "(Уровень-"
 msgstr ""
@@ -144,6 +151,80 @@ msgstr "<span class=\"font-weight-bold\">Подразделение: </span>"
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_kanban_view_employees
 msgid "<span class=\"font-weight-bold\">Employee Type: </span>"
 msgstr "<span class=\"font-weight-bold\">Тип Сотрудника: </span>"
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                  width: 100%;                                                  color: white;                                                  font-size: 3.4mm;                                                  font-weight: bold;                                             \">\n"
+"                                            Дата Рождения:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                  width: 100%;                                                  height: 2mm;                                                  background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                  width: 100%;                                                  color: white;                                                  font-size: 3.4mm;                                                  font-weight: bold;\">\n"
+"                                            Мобильный:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                 width: 100%;                                                  height: 2mm;                                                  background-color: rgb(235, 189, 8);\">\n"
+"                                        </span>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                 width: 100%;                                                  color: white;                                                  font-size: 3.4mm;                                                  display: block;                                                 font-weight: bold;\">\n"
+"                                            Работает с:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                 width: 100%;                                                  height: 2mm;                                                  background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                 width: 100%;                                                  color: white;                                                  font-size: 3.4mm;                                                  font-weight: bold;\">\n"
+"                                            Адрес:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                 width: 100%;                                                 height: 2mm;                                                 background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                 width: 100%;                                                  color: white;                                                  font-size: 3.4mm;                                                  font-weight: bold;\">\n"
+"                                            Образование:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                  width: 100%;                                                 height: 2mm;                                                 background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                 width: 100%;                                                  color: white;                                                  font-size: 3.4mm;                                                  font-weight: bold;\">\n"
+"                                            Семейное положение:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                  width: 100%;                                                 height: 2mm;                                                 background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                 width: 100%;                                                  color: white;                                                  font-size: 3.4mm;                                                  font-weight: bold;\">\n"
+"                                            Увлечения:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                  width: 100%;                                                 height: 2mm;                                                 background-color: rgb(235, 189, 8);\"/>"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid ""
+"<span style=\"display: block;                                                 width: 100%;                                                  color: white;                                                  font-size: 4mm;                                                  font-weight: bold;\">\n"
+"                                            E-mail:\n"
+"                                        </span>\n"
+"                                        <span style=\"display: block;                                                 width: 100%;                                                 height: 2mm;                                                 background-color: rgb(235, 189, 8);\">\n"
+"                                        </span>"
+msgstr ""
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
@@ -559,6 +640,7 @@ msgstr "Кандидаты"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee_base__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_job__dms_directory_ids
+#: model:ir.model.fields,field_description:restaurant_hr.field_report_restaurant_hr_employee_card_report__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__dms_directory_ids
@@ -738,8 +820,18 @@ msgid "Employee Achievements"
 msgstr "Достижения Сотрудника"
 
 #. module: restaurant_hr
+#: model:ir.actions.report,name:restaurant_hr.action_employee_card_report
+msgid "Employee Card"
+msgstr "Карточка Сотрудника"
+
+#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__employee_card_json
 msgid "Employee Card Json"
+msgstr ""
+
+#. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_report_restaurant_hr_employee_card_report
+msgid "Employee Card Report"
 msgstr ""
 
 #. module: restaurant_hr
@@ -1489,7 +1581,7 @@ msgstr "Начало стажировки от"
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
 msgid "Training start to"
-msgstr "Начало стажировки до"
+msgstr "Нвчало стажировки до"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_res_users
@@ -1576,11 +1668,13 @@ msgid "You must define a Contact Name for this applicant."
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid "andys-logo"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid "birthday"
 msgstr ""
@@ -1592,6 +1686,12 @@ msgid "e.g. Sales Manager"
 msgstr "например: Менеджер по Продажам"
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid "employee_photo"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid "laplacinte-logo"
 msgstr ""
@@ -1604,6 +1704,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "Аттестация"
 msgstr ""
@@ -1611,6 +1712,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "ДАТА СОБЫТИЯ"
 msgstr ""
@@ -1628,6 +1730,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "Достижения"
 msgstr ""
@@ -1635,6 +1738,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "Замечания"
 msgstr ""
@@ -1649,6 +1753,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "НАИМЕНОВАНИЕ"
 msgstr ""
@@ -1656,6 +1761,7 @@ msgstr ""
 #. module: restaurant_hr
 #. openerp-web
 #: code:addons/restaurant_hr/static/src/xml/employee_card_widget.xml:0
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #, python-format
 msgid "Навыки"
 msgstr ""
@@ -1697,6 +1803,12 @@ msgid "Фактическое"
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
+msgid "Школа:"
+msgstr ""
+
+#. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid "детей)"
 msgstr ""
@@ -1707,6 +1819,7 @@ msgid "пр. Менеджер по продажам, 2 года опыта ра�
 msgstr ""
 
 #. module: restaurant_hr
+#: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_report
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_card_view_form
 msgid "ребёнок)"
 msgstr ""

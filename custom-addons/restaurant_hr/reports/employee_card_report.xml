@@ -437,10 +437,10 @@
                                             class="img img-fluid"
                                             alt="andys-logo"
                                             style=" 
-                                            width: 14mm;
-                                            height: 19.6mm;
+                                            width: 13mm;
+                                            height: 13.6mm;
                                             vertical-align: baseline;
-                                            margin-right: 2%;
+                                            margin-right: 1mm;
                                             margin-left: auto;"
                                             src="/restaurant_hr/static/src/img/andys-logo.jpg"
                                         />
@@ -448,9 +448,10 @@
                                             class="img img-fluid"
                                             alt="laplacinte-logo"
                                             style="
-                                            width: 21mm; 
-                                            height: 20mm; 
+                                            width: 18mm; 
+                                            height: 15mm; 
                                             vertical-align: baseline;
+                                            margin-left: 2mm;
                                             padding-top: 2%;"
                                             src="/restaurant_hr/static/src/img/la-placinte-logo.jpg"
                                         />
