@@ -156,6 +156,12 @@ class HrApplicant(models.Model):
                     'default_response_ids': [(6, 0, applicant.response_ids.ids)],
                     'default_employee_type': 'trainee',
                     'default_source_id': applicant.source_id.id,
+                    'default_birthday': applicant.birthday,
+                    'default_work_email': applicant.email_from,
+                    'default_private_email': applicant.email_from,
+                    'default_work_phone': applicant.partner_mobile,
+                    'default_mobile_phone': applicant.partner_mobile,
+                    'default_study_field': applicant.type_id.name,
 
                     'form_view_initial_mode': 'edit',
                 }
