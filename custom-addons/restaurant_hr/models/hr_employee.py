@@ -45,10 +45,6 @@ class HrEmployee(models.Model):
         default=lambda self: datetime.today()
     )
 
-    trainee_start_date = fields.Date(
-        string="Trainee Start Date"
-    )
-
     passport_type = fields.Char(
         string="Passport Type"
     )

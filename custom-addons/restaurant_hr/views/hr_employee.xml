@@ -368,7 +368,6 @@
 
             <xpath expr="//field[@name='work_email']" position="after">
                 <field name="entry_date" />
-                <field name="trainee_start_date" />
                 <field name="personal_id" string="ID" />
             </xpath>
 
