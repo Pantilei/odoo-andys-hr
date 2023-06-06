@@ -5,6 +5,7 @@ from odoo.exceptions import UserError
 class SurveySurvey(models.Model):
     _inherit = "survey.survey"
 
+    title = fields.Char('Survey Title', required=True, translate=False) 
     wage_rate_waiter_ids = fields.One2many(
         comodel_name="survey.survey_wage_rate",
         inverse_name="survey_id",
@@ -52,6 +53,11 @@ class SurveySurvey(models.Model):
         help="Users who are able to edit/read the survey."
     )
 
+
+class SurveyQuestion(models.Model):
+    _inherit = "survey.question"
+    title = fields.Char('Title', required=True, translate=False)
+    
 
 class SurveySurveyBonuses(models.Model):
     _name = "survey.survey_wage_rate"
