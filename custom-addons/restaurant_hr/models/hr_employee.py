@@ -436,6 +436,8 @@ class HrEmployee(models.Model):
             if rec_id.applicant_id:
                 hired_stage_id = self.env["hr.recruitment.stage"].search([("hired_stage", "=", True)])
                 rec_id.applicant_id.stage_id = hired_stage_id
+                no_of_recruitment = rec_id.applicant_id.job_id.no_of_recruitment - 1
+                rec_id.applicant_id.job_id.no_of_recruitment = max(0, no_of_recruitment)
 
         return rec_ids
     
