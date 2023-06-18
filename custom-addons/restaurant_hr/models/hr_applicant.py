@@ -147,6 +147,7 @@ class HrApplicant(models.Model):
                     'default_job_title': applicant.job_id.name,
                     'default_address_home_id': address_id,
                     'default_department_id': applicant.department_id.id or False,
+                    'default_branch_id': applicant.branch_id.id or False,
                     'default_address_id': applicant.company_id and applicant.company_id.partner_id
                     and applicant.company_id.partner_id.id or False,
                     'default_work_email': applicant.department_id and applicant.department_id.company_id
