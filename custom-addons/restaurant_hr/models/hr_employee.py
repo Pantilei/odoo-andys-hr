@@ -32,33 +32,43 @@ class HrEmployee(models.Model):
         comodel_name='hr.department',
         string='Department',
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
-        default=lambda self: self.env.user.department_id
+        default=lambda self: self.env.user.department_id,
+        tracking=True
     )
+
+    work_email = fields.Char('Work Email', tracking=True)
+    mobile_phone = fields.Char('Work Mobile', tracking=True)
 
     job_id = fields.Many2one(
         'hr.job', 'Job Position',
+        tracking=True,
         domain="[('department_id', 'child_of', department_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"
     )
 
     entry_date = fields.Date(
         string="Entry Date",
-        default=lambda self: datetime.today()
+        default=lambda self: datetime.today(),
+        tracking=True
     )
 
     passport_type = fields.Char(
-        string="Passport Type"
+        string="Passport Type",
+        tracking=True
     )
 
     passport_series = fields.Char(
-        string="Passport Series"
+        string="Passport Series",
+        tracking=True
     )
 
     passport_issue_date = fields.Date(
-        string="Passport Issue Date"
+        string="Passport Issue Date",
+        tracking=True
     )
 
     passport_issue_by = fields.Char(
-        string="Passport Issue By"
+        string="Passport Issue By",
+        tracking=True
     )
 
     response_ids = fields.One2many(
@@ -95,28 +105,33 @@ class HrEmployee(models.Model):
 
     source_id = fields.Many2one(
         comodel_name="utm.source",
-        string="Source"
+        string="Source",
+        tracking=True
     )
 
     branch_id = fields.Many2one(
         comodel_name='restaurant_hr.hr_branch',
         string='Branch',
+        tracking=True,
         help='Select the "Branch" to whom this employee belongs.\n'
-             'The manager of branch will have the opportunity to edit the information of this employee.')
+             'The manager of branch will have the opportunity to edit the information of this employee.',
+        )
 
     qualification_id = fields.Many2one(
         comodel_name='restaurant_hr.qualification',
         domain="[('branch_id', '=', branch_id)]",
-        string='Qualification'
+        string='Qualification',
+        tracking=True
     )
 
     functional_duty = fields.Text(
-        string="Functional Duty"
+        string="Functional Duty",
+        tracking=True
     )
 
     payment_rate = fields.Float(
         string="Payment Rate",
-
+        tracking=True
     )
 
     wage_rate_min = fields.Float(
@@ -153,7 +168,7 @@ class HrEmployee(models.Model):
         ("XL", "XL"),
         ("XXL", "XXL"),
         ("XXXL", "XXXL"),
-    ], string="T-Shirt Size")
+    ], string="T-Shirt Size", tracking=True)
 
     pants_size = fields.Selection(selection=[
         ("32", "32"),
@@ -169,7 +184,7 @@ class HrEmployee(models.Model):
         ("52", "52"),
         ("54", "54"),
         ("56", "56"),
-    ], string="Pant's Size")
+    ], string="Pant's Size", tracking=True)
 
     employee_card_json = fields.Text(
         string="Employee Card Json",
@@ -179,18 +194,21 @@ class HrEmployee(models.Model):
     training_start_date = fields.Date(
         string="Training Start Date",
         index=True,
+        tracking=True
     )
     training_end_date = fields.Date(
         string="Training End Date",
-        index=True
+        index=True,
+        tracking=True
     )
 
     mentor_id = fields.Many2one(
         comodel_name="hr.employee",
-        string="Mentor"
+        string="Mentor",
+        tracking=True
     )
 
-    hobbies = fields.Text()
+    hobbies = fields.Text(tracking=True)
 
     display_address = fields.Text(compute="_compute_display_address")
 
