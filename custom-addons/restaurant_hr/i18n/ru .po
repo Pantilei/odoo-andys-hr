@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-28 21:29+0000\n"
-"PO-Revision-Date: 2023-05-28 21:29+0000\n"
+"POT-Creation-Date: 2023-07-11 18:54+0000\n"
+"PO-Revision-Date: 2023-07-11 18:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -388,7 +388,7 @@ msgstr "Административный Персонал Заявки"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey__users_with_access_ids
 msgid "Allowed Users"
-msgstr ""
+msgstr "Пользователи с доступом"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_hr_applicant
@@ -508,7 +508,7 @@ msgstr "Графики Утечки Кадров"
 #: model:ir.model.fields,field_description:restaurant_hr.field_res_users__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_department_history__branch_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__branch_id
-#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__branch_id
+#: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__branch_ids
 #: model:ir.ui.menu,name:restaurant_hr.hr_branch_menu
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.department_history_view_search
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.employee_view_search
@@ -551,6 +551,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_view_employee_form_inherit
 msgid "Cloth"
 msgstr "Одежда"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question__comments_message
+msgid "Comment Message"
+msgstr "Комментарий"
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.view_job_filter
@@ -655,6 +660,8 @@ msgstr "Кандидаты"
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_qualification__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_line__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__dms_directory_ids
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question__dms_directory_ids
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question_answer__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey_wage_rate__dms_directory_ids
 #: model:ir.model.fields,field_description:restaurant_hr.field_survey_user_input__dms_directory_ids
@@ -726,6 +733,8 @@ msgstr "Подразделения"
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_achievements__description
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_remarks__description
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question__description
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey__description
 msgid "Description"
 msgstr "Описание"
 
@@ -885,6 +894,11 @@ msgid "End Date"
 msgstr "Конец Периода"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey__description_done
+msgid "End Message"
+msgstr "Конечное сообщение"
+
+#. module: restaurant_hr
 #: code:addons/restaurant_hr/wizards/department_history_report.py:0
 #: code:addons/restaurant_hr/wizards/department_history_report.py:0
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__restaurant_hr_department_history__status__enter
@@ -897,6 +911,11 @@ msgstr "Вход"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__entry_date
 msgid "Entry Date"
 msgstr "Дата Вступления"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question__constr_error_msg
+msgid "Error message"
+msgstr "Сообщение об ошибке"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/wizards/department_history_report.py:0
@@ -931,7 +950,7 @@ msgstr "Фабрика Заявки"
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__feedback
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_form
 msgid "FeedBack по интервью"
-msgstr "FeedBack по интервью"
+msgstr ""
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_applicant__feedback_required
@@ -1034,6 +1053,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_kanban_view_employees
 msgid "ID:"
 msgstr ""
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/models/survey_survey.py:0
+#, python-format
+msgid "If other, please specify:"
+msgstr "Если другой, опишите: "
 
 #. module: restaurant_hr
 #: model_terms:ir.ui.view,arch_db:restaurant_hr.hr_applicant_view_search_bis_inherit
@@ -1452,6 +1477,11 @@ msgid "Subject / Application Name"
 msgstr "Тема / Краткое Описание Кандидата"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question_answer__value
+msgid "Suggested value"
+msgstr "Предложенное значение"
+
+#. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_survey_survey
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_applicant_survey_select_wizard__survey_id
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_employee_assign_survey_wizard__survey_id
@@ -1466,10 +1496,25 @@ msgid "Survey Group"
 msgstr "Группа Опросника"
 
 #. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_survey_question_answer
+msgid "Survey Label"
+msgstr "Ярлык Опроса"
+
+#. module: restaurant_hr
 #: code:addons/restaurant_hr/wizards/employee_assign_survey.py:0
 #, python-format
 msgid "Survey Links"
 msgstr "Ссылки на Опросники"
+
+#. module: restaurant_hr
+#: model:ir.model,name:restaurant_hr.model_survey_question
+msgid "Survey Question"
+msgstr "Вопрос Опроса"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_survey__title
+msgid "Survey Title"
+msgstr "Заголовок опроса"
 
 #. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_survey_user_input
@@ -1494,6 +1539,23 @@ msgid "T-Shirt Size"
 msgstr "Размер Футболки"
 
 #. module: restaurant_hr
+#: code:addons/restaurant_hr/models/survey_survey.py:0
+#, python-format
+msgid "The answer you entered is not valid."
+msgstr "Не валидный ответ."
+
+#. module: restaurant_hr
+#: model:ir.model.fields,help:restaurant_hr.field_survey_survey__description
+msgid ""
+"The description will be displayed on the home page of the survey. You can "
+"use this to give the purpose and guidelines to your candidates before they "
+"start it."
+msgstr ""
+"Описание будет отображаться на домашней странице опроса.Вы можете "
+"использовать это, чтобы дать цель и руководящие принципы своим кандидатам, "
+"прежде чем они запустит это."
+
+#. module: restaurant_hr
 #: model:ir.model.fields,help:restaurant_hr.field_hr_applicant__source_id
 msgid ""
 "This is the source of the link, e.g. Search Engine, another domain, or name "
@@ -1501,6 +1563,22 @@ msgid ""
 msgstr ""
 "Это источник ссылки, например, поисковая система, другой домен или название "
 "списка писем"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,help:restaurant_hr.field_survey_survey__description_done
+msgid "This message will be displayed when survey is completed"
+msgstr "Это сообщения появится, когда опрос будет завершен"
+
+#. module: restaurant_hr
+#: code:addons/restaurant_hr/models/survey_survey.py:0
+#, python-format
+msgid "This question requires an answer."
+msgstr "Этот вопрос требует ответа."
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question__title
+msgid "Title"
+msgstr "Название"
 
 #. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_restaurant_hr_staff_of_workers_report__total_staff_actual_count
@@ -1544,11 +1622,6 @@ msgid "Trainee"
 msgstr "Стажёр"
 
 #. module: restaurant_hr
-#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__trainee_start_date
-msgid "Trainee Start Date"
-msgstr "Дата начала стажировки"
-
-#. module: restaurant_hr
 #: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__training_end_date
 msgid "Training End Date"
 msgstr "Конец"
@@ -1584,6 +1657,15 @@ msgid "Training start to"
 msgstr "Нвчало стажировки до"
 
 #. module: restaurant_hr
+#: model:ir.model.fields,help:restaurant_hr.field_survey_question__description
+msgid ""
+"Use this field to add additional explanations about your question or to "
+"illustrate it with pictures or a video"
+msgstr ""
+"Используйте это поле, чтобы добавить дополнительные объяснения по вашему "
+"вопросу или проиллюстрировать его изображениями или видео"
+
+#. module: restaurant_hr
 #: model:ir.model,name:restaurant_hr.model_res_users
 msgid "Users"
 msgstr "Пользователи"
@@ -1592,6 +1674,11 @@ msgstr "Пользователи"
 #: model:ir.model.fields,help:restaurant_hr.field_survey_survey__users_with_access_ids
 msgid "Users who are able to edit/read the survey."
 msgstr "Пользователи, имеющие доступ на чтение."
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_survey_question__validation_error_msg
+msgid "Validation Error message"
+msgstr "Сообщение об ошибке валидации"
 
 #. module: restaurant_hr
 #: code:addons/restaurant_hr/models/survey_user_input.py:0
@@ -1640,6 +1727,16 @@ msgstr "Ставка для Официанта"
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__survey_survey__survey_group__waiter
 msgid "Waiter"
 msgstr "Официант"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__work_email
+msgid "Work Email"
+msgstr "Рабочий email"
+
+#. module: restaurant_hr
+#: model:ir.model.fields,field_description:restaurant_hr.field_hr_employee__mobile_phone
+msgid "Work Mobile"
+msgstr "Рабочий сотовый телефон"
 
 #. module: restaurant_hr
 #: model:ir.model.fields.selection,name:restaurant_hr.selection__hr_employee__tshirt_size__xl

@@ -22,7 +22,8 @@
                     </group>
                     <group>
                         <field name="department_id" options="{'no_create': True}" />
-                        <field name="branch_id" options="{'no_create': True}" />
+                        <field name="branch_ids" options="{'no_create': True}"
+                            widget="many2many_tags" />
                     </group>
                     <group>
                         <field name="staff_line_ids" nolabel="1" readonly="1">
