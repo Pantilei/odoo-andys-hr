@@ -106,8 +106,9 @@
                                                 font-size: 3mm;"
                                             >
                                                 <span t-if="o.birthday != False">
-                                                    <t t-esc="o.birthday" />
+                                                    <t t-esc="o.birthday.strftime('%d.%m.%Y')" />
                                                 </span>
+                                                <br/>
                                                 <span t-if="o.place_of_birth != False">
                                                     <t t-esc="o.place_of_birth" />
                                                 </span>
